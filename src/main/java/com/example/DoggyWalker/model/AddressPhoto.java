@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dogwalker.dog.model;
+package com.example.DoggyWalker.model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;

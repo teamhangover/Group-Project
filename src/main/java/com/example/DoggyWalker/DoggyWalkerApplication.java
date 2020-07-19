@@ -1,4 +1,4 @@
-package com.dogwalker.dog;
+package com.example.DoggyWalker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
