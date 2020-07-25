@@ -17,11 +17,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author glamb
+ * @author RG
  */
 @Entity
 @Table(name = "PETS")
@@ -41,17 +43,23 @@ public class Pet implements Serializable {
     @Column(name = "PET_ID")
     private Integer petId;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "PET_NAME")
     private String petName;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "PET_TYPE")
     private String petType;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 300)
     @Column(name = "PET_DESCRIPTION")
     private String petDescription;
-    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
+    @JoinColumn(name = "MY_USER_ID", referencedColumnName = "MY_USER_ID")
     @ManyToOne(optional = false)
-    private User userId;
+    private MyUser myUserId;
 
     public Pet() {
     }
@@ -99,12 +107,12 @@ public class Pet implements Serializable {
         this.petDescription = petDescription;
     }
 
-    public User getUserId() {
-        return userId;
+    public MyUser getMyUserId() {
+        return myUserId;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setMyUserId(MyUser myUserId) {
+        this.myUserId = myUserId;
     }
 
     @Override
@@ -129,7 +137,7 @@ public class Pet implements Serializable {
 
     @Override
     public String toString() {
-        return "com.dogwalker.dog.model.Pet[ petId=" + petId + " ]";
+        return "com.example.DoggyWalker.model.Pet[ petId=" + petId + " ]";
     }
     
 }

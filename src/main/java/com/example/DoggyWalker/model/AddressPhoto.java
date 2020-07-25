@@ -17,11 +17,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author glamb
+ * @author RG
  */
 @Entity
 @Table(name = "ADDRESS_PHOTOS")
@@ -39,6 +41,8 @@ public class AddressPhoto implements Serializable {
     @Column(name = "PHOTO_ID")
     private Integer photoId;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 60)
     @Column(name = "PHOTO_NAME")
     private String photoName;
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID")
@@ -103,7 +107,7 @@ public class AddressPhoto implements Serializable {
 
     @Override
     public String toString() {
-        return "com.dogwalker.dog.model.AddressPhoto[ photoId=" + photoId + " ]";
+        return "com.example.DoggyWalker.model.AddressPhoto[ photoId=" + photoId + " ]";
     }
     
 }

@@ -5,17 +5,17 @@
  */
 package com.example.DoggyWalker.service;
 
-import com.example.DoggyWalker.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.DoggyWalker.repository.MyUserRepository;
 
 /**
  *
  * @author glamb
  */
 @Service
-public class UserServiceImpl implements UserServiceInterface{
+public class MyUserServiceImpl implements MyUserServiceInterface{
     
     @Autowired
-    UserRepository userRepository;
+    MyUserRepository myUserRepository;
 }

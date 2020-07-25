@@ -13,18 +13,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author glamb
+ * @author RG
  */
 @Entity
 @Table(name = "ROLES")
@@ -42,13 +42,12 @@ public class Role implements Serializable {
     @Column(name = "ROLE_ID")
     private Integer roleId;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "ROLE_NAME")
     private String roleName;
-    @JoinTable(name = "USERS_ROLES", joinColumns = {
-        @JoinColumn(name = "ROLE_ID", referencedColumnName = "ROLE_ID")}, inverseJoinColumns = {
-        @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")})
-    @ManyToMany
-    private Collection<User> usersCollection;
+    @ManyToMany(mappedBy = "rolesCollection")
+    private Collection<MyUser> myUsersCollection;
 
     public Role() {
     }
@@ -79,12 +78,12 @@ public class Role implements Serializable {
     }
 
     @XmlTransient
-    public Collection<User> getUsersCollection() {
-        return usersCollection;
+    public Collection<MyUser> getMyUsersCollection() {
+        return myUsersCollection;
     }
 
-    public void setUsersCollection(Collection<User> usersCollection) {
-        this.usersCollection = usersCollection;
+    public void setMyUsersCollection(Collection<MyUser> myUsersCollection) {
+        this.myUsersCollection = myUsersCollection;
     }
 
     @Override
@@ -109,7 +108,7 @@ public class Role implements Serializable {
 
     @Override
     public String toString() {
-        return "com.dogwalker.dog.model.Role[ roleId=" + roleId + " ]";
+        return "com.example.DoggyWalker.model.Role[ roleId=" + roleId + " ]";
     }
     
 }

@@ -20,12 +20,14 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author glamb
+ * @author RG
  */
 @Entity
 @Table(name = "ADDRESSES")
@@ -46,22 +48,28 @@ public class Address implements Serializable {
     @Column(name = "ADDRESS_ID")
     private Integer addressId;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "LONGITUDE")
     private int longitude;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "LATITUDE")
     private int latitude;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "ADDRESS_TYPE")
     private String addressType;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 300)
     @Column(name = "ADDRESS_DESCRIPTION")
     private String addressDescription;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
     private Collection<AddressPhoto> addressPhotosCollection;
-    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
+    @JoinColumn(name = "MY_USER_ID", referencedColumnName = "MY_USER_ID")
     @ManyToOne(optional = false)
-    private User userId;
+    private MyUser myUserId;
 
     public Address() {
     }
@@ -127,12 +135,12 @@ public class Address implements Serializable {
         this.addressPhotosCollection = addressPhotosCollection;
     }
 
-    public User getUserId() {
-        return userId;
+    public MyUser getMyUserId() {
+        return myUserId;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setMyUserId(MyUser myUserId) {
+        this.myUserId = myUserId;
     }
 
     @Override
@@ -157,7 +165,7 @@ public class Address implements Serializable {
 
     @Override
     public String toString() {
-        return "com.dogwalker.dog.model.Address[ addressId=" + addressId + " ]";
+        return "com.example.DoggyWalker.model.Address[ addressId=" + addressId + " ]";
     }
     
 }
