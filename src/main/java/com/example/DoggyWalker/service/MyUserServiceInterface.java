@@ -9,6 +9,6 @@ package com.example.DoggyWalker.service;
  *
  * @author glamb
  */
-public interface UserServiceInterface {
+public interface MyUserServiceInterface {
     
 }
