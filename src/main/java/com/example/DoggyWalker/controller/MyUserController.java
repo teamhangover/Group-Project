@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.example.DoggyWalker.service.MyUserServiceInterface;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -32,9 +33,13 @@ public class MyUserController {
     }
 
     @PostMapping("/doInsertMyUser")
-    public String insertUser(@ModelAttribute("newMyUser") MyUser myUser) {
+    public String insertUser(@ModelAttribute("newMyUser") MyUser myUser,
+            @RequestParam(value = "keeper", defaultValue = "false") String keeper) {
 
-        System.out.println(myUser);
+        boolean isKeeper = Boolean.parseBoolean(keeper);
+
+       myUserServiceInterface.saveNewMyUser(myUser, isKeeper);
+
         return "index";
 
     }

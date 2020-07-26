@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author RG
  */
 @Entity
-@Table(name = "PETS")
+@Table(name = "pets")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Pet.findAll", query = "SELECT p FROM Pet p"),
@@ -40,24 +40,24 @@ public class Pet implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "PET_ID")
+    @Column(name = "pet_id")
     private Integer petId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "PET_NAME")
+    @Column(name = "pet_name")
     private String petName;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "PET_TYPE")
+    @Column(name = "pet_type")
     private String petType;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 300)
-    @Column(name = "PET_DESCRIPTION")
+    @Column(name = "pet_description")
     private String petDescription;
-    @JoinColumn(name = "MY_USER_ID", referencedColumnName = "MY_USER_ID")
+    @JoinColumn(name = "my_user_id", referencedColumnName = "my_user_id")
     @ManyToOne(optional = false)
     private MyUser myUserId;
 

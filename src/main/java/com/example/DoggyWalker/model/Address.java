@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author RG
  */
 @Entity
-@Table(name = "ADDRESSES")
+@Table(name = "addresses")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Address.findAll", query = "SELECT a FROM Address a"),
@@ -45,31 +45,31 @@ public class Address implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ADDRESS_ID")
+    @Column(name = "address_id")
     private Integer addressId;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "LONGITUDE")
+    @Column(name = "longitude")
     private int longitude;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "LATITUDE")
+    @Column(name = "latitude")
     private int latitude;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "ADDRESS_TYPE")
+    @Column(name = "address_type")
     private String addressType;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 300)
-    @Column(name = "ADDRESS_DESCRIPTION")
+    @Column(name = "address_description")
     private String addressDescription;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
-    private Collection<AddressPhoto> addressPhotosCollection;
-    @JoinColumn(name = "MY_USER_ID", referencedColumnName = "MY_USER_ID")
+    @JoinColumn(name = "my_user_id", referencedColumnName = "my_user_id")
     @ManyToOne(optional = false)
     private MyUser myUserId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
+    private Collection<AddressPhoto> addressPhotosCollection;
 
     public Address() {
     }
@@ -126,6 +126,14 @@ public class Address implements Serializable {
         this.addressDescription = addressDescription;
     }
 
+    public MyUser getMyUserId() {
+        return myUserId;
+    }
+
+    public void setMyUserId(MyUser myUserId) {
+        this.myUserId = myUserId;
+    }
+
     @XmlTransient
     public Collection<AddressPhoto> getAddressPhotosCollection() {
         return addressPhotosCollection;
@@ -133,14 +141,6 @@ public class Address implements Serializable {
 
     public void setAddressPhotosCollection(Collection<AddressPhoto> addressPhotosCollection) {
         this.addressPhotosCollection = addressPhotosCollection;
-    }
-
-    public MyUser getMyUserId() {
-        return myUserId;
-    }
-
-    public void setMyUserId(MyUser myUserId) {
-        this.myUserId = myUserId;
     }
 
     @Override
@@ -165,7 +165,7 @@ public class Address implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.DoggyWalker.model.Address[ addressId=" + addressId + " ]";
+        return "com.example.DoggyWalker.model.Addresses[ addressId=" + addressId + " ]";
     }
     
 }

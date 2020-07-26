@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author RG
  */
 @Entity
-@Table(name = "ADDRESS_PHOTOS")
+@Table(name = "address_photos")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "AddressPhoto.findAll", query = "SELECT a FROM AddressPhoto a"),
@@ -38,14 +38,14 @@ public class AddressPhoto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "PHOTO_ID")
+    @Column(name = "photo_id")
     private Integer photoId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
-    @Column(name = "PHOTO_NAME")
+    @Column(name = "photo_name")
     private String photoName;
-    @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID")
+    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     @ManyToOne(optional = false)
     private Address addressId;
 

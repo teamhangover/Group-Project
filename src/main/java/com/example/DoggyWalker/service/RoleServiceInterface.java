@@ -5,15 +5,15 @@
  */
 package com.example.DoggyWalker.service;
 
-import com.example.DoggyWalker.model.MyUser;
+import com.example.DoggyWalker.model.Role;
+import java.util.List;
 
 /**
  *
- * @author glamb
+ * @author RG
  */
-public interface MyUserServiceInterface {
+public interface RoleServiceInterface {
     
-    MyUser saveNewMyUser(MyUser myUser, boolean keeper);
-    
-    MyUser getMyUserById(int id);
+    public Role getRoleByID(int id);
+    public List<Role> getAllRoles();
 }
