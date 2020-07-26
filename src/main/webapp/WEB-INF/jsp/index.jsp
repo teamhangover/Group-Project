@@ -14,5 +14,9 @@
     <body>
         <h1>Hello World!</h1>
         <a href="/preInsertMyUser">Register</a>
+        <br>
+        <a href="/getRoles">roles</a>
+        <br>
+        <a href="/preInsertMyUserDetails">Fill MyUser details</a>
     </body>
 </html>

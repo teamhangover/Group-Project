@@ -65,6 +65,16 @@
             </div>
             <div class="row mt-2">
                 <div class="col mini-box">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i>Register as keeper: </i></span>
+                        </div>
+                        <input  name="keeper" id="keeper" value="true" type="checkbox" cssClass="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col mini-box">
                     <button type="submit" id="submit" class="btn btn-lg btn-block btn-primary mb-1"
                             ">Register</button>
                 </div>

@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author RG
  */
 @Entity
-@Table(name = "MY_USER_DETAILS")
+@Table(name = "my_user_details")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "MyUserDetails.findAll", query = "SELECT m FROM MyUserDetails m"),
@@ -43,32 +43,32 @@ public class MyUserDetails implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "DETAILS_ID")
+    @Column(name = "details_id")
     private Integer detailsId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "FIRST_NAME")
+    @Column(name = "first_name")
     private String firstName;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "LAST_NAME")
+    @Column(name = "last_name")
     private String lastName;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "AGE")
+    @Column(name = "age")
     private int age;
     @Size(max = 15)
-    @Column(name = "TEL")
+    @Column(name = "tel")
     private String tel;
     @Size(max = 300)
-    @Column(name = "U_DESCRIPTION")
+    @Column(name = "u_description")
     private String uDescription;
     @Size(max = 60)
-    @Column(name = "U_PHOTO_NAME")
+    @Column(name = "u_photo_name")
     private String uPhotoName;
-    @JoinColumn(name = "MY_USER_ID", referencedColumnName = "MY_USER_ID")
+    @JoinColumn(name = "my_user_id", referencedColumnName = "my_user_id")
     @OneToOne(optional = false)
     private MyUser myUserId;
 

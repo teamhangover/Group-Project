@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author RG
  */
 @Entity
-@Table(name = "MY_USERS")
+@Table(name = "my_users")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "MyUser.findAll", query = "SELECT m FROM MyUser m"),
@@ -46,35 +46,35 @@ public class MyUser implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "MY_USER_ID")
+    @Column(name = "my_user_id")
     private Integer myUserId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "USERNAME")
+    @Column(name = "username")
     private String username;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
-    @Column(name = "MY_PASSWORD")
+    @Column(name = "my_password")
     private String myPassword;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "EMAIL")
+    @Column(name = "email")
     private String email;
-    @JoinTable(name = "MY_USERS_ROLES", joinColumns = {
-        @JoinColumn(name = "MY_USER_ID", referencedColumnName = "MY_USER_ID")}, inverseJoinColumns = {
-        @JoinColumn(name = "ROLE_ID", referencedColumnName = "ROLE_ID")})
+    @JoinTable(name = "my_users_roles", joinColumns = {
+        @JoinColumn(name = "my_user_id", referencedColumnName = "my_user_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "role_id", referencedColumnName = "role_id")})
     @ManyToMany
     private Collection<Role> rolesCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "myUserId")
     private Collection<Pet> petsCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "myUserId")
-    private MyUserDetails myUserDetails;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "myUserId")
     private Collection<Address> addressesCollection;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "myUserId")
+    private MyUserDetails myUserDetails;
 
     public MyUser() {
     }
@@ -140,14 +140,6 @@ public class MyUser implements Serializable {
         this.petsCollection = petsCollection;
     }
 
-    public MyUserDetails getMyUserDetails() {
-        return myUserDetails;
-    }
-
-    public void setMyUserDetails(MyUserDetails myUserDetails) {
-        this.myUserDetails = myUserDetails;
-    }
-
     @XmlTransient
     public Collection<Address> getAddressesCollection() {
         return addressesCollection;
@@ -155,6 +147,14 @@ public class MyUser implements Serializable {
 
     public void setAddressesCollection(Collection<Address> addressesCollection) {
         this.addressesCollection = addressesCollection;
+    }
+
+    public MyUserDetails getMyUserDetails() {
+        return myUserDetails;
+    }
+
+    public void setMyUserDetails(MyUserDetails myUserDetails) {
+        this.myUserDetails = myUserDetails;
     }
 
     @Override
