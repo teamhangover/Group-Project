@@ -1,7 +1,7 @@
 <%-- 
-    Document   : register
-    Created on : Jul 25, 2020, 8:48:52 PM
-    Author     : RG
+    Document   : fillMyUserDetails
+    Created on : 29 Ιουλ 2020, 10:14:54 πμ
+    Author     : ths13
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,8 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>REGISTER</title>
-
+        <title>Fill My User Details</title>
         <!--bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -29,54 +28,75 @@
         <!--bootstrap-->
     </head>
     <body>
-       
-
-        <springform:form action="/doInsertMyUser" method="post" modelAttribute="newMyUser">
+        
+        
+        <springform:form action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails">
             <springform:input path="myUserId" hidden="true"></springform:input>
+            <springform:input path="detailsId" hidden="true"></springform:input>
+                <div class="row mt-2">
+                    <div class="col mini box">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i>First Name</i></span>
+                            </div>
+                        <springform:input type="text" path="firstName" cssClass="form-control"></springform:input>
+                        </div>               
+                    </div>           
+                </div>
                 <div class="row mt-2">
                     <div class="col mini-box">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"> <i>username: </i></span>
+                                <span class="input-group-text"> <i>Last Name </i></span>
                             </div>
-                        <springform:input path="username" cssClass="form-control"/>
+                        <springform:input type="text" path="lastName" cssClass="form-control"/>
                     </div>
                 </div>
-            </div>
+            </div>     
             <div class="row mt-2">
                 <div class="col mini-box">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"> <i>Password: </i></span>
+                            <span class="input-group-text"> <i>Age </i></span>
                         </div>
-                        <springform:input type="password" path="myPassword" cssClass="form-control"/>
+                        <springform:input type="number" path="age" cssClass="form-control"/>
                     </div>
                 </div>
-            </div>
+            </div>    
             <div class="row mt-2">
                 <div class="col mini-box">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"> <i>email: </i></span>
+                            <span class="input-group-text"> <i>Telephone : </i></span>
                         </div>
-                        <springform:input type="email" path="email" cssClass="form-control"/>
+                        <springform:input type="tel" path="tel" cssClass="form-control"/>
                     </div>
                 </div>
-            </div>
+            </div>  
             <div class="row mt-2">
                 <div class="col mini-box">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"> <i>Register as keeper: </i></span>
+                            <span class="input-group-text"> <i>Description : </i></span>
                         </div>
-                        <input  name="keeper" id="keeper" value="true" type="checkbox" cssClass="form-control"/>
+                        <springform:input type="textarea" path="uDescription" cssClass="form-control"/>
                     </div>
                 </div>
-            </div>
+            </div> 
+            <div class="row mt-2">
+                <div class="col mini-box">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i>Photo name : </i></span>
+                        </div>
+                        <springform:input type="text" path="uPhotoName" cssClass="form-control"/>
+                    </div>
+                </div>
+            </div>   
             <div class="row mt-2">
                 <div class="col mini-box">
                     <button type="submit" id="submit" class="btn btn-lg btn-block btn-primary mb-1"
-                            ">Register</button>
+                            ">Submit</button>
                 </div>
                 <div class="col mini-box">
                     <button type="reset" class="btn btn-lg btn-block btn-primary mb-1">Clear</button>
