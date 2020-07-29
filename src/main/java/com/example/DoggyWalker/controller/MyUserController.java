@@ -32,6 +32,7 @@ public class MyUserController {
         return "register";
     }
 
+   
     @PostMapping("/doInsertMyUser")
     public String insertUser(@ModelAttribute("newMyUser") MyUser myUser,
             @RequestParam(value = "keeper", defaultValue = "false") String keeper) {
