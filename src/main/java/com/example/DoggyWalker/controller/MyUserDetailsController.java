@@ -27,20 +27,19 @@ public class MyUserDetailsController {
     MyUserServiceInterface myUserServiceInterface;
 
     @GetMapping("/preInsertMyUserDetails")
-    public String showMyUserDetailsForm(ModelMap mm,
-            @RequestParam("myUserId") String myUserId) {
+    public String showMyUserDetailsForm(ModelMap mm) //            @RequestParam("myUserId") String myUserId) 
+    {
 
-        MyUser myUser = myUserServiceInterface.getMyUserById(Integer.parseInt(myUserId));
-
+        //  MyUser myUser = myUserServiceInterface.getMyUserById(Integer.parseInt(myUserId));
         MyUserDetails newMyUserDetails = new MyUserDetails();
-        newMyUserDetails.setMyUserId(myUser);
+//        newMyUserDetails.setMyUserId(myUser);
         mm.addAttribute("myUserDetails", newMyUserDetails);
 
         return "fillMyUserDetails";
     }
 
     @PostMapping("/doInsertMyUserDetails")
-    public String insertMyUserDetails(@ModelAttribute("newMyUser") MyUser myUser) {
+    public String insertMyUserDetails(@ModelAttribute("myUserDetails") MyUser myUser) {
 
         return "success";
 
