@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class RoleController {
-
+//this class is only for debugging and will be deleteed later
     @Autowired
     RoleServiceInterface roleServiceInterface;
 

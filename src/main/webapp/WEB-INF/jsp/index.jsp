@@ -4,13 +4,18 @@
 <!doctype html>
 <html lang="en">
     <head>
+
+<!--         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Jekyll v4.0.1">
         <title> petKeeper</title>
-
+    
+        <!-- Load an icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
         <!--    carousel-->
         <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
 
