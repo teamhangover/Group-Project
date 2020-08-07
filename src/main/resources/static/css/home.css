@@ -1,0 +1,160 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+
+/* Padding below the footer and lighter body text */
+
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+nav{
+    background: whitesmoke;
+}
+
+nav a{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+    
+}
+
+
+nav a:hover {
+    text-decoration: none;
+    background-color: #c1b9e2;
+    font-size: 115%;
+    border-radius: 5em;
+    color: white;
+}
+
+
+
+
+.link:hover {
+    background-color: lightgrey;
+    border-radius: 5em;
+}
+
+
+/* Carousel base class */
+
+.carousel {
+    margin-bottom: 4rem;
+}
+
+
+/* Since positioning the image, we need to help out the caption */
+
+.carousel-caption {
+    bottom: 17rem;
+    z-index: 10;
+}
+
+
+
+/* #bottom-rem-carousel {
+    bottom: 14rem;
+} */
+
+
+/* Declare heights because of positioning of img element */
+
+.carousel-item {
+    position: relative;
+    height: 34rem;
+}
+
+.carousel-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    /* width: 100vw; */
+    height: 100vh;
+}
+
+
+/* MARKETING CONTENT
+  -------------------------------------------------- */
+
+
+/* Center align the text within the three columns below the carousel */
+
+.marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.marketing h2 {
+    font-weight: 400;
+}
+
+.marketing .col-lg-4 p {
+    margin-right: .75rem;
+    margin-left: .75rem;
+}
+
+
+/* Featurettes
+  ------------------------- */
+
+.featurette-divider {
+    margin: 5rem 0;
+    /* Space out the Bootstrap <hr> more */
+}
+
+
+/* Thin out the marketing headings */
+
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+  -------------------------------------------------- */
+
+@media (min-width: 40em) {
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+    .featurette-heading {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 62em) {
+    .featurette-heading {
+        margin-top: 7rem;
+    }
+}
+
+footer {
+    background-color: #3e4551;
+}
+
+footer p {
+    color: plum;
+}
+
+footer a {
+    text-decoration: none;
+    color: lightyellow;
+}
+
+footer h5 {
+    color: powderblue;
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: lightyellow;
+    border: rosybrown;
+    background-color: rosybrown;
+    border-radius: 10rem;
+}
