@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.example.DoggyWalker.service.MyUserServiceInterface;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -24,6 +25,8 @@ public class MyUserController {
 
     @Autowired
     MyUserServiceInterface myUserServiceInterface;
+    @Autowired
+    private PasswordEncoder encoder;
 
     @GetMapping("/preInsertMyUser")
     public String showUserRegisterForm(ModelMap mm) {
@@ -32,14 +35,14 @@ public class MyUserController {
         return "register";
     }
 
-   
     @PostMapping("/doInsertMyUser")
     public String insertUser(@ModelAttribute("newMyUser") MyUser myUser,
             @RequestParam(value = "keeper", defaultValue = "false") String keeper) {
 
         boolean isKeeper = Boolean.parseBoolean(keeper);
-
-       myUserServiceInterface.saveNewMyUser(myUser, isKeeper);
+        String hashedCode = encoder.encode(myUser.getMyPassword());
+        myUser.setMyPassword(hashedCode);
+        myUserServiceInterface.saveNewMyUser(myUser, isKeeper);
 
         return "index";
 

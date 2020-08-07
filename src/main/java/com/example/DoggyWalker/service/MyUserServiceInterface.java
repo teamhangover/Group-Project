@@ -6,12 +6,13 @@
 package com.example.DoggyWalker.service;
 
 import com.example.DoggyWalker.model.MyUser;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  *
  * @author glamb
  */
-public interface MyUserServiceInterface {
+public interface MyUserServiceInterface extends UserDetailsService{
     
     MyUser saveNewMyUser(MyUser myUser, boolean keeper);
     

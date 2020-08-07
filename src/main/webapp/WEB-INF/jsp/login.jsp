@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="springform" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,13 +31,17 @@
                       <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
                     </div>-->
 
-                <form:form method="POST" action="">
-                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="username">
-                    <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+                <c:if test="${param.error != null}">
+                    <b>Wrong credentials</b>
+                </c:if>
+                <c:if test="${param.logout != null}">
+                    <b>Successfully logged out</b>
+                </c:if>
+                <springform:form method="POST" action="" >
+                    <input type="text" id="login" class="fadeIn second" name="username" placeholder="username">
+                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
                     <input type="submit" class="fadeIn fourth pointer" value="Log In">
-                    
-
-                </form:form> 
+                </springform:form> 
 
                 <!-- Remind Passowrd -->
                 <div id="formFooter">

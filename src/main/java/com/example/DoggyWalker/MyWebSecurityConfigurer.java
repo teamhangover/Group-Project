@@ -5,8 +5,8 @@
  */
 package com.example.DoggyWalker;
 
-//import com.example.DoggyWalker.service.UserServiceImpl;
-//import org.springframework.beans.factory.annotation.Autowired;
+import com.example.DoggyWalker.service.MyUserServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -23,25 +23,25 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
-//     @Autowired
-//    private MyUserServiceImpl myUserServiceImpl;
-//     
-//     
-     @Override
+    @Autowired
+    private MyUserServiceInterface myUserService;
+
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.authenticationProvider(authenticationProvider());
+        auth.authenticationProvider(authenticationProvider());
     }
-//     
-//     
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()//restrict access based on the HttpServletRequest
                 .antMatchers("/").permitAll()
                 .antMatchers("/index").permitAll()
+                .antMatchers("/keeper/**").hasRole("Keeper") // to /** kleidwnei oles ts selides p ksekinane apo /admin
+                .antMatchers("/owner/**").hasRole("Owner")
                 .and()
                 .formLogin() // We are customizing the form login process
-                .loginPage("/loginPage") // This is the url to show the login page
+                .loginPage("/login") // This is the url to show the login page
                 .permitAll() //Allow everyone to see login page. Don't have to be logged in.
                 .and()
                 .logout()
@@ -50,16 +50,18 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .accessDeniedPage("/access-denied"); //phgaine edw
     }
 //    
+
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
 
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
 
-//        auth.setUserDetailsService(userServiceImpl);
+        auth.setUserDetailsService(myUserService);
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }
 //
+
     @Bean
     public PasswordEncoder passwordEncoder() {
 

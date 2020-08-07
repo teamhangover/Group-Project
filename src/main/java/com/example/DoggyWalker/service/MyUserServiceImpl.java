@@ -14,11 +14,17 @@ import com.example.DoggyWalker.repository.RoleRepository;
 import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
  *
  * @author glamb
  */
+@Transactional
 @Service
 public class MyUserServiceImpl implements MyUserServiceInterface {
 
@@ -28,14 +34,13 @@ public class MyUserServiceImpl implements MyUserServiceInterface {
     RoleRepository roleRepository;
 
     @Override
-    @Transactional
     public MyUser saveNewMyUser(MyUser myUser, boolean isKeeper) {
 
         Role role;
         System.out.println(myUser);
         List<Role> userRoles = new ArrayList<>();
 
-        if (isKeeper) {
+        if (isKeeper == true) {
             //RoleID= 2 keeper 
             role = roleRepository.getOne(2);
         } else {
@@ -52,5 +57,33 @@ public class MyUserServiceImpl implements MyUserServiceInterface {
     @Override
     public MyUser getMyUserById(int id) {
         return myUserRepository.getOne(id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        MyUser myuser = myUserRepository.findByUsername(username);
+        if (myuser == null) {
+            throw new UsernameNotFoundException("Invalid username");
+        } else {
+            User springSecurityUser
+                    = new User(myuser.getUsername(),
+                            myuser.getMyPassword(),
+                            mapRolesToAuthorities((List<Role>) myuser.getRolesCollection()));
+
+            return springSecurityUser;
+
+        }
+
+    }
+
+    private List<? extends GrantedAuthority> mapRolesToAuthorities(List<Role> roles) {
+        List<GrantedAuthority> authorities = new ArrayList();
+
+        for (Role role : roles) {
+            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
+            authorities.add(authority);
+        }
+
+        return authorities;
     }
 }

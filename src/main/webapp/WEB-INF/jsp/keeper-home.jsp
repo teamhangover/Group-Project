@@ -1,6 +1,6 @@
 <%-- 
-    Document   : loginPage
-    Created on : Aug 6, 2020, 9:16:48 PM
+    Document   : keeper-home
+    Created on : Aug 8, 2020, 1:21:51 AM
     Author     : RG
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Log in Page</h1>
+        <h1>keeper-home!</h1>
     </body>
 </html>
