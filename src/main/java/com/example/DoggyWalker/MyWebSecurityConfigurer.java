@@ -48,8 +48,7 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling() // ti na kanw an exw exception?
                 .accessDeniedPage("/access-denied"); //phgaine edw
-    }
-//    
+    }  
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -60,7 +59,6 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }
-//
 
     @Bean
     public PasswordEncoder passwordEncoder() {

@@ -7,7 +7,9 @@ package com.example.DoggyWalker.controller;
 
 import com.example.DoggyWalker.model.MyUser;
 import com.example.DoggyWalker.model.MyUserDetails;
+import com.example.DoggyWalker.service.MyUserDetailsService;
 import com.example.DoggyWalker.service.MyUserServiceInterface;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,22 +27,22 @@ public class MyUserDetailsController {
 
     @Autowired
     MyUserServiceInterface myUserServiceInterface;
+    @Autowired
+    MyUserDetailsService myUserDetailsService;
 
     @GetMapping("/preInsertMyUserDetails")
-    public String showMyUserDetailsForm(ModelMap mm) //            @RequestParam("myUserId") String myUserId) 
-    {
-
-        //  MyUser myUser = myUserServiceInterface.getMyUserById(Integer.parseInt(myUserId));
+    public String showMyUserDetailsForm(ModelMap mm, HttpSession session) {
+        MyUser myUser = (MyUser) session.getAttribute("loggedUser");
         MyUserDetails newMyUserDetails = new MyUserDetails();
-//        newMyUserDetails.setMyUserId(myUser);
+        newMyUserDetails.setMyUserId(myUser);
         mm.addAttribute("myUserDetails", newMyUserDetails);
 
         return "fillMyUserDetails";
     }
 
     @PostMapping("/doInsertMyUserDetails")
-    public String insertMyUserDetails(@ModelAttribute("myUserDetails") MyUser myUser) {
-
+    public String insertMyUserDetails(@ModelAttribute("myUserDetails") MyUserDetails newMyUserDetails) {
+        
         return "success";
 
     }

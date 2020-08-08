@@ -13,5 +13,5 @@ import com.example.DoggyWalker.model.MyUserDetails;
  */
 public interface MyUserDetailsService {
     
-    public MyUserDetails saveMyUserDetails(int MyUserId);
+    public MyUserDetails saveMyUserDetails(MyUserDetails myUserDetails);
 }
