@@ -5,6 +5,7 @@
  */
 package com.example.DoggyWalker.service;
 
+import com.example.DoggyWalker.model.MyUser;
 import com.example.DoggyWalker.model.MyUserDetails;
 import com.example.DoggyWalker.repository.MyUserDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,10 @@ public class MyUserDetailsServiceImpl implements MyUserDetailsService {
     @Override
     public MyUserDetails saveMyUserDetails(MyUserDetails myUserDetails) {
         return myUserDetailsRepository.save(myUserDetails);
+    }
+
+    @Override
+    public MyUserDetails getMyUserDetailsByMyUser(MyUser myUser) {
+        return myUserDetailsRepository.findMyUserDetailsByMyUserId(myUser);
     }
 }

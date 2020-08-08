@@ -5,6 +5,7 @@
  */
 package com.example.DoggyWalker.service;
 
+import com.example.DoggyWalker.model.MyUser;
 import com.example.DoggyWalker.model.MyUserDetails;
 
 /**
@@ -14,4 +15,6 @@ import com.example.DoggyWalker.model.MyUserDetails;
 public interface MyUserDetailsService {
     
     public MyUserDetails saveMyUserDetails(MyUserDetails myUserDetails);
+    
+    public MyUserDetails getMyUserDetailsByMyUser(MyUser myUser);
 }

@@ -5,6 +5,7 @@
  */
 package com.example.DoggyWalker.repository;
 
+import com.example.DoggyWalker.model.MyUser;
 import com.example.DoggyWalker.model.MyUserDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -16,4 +17,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MyUserDetailsRepository extends JpaRepository<MyUserDetails, Integer>{
     
+    public MyUserDetails findMyUserDetailsByMyUserId(MyUser myUserId);
 }
