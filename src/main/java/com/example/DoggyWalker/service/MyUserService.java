@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  *
  * @author glamb
  */
-public interface MyUserServiceInterface extends UserDetailsService{
+public interface MyUserService extends UserDetailsService{
     
     MyUser saveNewMyUser(MyUser myUser, boolean keeper);
     

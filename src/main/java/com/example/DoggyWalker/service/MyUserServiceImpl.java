@@ -26,7 +26,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  */
 @Transactional
 @Service
-public class MyUserServiceImpl implements MyUserServiceInterface {
+public class MyUserServiceImpl implements MyUserService {
 
     @Autowired
     MyUserRepository myUserRepository;

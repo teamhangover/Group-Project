@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Transactional
-public class RoleServiceImpl implements RoleServiceInterface {
+public class RoleServiceImpl implements RoleService {
 
     @Autowired
     RoleRepository roleRepository;

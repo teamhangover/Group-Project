@@ -12,9 +12,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import com.example.DoggyWalker.service.MyUserServiceInterface;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.example.DoggyWalker.service.MyUserService;
 
 /**
  *
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MyUserController {
 
     @Autowired
-    MyUserServiceInterface myUserServiceInterface;
+    MyUserService myUserServiceInterface;
     @Autowired
     private PasswordEncoder encoder;
 

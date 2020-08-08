@@ -28,11 +28,22 @@
         <!--bootstrap-->
     </head>
     <body>
-        
-        
+
+
         <springform:form action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails">
             <springform:input path="myUserId" hidden="true"></springform:input>
             <springform:input path="detailsId" hidden="true"></springform:input>
+                <div class="row mt-2">
+                    <div class="col mini box">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i>Profile photo</i></span>
+                            </div>
+                            <input type="file" name="profilePic" class="form-control" accept="image/*"/>
+                        </div>               
+                    </div>           
+                </div>
+
                 <div class="row mt-2">
                     <div class="col mini box">
                         <div class="input-group">
