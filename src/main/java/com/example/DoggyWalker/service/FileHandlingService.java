@@ -5,15 +5,13 @@
  */
 package com.example.DoggyWalker.service;
 
-import com.example.DoggyWalker.model.Role;
-import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
- * @author RG
+ * @author glamb
  */
-public interface RoleServiceInterface {
-    
-    public Role getRoleByID(int id);
-    public List<Role> getAllRoles();
+public interface FileHandlingService {
+
+    public String storeFileToDisk(MultipartFile file, String fileName);
 }

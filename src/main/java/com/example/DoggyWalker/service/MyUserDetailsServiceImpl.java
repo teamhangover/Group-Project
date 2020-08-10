@@ -5,7 +5,10 @@
  */
 package com.example.DoggyWalker.service;
 
+import com.example.DoggyWalker.model.MyUser;
 import com.example.DoggyWalker.model.MyUserDetails;
+import com.example.DoggyWalker.repository.MyUserDetailsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,11 +16,18 @@ import org.springframework.stereotype.Service;
  * @author RG
  */
 @Service
-public class MyUserDetailsServiceImpl implements MyUserDetailsService{
-    
+public class MyUserDetailsServiceImpl implements MyUserDetailsService {
+
+    @Autowired
+    MyUserDetailsRepository myUserDetailsRepository;
+
     @Override
-    public MyUserDetails saveMyUserDetails(int MyUserId){
-    
-    return null;
+    public MyUserDetails saveMyUserDetails(MyUserDetails myUserDetails) {
+        return myUserDetailsRepository.save(myUserDetails);
+    }
+
+    @Override
+    public MyUserDetails getMyUserDetailsByMyUser(MyUser myUser) {
+        return myUserDetailsRepository.findMyUserDetailsByMyUserId(myUser);
     }
 }

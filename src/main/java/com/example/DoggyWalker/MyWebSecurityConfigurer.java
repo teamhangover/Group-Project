@@ -5,7 +5,6 @@
  */
 package com.example.DoggyWalker;
 
-import com.example.DoggyWalker.service.MyUserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -15,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import com.example.DoggyWalker.service.MyUserService;
 
 /**
  *
@@ -24,7 +24,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private MyUserServiceInterface myUserService;
+    private MyUserService myUserService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -48,8 +48,7 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling() // ti na kanw an exw exception?
                 .accessDeniedPage("/access-denied"); //phgaine edw
-    }
-//    
+    }  
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -60,7 +59,6 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }
-//
 
     @Bean
     public PasswordEncoder passwordEncoder() {
