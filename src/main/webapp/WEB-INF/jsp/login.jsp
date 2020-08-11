@@ -26,10 +26,7 @@
             <div id="formContent">
                 <!-- Tabs Titles -->
 
-                <!-- Icon -->
-                <!--    <div class="fadeIn first">
-                      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
-                    </div>-->
+              
 
                 <c:if test="${param.error != null}">
                     <b>Wrong credentials</b>

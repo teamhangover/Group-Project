@@ -51,7 +51,9 @@
     
     
  <body>
-    <header>
+    
+     
+<!--     <header>
         <nav class="navbar navbar-expand-md fixed-top d-flex flex-row-reverse">
 
             <a class="navbar" href="/preInsertMyUser">Eγραφή</a>
@@ -75,7 +77,9 @@
                 </ul>
             </div>
         </nav>
-    </header>
+    </header>-->
+     
+     <jsp:include page="noLogin-navbar.jsp"></jsp:include>
 
     <main role="main">
        
@@ -101,7 +105,7 @@
                         <div id="bottom-rem-carousel" class="carousel-caption text-left text-dark">
                             <h1>Όλοι περνάνε τέλεια στις διακοπές!</h1>
                             <p>Βες τώρα ποιός θα φιλοξενήσει και θα φροντίζει το ζωάκι σου οσο θα λείπεις</p>
-                            <p><a class="btn btn-lg btn-outline-dark" href="#" role="button">Εγγραφή</a></p>
+                            <p><a class="btn btn-lg btn-outline-dark" href="/preInsertMyUser" role="button">Εγγραφή</a></p>
 
                         </div>
                     </div>
@@ -132,7 +136,7 @@
                             <h1>Bρες τον keeper σου</h1>
                             <p>Δες ποιος είναι κοντά σου, τι εμπειρία έχει, τι υπηρεσίες προσφέρει και επίλεξε τον καλύτερο.
                             </p>
-                            <p><button class=" btn btn-lg btn-outline-dark text-light" href="#" role="button">Συνδέσου</button></p>
+                            <p><button class=" btn btn-lg btn-outline-dark text-light" href="/loginPage" role="button">Συνδέσου</button></p>
                         </div>
                     </div>
                 </div>
@@ -343,7 +347,8 @@
 
         </footer>
         <!-- Footer -->
-
+        
+ <jsp:include page="footer.jsp"></jsp:include>
 
     </main>
 

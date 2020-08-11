@@ -3,7 +3,7 @@
 body {
     font-family: "Poppins", sans-serif;
     height: 100vh;
-    background-image: url('/img/dog-login-page.png');
+    background-image: url('/img/Cat-White-Background.png');
     background-repeat: no-repeat;
     background-position: bottom right;
 }
@@ -116,7 +116,7 @@ input[type=reset]:active {
     transform: scale(0.95);
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], input[type="email"] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -148,8 +148,12 @@ input[type=password]:focus {
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
 }
+input[type=email]:focus {
+    background-color: #fff;
+    border-bottom: 2px solid #5fbae9;
+}
 
-input[type=text], [type=password]:placeholder {
+input[type=text], [type=password], [type=email]:placeholder {
     color: #cccccc;
 }
 
