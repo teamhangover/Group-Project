@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>DoggyWalker</artifactId>
+    <artifactId>PetKeeper</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>DoggyWalker</name>
-    <description>Doggy Walker Project</description>
+    <name>PetKeeper</name>
+    <description>PetKeeper Project</description>
 
     <properties>
         <java.version>1.8</java.version>
