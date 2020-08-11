@@ -28,7 +28,6 @@ public class KeeperController {
     MyUserDetailsService myUserDetailsService;
     
     @RequestMapping
-        //(method = {RequestMethod.GET, RequestMethod.POST})
     public String showKeeperHome() {
 
         return "keeper-home";
@@ -40,7 +39,7 @@ public class KeeperController {
         return "schedule";
     }
 
-    @GetMapping("/profile")
+    @GetMapping("profile")
     public String showMyUserDetails(HttpSession session, ModelMap mm) {
 
         MyUser myUser = (MyUser) session.getAttribute("loggedUser");
