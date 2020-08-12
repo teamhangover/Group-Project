@@ -36,19 +36,19 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()//restrict access based on the HttpServletRequest
                 .antMatchers("/").permitAll()
-                .antMatchers("/index").permitAll()
-                .antMatchers("/keeper/**").hasRole("Keeper") // to /** kleidwnei oles ts selides p ksekinane apo /admin
-                .antMatchers("/owner/**").hasRole("Owner")
+                .antMatchers("/keeper/**").hasRole("KEEPER") // to /** kleidwnei oles ts selides p ksekinane apo /admin
+                .antMatchers("/owner/**").hasRole("OWNER")
                 .and()
                 .formLogin() // We are customizing the form login process
-                .loginPage("/login") // This is the url to show the login page
+                .loginPage("/loginPage") // This is the url to show the login page
                 .permitAll() //Allow everyone to see login page. Don't have to be logged in.
                 .and()
                 .logout()
                 .and()
                 .exceptionHandling() // ti na kanw an exw exception?
                 .accessDeniedPage("/access-denied"); //phgaine edw
-    }  
+
+    }
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {

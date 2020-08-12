@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,5 +16,13 @@
     </head>
     <body>
         <h1>Access denied</h1>
+        <p>
+            Username: <security:authentication property="principal.username" />
+            <br>
+            Role: <security:authentication property="principal.authorities" />
+        </p>
+        <form:form method="post" action="${pageContext.request.contextPath}/logout">
+            <input type="submit" value="Logout"/>
+        </form:form>
     </body>
 </html>
