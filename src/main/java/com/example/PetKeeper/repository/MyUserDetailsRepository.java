@@ -18,4 +18,6 @@ import org.springframework.stereotype.Repository;
 public interface MyUserDetailsRepository extends JpaRepository<MyUserDetails, Integer>{
 //    this might not be working
     public MyUserDetails findMyUserDetailsByMyUserId(MyUser myUserId);
+    
+    public MyUserDetails save(MyUserDetails myUserDetails);
 }
