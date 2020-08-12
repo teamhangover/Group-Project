@@ -17,9 +17,9 @@
     <body>
         <h1>Access denied</h1>
         <p>
-            User: <security:authentication property="principal.username" />
+            Username: <security:authentication property="principal.username" />
             <br>
-            Role(s): <security:authentication property="principal.authorities" />
+            Role: <security:authentication property="principal.authorities" />
         </p>
         <form:form method="post" action="${pageContext.request.contextPath}/logout">
             <input type="submit" value="Logout"/>
