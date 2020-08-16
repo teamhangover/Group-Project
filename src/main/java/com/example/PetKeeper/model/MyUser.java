@@ -42,12 +42,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "MyUser.findByEmail", query = "SELECT m FROM MyUser m WHERE m.email = :email")})
 public class MyUser implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "my_user_id")
-    private Integer myUserId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -64,6 +58,19 @@ public class MyUser implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "email")
     private String email;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "keeperId")
+    private Collection<Reservation> reservationsCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ownerId")
+    private Collection<Reservation> reservationsCollection1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "keeperId")
+    private Collection<KeepersAvailability> keepersAvailabilityCollection;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "my_user_id")
+    private Integer myUserId;
     @JoinTable(name = "my_users_roles", joinColumns = {
         @JoinColumn(name = "my_user_id", referencedColumnName = "my_user_id")}, inverseJoinColumns = {
         @JoinColumn(name = "role_id", referencedColumnName = "role_id")})
@@ -98,13 +105,6 @@ public class MyUser implements Serializable {
         this.myUserId = myUserId;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getMyPassword() {
         return myPassword;
@@ -114,13 +114,6 @@ public class MyUser implements Serializable {
         this.myPassword = myPassword;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     @XmlTransient
     public Collection<Role> getRolesCollection() {
@@ -180,6 +173,49 @@ public class MyUser implements Serializable {
     @Override
     public String toString() {
         return "com.example.PetKeeper.model.MyUser[ myUserId=" + myUserId + " ]";
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+       public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @XmlTransient
+    public Collection<Reservation> getReservationsCollection() {
+        return reservationsCollection;
+    }
+
+    public void setReservationsCollection(Collection<Reservation> reservationsCollection) {
+        this.reservationsCollection = reservationsCollection;
+    }
+
+    @XmlTransient
+    public Collection<Reservation> getReservationsCollection1() {
+        return reservationsCollection1;
+    }
+
+    public void setReservationsCollection1(Collection<Reservation> reservationsCollection1) {
+        this.reservationsCollection1 = reservationsCollection1;
+    }
+
+    @XmlTransient
+    public Collection<KeepersAvailability> getKeepersAvailabilityCollection() {
+        return keepersAvailabilityCollection;
+    }
+
+    public void setKeepersAvailabilityCollection(Collection<KeepersAvailability> keepersAvailabilityCollection) {
+        this.keepersAvailabilityCollection = keepersAvailabilityCollection;
     }
     
 }
