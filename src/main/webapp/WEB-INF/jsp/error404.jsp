@@ -1,6 +1,6 @@
 <%-- 
     Document   : error500
-    Created on : Aug 13, 2020, 9:32:35 PM
+    Created on : Aug 11, 2020, 8:08:30 PM
     Author     : BergouLan
 --%>
 
@@ -21,13 +21,13 @@
             margin-top: 100px;
         }
     </style>
-    <title>500 NOT FOUND</title>
+    <title>404 NOT FOUND</title>
 </head>
 <body>
     <div class = "container">
         <div class ="jumbotron text-center">
             <img src="emoji.png">
-            <h1>ERROR 500 - SOMETHING WENT WRONG!</h1>
+            <h1>404 PAGE NOT FOUND!</h1>
             <p>This page isn't available. Sorry about that<br>
             Try searching for something else.</p>
             <a href="/" class="btn btn-primary btn-lg">
