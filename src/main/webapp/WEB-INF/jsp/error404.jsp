@@ -26,7 +26,7 @@
 <body>
     <div class = "container">
         <div class ="jumbotron text-center">
-            <img src="emoji.png">
+            <img src="/img/emoji.png">
             <h1>404 PAGE NOT FOUND!</h1>
             <p>This page isn't available. Sorry about that<br>
             Try searching for something else.</p>

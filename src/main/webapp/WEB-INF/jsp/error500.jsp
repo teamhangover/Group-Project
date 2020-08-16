@@ -26,7 +26,7 @@
 <body>
     <div class = "container">
         <div class ="jumbotron text-center">
-            <img src="emoji.png">
+            <img src="/img/emoji.png">
             <h1>ERROR 500 - SOMETHING WENT WRONG!</h1>
             <p>This page isn't available. Sorry about that<br>
             Try searching for something else.</p>
