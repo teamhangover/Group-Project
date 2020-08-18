@@ -20,10 +20,10 @@
         <link href="/css/login.css" rel="stylesheet">
     </head>
     <body>
-
-        <div class="wrapper fadeInDown">
-            <div id="formContent">
-                <!-- Tabs Titles -->
+        <jsp:include page="noLogin-navbar.jsp"></jsp:include>
+            <div class="wrapper fadeInDown">
+                <div id="formContent">
+                    <!-- Tabs Titles -->
 
 
 
