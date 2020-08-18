@@ -28,9 +28,9 @@
         <!--bootstrap-->
     </head>
     <body>
+<jsp:include page="noLogin-navbar.jsp"></jsp:include>
 
-
-        <springform:form action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails">
+        <springform:form action="${pageContext.request.contextPath}/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails">
             <springform:input path="myUserId" hidden="true"></springform:input>
             <springform:input path="detailsId" hidden="true"></springform:input>
                 <div class="row mt-2">

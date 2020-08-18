@@ -38,42 +38,16 @@
 
                         <ul class="list-unstyled">
                             <li>
-                                <a href="#!">Link 1</a>
+                                <a href="${pageContext.request.contextPath}/#!">Link 1</a>
                             </li>
                             <li>
-                                <a href="#!">Link 2</a>
+                                <a href="${pageContext.request.contextPath}/#!">Link 2</a>
                             </li>
                             <li>
-                                <a href="#!">Link 3</a>
+                                <a href="${pageContext.request.contextPath}/#!">Link 3</a>
                             </li>
                             <li>
-                                <a href="#!">Link 4</a>
-                            </li>
-                        </ul>
-
-                    </div>
-                    <!-- Grid column -->
-
-                    <hr class="clearfix w-100 d-md-none">
-
-                    <!-- Grid column -->
-                    <div class="col-md-2 mx-auto">
-
-                        <!-- Links -->
-                        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-                        <ul class="list-unstyled">
-                            <li>
-                                <a href="#!">Link 1</a>
-                            </li>
-                            <li>
-                                <a href="#!">Link 2</a>
-                            </li>
-                            <li>
-                                <a href="#!">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!">Link 4</a>
+                                <a href="${pageContext.request.contextPath}/#!">Link 4</a>
                             </li>
                         </ul>
 
@@ -90,16 +64,42 @@
 
                         <ul class="list-unstyled">
                             <li>
-                                <a href="#!">Link 1</a>
+                                <a href="${pageContext.request.contextPath}/#!">Link 1</a>
                             </li>
                             <li>
-                                <a href="#!">Link 2</a>
+                                <a href="${pageContext.request.contextPath}/#!">Link 2</a>
                             </li>
                             <li>
-                                <a href="#!">Link 3</a>
+                                <a href="${pageContext.request.contextPath}/#!">Link 3</a>
                             </li>
                             <li>
-                                <a href="#!">Link 4</a>
+                                <a href="${pageContext.request.contextPath}/#!">Link 4</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="clearfix w-100 d-md-none">
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 mx-auto">
+
+                        <!-- Links -->
+                        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/#!">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/#!">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/#!">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/#!">Link 4</a>
                             </li>
                         </ul>
 
@@ -120,7 +120,7 @@
                     <h5 class="mb-1">Register for free</h5>
                 </li>
                 <li class="list-inline-item">
-                    <a href="#!" class="btn btn-danger btn-rounded">Sign up!</a>
+                    <a href="${pageContext.request.contextPath}/preInsertMyUser" class="btn btn-danger btn-rounded">Sign up!</a>
                 </li>
             </ul>
             <!-- Call to action -->
@@ -142,7 +142,7 @@
             <!-- Copyright -->
 
             <div class="footer-copyright text-center py-3 align-self-center" style="color: aliceblue;">© 2020 Copyright:
-                <a href="http://127.0.0.1:5500/home.html"> PetKeeper.com</a>
+                <a href="${pageContext.request.contextPath}"> PetKeeper.com</a>
                 <p class="float-right"><a href="#">Back to top</a></p>
                 <p> <a href="#" class="float-middle">Privacy</a> &middot; <a href="#">Terms</a></p>
 

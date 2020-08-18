@@ -15,6 +15,7 @@
         <title>Keeper-home</title>
     </head>
     <body>
+        <jsp:include page="noLogin-navbar.jsp"></jsp:include>
         <h1>Keeper-home!</h1>
         <p>
             User: <security:authentication property="principal.username" />

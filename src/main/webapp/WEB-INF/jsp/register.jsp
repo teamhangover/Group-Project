@@ -11,33 +11,36 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/css/register.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<body>
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-           
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="/css/register.css">
+    </head>
+
+    <body>
+        <jsp:include page="noLogin-navbar.jsp"></jsp:include>
+            <div class="wrapper fadeInDown">
+                <div id="formContent">
 
 
-            <!-- register Form -->
-            <form>
-                <input type="text" id="login" class="fadeIn first" name="register" placeholder="username">
-                <input type="password" id="password" class="fadeIn second" name="register" placeholder="password">
-                <input type="email" id="email" class="fadeIn third" name="register" placeholder="email">
-                <p></p>
-                <input type="submit" class="fadeIn fourth pointer" value="Register">
-            </form>
 
+                    <!-- register Form -->
+                <springform:form action="${pageContext.request.contextPath}/doInsertMyUser" method="post" modelAttribute="newMyUser">
+                    <springform:input path="myUserId" hidden="true"></springform:input>
+                    <springform:input path="username" type="text" id="login" cssClass="fadeIn first" name="register" placeholder="username" />
+                    <springform:input path="myPassword" type="password" id="password" cssClass="fadeIn second" name="register" placeholder="password" />
+                    <springform:input path="email" type="email" id="email" cssClass="fadeIn third" name="register" placeholder="email" />
+                    keeper : <input name="keeper" id="keeper" value="true" type="checkbox"/>
+                    <p></p>
+                    <input type="submit" class="fadeIn fourth pointer" value="Register" />
+                </springform:form>
+
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 
 </html>

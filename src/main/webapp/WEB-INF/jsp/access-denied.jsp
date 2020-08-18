@@ -15,6 +15,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:include page="noLogin-navbar.jsp"></jsp:include>
         <h1>Access denied</h1>
         <p>
             Username: <security:authentication property="principal.username" />
