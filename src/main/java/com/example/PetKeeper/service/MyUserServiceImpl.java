@@ -86,4 +86,9 @@ public class MyUserServiceImpl implements MyUserService {
 
         return authorities;
     }
+
+    @Override
+    public MyUser getMyUserByUsername(String username) {
+      return myUserRepository.findByUsername(username);
+    }
 }

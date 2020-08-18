@@ -9,7 +9,6 @@ import com.example.PetKeeper.model.MyUser;
 import com.example.PetKeeper.model.MyUserDetails;
 import com.example.PetKeeper.service.FileHandlingService;
 import com.example.PetKeeper.service.MyUserDetailsService;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.PetKeeper.service.MyUserService;
+import java.security.Principal;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -35,12 +35,26 @@ public class MyUserDetailsController {
     FileHandlingService fileHandlingService;
 
     @GetMapping("/preInsertMyUserDetails")
-    public String showMyUserDetailsForm(ModelMap mm, HttpSession session) {
-        MyUser myUser = (MyUser) session.getAttribute("loggedUser");
-        MyUserDetails newMyUserDetails = new MyUserDetails();
-        newMyUserDetails.setMyUserId(myUser);
-        mm.addAttribute("myUserDetails", newMyUserDetails);
+    public String showMyUserDetailsForm(ModelMap mm, Principal principal) {
 
+        MyUserDetails newMyUserDetails = new MyUserDetails();
+
+        if (principal.getName() != null) {
+                //getting logged in user's
+            MyUser loggedInMyUser = myUserService
+                    .getMyUserByUsername(principal.getName());
+            
+            if (loggedInMyUser.getMyUserDetails() != null) {
+                newMyUserDetails = loggedInMyUser.getMyUserDetails();
+            }else {
+            newMyUserDetails.setMyUserId(loggedInMyUser);
+            }
+
+        }
+
+        System.out.println("!!!!newMyUserDetails: " + newMyUserDetails.toString());
+        
+        mm.addAttribute("myUserDetails", newMyUserDetails);
         return "fillMyUserDetails";
     }
 
@@ -51,10 +65,10 @@ public class MyUserDetailsController {
         String profilePicName = newMyUserDetails.getMyUserId().getUsername();
         //save file to disk and get the filename back
         newMyUserDetails.setUPhotoName(fileHandlingService.storeFileToDisk(profilePic, profilePicName));
-        
+
         //save details 
         myUserDetailsService.saveMyUserDetails(newMyUserDetails);
-        
+
         return "success";
 
     }

@@ -34,10 +34,12 @@
         <c:if test="${pageContext['request'].userPrincipal != null}">
             <!--and is Keeper-->
             <security:authorize access="hasRole('ROLE_KEEPER') and isAuthenticated()">
+                <a class="navbar" href="${pageContext.request.contextPath}/preInsertMyUserDetails">Profile</a>
             </security:authorize>
 
             <!--and is owner-->
             <security:authorize access="hasRole('ROLE_OWNER') and isAuthenticated()">
+                <a class="navbar" href="${pageContext.request.contextPath}/preInsertMyUserDetails">Profile</a>
             </security:authorize>
         </c:if>
             
@@ -50,7 +52,7 @@
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/#"> <i class="fa fa-fw fa-home"> </i> Home </a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/"> <i class="fa fa-fw fa-home"> </i> Home </a>
                 </li>
 
             </ul>
