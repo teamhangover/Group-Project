@@ -172,7 +172,7 @@ public class MyUserDetails implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.PetKeeper.model.MyUserDetails[ detailsId=" + detailsId + " ]";
+        return "MyUserDetails{" + "detailsId=" + detailsId + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", tel=" + tel + ", uDescription=" + uDescription + ", uPhotoName=" + uPhotoName + ", myUserId=" + myUserId + '}';
     }
     
 }

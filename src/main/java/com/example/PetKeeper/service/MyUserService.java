@@ -17,4 +17,6 @@ public interface MyUserService extends UserDetailsService{
     MyUser saveNewMyUser(MyUser myUser, boolean keeper);
     
     MyUser getMyUserById(int id);
+
+    MyUser getMyUserByUsername(String username);
 }
