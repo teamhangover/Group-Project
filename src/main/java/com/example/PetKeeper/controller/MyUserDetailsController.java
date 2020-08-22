@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.PetKeeper.service.MyUserService;
 import java.security.Principal;
+import java.util.Random;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -40,36 +41,39 @@ public class MyUserDetailsController {
         MyUserDetails newMyUserDetails = new MyUserDetails();
 
         if (principal.getName() != null) {
-                //getting logged in user's
+            //getting logged in user's
             MyUser loggedInMyUser = myUserService
                     .getMyUserByUsername(principal.getName());
-            
+
             if (loggedInMyUser.getMyUserDetails() != null) {
                 newMyUserDetails = loggedInMyUser.getMyUserDetails();
-            }else {
-            newMyUserDetails.setMyUserId(loggedInMyUser);
+            } else {
+                newMyUserDetails.setMyUserId(loggedInMyUser);
             }
 
         }
-
-        System.out.println("!!!!newMyUserDetails: " + newMyUserDetails.toString());
-        
         mm.addAttribute("myUserDetails", newMyUserDetails);
         return "fillMyUserDetails";
     }
 
     @PostMapping("/doInsertMyUserDetails")
     public String insertMyUserDetails(@ModelAttribute("myUserDetails") MyUserDetails newMyUserDetails,
-            @RequestParam("profilePic") MultipartFile profilePic) {
+            @RequestParam("profilePic") MultipartFile profilePic,
+            Principal principal) {
+//        getting the logged user
+        MyUser loggedInMyUser = myUserService
+                .getMyUserByUsername(principal.getName());
+        newMyUserDetails.setMyUserId(loggedInMyUser);
         //giving a unique name to the file 
-        String profilePicName = newMyUserDetails.getMyUserId().getUsername();
+        Random rand = new Random();
+        String profilePicName = newMyUserDetails.getMyUserId().getUsername() + rand.nextInt();
         //save file to disk and get the filename back
         newMyUserDetails.setUPhotoName(fileHandlingService.storeFileToDisk(profilePic, profilePicName));
 
         //save details 
         myUserDetailsService.saveMyUserDetails(newMyUserDetails);
 
-        return "success";
+        return "redirect:/preInsertMyUserDetails";
 
     }
 }

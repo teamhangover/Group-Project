@@ -28,10 +28,10 @@
         <!--bootstrap-->
     </head>
     <body>
-<jsp:include page="noLogin-navbar.jsp"></jsp:include>
+        <jsp:include page="noLogin-navbar.jsp"></jsp:include>
 
-        <springform:form action="${pageContext.request.contextPath}/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails">
-            <springform:input path="myUserId" hidden="true"></springform:input>
+        <springform:form action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data">
+            <%--<springform:input path="myUserId" hidden="true"></springform:input>--%>
             <springform:input path="detailsId" hidden="true"></springform:input>
                 <div class="row mt-2">
                     <div class="col mini box">
@@ -98,9 +98,11 @@
                 <div class="col mini-box">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"> <i>Photo name : </i></span>
+                            <span class="input-group-text"> <i>Upload Profile Photo: </i></span>
                         </div>
-                        <springform:input type="text" path="uPhotoName" cssClass="form-control"/>
+                        <input type="file" name="profilePic" class="form-control" accept="image/*"/>
+                        <!--delete uPhotoName?-->
+                        <%--<springform:input type="text" path="uPhotoName" hidden="true"/>--%>
                     </div>
                 </div>
             </div>   
