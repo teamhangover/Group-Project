@@ -35,7 +35,7 @@
                     <springform:input path="myPassword" type="password" id="password" cssClass="fadeIn second" name="register" placeholder="password" />
                     <springform:input path="email" type="email" id="email" cssClass="fadeIn third" name="register" placeholder="email" />
                     
-                    <span id="keeperCheckbox" class="fadeIn fourth text-muted">Register as a Keeper ? <input name="keeper" id="keeper" value="true" type="checkbox"/> </span>  
+                    <span id="keeperCheckbox" class="fadeIn fourth text-muted ">Register as a Keeper ? <input name="keeper" id="keeper" class="pointer"  value="true" type="checkbox"/> </span>  
 
 
                     <p></p>

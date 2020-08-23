@@ -35,6 +35,7 @@
             <!--and is Keeper-->
             <security:authorize access="hasRole('ROLE_KEEPER') and isAuthenticated()">
                 <a class="navbar" href="${pageContext.request.contextPath}/preInsertMyUserDetails">Profile</a>
+                <a class="navbar" href="${pageContext.request.contextPath}/keeper/schedule"> Ημερολόγιο </a>
             </security:authorize>
 
             <!--and is owner-->

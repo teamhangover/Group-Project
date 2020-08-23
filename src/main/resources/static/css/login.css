@@ -3,7 +3,7 @@
 body {
     
     font-family: "Poppins", sans-serif;
-    height: 100vh;
+/*    height: 100vh;*/
     background-image: url('/img/dog-login-page.png');
     background-repeat: no-repeat;
     background-position: right;
@@ -37,7 +37,9 @@ h2 {
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    min-height: 100%;
+   height: 100vh;
+   padding-bottom: 0px;
+   margin: 0px;
    
    
 }
