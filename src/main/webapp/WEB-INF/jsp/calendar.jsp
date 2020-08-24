@@ -1,52 +1,52 @@
-<%-- 
-    Document   : calendar
-    Created on : 23 Αυγ 2020, 6:12:48 μμ
-    Author     : ths13
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calendar</title>
-    <link rel="stylesheet" href="/css/calendarStyle.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-  </head>
-  <body>
-    <div class="container">
-      <div class="calendar">
-        <div class="month">
-          <i class="fas fa-angle-left prev"></i>
-          <div class="date">
-            <h1></h1>
-            <p></p>
-          </div>
-          <i class="fas fa-angle-right next"></i>
+ <html > 
+    <head>
+        <meta charset="UTF-8">
+<!--        <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/calendarStyle.css">
+    </head>
+    <body>
+        <div class="calendar" id="calendar">
+            <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
+                <span id="curMonth"></span>
+                <div id="months" class="months dropdown"></div>
+            </div>
+        
+            <div class="calendar-btn year-btn" onclick="$('#years').toggle('fast')">
+                <span id="curYear"></span>
+                <div id="years" class="years dropdown"></div>
+            </div>
+        
+            <div class="clear"></div>
+        
+            <div class="calendar-dates">
+                <div class="days">
+                    <div class="day label">ΔΕΥ</div>
+                    <div class="day label">ΤΡΙ</div>
+                    <div class="day label">ΤΕΤ</div>
+                    <div class="day label">ΠΕΜ</div>
+                    <div class="day label">ΠΑΡ</div>
+                    <div class="day label">ΣΑΒ</div>
+                    <div class="day label">ΚΥΡ</div>
+        
+                    <div class="clear"></div>
+                </div>
+        
+                <div id="calendarDays" class="days">
+                </div>
+            </div>
         </div>
-        <div class="weekdays">
-          <div>Sun</div>
-          <div>Mon</div>
-          <div>Tue</div>
-          <div>Wed</div>
-          <div>Thu</div>
-          <div>Fri</div>
-          <div>Sat</div>
-        </div>
-        <div class="days"></div>
-      </div>
-    </div>
-
-    <script src="/js/calendarJs.js"></script>
-  </body>
+                
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <script src="/js/calendarJs.js" async defer></script>
+    </body>
 </html>
+            
