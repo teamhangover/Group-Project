@@ -1,11 +1,14 @@
 /* BASIC */
 
 body {
+    
     font-family: "Poppins", sans-serif;
-    height: 100vh;
+/*    height: 100vh;*/
     background-image: url('/img/dog-login-page.png');
     background-repeat: no-repeat;
-    background-position: bottom right;
+    background-position: right;
+    
+   
 }
 
 a {
@@ -34,8 +37,11 @@ h2 {
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    min-height: 100%;
-    padding: 20px;
+   height: 100vh;
+   padding-bottom: 0px;
+   margin: 0px;
+   
+   
 }
 
 #formContent {
@@ -55,7 +61,7 @@ h2 {
 #formFooter {
     background-color: #f6f6f6;
     border-top: 1px solid #dce8f1;
-    padding: 25px;
+    padding: 20px;
     text-align: center;
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
@@ -166,6 +172,7 @@ input[type=text], [type=password]:placeholder {
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
+ 
 }
 
 @-webkit-keyframes fadeInDown {

@@ -13,9 +13,6 @@
         <meta name="generator" content="Jekyll v4.0.1">
         <title> petKeeper</title>
 
-        <!-- Load an icon library -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
         <!--    carousel-->
         <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
 

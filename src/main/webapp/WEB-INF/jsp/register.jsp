@@ -14,7 +14,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <title>Register </title>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -34,13 +34,17 @@
                     <springform:input path="username" type="text" id="login" cssClass="fadeIn first" name="register" placeholder="username" />
                     <springform:input path="myPassword" type="password" id="password" cssClass="fadeIn second" name="register" placeholder="password" />
                     <springform:input path="email" type="email" id="email" cssClass="fadeIn third" name="register" placeholder="email" />
-                    keeper : <input name="keeper" id="keeper" value="true" type="checkbox"/>
+                    
+                    <span id="keeperCheckbox" class="fadeIn fourth text-muted ">Register as a Keeper ? <input name="keeper" id="keeper" class="pointer"  value="true" type="checkbox"/> </span>  
+
+
                     <p></p>
                     <input type="submit" class="fadeIn fourth pointer" value="Register" />
                 </springform:form>
 
             </div>
         </div>
+        <jsp:include page="footer.jsp"></jsp:include>
     </body>
 
 </html>

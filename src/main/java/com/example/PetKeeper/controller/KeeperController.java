@@ -34,9 +34,9 @@ public class KeeperController {
     }
 
     @GetMapping("schedule")
-    public String createUser() {
+    public String showSchedule() {
 
-        return "schedule";
+        return "calendar";
     }
 
     @GetMapping("profile")

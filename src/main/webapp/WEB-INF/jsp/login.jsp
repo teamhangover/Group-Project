@@ -43,8 +43,10 @@
                 <div id="formFooter">
                     <a class="underlineHover" href="#">Forgot Password?</a>
                 </div>
-
-            </div>
+            </div>   
         </div>
+           
+        <jsp:include page="footer.jsp"></jsp:include>  
+
     </body>
 </html>
