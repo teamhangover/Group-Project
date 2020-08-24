@@ -58,7 +58,7 @@ public class MyUserDetailsController {
 
     @PostMapping("/doInsertMyUserDetails")
     public String insertMyUserDetails(@ModelAttribute("myUserDetails") MyUserDetails newMyUserDetails,
-            @RequestParam("profilePic") MultipartFile profilePic,
+            @RequestParam("photo") MultipartFile profilePic,
             Principal principal) {
 //        getting the logged user
         MyUser loggedInMyUser = myUserService
@@ -68,6 +68,10 @@ public class MyUserDetailsController {
         Random rand = new Random();
         String profilePicName = newMyUserDetails.getMyUserId().getUsername() + rand.nextInt();
         //save file to disk and get the filename back
+        System.out.println("getName = " + profilePic.getName());
+        System.out.println("getOriginalFilename " + profilePic.getOriginalFilename());
+        System.out.println("getSize " + profilePic.getSize());
+        System.out.println("profilePic " + profilePic);
         newMyUserDetails.setUPhotoName(fileHandlingService.storeFileToDisk(profilePic, profilePicName));
 
         //save details 

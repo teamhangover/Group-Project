@@ -100,7 +100,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i>Upload Profile Photo: </i></span>
                         </div>
-                        <input type="file" name="profilePic" class="form-control" accept="image/*"/>
+                        <input type="file" name="photo" class="form-control" accept="image/*"/>
                         <!--delete uPhotoName?-->
                         <%--<springform:input type="text" path="uPhotoName" hidden="true"/>--%>
                     </div>
