@@ -7,11 +7,21 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="springform" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Fill My User Details</title>
+
+        <!--TODO FIX THIS-->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript">
+            var jQuery_ui = $.noConflict(true);
+        </script>
+
         <!--bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -116,5 +126,68 @@
                 </div>
             </div>
         </springform:form>
+
+        <c:if test="${pageContext['request'].userPrincipal != null}">
+            <!--and is Keeper-->
+            <security:authorize access="hasRole('ROLE_KEEPER') and isAuthenticated()">
+                <!--TODO Address form-->
+            </security:authorize>
+
+            <!--and is owner-->
+            <security:authorize access="hasRole('ROLE_OWNER') and isAuthenticated()">
+
+                <input type="text" id="petName" placeholder="Pet Name" />
+                <select name="type" id="petType">
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="rabbit">Rabbit</option>
+                    <option value="bird">Bird</option>
+                </select>
+                <input type="text" id="petDescription" placeholder="Type here a few info about your pet"/>
+
+                <!--TODO FIX THIS-->
+                <script>
+                    jQuery_ui(document).ready(function () {
+                        let pet;
+                        let petName = jQuery_ui("#petName");
+                        let petType = jQuery_ui("#petType");
+                        let petDescription = jQuery_ui("#petDescription");
+
+                        let getPetUrl = "/myPet";
+                        jQuery_ui.get(getPetUrl, function (data, status) {
+                            alert("Data: " + data + "\nStatus: " + status);
+                        });
+        //                jQuery_ui.ajax({
+        //                    url: getPetUrl
+        //                }).then(function (data) {
+        //                    importPetData(data);
+        //                });
+
+                        let registerPetUrl = "/registerPet";
+                        jQuery_ui("#submit").click(function () {
+                            jQuery_ui.post(registerPetUrl,
+                                    {
+                                        petName: petName.value,
+                                        petType: petType.value,
+                                        petDescription: petDescription.value
+                                    },
+                                    function (data, status) {
+                                        importPetData(data);
+                                        alert("Data: " + data + "\nStatus: " + status);
+                                    }
+                            );
+                        });
+
+                        function importPetData(data) {
+                            pet = data;
+                            petName.value = data.petName;
+                            petType.value = data.petType;
+                            petDescription.value = data.petDescription;
+                        }
+                    });
+                </script>
+            </security:authorize>
+        </c:if>
+
     </body>
 </html>

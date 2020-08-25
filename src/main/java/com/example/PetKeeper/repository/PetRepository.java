@@ -6,6 +6,7 @@
 package com.example.PetKeeper.repository;
 
 
+import com.example.PetKeeper.model.MyUser;
 import com.example.PetKeeper.model.Pet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -17,5 +18,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PetRepository extends JpaRepository<Pet, Integer>{
     
-     public Pet save(Pet pet);
+     public Pet findByMyUserId(MyUser myUser);
 }

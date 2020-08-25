@@ -5,6 +5,7 @@
  */
 package com.example.PetKeeper.service;
 
+import com.example.PetKeeper.model.MyUser;
 import com.example.PetKeeper.model.Pet;
 import com.example.PetKeeper.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class PetServiceImpl implements PetService{
     @Override
     public Pet savePet(Pet pet) {
        return petRepository.save(pet);
+    }
+
+    @Override
+    public Pet getByMyUser(MyUser myUser) {
+        return petRepository.findByMyUserId(myUser);
     }
     
     

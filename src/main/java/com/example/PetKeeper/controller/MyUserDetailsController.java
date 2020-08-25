@@ -68,10 +68,6 @@ public class MyUserDetailsController {
         Random rand = new Random();
         String profilePicName = newMyUserDetails.getMyUserId().getUsername() + rand.nextInt();
         //save file to disk and get the filename back
-        System.out.println("getName = " + profilePic.getName());
-        System.out.println("getOriginalFilename " + profilePic.getOriginalFilename());
-        System.out.println("getSize " + profilePic.getSize());
-        System.out.println("profilePic " + profilePic);
         newMyUserDetails.setUPhotoName(fileHandlingService.storeFileToDisk(profilePic, profilePicName));
 
         //save details 
