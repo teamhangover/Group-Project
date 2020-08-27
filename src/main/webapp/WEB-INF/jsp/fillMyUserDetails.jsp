@@ -15,20 +15,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Fill My User Details</title>
 
-        <!--TODO FIX THIS-->
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script type="text/javascript">
-            var jQuery_ui = $.noConflict(true);
-        </script>
-
         <!--bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
                 integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
@@ -41,7 +36,6 @@
         <jsp:include page="noLogin-navbar.jsp"></jsp:include>
 
         <springform:form action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data">
-            <%--<springform:input path="myUserId" hidden="true"></springform:input>--%>
             <springform:input path="detailsId" hidden="true"></springform:input>
                 <div class="row mt-2">
                     <div class="col mini box">
@@ -111,8 +105,6 @@
                             <span class="input-group-text"> <i>Upload Profile Photo: </i></span>
                         </div>
                         <input type="file" name="photo" class="form-control" accept="image/*"/>
-                        <!--delete uPhotoName?-->
-                        <%--<springform:input type="text" path="uPhotoName" hidden="true"/>--%>
                     </div>
                 </div>
             </div>   
@@ -144,47 +136,67 @@
                     <option value="bird">Bird</option>
                 </select>
                 <input type="text" id="petDescription" placeholder="Type here a few info about your pet"/>
-
+                <button id="ajaxButton">AjaxButton</button>
                 <!--TODO FIX THIS-->
                 <script>
-                    jQuery_ui(document).ready(function () {
-                        let pet;
-                        let petName = jQuery_ui("#petName");
-                        let petType = jQuery_ui("#petType");
-                        let petDescription = jQuery_ui("#petDescription");
+                $(document).ready(function () {
 
-                        let getPetUrl = "/myPet";
-                        jQuery_ui.get(getPetUrl, function (data, status) {
-                            alert("Data: " + data + "\nStatus: " + status);
-                        });
-        //                jQuery_ui.ajax({
-        //                    url: getPetUrl
-        //                }).then(function (data) {
-        //                    importPetData(data);
-        //                });
+                    let petName = $("#petName");
+                    let petType = $("#petType");
+                    let petDescription = $("#petDescription");
 
-                        let registerPetUrl = "/registerPet";
-                        jQuery_ui("#submit").click(function () {
-                            jQuery_ui.post(registerPetUrl,
-                                    {
-                                        petName: petName.value,
-                                        petType: petType.value,
-                                        petDescription: petDescription.value
-                                    },
-                                    function (data, status) {
-                                        importPetData(data);
-                                        alert("Data: " + data + "\nStatus: " + status);
-                                    }
-                            );
-                        });
-
-                        function importPetData(data) {
-                            pet = data;
-                            petName.value = data.petName;
-                            petType.value = data.petType;
-                            petDescription.value = data.petDescription;
+                    //Send request to get the Pet of the owner
+                    let getPetUrl = "/owner/myPet";
+                    $.ajax({
+                        url: getPetUrl
+                    }).then(function (data) {
+                        alert("Data: " + data.petName);
+                        console.log(data);
+                        if (data !== null) {
+                            importPetData(data);
                         }
                     });
+
+                    // Send request to register the changed on the owner's Pet
+                    let registerPetUrl = "/owner/registerPet";
+                    $("#ajaxButton").click(function () {
+                        alert("petname: " + petName.val());
+                        console.log(petName.val());
+
+                        //Alternative way to send get request (We want to change this to Post request but the respective controller does not support Post for some reason
+//                        $.ajax({
+//                            type: "GET",
+//                            url: registerPetUrl,
+//                            data:
+//                                    {
+//                                        petName: petName.val(),
+//                                        petType: petType.val(),
+//                                        petDescription: petDescription.val()
+//                                    },
+//                            success: importPetData(data)
+//                        });
+                    });
+                    $("#submit").click(function () {
+
+                        $.get(
+                                registerPetUrl,
+                                {petName: petName.val(), petType: petType.val(), petDescription: petDescription.val()}
+                        ).done(function (data) {
+                            console.log(data);
+                            importPetData(data);
+                        });
+
+                    });
+                    //Take the Pet and put it in the input fields
+                    function importPetData(data) {
+
+                        console.log(data);
+                        petName.val(data.petName);
+                        petType.val(data.petType);
+                        petDescription.val(data.petDescription);
+                    }
+
+                });
                 </script>
             </security:authorize>
         </c:if>
