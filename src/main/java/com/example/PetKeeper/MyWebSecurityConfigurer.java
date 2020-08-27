@@ -47,7 +47,9 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .logout()
                 .and()
                 .exceptionHandling() // ti na kanw an exw exception?
-                .accessDeniedPage("/access-denied"); //phgaine edw
+                .accessDeniedPage("/access-denied")
+                .and()
+                .csrf().disable(); //phgaine edw
 
     }
 

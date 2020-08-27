@@ -25,6 +25,14 @@
                 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
         <!--bootstrap-->
+
+        <!--Map-->
+        <link type="text/css" rel="stylesheet" href="/css/map.css">
+        <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5mZvsDf2yxpRbN_AdULITrSGI_o3Oow&libraries=places&v=weekly"
+        defer></script>
+        <!--Map-->
     </head>
     <body>
         <jsp:include page="noLogin-navbar.jsp"></jsp:include>
@@ -38,49 +46,165 @@
             <hr>
         <springform:form id="form" action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data">
 
-            <springform:input path="detailsId" hidden="true"></springform:input>
-
-                First Name: <springform:input type="text" path="firstName"></springform:input>
-
-                Last Name: <springform:input type="text" path="lastName"/>
-
+            <springform:input path="detailsId" hidden="true" />
+            First Name: <springform:input type="text" path="firstName" />
+            <br>
+            Last Name: <springform:input type="text" path="lastName"/>
+            <br>
             Age: <springform:input type="number" path="age"/>
-
-            Telephone: <springform:input type="tel" path="tel"/>
-
+            <br>
+            Phone Number: <springform:input type="phone" path="tel"/>
+            <br>
             Description: <springform:input type="textarea" path="uDescription"/>
-
+            <br>
             Upload Profile Photo: <input type="file" name="photo" accept="image/*"/>
-
+            <br>
             <button type="submit" id="submit" >Submit</button>
             <button type="reset">Clear</button>
-
+            <br>
         </springform:form>
 
         <c:if test="${pageContext['request'].userPrincipal != null}">
             <!--and is Keeper-->
             <security:authorize access="hasRole('ROLE_KEEPER') and isAuthenticated()">
                 <!--TODO Address form-->
-                <div>
-                    <input id="autocomplete" placeholder="Enter your address"
-                           onFocus="geolocate()" type="text"></input>
+                <hr>
+                Address:
+                <input id="autocomplete" placeholder="Enter your address" type="text" />
+                <div id="AddressDiv" hidden="true">
+                    <br>
+                    Street address:<input class="field" id="street_number" disabled="true" />
+                    <br>
+                    City: <input class="field" id="locality" disabled="true" />
+                    <br>
+                    State: <input class="field" id="administrative_area_level_1" disabled="true" />
+                    <br>
+                    Zip code: <input class="field" id="postal_code" disabled="true" />
+                    <br>
+                    Country: <input class="field" id="country" disabled="true" />
+                    <br>
+                    <hr>
                 </div>
 
+                <div id="map-canvas"></div>
+
+                <script>
+                // This example displays an address form, using the autocomplete feature
+                // of the Google Places API to help users fill in the information.
+                $(document).ready(function () {
+
+                    var autocomplete;
+                    var componentForm = {
+                        street_number: 'short_name',
+                        locality: 'long_name',
+                        administrative_area_level_1: 'short_name',
+                        country: 'long_name',
+                        postal_code: 'short_name'
+                    };
+
+                    //input fields
+                    let streetNumber = $("#street_number");
+                    let locality = $("#locality");
+                    let administrativeAreaLevel = $("#administrative_area_level_1");
+                    let postalCode = $("#postal_code");
+                    let country = $("#country");
+                    //other properties of entity Address
+                    let longitude;
+                    let latidute;
+
+                    //Get current Address of Keeper
+                    let getAddressUrl = "/keeper/myAddress";
+                    $.ajax({
+                        url: getAddressUrl
+                    }).then(function (data) {
+                        if (data !== null) {
+                             //TODO Fill in input fields with data
+                        }
+                    });
+
+                    //Register Address
+                    let registerAddressUrl = "";
+                    $("#submit").click(function (e) {
+                        e.preventDefault();
+                        $.get(
+                                registerAddressUrl,
+                        //TODO set the data
+//                                {petName: petName.val(), petType: petType.val(), petDescription: petDescription.val()}
+                                ).done(function (data) {
+                            $("#form").submit();
+                        });
+
+                    });
+
+                    //
+                    $("#autocomplete").focus(function () {
+                        //Geolocation? getCurrentLocation?
+
+                        //initializing Map
+                        initialize();
+                        //Revealing hidden input fields
+                        $("#AddressDiv").removeAttr("hidden");
+                    });
+
+                    function initialize() {
+                        var mapOptions = {
+                            center: new google.maps.LatLng(-33.8688, 151.2195),
+                            zoom: 13
+                        };
+
+
+                        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                        autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')), {types: ['geocode']});
+                        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                            // Get the place details from the autocomplete object.
+                            var place = autocomplete.getPlace();
+
+                            for (var component in componentForm) {
+                                document.getElementById(component).value = "";
+                                document.getElementById(component).disabled = false;
+                            }
+                            var newPos = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
+
+                            map.setOptions({
+                                center: newPos,
+                                zoom: 15
+                            });
+
+                            //add a marker
+                            var marker = new google.maps.Marker({
+                                position: newPos,
+                                map: map,
+                                title: "New marker"
+                            });
+
+                            // Get each component of the address from the place details
+                            // and fill the corresponding field on the form.
+                            for (var i = 0; i < place.address_components.length; i++) {
+                                var addressType = place.address_components[i].types[0];
+                                if (componentForm[addressType]) {
+                                    var val = place.address_components[i][componentForm[addressType]];
+                                    document.getElementById(addressType).value = val;
+                                }
+                            }
+                        });
+                    }
+
+
+                });
+                </script>
             </security:authorize>
 
             <!--and is owner-->
             <security:authorize access="hasRole('ROLE_OWNER') and isAuthenticated()">
 
-                <input type="text" id="petName" placeholder="Pet Name" />
-                <select name="type" id="petType">
+                Pet Name: <input type="text" id="petName" placeholder="Pet Name" />
+                Pet Type: <select name="type" id="petType">
                     <option value="dog">Dog</option>
                     <option value="cat">Cat</option>
                     <option value="rabbit">Rabbit</option>
                     <option value="bird">Bird</option>
                 </select>
-                <input type="text" id="petDescription" placeholder="Type here a few info about your pet"/>
-                <button id="ajaxButton">AjaxButton</button>
-                <!--TODO FIX THIS-->
+                Description  <input type="text" id="petDescription" placeholder="Type here a few info about your pet"/>
                 <script>
                     $(document).ready(function () {
 
@@ -101,30 +225,12 @@
 
                         // Send request to register the changed on the owner's Pet
                         let registerPetUrl = "/owner/registerPet";
-                        $("#ajaxButton").click(function () {
-                            alert("petname: " + petName.val());
-                            console.log(petName.val());
-
-                            //Alternative way to send get request (We want to change this to Post request but the respective controller does not support Post for some reason
-                            //                        $.ajax({
-                            //                            type: "GET",
-                            //                            url: registerPetUrl,
-                            //                            data:
-                            //                                    {
-                            //                                        petName: petName.val(),
-                            //                                        petType: petType.val(),
-                            //                                        petDescription: petDescription.val()
-                            //                                    },
-                            //                            success: importPetData(data)
-                            //                        });
-                        });
                         $("#submit").click(function (e) {
                             e.preventDefault();
-                            $.get(
+                            $.post(
                                     registerPetUrl,
                                     {petName: petName.val(), petType: petType.val(), petDescription: petDescription.val()}
                             ).done(function (data) {
-                                console.log(data);
                                 importPetData(data);
                                 $("#form").submit();
                             });
@@ -133,12 +239,10 @@
                         //Take the Pet and put it in the input fields
                         function importPetData(data) {
 
-                            console.log(data);
                             petName.val(data.petName);
                             petType.val(data.petType);
                             petDescription.val(data.petDescription);
                         }
-
                     });
                 </script>
             </security:authorize>
