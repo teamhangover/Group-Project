@@ -35,7 +35,7 @@
     <body>
         <jsp:include page="noLogin-navbar.jsp"></jsp:include>
 
-        <springform:form action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data">
+        <springform:form id="form" action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data">
             <springform:input path="detailsId" hidden="true"></springform:input>
                 <div class="row mt-2">
                     <div class="col mini box">
@@ -176,14 +176,15 @@
 //                            success: importPetData(data)
 //                        });
                     });
-                    $("#submit").click(function () {
-
+                    $("#submit").click(function ( e ) {
+                        e.preventDefault();
                         $.get(
                                 registerPetUrl,
                                 {petName: petName.val(), petType: petType.val(), petDescription: petDescription.val()}
                         ).done(function (data) {
                             console.log(data);
                             importPetData(data);
+                            $("#form").submit();
                         });
 
                     });
