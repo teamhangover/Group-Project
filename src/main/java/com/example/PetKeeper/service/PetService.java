@@ -5,6 +5,7 @@
  */
 package com.example.PetKeeper.service;
 
+import com.example.PetKeeper.model.MyUser;
 import com.example.PetKeeper.model.Pet;
 
 /**
@@ -13,4 +14,6 @@ import com.example.PetKeeper.model.Pet;
  */
 public interface PetService {
      public Pet savePet(Pet pet);
+     
+     public Pet getByMyUser(MyUser myUser);
 }

@@ -12,11 +12,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Access denied</title>
         <link rel="stylesheet" href="/css/403.css">
-        
     </head>
-    <body>
+ <body>
        
          
 <link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Frijole|Josefin+Sans:300,400,400i,600,700|Viga" rel="stylesheet">
