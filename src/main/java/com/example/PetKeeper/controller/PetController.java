@@ -50,7 +50,7 @@ public class PetController {
         }
     }
 
-    @RequestMapping(value = "/owner/registerPet", method = RequestMethod.GET)
+    @RequestMapping(value = "/owner/registerPet", method = RequestMethod.POST)
     @ResponseBody
     public Pet registerPet(
             @RequestParam("petName") String petName,
