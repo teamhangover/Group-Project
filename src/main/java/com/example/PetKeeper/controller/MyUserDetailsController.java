@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.PetKeeper.service.MyUserService;
 import java.security.Principal;
-import java.util.Random;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -64,11 +63,13 @@ public class MyUserDetailsController {
         MyUser loggedInMyUser = myUserService
                 .getMyUserByUsername(principal.getName());
         newMyUserDetails.setMyUserId(loggedInMyUser);
-        //giving a unique name to the file 
-        Random rand = new Random();
-        String profilePicName = newMyUserDetails.getMyUserId().getUsername() + rand.nextInt();
-        //save file to disk and get the filename back
-        newMyUserDetails.setUPhotoName(fileHandlingService.storeFileToDisk(profilePic, profilePicName));
+
+        if (profilePic != null) {
+            //giving a unique name to the file 
+            String profilePicName = newMyUserDetails.getMyUserId().getUsername() + "-Photo";
+            //save file to disk and get the filename back
+            newMyUserDetails.setUPhotoName(fileHandlingService.storeFileToDisk(profilePic, profilePicName));
+        }
 
         //save details 
         myUserDetailsService.saveMyUserDetails(newMyUserDetails);
