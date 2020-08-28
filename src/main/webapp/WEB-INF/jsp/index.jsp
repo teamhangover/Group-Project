@@ -11,7 +11,8 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Jekyll v4.0.1">
-        <title> petKeeper</title>
+        <title> PetKeeper</title>
+         <link rel="icon" href="/img/paw.png" sizes="32x32">
 
         <!--    carousel-->
         <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
@@ -44,6 +45,7 @@
         </style>
         <!-- Custom styles for this template -->
         <link href="/css/home.css" rel="stylesheet">
+        
     </head>
 
     <body>

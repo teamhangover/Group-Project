@@ -20,8 +20,8 @@
             <security:authorize access="isAuthenticated()">
                 ${user.username}
             </security:authorize>
-            <a class="navbar"><form:form method="post" action="${pageContext.request.contextPath}/logout">
-                    <input type="submit" value="Logout"/>
+            <a class="navbar "><form:form method="post" action="${pageContext.request.contextPath}/logout">
+                    <input class="" type="submit" value="Logout"/>
                 </form:form></a>
             </c:if>
 
@@ -36,7 +36,7 @@
             <!--and is Keeper-->
             <security:authorize access="hasRole('ROLE_KEEPER') and isAuthenticated()">
                 <a class="navbar" href="${pageContext.request.contextPath}/preInsertMyUserDetails">Profile</a>
-                <a class="navbar" href="${pageContext.request.contextPath}/keeper/schedule"> Ημερολόγιο </a>
+                <a class="navbar" href="${pageContext.request.contextPath}/keeper/dashboard"> Ημερολόγιο </a>
             </security:authorize>
 
             <!--and is owner-->

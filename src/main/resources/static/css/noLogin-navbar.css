@@ -7,6 +7,8 @@ nav{
    
 }
 
+
+
 nav a{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: black;
@@ -20,4 +22,16 @@ nav a:hover {
     font-size: 105%;
     border-radius: 1em;
     color: white;
+}
+
+
+
+button, input[type="submit"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }
