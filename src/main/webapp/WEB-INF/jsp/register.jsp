@@ -22,7 +22,7 @@
     </head>
 
     <body>
-        <jsp:include page="noLogin-navbar.jsp"></jsp:include>
+        <jsp:include page="navbar.jsp"></jsp:include>
             <div class="wrapper fadeInDown">
                 <div id="formContent">
 

@@ -3,7 +3,7 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 nav{
-    background: white;
+    background-image: url('/img/')
    
 }
 
@@ -18,9 +18,7 @@ nav a{
 
 nav a:hover {
     text-decoration: none;
-    background-color:#f9d36c;;
-    font-size: 105%;
-    border-radius: 1em;
+   
     color: white;
 }
 
@@ -35,3 +33,17 @@ button, input[type="submit"] {
 	cursor: pointer;
 	outline: inherit;
 }
+
+
+
+.nav-bk8{
+background: #5f2c82;  
+background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+background: linear-gradient(to right, #49a09d, #5f2c82); 
+ opacity: 0.5;
+}
+
+#card{
+    background-color: #21b4e7
+}
+

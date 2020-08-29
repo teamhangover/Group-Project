@@ -20,12 +20,13 @@
     
     <body>
          <!--        navbar-->
-        <jsp:include page="noLogin-navbar.jsp"></jsp:include>
-        <br>
-        <br>
+        <jsp:include page="navbar.jsp"></jsp:include>
+               <br><br><br>
+
+      
        
         
-        <div class="firstflex mt-5">
+        <div class="firstflex mt-3">
             
             <article><a href=""> <svg width="1em" height="1em"   class="bi bi-person-circle"
                                       fill="currentColor" xmlns="http://www.w3.org/2000/svg">
