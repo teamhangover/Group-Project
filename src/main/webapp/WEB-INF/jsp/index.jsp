@@ -11,7 +11,8 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Jekyll v4.0.1">
-        <title> petKeeper</title>
+        <title> PetKeeper</title>
+        <link rel="icon" href="/img/paw.png" sizes="32x32">
 
         <!--    carousel-->
         <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
@@ -44,12 +45,15 @@
         </style>
         <!-- Custom styles for this template -->
         <link href="/css/home.css" rel="stylesheet">
+
     </head>
 
     <body>
 
         <!--        navbar-->
-        <jsp:include page="noLogin-navbar.jsp"></jsp:include>
+        <jsp:include page="navbar.jsp"></jsp:include>
+
+
 
             <main role="main">
 
@@ -77,97 +81,102 @@
                                     <p>Βες τώρα ποιός θα φιλοξενήσει και θα φροντίζει το ζωάκι σου οσο θα λείπεις</p>
                                     <p><a class="btn btn-lg btn-outline-dark" href="${pageContext.request.contextPath}/preInsertMyUser" role="button">Εγγραφή</a></p>
 
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="carousel-item">
-                            <div class="view">
-                                <img class="d-block w-100" src="/img/Canva - Orange Kitten.jpg" alt="First slide">
-                                <div class="mask rgba-black-light"></div>
-                            </div>
-                            <div class="container">
-                                <div class="carousel-caption text-dark ">
-                                    <h1>Λατρεύεις τα ζώα;</h1>
-                                    <p>Γίνε keeper και ετοιμάσου για μια αξέχαστη εμπειρία</p>
-                                    <p><a class="btn btn-lg btn-outline-dark" href="#" role="button">Μάθε περισσότερα</a></p>
-                                </div>
                             </div>
                         </div>
 
-
-                        <div class="carousel-item">
-                            <div class="view">
-                                <img class="d-block w-100 " src="/img/Canva - Selective Focus Photography of Bunny on a Leash.jpg" alt="First slide">
-                                <div class="mask rgba-black-light"></div>
-                            </div>
-                            <div class="container">
-                                <div class="carousel-caption text-left">
-                                    <h1>Bρες τον keeper σου</h1>
-                                    <p>Δες ποιος είναι κοντά σου, τι εμπειρία έχει, τι υπηρεσίες προσφέρει και επίλεξε τον καλύτερο.
-                                    </p>
-                                    <p><button class=" btn btn-lg btn-outline-dark text-light" href="${pageContext.request.contextPath}/loginPage" role="button">Συνδέσου</button></p>
-                                </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="view">
+                            <img class="d-block w-100" src="/img/Canva - Orange Kitten.jpg" alt="First slide">
+                            <div class="mask rgba-black-light"></div>
+                        </div>
+                        <div class="container">
+                            <div class="carousel-caption text-dark ">
+                                <h1>Λατρεύεις τα ζώα;</h1>
+                                <p>Γίνε keeper και ετοιμάσου για μια αξέχαστη εμπειρία</p>
+                                <p><a class="btn btn-lg btn-outline-dark" href="#" role="button">Μάθε περισσότερα</a></p>
                             </div>
                         </div>
                     </div>
 
 
-
-                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-
-                <!-- cards-look-alike -->
-
-                <div style="background-color: #f5f6f8;">
-
-                    <div class="container marketing">
-
-                        <br>
-                        <h2 class="d-flex justify-content-center text-muted">Πώς Δουλεύει</h2>
-                        <br>
-                        <!-- Three columns of text below the carousel -->
-                        <div class="row d-flex align align-self-center">
-                            <img src="/img/howworks.jpg" class="mx-auto d-block" alt="how it works">
-
-
-                            <div class="col-lg-4">
-
-                                <h2>Bρες τον keeper σου</h2>
-                                <p></p>
-                                <p>Βρες τον ιδιώτη φιλόζωο που θα φιλοξενήσει το ζωάκι σου όπως εσύ επιθυμείς. Δες ποιος είναι κοντά σου, τι εμπειρία έχει, τι υπηρεσίες προσφέρει και επίλεξε τον καλύτερο. </p>
-                                <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-                            </div>
-                            <!-- /.col-lg-4 -->
-                            <div class="col-lg-4">
-
-                                <h2>Κάνε κράτηση & πληρωμή online</h2>
-                                <p>Απλά και εύκολα κάνε κράτηση για τις ημερομηνίες που θέλεις και πλήρωσε ηλεκτρονικά ώστε να απολαύσεις όλα τα προνόμια του Keeppet. Μπορείς πριν προχωρήσεις να συναντήσεις τον keeper, ζητώντας meet ’n’ greet μαζί του. </p>
-                                <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-                            </div>
-                            <!-- /.col-lg-4 -->
-                            <div class="col-lg-4">
-
-                                <h2>Το ζωάκι σου απολαμβάνει τη φιλοξενία</h2>
-                                <p>Ο keeper θα φροντίσει ώστε να μην του λείψει η φροντίδα, η αγάπη και τα χάδια που έχει συνηθίσει. Είναι καθημερινά σε επικοινωνία μαζί σου και σου στέλνει φωτογραφίες. </p>
-                                <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-                            </div>
-                            <!-- /.col-lg-4 -->
+                    <div class="carousel-item">
+                        <div class="view">
+                            <img class="d-block w-100 " src="/img/Canva - Selective Focus Photography of Bunny on a Leash.jpg" alt="First slide">
+                            <div class="mask rgba-black-light"></div>
                         </div>
-                        <!-- /.row -->
+                        <div class="container">
+                            <div class="carousel-caption text-left">
+                                <h1>Bρες τον keeper σου</h1>
+                                <p>Δες ποιος είναι κοντά σου, τι εμπειρία έχει, τι υπηρεσίες προσφέρει και επίλεξε τον καλύτερο.
+                                </p>
+                                <p><button class=" btn btn-lg btn-outline-dark text-light" href="${pageContext.request.contextPath}/loginPage" role="button">Συνδέσου</button></p>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
-                <!-- /.container -->
 
-                <!-- Footer -->
+
+
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <!-- cards-look-alike -->
+
+            <div style="background-color: #f5f6f8;">
+
+                <div class="container marketing">
+
+                    <br>
+                    <h2 class="d-flex justify-content-center text-muted">Πώς Δουλεύει</h2>
+                    <br>
+                    <!-- Three columns of text below the carousel -->
+                    <div class="row d-flex align align-self-center">
+                        <img src="/img/howworks.jpg" class="mx-auto d-block" alt="how it works">
+
+
+                        <div class="col-lg-4">
+
+                            <h2>Bρες τον keeper σου</h2>
+                            <p></p>
+                            <p>Βρες τον ιδιώτη φιλόζωο που θα φιλοξενήσει το ζωάκι σου όπως εσύ επιθυμείς. Δες ποιος είναι κοντά σου, τι εμπειρία έχει, τι υπηρεσίες προσφέρει και επίλεξε τον καλύτερο. </p>
+                            <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+                        </div>
+                        <!-- /.col-lg-4 -->
+                        <div class="col-lg-4">
+
+                            <h2>Κάνε κράτηση & πληρωμή online</h2>
+                            <p>Απλά και εύκολα κάνε κράτηση για τις ημερομηνίες που θέλεις και πλήρωσε ηλεκτρονικά ώστε να απολαύσεις όλα τα προνόμια του Keeppet. Μπορείς πριν προχωρήσεις να συναντήσεις τον keeper, ζητώντας meet ’n’ greet μαζί του. </p>
+                            <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+                        </div>
+                        <!-- /.col-lg-4 -->
+                        <div class="col-lg-4">
+
+                            <h2>Το ζωάκι σου απολαμβάνει τη φιλοξενία</h2>
+                            <p>Ο keeper θα φροντίσει ώστε να μην του λείψει η φροντίδα, η αγάπη και τα χάδια που έχει συνηθίσει. Είναι καθημερινά σε επικοινωνία μαζί σου και σου στέλνει φωτογραφίες. </p>
+                            <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+                        </div>
+                        <!-- /.col-lg-4 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+            </div>
+            <!-- /.container -->
+
+            <div class="text-center  text-light " id="card">
+                <p class="mb-0">Περισσότεροι από <strong>1500 keepers</strong> ανυπομονούν να φιλοξενήσουν το ζωάκι σας!<br>
+                    Μέχρι σήμερα έχουν ήδη προσφέρει <strong>33850 νύχτες φιλοξενίας</strong> σε σκυλάκια, γατούλες, παπαγάλους, κουνελάκια... και ινδικά χοιρίδια!</p>
+            </div>
+
+            <!-- Footer -->
 
             <jsp:include page="footer.jsp"></jsp:include>
 

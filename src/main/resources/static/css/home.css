@@ -134,27 +134,3 @@ nav a:hover {
     }
 }
 
-footer {
-    background-color: #3e4551;
-}
-
-footer p {
-    color: plum;
-}
-
-footer a {
-    text-decoration: none;
-    color: lightyellow;
-}
-
-footer h5 {
-    color: powderblue;
-}
-
-footer a:hover {
-    text-decoration: none;
-    color: lightyellow;
-    border: rosybrown;
-    background-color: rosybrown;
-    border-radius: 10rem;
-}

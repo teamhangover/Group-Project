@@ -12,7 +12,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login Form</title>
+        <title>Login </title>
+        <link rel="icon" href="/img/paw.png" sizes="32x32">
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -20,7 +21,7 @@
         <link href="/css/login.css" rel="stylesheet">
     </head>
     <body>
-        <jsp:include page="noLogin-navbar.jsp"></jsp:include>
+        <jsp:include page="navbar.jsp"></jsp:include>
             <div class="wrapper fadeInDown">
                 <div id="formContent">
                     <!-- Tabs Titles -->

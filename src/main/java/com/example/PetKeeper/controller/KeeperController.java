@@ -27,17 +27,13 @@ public class KeeperController {
     @Autowired
     MyUserDetailsService myUserDetailsService;
     
-    @RequestMapping
+    @GetMapping("dashboard")
     public String showKeeperHome() {
 
         return "keeper-home";
     }
 
-    @GetMapping("schedule")
-    public String showSchedule() {
-
-        return "calendar";
-    }
+    
 
     @GetMapping("profile")
     public String showMyUserDetails(HttpSession session, ModelMap mm) {

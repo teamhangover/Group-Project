@@ -14,8 +14,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Access denied</title>
         <link rel="stylesheet" href="/css/403.css">
+        <link rel="stylesheet" href="/css/navbar.css">
+        <title>Access Denied</title>
+        <!-- BS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     </head>
  <body>
+     
+     <jsp:include page="navbar.jsp"></jsp:include>
+     <br> <br>
        
          
 <link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Frijole|Josefin+Sans:300,400,400i,600,700|Viga" rel="stylesheet">
@@ -1445,6 +1452,7 @@
   </g>
 
 </svg>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
    
 </html>
