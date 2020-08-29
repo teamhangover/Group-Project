@@ -21,7 +21,7 @@
                 ${user.username}
             </security:authorize>
             <a class="navbar btn btn-outline-warning m-2""><form:form method="post" action="${pageContext.request.contextPath}/logout">
-                    <input class="text-warning" type="submit" value="Logout"/>
+                    <input id="logout" class="text-warning" type="submit" value="Logout"/>
                 </form:form></a>
             </c:if>
 

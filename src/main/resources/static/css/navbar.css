@@ -24,7 +24,7 @@ nav a:hover {
 
 
 
-button, input[type="submit"] {
+button, #logout {
 	background: none;
 	color: inherit;
 	border: none;
