@@ -16,16 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/owner")
 @Controller
 public class OwnerController {
-    
-    @RequestMapping
-    public String showOwnerHome(){
-    
-    return "owner-home";
+
+    @GetMapping("/search")
+    public String showOwnerHome() {
+
+        return "findKeepers";
     }
-    
+
     @GetMapping("/profile")
-    public String showMyUserDetails(){
-    
-    return "fillMyUserDetails";
+    public String showMyUserDetails() {
+
+        return "fillMyUserDetails";
     }
 }
