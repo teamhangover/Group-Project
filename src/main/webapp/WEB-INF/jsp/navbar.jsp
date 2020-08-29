@@ -42,8 +42,7 @@
             <!--and is owner-->
             <security:authorize access="hasRole('ROLE_OWNER') and isAuthenticated()">
                 <a class="navbar btn btn-outline-warning m-2" href="${pageContext.request.contextPath}/preInsertMyUserDetails">Προφίλ</a>
-                <a class="navbar" href="${pageContext.request.contextPath}/preInsertMyUserDetails">Profile</a>
-                <a class="navbar" href="${pageContext.request.contextPath}/owner/search">Find Keepers</a>
+                <a class="navbar btn btn-outline-warning m-2" href="${pageContext.request.contextPath}/owner/search">Find Keepers</a>
             </security:authorize>
         </c:if>
             
