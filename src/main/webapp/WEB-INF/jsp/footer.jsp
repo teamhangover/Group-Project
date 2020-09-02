@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="/css/footer.css" rel="stylesheet"> 
 
-  
- <!-- Footer -->
+
+<!-- Footer -->
 <footer class="page-footer font-small stylish-color-dark pt-4">
 
     <!-- Footer Links -->
@@ -40,17 +40,11 @@
                 <!-- Links -->
                 <!-- <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5> -->
 
-                <ul class="d-flex list-unstyled justify-content-center">
-                    <li>
-                        <a class="btn btn-outline-light" href="${pageContext.request.contextPath}/#!">Συχνές ερωτησεις</a>
-                    </li>
-
-                </ul>
 
             </div>
             <!-- Grid column -->
 
-          
+
 
             <!-- Grid column -->
             <div class="col-md-2 mx-auto">
@@ -59,26 +53,26 @@
                 <!-- <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5> -->
 
                 <ul class="d-flex list-unstyled justify-content-center">
-                    <li>
-                        <a class="btn btn-outline-light" href="${pageContext.request.contextPath}/#!">Επικοινωνία</a>
-                    </li>
+
 
                 </ul>
 
             </div>
             <!-- Grid column -->
 
-        
+
 
             <!-- Grid column -->
             <div class="col-md-2 mx-auto">
 
-                <!-- Links -->
-                <!-- <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5> -->
+                
 
-                <ul class="d-flex list-unstyled justify-content-center">
-                    <li>
-                        <a class="btn btn-outline-light" href="${pageContext.request.contextPath}/#!">Για εμάς </a>
+                <ul class="d-flex list-unstyled list-inline-item justify-content-center">
+                    <li class="list-inline-item">
+                        <h5 class="mb-1 ">Εγγράψου δωρεάν!</h5>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="${pageContext.request.contextPath}/preInsertMyUser" class="btn btn-lg btn-success btn-rounded">Εγγραφή</a>
                     </li>
 
                 </ul>
@@ -98,13 +92,23 @@
     <hr>
 
     <!-- Call to action -->
-    <ul class="list-unstyled list-inline text-center py-2">
+    <ul class="list-unstyled list-inline text-center m-3 pb-5">
+
+
         <li class="list-inline-item">
-            <h5 class="mb-1">Εγγράψου δωρεάν!</h5>
+            <a class="btn btn-outline-light" href="${pageContext.request.contextPath}/#!">Συχνές ερωτησεις</a>
         </li>
+
         <li class="list-inline-item">
-            <a href="${pageContext.request.contextPath}/preInsertMyUser" class="btn btn-success btn-rounded">Εγγραφή</a>
+            <a class="btn btn-outline-light" href="${pageContext.request.contextPath}/#!">Επικοινωνία</a>
         </li>
+
+        <li class="list-inline-item">
+            <a class="btn btn-outline-light" href="${pageContext.request.contextPath}/#!">Για εμάς </a>
+        </li>
+
+
+
     </ul>
 
     <!-- Call to action -->
@@ -119,14 +123,15 @@
         <a href="#" class="google p-3 m-3 btn btn-outline-info"><i class="fa fa-google"></i></a>
         <a href="#" class="linkedin p-3 m-3 btn btn-outline-info"><i class="fa fa-linkedin"></i></a>
         <a href="#" class="youtube p-3 btn m-3 btn-outline-info"><i class="fa fa-youtube"></i></a>
-        <p class="float-right"><a class="mt-4 btn btn-outline-info" href="#">Back to top</a></p>
+
     </div>
     <!-- Social buttons -->
     <hr>
     <!-- Copyright -->
 
-    <div class="footer-copyright text-center py-3 align-self-center" style="color: aliceblue;">© 2020 Copyright:
+    <div class="footer-copyright text-center py-3 ml-5" style="color: aliceblue;">© 2020 Copyright:
         <a href="${pageContext.request.contextPath}"> PetKeeper.com</a>
+        <p class="float-right"><a class="mt-4 btn btn-outline-info" href="#">Back to top</a></p>
 
         <p> <a href="#" class="float-middle">Privacy</a> &middot; <a href="#">Terms</a></p>
 

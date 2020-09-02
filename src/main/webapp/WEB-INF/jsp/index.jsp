@@ -171,7 +171,7 @@
             </div>
             <!-- /.container -->
 
-            <div class="text-center  text-light " id="card">
+            <div class="text-center  text-light card-bg " id="card">
                 <p class="mb-0">Περισσότεροι από <strong>1500 keepers</strong> ανυπομονούν να φιλοξενήσουν το ζωάκι σας!<br>
                     Μέχρι σήμερα έχουν ήδη προσφέρει <strong>33850 νύχτες φιλοξενίας</strong> σε σκυλάκια, γατούλες, παπαγάλους, κουνελάκια... και ινδικά χοιρίδια!</p>
             </div>
