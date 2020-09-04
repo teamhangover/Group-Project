@@ -9,6 +9,7 @@ import com.example.PetKeeper.model.MyUser;
 import com.example.PetKeeper.model.MyUserDetails;
 import com.example.PetKeeper.repository.MyUserDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,7 +24,14 @@ public class MyUserDetailsServiceImpl implements MyUserDetailsService {
 
     @Override
     public MyUserDetails saveMyUserDetails(MyUserDetails myUserDetails) {
-        return myUserDetailsRepository.save(myUserDetails);
+        MyUserDetails newMyUserDetails = new MyUserDetails();
+        try {
+            newMyUserDetails = myUserDetailsRepository.save(myUserDetails);
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+            System.out.println("Duplicate entry! One or more info already exists");
+        }
+        return newMyUserDetails;
     }
 
     @Override

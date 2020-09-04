@@ -14,6 +14,7 @@ import com.example.PetKeeper.repository.RoleRepository;
 import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -49,8 +50,14 @@ public class MyUserServiceImpl implements MyUserService {
         }
         userRoles.add(role);
         myUser.setRolesCollection(userRoles);
-        MyUser savedUser = myUserRepository.save(myUser);
 
+        MyUser savedUser = new MyUser();
+        try {
+            savedUser = savedUser = myUserRepository.save(myUser);
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+            System.out.println("Duplicate entry! One or more info already exists");
+        }
         return savedUser;
     }
 
@@ -89,6 +96,6 @@ public class MyUserServiceImpl implements MyUserService {
 
     @Override
     public MyUser getMyUserByUsername(String username) {
-      return myUserRepository.findByUsername(username);
+        return myUserRepository.findByUsername(username);
     }
 }

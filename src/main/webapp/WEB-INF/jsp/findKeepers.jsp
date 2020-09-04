@@ -30,7 +30,7 @@
     </head>
     <body>
         <!--Navbar-->
-        <jsp:include page="noLogin-navbar.jsp"></jsp:include>
+        <jsp:include page="navbar.jsp"></jsp:include>
 
             <br>
             <br>
@@ -71,42 +71,42 @@
                         </ul>
                     </div>    
                 </div>
+
+
+            </div>
+            <!--            
+                        <div class="" id="pac-card">
+                            <div>
+                                <div id="title">
+                                    Location
+                                </div>
+                            </div>
+                            <div id="pac-container">
+                            </div>
+                        </div>-->
+            <br>
+            <br>
+            <div>
+            </div>
+            <div id="infowindow-content">
+                <img src="" width="16" height="16" id="place-icon" />
+                <span id="place-name" class="title"></span><br />
+                <span id="place-address"></span>
+                <span id="keeper-Fname">keeper-Fname</span>
+                <span id="keeper-Lname">keeper-Lname</span>
+                <span id="keeper-Lname"></span>
             </div>
 
-        </div>
-        <!--            
-                    <div class="" id="pac-card">
-                        <div>
-                            <div id="title">
-                                Location
-                            </div>
-                        </div>
-                        <div id="pac-container">
-                        </div>
-                    </div>-->
-        <br>
-        <br>
-        <div>
-        </div>
-        <div id="infowindow-content">
-            <img src="" width="16" height="16" id="place-icon" />
-            <span id="place-name" class="title"></span><br />
-            <span id="place-address"></span>
-            <span id="keeper-Fname">keeper-Fname</span>
-            <span id="keeper-Lname">keeper-Lname</span>
-            <span id="keeper-Lname"></span>
-        </div>
-
-        <script src="/js/findKeepersMap.js"></script>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5mZvsDf2yxpRbN_AdULITrSGI_o3Oow&callback=initMap&libraries=places"
-        defer></script>
-        <br>
-        <br>
-        <br>
-        <br>
-        <!-- Footer -->
-    <jsp:include page="footer.jsp"></jsp:include>
-</body>
+            <script src="/js/findKeepersMap.js"></script>
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+            <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5mZvsDf2yxpRbN_AdULITrSGI_o3Oow&callback=initMap&libraries=places"
+            defer></script>
+            <br>
+            <br>
+            <br>
+            <br>
+            <!-- Footer -->
+        <jsp:include page="footer.jsp"></jsp:include>
+    </body>
 </html>
