@@ -30,9 +30,7 @@
         <!--Map-->
         <link type="text/css" rel="stylesheet" href="/css/map.css">
         <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=&libraries=places&v=weekly"
-        defer></script>
+
         <!--Map-->
     </head>
     <body>
@@ -45,22 +43,23 @@
             <br>
             <br>
             <hr>
-        <springform:form id="form" action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data">
+        <springform:form id="detailsForm" action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data">
 
             <springform:input path="detailsId" hidden="true" />
-            First Name: <springform:input type="text" path="firstName" />
+            First Name: <springform:input type="text" path="firstName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true"/>
             <br>
-            Last Name: <springform:input type="text" path="lastName"/>
+            Last Name: <springform:input type="text" path="lastName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true"/>
             <br>
-            Age: <springform:input type="number" path="age"/>
+            Age: <springform:input type="number" path="age" min="18" max="99" required="true"/>
             <br>
-            Phone Number: <springform:input type="phone" path="tel"/>
+            Phone Number: <springform:input type="tel" path="tel" pattern="69+[0-9]{8}" title="must start with 69 and have 10 numbers" required="true"/>
             <br>
             Description: <springform:input type="textarea" path="uDescription"/>
             <br>
             Upload Profile Photo: <input type="file" name="photo" accept="image/*"/>
             <br>
-            <button type="submit" id="submit" >Submit</button>
+            <input type="submit" id="submitButton" />
+            <!--Submit</button>-->
             <button type="reset">Clear</button>
             <br>
         </springform:form>
@@ -69,25 +68,31 @@
             <!--and is Keeper-->
             <security:authorize access="hasRole('ROLE_KEEPER') and isAuthenticated()">
                 <!--TODO Address form-->
-                <hr>
-                Address:
-                <input id="autocomplete" placeholder="Enter your address" type="text" />
-                <div id="AddressDiv" hidden="true">
-                    <br>
-                    Street address:<input class="field" id="street_number" disabled="true" />
-                    <br>
-                    City: <input class="field" id="locality" disabled="true" />
-                    <br>
-                    State: <input class="field" id="administrative_area_level_1" disabled="true" />
-                    <br>
-                    Zip code: <input class="field" id="postal_code" disabled="true" />
-                    <br>
-                    Country: <input class="field" id="country" disabled="true" />
-                    <br>
+                <div id="addressForm">
                     <hr>
+                    Price/day: <input id="price" placeholder="Price/day" type="number" />&euro;
+                    <br>
+                    Address:
+                    <input id="autocomplete" placeholder="Enter your address" type="text" />
+                    <div id="AddressDiv" hidden="true">
+                        <br>
+                        Street address:<input class="field" id="street_number" disabled="true" />
+                        <br>
+                        City: <input class="field" id="locality" disabled="true" />
+                        <br>
+                        State: <input class="field" id="administrative_area_level_1" disabled="true" />
+                        <br>
+                        Zip code: <input class="field" id="postal_code" disabled="true" />
+                        <br>
+                        Country: <input class="field" id="country" disabled="true" />
+                        <br>
+                        <hr>
+                    </div>
+                    <div id="map-canvas"></div>
                 </div>
-
-                <div id="map-canvas"></div>
+                <script
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5mZvsDf2yxpRbN_AdULITrSGI_o3Oow&libraries=places&v=weekly"
+                defer></script>
 
                 <script>
                 // This example displays an address form, using the autocomplete feature
@@ -112,30 +117,53 @@
                     //other properties of entity Address
                     let longitude;
                     let latidute;
+                    let price = $("#price");
 
                     //Get current Address of Keeper
-                    let getAddressUrl = "/keeper/myAddress";
-                    $.ajax({
-                        url: getAddressUrl
-                    }).then(function (data) {
-                        if (data !== null) {
-                             //TODO Fill in input fields with data
-                        }
-                    });
+//                    let getAddressUrl = "/keeper/myAddress";
+//                    $.ajax({
+//                        url: getAddressUrl
+//                    }).then(function (data) {
+//                        if (data !== null) {
+//                            //TODO Fill in input fields with data
+//                        }
+//                    });
 
                     //Register Address
-                    let registerAddressUrl = "";
-                    $("#submit").click(function (e) {
-                        e.preventDefault();
-                        $.get(
-                                registerAddressUrl,
-                        //TODO set the data
-//                                {petName: petName.val(), petType: petType.val(), petDescription: petDescription.val()}
-                                ).done(function (data) {
-                            $("#form").submit();
-                        });
-
-                    });
+//                    let ajaxSentFlag = false;
+//                    let registerAddressUrl = "/keeper/registerMyAddress";
+//                    $("#detailsForm").submit((e) => {
+//
+//                        let address = {
+//                            latidute: place.geometry.location.lat(),
+//                            longitude: place.geometry.location.lng(),
+//                            price: price.val(),
+//                            country: country.val()
+//                        }
+//                        console.log(address);
+//                        if (!ajaxSentFlag) {
+//                            // Prevent from submission
+//                            e.preventDefault();
+//
+//                            // Initiate request and stop function execution at this point
+//                            // by return-ing
+//                            return $.post(
+//                                    registerAddressUrl,
+//                                    address
+//                                    ).done(function (data) {
+//                                //Request was successfull  
+//                                $(document.body).css({'height': '100vh'});
+//                                $(document.body).css({'cursor': 'wait'});
+//                                // 
+//                                $('#detailsForm').fadeOut(600);
+//                                $('#addressForm').fadeOut(600);
+//                                // Switching the variable to true
+//                                ajaxSentFlag = true;
+//                                // Submitting the form
+//                                $("form").submit();
+//                            });
+//                        }
+//                    });
 
                     //
                     $("#autocomplete").focus(function () {
@@ -149,7 +177,7 @@
 
                     function initialize() {
                         var mapOptions = {
-                            center: new google.maps.LatLng(-33.8688, 151.2195),
+                            center: new google.maps.LatLng(37.983748, 23.727658),
                             zoom: 13
                         };
 
@@ -197,15 +225,16 @@
 
             <!--and is owner-->
             <security:authorize access="hasRole('ROLE_OWNER') and isAuthenticated()">
-
-                Pet Name: <input type="text" id="petName" placeholder="Pet Name" />
-                Pet Type: <select name="type" id="petType">
-                    <option value="dog">Dog</option>
-                    <option value="cat">Cat</option>
-                    <option value="rabbit">Rabbit</option>
-                    <option value="bird">Bird</option>
-                </select>
-                Description  <input type="text" id="petDescription" placeholder="Type here a few info about your pet"/>
+                <div id="petForm">
+                    Pet Name: <input type="text" id="petName" placeholder="Pet Name" />
+                    Pet Type: <select name="type" id="petType">
+                        <option value="dog">Dog</option>
+                        <option value="cat">Cat</option>
+                        <option value="rabbit">Rabbit</option>
+                        <option value="bird">Bird</option>
+                    </select>
+                    Description  <input type="text" id="petDescription" placeholder="Type here a few info about your pet"/>
+                </div>
                 <script>
                     $(document).ready(function () {
 
@@ -213,7 +242,7 @@
                         let petType = $("#petType");
                         let petDescription = $("#petDescription");
 
-                        //Send request to get the Pet of the owner
+                        //Send request to get the Pet of the owner (if any)
                         let getPetUrl = "/owner/myPet";
                         $.ajax({
                             url: getPetUrl
@@ -224,26 +253,43 @@
                             }
                         });
 
-                        // Send request to register the changed on the owner's Pet
-                        let registerPetUrl = "/owner/registerPet";
-                        $("#submit").click(function (e) {
-                            e.preventDefault();
-                            $.post(
-                                    registerPetUrl,
-                                    {petName: petName.val(), petType: petType.val(), petDescription: petDescription.val()}
-                            ).done(function (data) {
-                                importPetData(data);
-                                $("#form").submit();
-                            });
-
-                        });
-                        //Take the Pet and put it in the input fields
+                        //Fill Pet input fields with data from ajax request
                         function importPetData(data) {
 
                             petName.val(data.petName);
                             petType.val(data.petType);
                             petDescription.val(data.petDescription);
                         }
+
+
+                        // Send request to register the changes on the owner's Pet or create a new on if doesn't have one. Then submit form
+                        let registerPetUrl = "/owner/registerPet";
+                        let hasAjaxRequestSucceeded = false;
+                        $("#detailsForm").submit((e) => {
+
+                            if (!hasAjaxRequestSucceeded) {
+                                // Prevent from submission
+                                e.preventDefault();
+
+                                // Initiate request and stop function execution at this point
+                                // by return-ing
+                                return $.post(
+                                        registerPetUrl,
+                                        {petName: petName.val(), petType: petType.val(), petDescription: petDescription.val()}
+                                ).done(function (data) {
+                                    //Request was successfull  
+                                    $(document.body).css({'height': '100vh'});
+                                    $(document.body).css({'cursor': 'wait'});
+                                    // 
+                                    $('#detailsForm').fadeOut(600);
+                                    $('#petForm').fadeOut(600);
+                                    // Switching the variable to true
+                                    hasAjaxRequestSucceeded = true;
+                                    // Submitting the form
+                                    $("form").submit();
+                                });
+                            }
+                        });
                     });
                 </script>
             </security:authorize>
