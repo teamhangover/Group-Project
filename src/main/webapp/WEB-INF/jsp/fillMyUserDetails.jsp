@@ -36,7 +36,7 @@
         <!--Map-->
     </head>
     <body>
-        <jsp:include page="noLogin-navbar.jsp"></jsp:include>
+        <jsp:include page="navbar.jsp"></jsp:include>
 
             <br>
             <br>

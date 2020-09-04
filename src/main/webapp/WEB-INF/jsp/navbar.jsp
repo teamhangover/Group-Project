@@ -17,9 +17,9 @@
         <!--if logged in-->
         <c:if test="${pageContext['request'].userPrincipal != null}">
             <security:authentication var="user" property="principal" />
-            <security:authorize access="isAuthenticated()">
-                ${user.username}
-            </security:authorize>
+            <security:authorize access="isAuthenticated()" >
+                 ${user.username} 
+            </security:authorize> 
             <a class="navbar btn btn-outline-warning m-2""><form:form method="post" action="${pageContext.request.contextPath}/logout">
                     <input id="logout" class="text-warning" type="submit" value="Logout"/>
                 </form:form></a>
@@ -51,7 +51,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <img src="/img/petKeeperLogowhite.png" class="rounded-circle" alt="">
+            <img src="/img/transParentLogo.png" class="rounded" alt="">
 
             
                     <a class="nav-link  btn btn-outline-warning ml-3 " href="${pageContext.request.contextPath}/"> <i class="fa fa-fw fa-home"> </i> Home </a>
