@@ -1,14 +1,31 @@
 #map {
-    height: 500px;
-    width: 800px;
+    height: 100%;
+    width: 100%;
   }
+
+  /* *{border:solid 1px grey;
+  } */
   
   /* Optional: Makes the sample page fill the window. */
   html,
   body {
-    height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  }
+
+  .dates{
+    margin-left: 200px;
+    margin-right: 200px;
+    filter: drop-shadow(30px 10px 4px #313136);
+    
+  }
+
+  .price{
+    margin-left: 400px;
+    margin-right: 400px;
+    filter: drop-shadow(30px 10px 4px #313136);
   }
   
   #description {
@@ -29,35 +46,9 @@
     display: inline;
   }
   
-  .pac-card {
-    margin: 10px 10px 0 0;
-    border-radius: 2px 0 0 2px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    outline: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    background-color: #fff;
-    font-family: Roboto;
-  }
-  
-  #pac-container {
-    padding-bottom: 12px;
-    margin-right: 12px;
-  }
-  
-  .pac-controls {
-    display: inline-block;
-    padding: 5px 11px;
-  }
-  
-  .pac-controls label {
-    font-family: Roboto;
-    font-size: 13px;
-    font-weight: 300;
-  }
-  
+
   #pac-input {
-    background-color: #fff;
+   
     font-family: Roboto;
     font-size: 15px;
     font-weight: 300;
@@ -65,14 +56,603 @@
     padding: 0 11px 0 13px;
     text-overflow: ellipsis;
     width: 400px;
+    
   }
-  
-  #pac-input:focus {
-    border-color: #4d90fe;
-  }
+ 
   
   #title {
     font-size: 25px;
     font-weight: 500;
     padding: 6px 12px;
   }
+
+  
+/* dog drawing */
+
+:root {
+  --brown-light: #DDCB9F;
+  --brown-medium: #C8A880;
+  --brown-dark: #8B554C;
+}
+
+
+
+.box-canvas{
+  position: relative;
+  margin: auto;
+  
+  display: block;
+  margin-top: 8%;
+  margin-bottom: 8%;
+  width: 230px;
+  height:300px;
+}
+
+.head {
+  position: absolute;
+  left: 50px;
+  top: 5px;
+  width: 130px;
+  height: 150px;
+  background: var(--brown-light);
+  border-radius: 30% 30% 50% 50%;
+  border-bottom: 2px solid var(--brown-medium);
+}
+
+.ear {
+  position: absolute;
+  top: 10px;
+  width: 100px;
+  height: 120px;
+  
+}
+
+.ear.left {
+  left: -5px;
+  clip-path: polygon(30% 100%, 0 0, 100% 0);
+  transform: rotate(-15deg);
+}
+
+.ear.right {
+  right: -5px;
+  clip-path: polygon(70% 100%, 0 0, 100% 0);
+   transform: rotate(15deg);
+}
+
+.ear::before {
+  content: '';
+  position: absolute;
+  background: var(--brown-medium);
+  width: 100px;
+  height: 100px;
+}
+
+.ear.left::before {
+  left: 5px;
+  border-radius: 50% 30% 50% 50%;
+}
+
+.ear.right::before {
+  right: 5px;
+  border-radius: 30% 50% 50% 50%;
+}
+
+.snoot {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--brown-dark);
+  width: 50px;
+  height: 30px;
+  border-radius: 40%;
+}
+
+.snoot::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: -5px;
+  width: 30px;
+  height: 15px;
+  box-shadow: 1px 3px 0 black;
+  background: var(--brown-light);
+  border-radius: 50%;
+}
+
+.snoot::after {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: 26px;
+  width: 30px;
+  height: 15px;
+  box-shadow: -1px 3px 0 black;
+  background: var(--brown-light);
+  border-radius: 0 0 50% 50%;
+}
+
+
+
+.eye {
+  position: absolute;
+  top: 30px;
+  background: black;
+  border: 5px solid var(--brown-medium);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.eye.left {
+  left: 20px;
+}
+
+.eye.right {
+  right: 20px;
+}
+
+.eye::after {
+  content: '';
+  position: absolute;
+  right: 3px;
+  width: 5px;
+  height: 5px;
+  background: var(--brown-light);
+  border-radius: 50%;
+}
+
+.tongue {
+  position: absolute;
+  width: 25px;
+  height: 20px;
+  background: #E74E60;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 0 0 50% 50%;
+  bottom: 10px;
+}
+
+.body {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100px;
+  width: 150px;
+  height: 100px;
+  background: var(--brown-light);
+  border-radius: 50% 50% 20% 20%;
+}
+
+.paw {
+  position: absolute;
+  top: 155px;
+  width: 55px;
+  height: 35px;
+  background: var(--brown-light);
+  box-shadow: 0 -5px 0 var(--brown-medium);
+  border-radius: 50% 50% 30% 30%;
+}
+
+.paw.left {
+  left: 25px;
+}
+
+.paw.right {
+  right: 25px;
+}
+
+
+.fence {
+  position: absolute;
+  display: flex;
+  width: 500px;
+  height: 200px;
+  top: 190px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.panel {
+  background: rgb(71, 53, 53);
+  position: relative;
+  width: 25px;
+  height: 100px;
+  border-left: 2px solid lightgray;
+  border-right: 2px solid lightgray;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -24px;
+  width: 0; 
+  height: 0; 
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-bottom: 24px solid rgb(71, 53, 53);
+}
+
+/* keeper table */
+.table{
+
+ height: 100%;
+    background: #5f2c82;  
+    background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+    background: linear-gradient(to right, #49a09d, #5f2c82); 
+     opacity: 0.5;
+    
+}
+
+
+
+
+/* Hr Cloud */
+
+hr.style-five {
+  border: 0;
+  height: 0; /* Firefox... */
+  box-shadow: 0 0 10px 1px black;
+}
+hr.style-five:after {  /* Not really supposed to work, but does */
+  content: "\00a0";  /* Prevent margin collapse */
+}
+
+/*dog's chat bubble */
+
+
+.thought {
+  display:flex;
+  background-color:rgb(200, 143, 88);
+  padding:20px;
+  border-radius:30px;
+  min-width:40px;
+  max-width:220px;
+  min-height:40px;
+  margin:20px;
+  position:relative;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.thought:before,
+.thought:after {
+  content:"";
+  background-color:rgb(200, 143, 88);
+  border-radius:50%;
+  display:block;
+  position:absolute;
+  z-index:-1;
+}
+.thought:before {
+  width:44px;
+  height:44px;
+  top:-12px;
+  left:28px;
+  box-shadow:-50px 30px 0 -12px #fff;
+}
+.thought:after {
+  bottom:-10px;
+  right:26px;
+  width:30px;
+  height:30px;
+  box-shadow:40px -34px 0 0 rgb(200, 143, 88),
+             -28px -6px 0 -2px rgb(200, 143, 88),
+             -24px 17px 0 -6px rgb(200, 143, 88),
+             -5px 25px 0 -10px rgb(200, 143, 88);
+  
+}
+
+
+
+/* datepicker */
+
+/*input {
+  padding: 22px 15px !important;
+  border: 1px solid #CFD8DC !important;
+  border-radius: 4px !important;
+  box-sizing: border-box;
+  background-color: #fff !important;
+  color: #000 !important;
+  font-size: 16px !important;
+  letter-spacing: 1px;
+  position: relative
+}
+
+input:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #1976D2 !important;
+  outline-width: 0
+}*/
+
+.fa-calendar {
+  position: absolute;
+  top: 13px;
+  font-size: 20px;
+  color: cadetblue;
+  z-index: 1000
+}
+
+#fa-1 {
+  left: calc(50% - 40px)
+}
+
+#fa-2 {
+  left: calc(100% - 40px)
+}
+
+.form-control-placeholder {
+  position: absolute;
+  top: -10px !important;
+  padding: 12px 2px 0 2px;
+  opacity: 0.5
+}
+
+#end-p {
+  left: calc(50% + 4px)
+}
+
+.form-control:focus+.form-control-placeholder,
+.form-control:valid+.form-control-placeholder {
+  font-size: 95%;
+  top: 10px;
+  transform: translate3d(0, -100%, 0);
+  opacity: 1
+}
+
+::placeholder {
+  color: #BDBDBD;
+  opacity: 1
+}
+
+:-ms-input-placeholder {
+  color: #BDBDBD
+}
+
+::-ms-input-placeholder {
+  color: #BDBDBD
+}
+
+button:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0
+}
+
+.datepicker {
+  background-color: #fff;
+  border-radius: 0 !important;
+  align-content: center !important;
+  padding: 0 !important
+}
+
+.datepicker-dropdown {
+  top: 180px !important;
+  left: calc(50% - 173.5px) !important;
+  border-right: cadetblue;
+  border-left: cadetblue
+}
+
+.datepicker-dropdown.datepicker-orient-left:before {
+  left: calc(50% - 6px) !important
+}
+
+.datepicker-dropdown.datepicker-orient-left:after {
+  left: calc(50% - 5px) !important;
+  border-bottom-color: cadetblue
+}
+
+.datepicker-dropdown.datepicker-orient-right:after {
+  border-bottom-color: cadetblue
+}
+
+.datepicker table tr td.today,
+span.focused {
+  border-radius: 50% !important;
+  background-image: linear-gradient(#FFF3E0, #FFE0B2)
+}
+
+thead tr:nth-child(2) {
+  background-color: cadetblue !important
+}
+
+thead tr:nth-child(3) th {
+  font-weight: bold !important;
+  padding: 20px 10px !important;
+  color: #BDBDBD !important
+}
+
+tbody tr td {
+  padding: 10px !important
+}
+
+tfoot tr:nth-child(2) th {
+  padding: 10px !important;
+  border-top: 1px solid #CFD8DC !important
+}
+
+.cw {
+  font-size: 14px !important;
+  background-color: #E8EAF6 !important;
+  border-radius: 0px !important;
+  padding: 0px 20px !important;
+  margin-right: 10px solid #fff !important
+}
+
+.old,
+.day,
+.new {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 0px !important
+}
+
+.day.old,
+.day.new {
+  color: #E0E0E0 !important
+}
+
+.day.old:hover,
+.day.new:hover {
+  border-radius: 50% !important
+}
+
+.old-day:hover,
+.day:hover,
+.new-day:hover,
+.month:hover,
+.year:hover,
+.decade:hover,
+.century:hover {
+  border-radius: 50% !important;
+  background-color: #eee
+}
+
+.active {
+  border-radius: 50% !important;
+  background-image: linear-gradient(cadetblue, cadetblue) !important;
+  color: #fff !important
+}
+
+.range-start,
+.range-end {
+  border-radius: 50% !important;
+  background-image: linear-gradient(cadetblue, cadetblue) !important
+}
+
+.range {
+  background-color: #E3F2FD !important
+}
+
+.prev,
+.next,
+.datepicker-switch {
+  border-radius: 0 !important;
+  padding: 10px 10px 10px 10px !important;
+  font-size: 18px;
+  opacity: 0.7;
+  color: #fff
+}
+
+.prev:hover,
+.next:hover,
+.datepicker-switch:hover {
+  background-color: inherit !important;
+  opacity: 1
+}
+
+@media screen and (max-width: 726px) {
+  .datepicker-dropdown.datepicker-orient-right:before {
+      right: calc(50% - 6px)
+  }
+
+  .datepicker-dropdown.datepicker-orient-right:after {
+      right: calc(50% - 5px)
+  }
+}
+
+
+
+/* skies div top */
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+/* slider */
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 20vw;
+  border: none !important;
+  
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: cadetblue;
+  /* border-radius: 1.3px;
+  border: 0.2px solid #010101; */
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: cadetblue;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: cadetblue;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: cadetblue;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: cadetblue;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: cadetblue;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: cadetblue;
+}

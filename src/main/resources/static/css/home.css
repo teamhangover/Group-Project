@@ -134,3 +134,9 @@ nav a:hover {
     }
 }
 
+.card-bg{
+         background: #5f2c82;  
+background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+background: linear-gradient(to right, #49a09d, #5f2c82); 
+ opacity: 0.5;
+}
