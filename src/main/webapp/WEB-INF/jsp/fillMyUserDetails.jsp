@@ -29,10 +29,11 @@
 
         <!--Map-->
         <link type="text/css" rel="stylesheet" href="/css/map.css">
+        <!--        customs css-->
+        <link type="text/css" rel="stylesheet" href="/css/fillMyUserDetails.css">
         <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-
-        <!--Map-->
     </head>
+
     <body>
         <jsp:include page="navbar.jsp"></jsp:include>
 
@@ -43,31 +44,31 @@
             <br>
             <br>
             <hr>
-        <springform:form id="detailsForm" action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data">
+        <springform:form id="detailsForm" action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data" >
 
             <springform:input path="detailsId" hidden="true" />
-            First Name: <springform:input type="text" path="firstName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true"/>
+            First Name: <springform:input type="text" path="firstName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true" placeholder="Όνομα"/>
             <br>
-            Last Name: <springform:input type="text" path="lastName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true"/>
+            Last Name: <springform:input type="text" path="lastName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true"  placeholder="Επίθετο"/>
             <br>
-            Age: <springform:input type="number" path="age" min="18" max="99" required="true"/>
+            Age: <springform:input type="number" path="age" min="18" max="99" required="true" placeholder="Ηλικία"/>
             <br>
-            Phone Number: <springform:input type="tel" path="tel" pattern="69+[0-9]{8}" title="must start with 69 and have 10 numbers" required="true"/>
+            Phone Number: <springform:input type="tel" path="tel" pattern="69+[0-9]{8}" title="must start with 69 and have 10 numbers" required="true" placeholder="Τηλέφωνο"/>
             <br>
-            Description: <springform:input type="textarea" path="uDescription"/>
+            Description: <springform:input cssClass="form__input form-control" type="textarea" path="uDescription"  placeholder="Περιγραφή"/>       
             <br>
-            Upload Profile Photo: <input type="file" name="photo" accept="image/*"/>
+            Upload Profile Photo: <input type="file" name="photo" accept="image/*" class="form__input  form-control " />
             <br>
-            <input type="submit" id="submitButton" />
-            <!--Submit</button>-->
-            <button type="reset">Clear</button>
+            <div class="d-flex   ">
+                <button type="submit" id="submitButton" class="btn btn-outline-dark m-5" >Submit</button>
+                <button type="reset" class="btn btn-lg btn-outline-dark m-5">Clear</button>
+            </div>
             <br>
         </springform:form>
-
         <c:if test="${pageContext['request'].userPrincipal != null}">
             <!--and is Keeper-->
             <security:authorize access="hasRole('ROLE_KEEPER') and isAuthenticated()">
-                <!--TODO Address form-->
+                <!--TODO Address form-->           
                 <div id="addressForm">
                     <hr>
                     Price/day: <input id="price" placeholder="Price/day" type="number" />&euro;
@@ -76,15 +77,15 @@
                     <input id="autocomplete" placeholder="Enter your address" type="text" />
                     <div id="AddressDiv" hidden="true">
                         <br>
-                        Street address:<input class="field" id="street_number" disabled="true" />
+                        Διεύθυνση <input class="field" id="street_number" disabled="true" placeholder="Διεύθυνση" />
                         <br>
-                        City: <input class="field" id="locality" disabled="true" />
+                        Πόλη  <input class="field" id="locality" disabled="true" placeholder="Πόλη" />
                         <br>
-                        State: <input class="field" id="administrative_area_level_1" disabled="true" />
+                        Πολιτεια <input class="field" id="administrative_area_level_1" disabled="true" placeholder="Πολιτεια" />
                         <br>
-                        Zip code: <input class="field" id="postal_code" disabled="true" />
+                        Τ.Κ. <input class="field" id="postal_code" disabled="true" placeholder="Τ.Κ." />
                         <br>
-                        Country: <input class="field" id="country" disabled="true" />
+                        Χώρα <input class="field" id="country" disabled="true" placeholder="Χώρα" />
                         <br>
                         <hr>
                     </div>
@@ -95,8 +96,8 @@
                 defer></script>
 
                 <script>
-                // This example displays an address form, using the autocomplete feature
-                // of the Google Places API to help users fill in the information.
+// This example displays an address form, using the autocomplete feature
+// of the Google Places API to help users fill in the information.
                 $(document).ready(function () {
 
                     var autocomplete;
@@ -107,19 +108,17 @@
                         country: 'long_name',
                         postal_code: 'short_name'
                     };
-
-                    //input fields
+//input fields
                     let streetNumber = $("#street_number");
                     let locality = $("#locality");
                     let administrativeAreaLevel = $("#administrative_area_level_1");
                     let postalCode = $("#postal_code");
                     let country = $("#country");
-                    //other properties of entity Address
+//other properties of entity Address
                     let longitude;
                     let latidute;
                     let price = $("#price");
-
-                    //Get current Address of Keeper
+//Get current Address of Keeper
 //                    let getAddressUrl = "/keeper/myAddress";
 //                    $.ajax({
 //                        url: getAddressUrl
@@ -128,8 +127,8 @@
 //                            //TODO Fill in input fields with data
 //                        }
 //                    });
-
-                    //Register Address
+//                    
+//Register Address
 //                    let ajaxSentFlag = false;
 //                    let registerAddressUrl = "/keeper/registerMyAddress";
 //                    $("#detailsForm").submit((e) => {
@@ -165,7 +164,7 @@
 //                        }
 //                    });
 
-                    //
+//
                     $("#autocomplete").focus(function () {
                         //Geolocation? getCurrentLocation?
 
@@ -174,40 +173,33 @@
                         //Revealing hidden input fields
                         $("#AddressDiv").removeAttr("hidden");
                     });
-
                     function initialize() {
                         var mapOptions = {
                             center: new google.maps.LatLng(37.983748, 23.727658),
                             zoom: 13
                         };
-
-
                         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
                         autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')), {types: ['geocode']});
                         google.maps.event.addListener(autocomplete, 'place_changed', function () {
                             // Get the place details from the autocomplete object.
                             var place = autocomplete.getPlace();
-
                             for (var component in componentForm) {
                                 document.getElementById(component).value = "";
                                 document.getElementById(component).disabled = false;
                             }
                             var newPos = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
-
                             map.setOptions({
                                 center: newPos,
                                 zoom: 15
                             });
-
                             //add a marker
                             var marker = new google.maps.Marker({
                                 position: newPos,
                                 map: map,
                                 title: "New marker"
                             });
-
-                            // Get each component of the address from the place details
-                            // and fill the corresponding field on the form.
+                                // Get each component of the address from the place details
+                                // and fill the corresponding field on the form.
                             for (var i = 0; i < place.address_components.length; i++) {
                                 var addressType = place.address_components[i].types[0];
                                 if (componentForm[addressType]) {
@@ -226,22 +218,22 @@
             <!--and is owner-->
             <security:authorize access="hasRole('ROLE_OWNER') and isAuthenticated()">
                 <div id="petForm">
-                    Pet Name: <input type="text" id="petName" placeholder="Pet Name" />
-                    Pet Type: <select name="type" id="petType">
+                    :Όνομα ζώου <input type="text" id="petName" placeholder="Όνομα κατοικιδίου" />
+                    Eίδος ζώου <select name="type" id="petType">
                         <option value="dog">Dog</option>
                         <option value="cat">Cat</option>
                         <option value="rabbit">Rabbit</option>
                         <option value="bird">Bird</option>
                     </select>
-                    Description  <input type="text" id="petDescription" placeholder="Type here a few info about your pet"/>
+                    Description  <input type="text" id="petDescription" placeholder="Λίγα λόγια για το ζωάκι σου!"/>
                 </div>
+
                 <script>
                     $(document).ready(function () {
 
                         let petName = $("#petName");
                         let petType = $("#petType");
                         let petDescription = $("#petDescription");
-
                         //Send request to get the Pet of the owner (if any)
                         let getPetUrl = "/owner/myPet";
                         $.ajax({
@@ -252,7 +244,6 @@
                                 importPetData(data);
                             }
                         });
-
                         //Fill Pet input fields with data from ajax request
                         function importPetData(data) {
 
@@ -270,7 +261,6 @@
                             if (!hasAjaxRequestSucceeded) {
                                 // Prevent from submission
                                 e.preventDefault();
-
                                 // Initiate request and stop function execution at this point
                                 // by return-ing
                                 return $.post(
@@ -283,7 +273,7 @@
                                     // 
                                     $('#detailsForm').fadeOut(600);
                                     $('#petForm').fadeOut(600);
-                                    // Switching the variable to true
+                                    // Switching the variableto true
                                     hasAjaxRequestSucceeded = true;
                                     // Submitting the form
                                     $("form").submit();
