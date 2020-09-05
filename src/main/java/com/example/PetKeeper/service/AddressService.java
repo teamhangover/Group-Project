@@ -13,8 +13,6 @@ import com.example.PetKeeper.model.MyUser;
  * @author ths13
  */
 public interface AddressService {
-    
+
     public Address saveAddress(Address address);
-    
-    public Address getAddressByMyUserId(MyUser myUser);
 }

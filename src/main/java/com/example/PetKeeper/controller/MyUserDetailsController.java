@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.PetKeeper.service.MyUserService;
 import java.security.Principal;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -64,17 +66,32 @@ public class MyUserDetailsController {
                 .getMyUserByUsername(principal.getName());
         newMyUserDetails.setMyUserId(loggedInMyUser);
 
-        if (profilePic != null) {
-            //giving a unique name to the file 
+        //if Multipart is not empty
+        if (!profilePic.getOriginalFilename().equals("")) {
+            //giving a name to the file 
             String profilePicName = newMyUserDetails.getMyUserId().getUsername() + "-Photo";
-            //save file to disk and get the filename back
+            //save file to disk and get the filename.extension back
             newMyUserDetails.setUPhotoName(fileHandlingService.storeFileToDisk(profilePic, profilePicName));
+        } else {
+
+            newMyUserDetails.setUPhotoName(loggedInMyUser.getMyUserDetails().getUPhotoName());
         }
 
         //save details 
         myUserDetailsService.saveMyUserDetails(newMyUserDetails);
 
         return "redirect:/preInsertMyUserDetails";
+    }
 
+    @GetMapping("/getProfilePhoto/{username}")
+    @ResponseBody
+    public String getProfilePhotoName(@PathVariable("username") String username) {
+
+        MyUser myUser = myUserService.getMyUserByUsername(username);
+        if (myUser.getMyUserDetails().getUPhotoName() != null) {
+            return myUser.getMyUserDetails().getUPhotoName();
+        } else {
+            return null;
+        }
     }
 }

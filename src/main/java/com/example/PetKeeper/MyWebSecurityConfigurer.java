@@ -38,7 +38,7 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/keeper/**").hasRole("KEEPER") // to /** kleidwnei oles ts selides p ksekinane apo /admin
                 .antMatchers("/owner/**").hasRole("OWNER")
-//                .antMatchers("/preInsertMyUserDetails").hasAnyRole("KEEPER", "OWNER")
+                .antMatchers("/preInsertMyUserDetails").hasAnyRole("KEEPER", "OWNER")
                 .and()
                 .formLogin() // We are customizing the form login process
                 .loginPage("/loginPage") // This is the url to show the login page

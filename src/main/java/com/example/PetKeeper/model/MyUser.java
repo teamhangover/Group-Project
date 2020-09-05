@@ -42,44 +42,51 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "MyUser.findByEmail", query = "SELECT m FROM MyUser m WHERE m.email = :email")})
 public class MyUser implements Serializable {
 
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "username")
-    private String username;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 60)
-    @Column(name = "my_password")
-    private String myPassword;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "email")
-    private String email;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "keeperId")
-    private Collection<Reservation> reservationsCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ownerId")
-    private Collection<Reservation> reservationsCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "keeperId")
-    private Collection<KeepersAvailability> keepersAvailabilityCollection;
-
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "my_user_id")
     private Integer myUserId;
+
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "username")
+    private String username;
+
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 60)
+    @Column(name = "my_password")
+    private String myPassword;
+
+// @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "email")
+    private String email;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "myUserId")
+    private Address address;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "keeperId")
+    private Collection<Reservation> reservationsCollection;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "keeperId")
+    private Collection<KeepersAvailability> keepersAvailabilityCollection;
+
     @JoinTable(name = "my_users_roles", joinColumns = {
         @JoinColumn(name = "my_user_id", referencedColumnName = "my_user_id")}, inverseJoinColumns = {
         @JoinColumn(name = "role_id", referencedColumnName = "role_id")})
     @ManyToMany
     private Collection<Role> rolesCollection;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "myUserId")
     private Collection<Pet> petsCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "myUserId")
-    private Collection<Address> addressesCollection;
+
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "myUserId")
     private MyUserDetails myUserDetails;
 
@@ -105,7 +112,6 @@ public class MyUser implements Serializable {
         this.myUserId = myUserId;
     }
 
-
     public String getMyPassword() {
         return myPassword;
     }
@@ -114,6 +120,37 @@ public class MyUser implements Serializable {
         this.myPassword = myPassword;
     }
 
+    public MyUserDetails getMyUserDetails() {
+        return myUserDetails;
+    }
+
+    public void setMyUserDetails(MyUserDetails myUserDetails) {
+        this.myUserDetails = myUserDetails;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     @XmlTransient
     public Collection<Role> getRolesCollection() {
@@ -134,20 +171,21 @@ public class MyUser implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Address> getAddressesCollection() {
-        return addressesCollection;
+    public Collection<Reservation> getReservationsCollection() {
+        return reservationsCollection;
     }
 
-    public void setAddressesCollection(Collection<Address> addressesCollection) {
-        this.addressesCollection = addressesCollection;
+    public void setReservationsCollection(Collection<Reservation> reservationsCollection) {
+        this.reservationsCollection = reservationsCollection;
     }
 
-    public MyUserDetails getMyUserDetails() {
-        return myUserDetails;
+    @XmlTransient
+    public Collection<KeepersAvailability> getKeepersAvailabilityCollection() {
+        return keepersAvailabilityCollection;
     }
 
-    public void setMyUserDetails(MyUserDetails myUserDetails) {
-        this.myUserDetails = myUserDetails;
+    public void setKeepersAvailabilityCollection(Collection<KeepersAvailability> keepersAvailabilityCollection) {
+        this.keepersAvailabilityCollection = keepersAvailabilityCollection;
     }
 
     @Override
@@ -174,48 +212,4 @@ public class MyUser implements Serializable {
     public String toString() {
         return "com.example.PetKeeper.model.MyUser[ myUserId=" + myUserId + " ]";
     }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-       public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @XmlTransient
-    public Collection<Reservation> getReservationsCollection() {
-        return reservationsCollection;
-    }
-
-    public void setReservationsCollection(Collection<Reservation> reservationsCollection) {
-        this.reservationsCollection = reservationsCollection;
-    }
-
-    @XmlTransient
-    public Collection<Reservation> getReservationsCollection1() {
-        return reservationsCollection1;
-    }
-
-    public void setReservationsCollection1(Collection<Reservation> reservationsCollection1) {
-        this.reservationsCollection1 = reservationsCollection1;
-    }
-
-    @XmlTransient
-    public Collection<KeepersAvailability> getKeepersAvailabilityCollection() {
-        return keepersAvailabilityCollection;
-    }
-
-    public void setKeepersAvailabilityCollection(Collection<KeepersAvailability> keepersAvailabilityCollection) {
-        this.keepersAvailabilityCollection = keepersAvailabilityCollection;
-    }
-    
 }

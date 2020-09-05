@@ -6,32 +6,30 @@
 package com.example.PetKeeper.service;
 
 import com.example.PetKeeper.model.Address;
-import com.example.PetKeeper.model.MyUser;
 import com.example.PetKeeper.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 /**
  *
  * @author ths13
  */
-
 @Service
 public class AddressServiceImpl implements AddressService {
-    
+
     @Autowired
     AddressRepository addressRepository;
 
     @Override
-    public Address getAddressByMyUserId(MyUser myUser) {
-        return addressRepository.findByMyUserId(myUser);
-    }
-
-    @Override
     public Address saveAddress(Address address) {
-        return addressRepository.save(address);
+        Address savedAddress = new Address();
+        try {
+            savedAddress = addressRepository.save(address);
+        } catch (DataIntegrityViolationException e) {
+            System.out.println("Duplicate entry!");
+        }
+        return savedAddress;
     }
 
-  
-    
 }
