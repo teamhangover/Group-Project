@@ -10,14 +10,16 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-
+*{
+    border: solid 1px black;
+}
 .ddd{
     display: flex;
     justify-content: center;
-    background-color: darkcyan;
+    background-color: cadetblue;
     align-items: center;
     flex-direction: column;
-    flex-shrink: 4;
+  margin-top: 5px;
 }
 
 .form__input {
@@ -27,9 +29,9 @@ input[type=number] {
 	margin: 0 auto;
   padding: 1.2rem 2rem;
   border-radius: 0.2rem;
-  background-color: rgb(255, 255, 255);
+  background-color: red;
   border: none;
-  width: 50%;
+  width: 30%;
   display: block;
   border-bottom: 0.3rem solid transparent;
   transition: all 0.3s;

@@ -9,6 +9,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Find Keepers</title>
+         <link rel="icon" href="/img/paw.png" sizes="32x32">
 
         <!--bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -279,7 +280,7 @@
         <br>
 
 
-
+<jsp:include page="footer.jsp"></jsp:include> 
     </body>
 
 </html>

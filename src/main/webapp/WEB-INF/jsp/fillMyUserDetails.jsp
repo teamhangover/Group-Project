@@ -29,9 +29,11 @@
 
         <!--Map-->
         <link type="text/css" rel="stylesheet" href="/css/map.css">
+<!--        customs css-->
+        <link type="text/css" rel="stylesheet" href="/css/fillMyUserDetails.css">
         <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
         <script
-            src="https://maps.googleapis.com/maps/api/js?key=&libraries=places&v=weekly"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5mZvsDf2yxpRbN_AdULITrSGI_o3Oow&libraries=places&v=weekly"
         defer></script>
         <!--Map-->
     </head>
@@ -41,27 +43,30 @@
             <br>
             <br>
             <br>
-            <br>
-            <br>
-            <br>
-            <hr>
-        <springform:form id="form" action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data">
+            
+            <p>
+        
+         
+           
+        <springform:form id="form" action="/doInsertMyUserDetails" cssClass="ddd" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data">
 
             <springform:input path="detailsId" hidden="true" />
-            First Name: <springform:input type="text" path="firstName" />
+            First Name: <springform:input cssClass="form__input form-control" type="text" path="firstName" placeholder="Όνομα"/>
             <br>
-            Last Name: <springform:input type="text" path="lastName"/>
+            Last Name: <springform:input cssClass="form__input form-control" type="text" path="lastName"  placeholder="Επίθετο"/>
             <br>
-            Age: <springform:input type="number" path="age"/>
+            Age: <springform:input cssClass="form__input form-control" type="number" path="age"  placeholder="Ηλικία"/>
             <br>
-            Phone Number: <springform:input type="phone" path="tel"/>
+            Phone Number: <springform:input  cssClass="form__input form-control" type="phone" path="tel"  placeholder="Τηλέφωνο"/>
             <br>
-            Description: <springform:input type="textarea" path="uDescription"/>
+            Description: <springform:input cssClass="form__input form-control" type="textarea" path="uDescription"  placeholder="Περιγραφή"/>       
             <br>
-            Upload Profile Photo: <input type="file" name="photo" accept="image/*"/>
+            Upload Profile Photo: <input type="file" name="photo" accept="image/*" class="form__input  form-control " />
             <br>
-            <button type="submit" id="submit" >Submit</button>
-            <button type="reset">Clear</button>
+            <div class="d-flex   ">
+            <button type="submit" id="submit" class="btn btn-outline-dark m-5" >Submit</button>
+            <button type="reset" class="btn btn-lg btn-outline-dark m-5">Clear</button>
+            </div>
             <br>
         </springform:form>
 
@@ -71,18 +76,20 @@
                 <!--TODO Address form-->
                 <hr>
                 Address:
-                <input id="autocomplete" placeholder="Enter your address" type="text" />
-                <div id="AddressDiv" hidden="true">
+                <input id="autocomplete" placeholder="Τοποθεσία.." type="text" />
+                <div id="AddressDiv" hidden="true"   >
                     <br>
-                    Street address:<input class="field" id="street_number" disabled="true" />
+                    Street address:<input class="field" id="street_number" disabled="true"  placeholder="Διεύθυνση" />
                     <br>
-                    City: <input class="field" id="locality" disabled="true" />
+                    City: <input class="field" id="locality" disabled="true"  placeholder="Πόλη"/>
                     <br>
-                    State: <input class="field" id="administrative_area_level_1" disabled="true" />
+                    Zip code: <input class="field" id="postal_code" disabled="true"  placeholder="Τ.Κ." />
                     <br>
-                    Zip code: <input class="field" id="postal_code" disabled="true" />
+                    Country: <input class="field" id="country" disabled="true" hidden="true"  placeholder="Χώρα" />
                     <br>
-                    Country: <input class="field" id="country" disabled="true" />
+                    State <input class="field" id="administrative_area_level_1" disabled="true" hidden="true" placeholder="Πολιτεια" />
+                    <br>
+                    Price <input class="number" id="price-per-day"   placeholder="Τιμή ανά ημέρα" />
                     <br>
                     <hr>
                 </div>
@@ -114,28 +121,28 @@
                     let latidute;
 
                     //Get current Address of Keeper
-                    let getAddressUrl = "/keeper/myAddress";
-                    $.ajax({
-                        url: getAddressUrl
-                    }).then(function (data) {
-                        if (data !== null) {
+//                    let getAddressUrl = "/keeper/myAddress";
+//                    $.ajax({
+//                        url: getAddressUrl
+//                    }).then(function (data) {
+//                        if (data !== null) {
+//                        }
+//                    });
                              //TODO Fill in input fields with data
-                        }
-                    });
 
                     //Register Address
-                    let registerAddressUrl = "";
-                    $("#submit").click(function (e) {
-                        e.preventDefault();
-                        $.get(
-                                registerAddressUrl,
+//                    let registerAddressUrl = "";
+//                    $("#submit").click(function (e) {
+//                        e.preventDefault();
+//                        $.get(
+//                                registerAddressUrl,
                         //TODO set the data
 //                                {petName: petName.val(), petType: petType.val(), petDescription: petDescription.val()}
-                                ).done(function (data) {
-                            $("#form").submit();
-                        });
-
-                    });
+//                                ).done(function (data) {
+//                            $("#form").submit();
+//                        });
+//
+//                    });
 
                     //
                     $("#autocomplete").focus(function () {
@@ -198,14 +205,16 @@
             <!--and is owner-->
             <security:authorize access="hasRole('ROLE_OWNER') and isAuthenticated()">
 
-                Pet Name: <input type="text" id="petName" placeholder="Pet Name" />
-                Pet Type: <select name="type" id="petType">
+                Pet Name: <input type="text" id="petName" placeholder="Όνομα κατοικιδίου"/>
+                Pet Type: <select name="type" id="petType" >
+                    <option selected disabled="true"> Eίδος ζώου</option>
                     <option value="dog">Dog</option>
                     <option value="cat">Cat</option>
                     <option value="rabbit">Rabbit</option>
                     <option value="bird">Bird</option>
+                    <option value="other">Other</option>
                 </select>
-                Description  <input type="text" id="petDescription" placeholder="Type here a few info about your pet"/>
+                Description  <input type="text" id="petDescription" placeholder="Λίγα λόγια για το ζωάκι σου!"/>
                 <script>
                     $(document).ready(function () {
 
