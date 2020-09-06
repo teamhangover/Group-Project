@@ -81,10 +81,11 @@ body, *{
     width: 12%;
     margin: 1%;
     padding: 1%;
-    font-size:13pt;
+    font-size: 9pt;
     text-align:center;
     border-radius: 10px;
     border: solid 1px #ddd;
+    cursor:pointer;
 }
 
 .calendar .calendar-dates .days .day.blank
@@ -130,4 +131,3 @@ body, *{
         left: 0px;
     }
 }
-            

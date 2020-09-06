@@ -53,7 +53,7 @@ public class MyUserServiceImpl implements MyUserService {
 
         MyUser savedUser = new MyUser();
         try {
-            savedUser = savedUser = myUserRepository.save(myUser);
+            savedUser = myUserRepository.save(myUser);
         } catch (DataIntegrityViolationException e) {
             e.printStackTrace();
             System.out.println("Duplicate entry! One or more info already exists");
