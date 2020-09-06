@@ -47,3 +47,13 @@ background: linear-gradient(to right, #49a09d, #5f2c82);
     background-color: #21b4e7
 }
 
+a,  #whatIs {
+    
+    text-decoration: none;
+    color:white;
+}
+
+#whatIs:hover{
+    text-decoration: none;
+    
+}

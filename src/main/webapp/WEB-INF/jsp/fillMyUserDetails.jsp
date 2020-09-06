@@ -57,7 +57,7 @@
             <br>
             Description: <springform:input cssClass="form__input form-control" type="textarea" path="uDescription"  placeholder="Περιγραφή"/>       
             <br>
-            Upload Profile Photo: <input type="file" name="photo" accept="image/*" class="form__input  form-control " />
+            Upload Profile Photo: <input type="file" name="photo" accept="image/*" class="form__input  form-control "  />
             <br>
             <div class="d-flex   ">
                 <button type="submit" id="submitButton" class="btn btn-outline-dark m-5" >Submit</button>

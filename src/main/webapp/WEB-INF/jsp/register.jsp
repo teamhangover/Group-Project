@@ -31,15 +31,15 @@
                     <!-- register Form -->
                 <springform:form action="${pageContext.request.contextPath}/doInsertMyUser" method="post" modelAttribute="newMyUser">
                     <springform:input path="myUserId" hidden="true"></springform:input>
-                    <springform:input path="username" type="text" id="login" cssClass="fadeIn first" name="register" placeholder="username" />
-                    <springform:input path="myPassword" type="password" id="password" cssClass="fadeIn second" name="register" placeholder="password" />
-                    <springform:input path="email" type="email" id="email" cssClass="fadeIn third" name="register" placeholder="email" />
+                    <springform:input path="username" type="text" id="login" cssClass="fadeIn first" name="register" placeholder="Όνομα χρήστη" required="true" />
+                    <springform:input path="myPassword" type="password" id="password" cssClass="fadeIn second" name="register" placeholder="Συνθηματικό" required="true" />
+                    <springform:input path="email" type="email" id="email" cssClass="fadeIn third" name="register" placeholder="Ε-mail" required="true" />
                     
-                    <span id="keeperCheckbox" class="fadeIn fourth text-muted ">Register as a Keeper ? <input name="keeper" id="keeper" class="pointer"  value="true" type="checkbox"/> </span>  
+                    <span id="keeperCheckbox" class="fadeIn fourth text-muted "> Εγγραφή ως Keeper ; <input name="keeper" id="keeper" class="pointer"  value="true" type="checkbox"/> </span>  
 
 
                     <p></p>
-                    <input type="submit" class="fadeIn fourth pointer" value="Register" />
+                    <input type="submit" class="fadeIn fourth pointer" value="Eγγραφή"  />
                 </springform:form>
 
             </div>
