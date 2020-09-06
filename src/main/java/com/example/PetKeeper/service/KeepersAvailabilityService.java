@@ -5,14 +5,13 @@
  */
 package com.example.PetKeeper.service;
 
-import com.example.PetKeeper.model.Address;
-import com.example.PetKeeper.model.MyUser;
+import com.example.PetKeeper.model.KeepersAvailability;
 
 /**
  *
- * @author ths13
+ * @author RG
  */
-public interface AddressService {
-
-    public Address saveAddress(Address address);
+public interface KeepersAvailabilityService {
+    
+    public KeepersAvailability saveOrDeleteUnavailableDate(KeepersAvailability keeperAvailability);
 }
