@@ -29,10 +29,11 @@
 
         <!--Map-->
         <link type="text/css" rel="stylesheet" href="/css/map.css">
+        <!--        customs css-->
+        <link type="text/css" rel="stylesheet" href="/css/fillMyUserDetails.css">
         <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-
-        <!--Map-->
     </head>
+
     <body>
         <jsp:include page="navbar.jsp"></jsp:include>
 
@@ -49,24 +50,24 @@
         <springform:form id="detailsForm" action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data">
 
             <springform:input path="detailsId" hidden="true" />
-            First Name: <springform:input type="text" path="firstName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true"/>
+            First Name: <springform:input type="text" path="firstName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true" placeholder="Όνομα"/>
             <br>
-            Last Name: <springform:input type="text" path="lastName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true"/>
+            Last Name: <springform:input type="text" path="lastName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true"  placeholder="Επίθετο"/>
             <br>
-            Age: <springform:input type="number" path="age" min="18" max="99" title="You have to be at least 18 years old" required="true"/>
+            Age: <springform:input type="number" path="age" min="18" max="99" title="You have to be at least 18 years old" required="true" placeholder="Ηλικία"/>
             <br>
-            Phone Number: <springform:input type="tel" path="tel" pattern="69+[0-9]{8}" title="must start with 69 and have 10 numbers" required="true"/>
+            Phone Number: <springform:input type="tel" path="tel" pattern="69+[0-9]{8}" title="must start with 69 and have 10 numbers" required="true" placeholder="Τηλέφωνο"/>
             <br>
-            Description: <springform:input type="textarea" path="uDescription"/>
+            Description: <springform:input cssClass="form__input form-control" type="textarea" path="uDescription"  placeholder="Περιγραφή"/>       
             <br>
-            Upload Profile Photo: <input type="file" name="photo" accept="image/*"/>
+            Upload Profile Photo: <input type="file" name="photo" accept="image/*" class="form__input  form-control " />
             <br>
-            <input type="submit" id="submitButton" />
-            <!--Submit</button>-->
-            <button type="reset">Clear</button>
+            <div class="d-flex   ">
+                <button type="submit" id="submitButton" class="btn btn-outline-dark m-5" >Submit</button>
+                <button type="reset" class="btn btn-lg btn-outline-dark m-5">Clear</button>
+            </div>
             <br>
         </springform:form>
-
         <c:if test="${pageContext['request'].userPrincipal != null}">
             <script>
                 //get username of loggedInUser
@@ -94,15 +95,15 @@
                     <input id="autocomplete" placeholder="Enter your address" type="text" />
                     <div id="AddressDiv">
                         <br>
-                        Street address:<input class="field" id="street_number" disabled="true" />
+                        Διεύθυνση <input class="field" id="street_number" disabled="true" placeholder="Διεύθυνση" />
                         <br>
-                        City: <input class="field" id="locality" disabled="true" />
+                        Πόλη  <input class="field" id="locality" disabled="true" placeholder="Πόλη" />
                         <br>
                         Route: <input class="field" id="route" disabled="true" />
                         <br>
-                        Zip code: <input class="field" id="postal_code" disabled="true" />
+                        Τ.Κ. <input class="field" id="postal_code" disabled="true" placeholder="Τ.Κ." />
                         <br>
-                        Country: <input class="field" id="country" disabled="true" />
+                        Χώρα <input class="field" id="country" disabled="true" placeholder="Χώρα" />
                         <br>
                         <hr>
                     </div>
@@ -113,23 +114,25 @@
                 defer></script>
 
                 <script src="/js/fillMyuserDetails-Keeper.js"></script>
+
             </security:authorize>
 
             <!--and is owner-->
             <security:authorize access="hasRole('ROLE_OWNER') and isAuthenticated()">
                 <div id="petForm">
-                    Pet Name: <input type="text" id="petName" placeholder="Pet Name" />
-                    Pet Type: <select name="type" id="petType">
+                    :Όνομα ζώου <input type="text" id="petName" placeholder="Όνομα κατοικιδίου" />
+                    Eίδος ζώου <select name="type" id="petType">
                         <option value="dog">Dog</option>
                         <option value="cat">Cat</option>
                         <option value="rabbit">Rabbit</option>
                         <option value="bird">Bird</option>
                     </select>
-                    Description  <input type="text" id="petDescription" placeholder="Type here a few info about your pet"/>
+                    Description  <input type="text" id="petDescription" placeholder="Λίγα λόγια για το ζωάκι σου!"/>
                 </div>
+
                 <script src="/js/fillMyuserDetails-Owner.js"></script>
 
-            </security:authorize>
+           </security:authorize>
         </c:if>
         <jsp:include page="footer.jsp"></jsp:include>
     </body>
