@@ -85,7 +85,7 @@
             </script>
             <!--and is Keeper-->
             <security:authorize access="hasRole('ROLE_KEEPER') and isAuthenticated()">
-                <!--TODO Address form-->
+                <!-- Address form-->
                 <div id="addressForm">
                     <hr>
                     Price/day: <input id="price" placeholder="Price/day" type="number"/>&euro;
