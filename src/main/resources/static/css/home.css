@@ -140,3 +140,16 @@ background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);
 background: linear-gradient(to right, #49a09d, #5f2c82); 
  opacity: 0.5;
 }
+
+.item{
+    margin:15px;
+    
+}
+
+.item-head{
+
+background: rgb(3,5,8);
+background: linear-gradient(90deg, rgba(3,5,8,1) 0%, rgba(191,120,57,0.7819328414959734) 58%, rgba(190,190,190,1) 100%);
+ opacity: 0.5;
+ color:whitesmoke
+}

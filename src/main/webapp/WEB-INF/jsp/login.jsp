@@ -29,20 +29,20 @@
 
 
                 <c:if test="${param.error != null}">
-                    <b>Wrong credentials</b>
+                    <b>Προσπάθησε ξανά</b>
                 </c:if>
                 <c:if test="${param.logout != null}">
-                    <b>Successfully logged out</b>
+                    <b>Αποσυνδέθηκες επιτυχώς</b>
                 </c:if>
                 <springform:form method="POST" action="" >
-                    <input type="text" id="login" class="fadeIn second" name="username" placeholder="username">
-                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-                    <input type="submit" class="fadeIn fourth pointer" value="Log In">
+                    <input type="text" id="login" class="fadeIn second" name="username" placeholder="Όνομα χρήστη">
+                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="Συνθηματικό">
+                    <input type="submit" class="fadeIn fourth pointer" value="Σύνδεση">
                 </springform:form> 
 
                 <!-- Remind Passowrd -->
                 <div id="formFooter">
-                    <a class="underlineHover" href="#">Forgot Password?</a>
+                    <a class="underlineHover" href="#">Ξέχασες το συνθηματικό;</a>
                 </div>
             </div>   
         </div>

@@ -10,18 +10,20 @@
 
 <link href="/css/navbar.css" rel="stylesheet"> 
 
-
 <header>
     <nav class="navbar navbar-expand-md fixed-top d-flex flex-row-reverse nav-bk8">
 
         <!--if logged in-->
         <c:if test="${pageContext['request'].userPrincipal != null}">
             <security:authentication var="user" property="principal" />
-            <security:authorize access="isAuthenticated()" >
-                 ${user.username} 
+            <security:authorize access="isAuthenticated()" > 
+                <div class="d-flex flex-column text-center">  
+                    <strong class="text-light"> Καλώς ήρθες , </strong>  
+                    <strong class="text-light "> ${user.username} </strong> 
+                </div>
             </security:authorize> 
-            <a class="navbar btn btn-outline-warning m-2""><form:form method="post" action="${pageContext.request.contextPath}/logout">
-                    <input id="logout" class="text-warning" type="submit" value="Logout"/>
+            <a class="navbar btn btn-outline-warning m-2 mr-4""><form:form method="post" action="${pageContext.request.contextPath}/logout">
+                    <input id="logout" class="text-warning" type="submit" value="Αποσύνδεση"/>
                 </form:form></a>
             </c:if>
 
@@ -42,10 +44,10 @@
             <!--and is owner-->
             <security:authorize access="hasRole('ROLE_OWNER') and isAuthenticated()">
                 <a class="navbar btn btn-outline-warning m-2" href="${pageContext.request.contextPath}/preInsertMyUserDetails">Προφίλ</a>
-                <a class="navbar btn btn-outline-warning m-2" href="${pageContext.request.contextPath}/owner/search">Find Keepers</a>
+                <a class="navbar btn btn-outline-warning m-2" href="${pageContext.request.contextPath}/owner/search">Βρές Keepers</a>
             </security:authorize>
         </c:if>
-            
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,9 +55,9 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <img src="/img/transParentLogo.png" class="rounded" alt="">
 
-            
-                    <a class="nav-link  btn btn-outline-warning ml-3 " href="${pageContext.request.contextPath}/"> <i class="fa fa-fw fa-home"> </i> Home </a>
-               
+
+            <a class="nav-link  btn btn-outline-warning ml-3 " href="${pageContext.request.contextPath}/"> <i class="fa fa-fw fa-home"> </i> Κεντρική </a>
+            <a id="whatIs">Τι είναι το petKeeper</a>
         </div>
     </nav>
 </header>  
