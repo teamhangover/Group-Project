@@ -14,7 +14,7 @@ body, *{
 {
     display: none;
     position: absolute;
-    background-color: #fff;
+    background-color: #00FFFF;
     color: black;
     text-align: center;
     font-size: 14pt;
@@ -36,7 +36,7 @@ body, *{
 
 .calendar .dropdown .dropdown-item:hover
 {
-    opacity: 1;
+    opacity: .5;
 }
 
 .calendar .years
@@ -53,8 +53,8 @@ body, *{
 .calendar .calendar-btn
 {
     float: left;
-    background-color: #955251;
-    color: white;
+    background-color: #80ffff;
+    color: black;
     text-align: center;
     font-size: 14pt;
     padding-top: 5px;
@@ -67,7 +67,7 @@ body, *{
 }
 
 .calendar .calendar-btn:hover{
-    background-color:#955251;
+    background-color:cadetblue;
 }
 
 .calendar .year-btn
@@ -96,7 +96,7 @@ body, *{
 
 .calendar .calendar-dates .days .day.selected
 {
-    background-color: #955251;
+    background-color: #00FFFF;
     color: white;
     cursor:pointer;
     opacity: .5;
@@ -131,3 +131,23 @@ body, *{
         left: 0px;
     }
 }
+
+.dayHeight{
+    height: 60px;
+    display:flex;
+    flex-direction: column;
+}
+
+.clnd-day-number{
+    align-self: flex-start; 
+     color: black;
+}
+
+.avail{
+    align-self: flex-end;
+    color: black;
+}
+
+
+
+

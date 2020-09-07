@@ -14,7 +14,17 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   }
+  
+  .scroll{
+      overflow:auto;
+  }
+  
+  .height{
+      height: 70vh;
+  }
+  
 
+  
   .dates{
     margin-left: 200px;
     margin-right: 200px;
@@ -284,9 +294,6 @@
      opacity: 0.5;
     
 }
-
-
-
 
 /* Hr Cloud */
 

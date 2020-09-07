@@ -1,6 +1,6 @@
 var months = ["Ιαν", "Φεβ", "Μαρ", "Απρ", "Μαι", "Ιουν", "Ιουλ", "Αυγ", "Σεπ", "Όκτ", "Νοε", "Δεκ"];
 var startYear = 2020;
-var endYear = 2050;
+var endYear = 2032;
 var month = 0;
 var year = 0;
 var selectedDays = new Array();

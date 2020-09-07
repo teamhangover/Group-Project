@@ -85,23 +85,23 @@
 
             <!-- main row -->
             <div class="container-fluid">
-                <div class="row">
+                <div class="row height">
                     <div class="col-md">
                         <div id="map"></div>
                     </div>
 
-                    <div class="col-md d-flex-inline ">
+                    <div class="col-md d-flex-inline scroll">
                         <table class="table text-center text-light">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Όνομα</th>
-                                    <th scope="col">Επίθετο</th>
-                                    <th scope="col">Ηλικία</th>
+                            <thead >
+                                <tr >
+                                    <th scope="col"><strong>#</strong></th>
+                                    <th scope="col"><strong>Όνομα</strong></th>
+                                    <th scope="col"><strong>Επίθετο</strong></th>
+                                    <th scope="col"><strong>Ηλικία</strong></th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
-                            <tbody id="tableBody">
+                            <tbody id="tableBody" >
 
                             </tbody>
                         </table>
@@ -317,7 +317,7 @@
                         $.each(keepers, (i, keeper) => {
                             let result = `
                                 <tr>
-                                    <th scope="row"><img src="../images/` + keeper.uPhotoName + `" height="50px" width="50px" class="rounded" alt="Keeper-profpic"></th>
+                                    <td scope="row"><img src="../images/` + keeper.uPhotoName + `" height="50px" width="50px" class="rounded" alt="Keeper-profpic"></td>
                                     <td>` + keeper.firstName + `</td>
                                     <td>` + keeper.lastName + `</td>
                                     <td>` + keeper.age + `</td>
