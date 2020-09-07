@@ -1,5 +1,3 @@
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -53,10 +51,7 @@
         <!--        navbar-->
         <jsp:include page="navbar.jsp"></jsp:include>
 
-
-
             <main role="main">
-
 
                 <!-- CAROUSEL-->
                 <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-bottom: 0;">
@@ -64,7 +59,6 @@
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
                         <li data-target="#myCarousel" data-slide-to="2"></li>
-
                     </ol>
 
                     <div class="carousel-inner">
@@ -80,11 +74,11 @@
                                     <h1>Όλοι περνάνε τέλεια στις διακοπές!</h1>
                                     <p>Βες τώρα ποιός θα φιλοξενήσει και θα φροντίζει το ζωάκι σου οσο θα λείπεις</p>
                                     <p><a class="btn btn-lg btn-outline-dark" href="${pageContext.request.contextPath}/preInsertMyUser" role="button">Εγγραφή</a></p>
-
                             </div>
                         </div>
 
                     </div>
+
                     <div class="carousel-item">
                         <div class="view">
                             <img class="d-block w-100" src="/img/Canva - Orange Kitten.jpg" alt="First slide">
@@ -98,7 +92,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <div class="carousel-item">
                         <div class="view">
@@ -116,8 +109,6 @@
                     </div>
                 </div>
 
-
-
                 <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
@@ -127,8 +118,6 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-
-
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
@@ -149,7 +138,7 @@
                                     <p style="text-align: justify;">Δε χρειάζεται πια να ανησυχείς που θα αφήσεις το αγαπημένο σου κατοικίδιο και ποιός θα το φροντίζει. Βρες στη βάση μας τον ιδανικό keeper που θα το φιλοξενήσει στο σπίτι του και θα το προσέχει όπως εσύ! Έτσι το ζωάκι σου δε θα μπει σε κλουβί όσο λείπεις και δεν θα κάνεις διακοπές μόνο εσύ.</p>
                                 </div>
                             </div>
-                            
+
                             <div class="row item" > 
                                 <img src="/img/keeppet_text_search.png" class="img-circle">
                                 <div class="col " >
@@ -157,7 +146,7 @@
                                     <p style="text-align: justify;">Βρες έναν keeper κοντά σου, κάνε κράτηση φιλοξενίας και πλήρωσε online. Μπορείς να κάνεις αναζήτηση με πολλά κριτήρια όπως το πόσο κοντά σου μένει, αν έχει διαμέρισμα ή σπίτι με κήπο, αν έχει κατοικίδια, κ.α.</p>
                                 </div>
                             </div>
-                            
+
                             <div class="row item" > 
                                 <img src="/img/keeppet_text_news.png" class="img-circle">
                                 <div class="col " >
@@ -176,90 +165,86 @@
                                 <img src="/img/keeppet_text_piggy.png" class="img-circle">
                                 <div class="col " >
                                     <h2>Keep for a good cause</h2>
-                                    <p style="text-align: justify;">Πολλοί keepers μας δίνουν ένα μέρος της αμοιβής τους στην Dogs' Voice, την Αστική μη Κερδοσκοπική εταιρεία που στηρίζει φιλοζωικές οργανώσεις σε όλη την Ελλάδα, και μπορείς στο προφίλ τους να δεις το σχετικό σήμα. Την Dogs' Voice μπορείς να ενισχύσεις απευθείας κι εσύ βάζοντας ένα tip όταν κάνεις την ηλεκτρονική πληρωμή του keeper σου.
-
-Αναζήτησε τώρα τον ιδανικό keeper σου!</p>
+                                    <p style="text-align: justify;">Πολλοί keepers μας δίνουν ένα μέρος της αμοιβής τους στην Dogs' Voice,
+                                        την Αστική μη Κερδοσκοπική εταιρεία που στηρίζει φιλοζωικές οργανώσεις σε όλη την Ελλάδα,
+                                        και μπορείς στο προφίλ τους να δεις το σχετικό σήμα. Την Dogs' Voice μπορείς να ενισχύσεις απευθείας
+                                        κι εσύ βάζοντας ένα tip όταν κάνεις την ηλεκτρονική πληρωμή του keeper σου.
+                                        Αναζήτησε τώρα τον ιδανικό keeper σου!</p>
                                 </div>
                             </div>
-                            
-                            
-                                
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                         
-                                            </div>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            <!-- Modal -->
+            <!-- Modal -->
 
 
 
-                                            <!-- cards-look-alike -->
+            <!-- cards-look-alike -->
 
-                                            <div style="background-color: #f5f6f8;">
+            <div style="background-color: #f5f6f8;">
 
-                                                <div class="container marketing">
+                <div class="container marketing">
 
-                                                    <br>
-                                                    <h2 class="d-flex justify-content-center text-muted">Πώς Δουλεύει</h2>
-                                                    <br>
-                                                    <!-- Three columns of text below the carousel -->
-                                                    <div class="row d-flex align align-self-center">
-                                                        <img src="/img/howworks.jpg" class="mx-auto d-block" alt="how it works">
-
-
-                                                        <div class="col-lg-4">
-
-                                                            <h2>Bρες τον keeper σου</h2>
-                                                            <p></p>
-                                                            <p>Βρες τον ιδιώτη φιλόζωο που θα φιλοξενήσει το ζωάκι σου όπως εσύ επιθυμείς. Δες ποιος είναι κοντά σου, τι εμπειρία έχει, τι υπηρεσίες προσφέρει και επίλεξε τον καλύτερο. </p>
-                                                            <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-                                                        </div>
-                                                        <!-- /.col-lg-4 -->
-                                                        <div class="col-lg-4">
-
-                                                            <h2>Κάνε κράτηση & πληρωμή online</h2>
-                                                            <p>Απλά και εύκολα κάνε κράτηση για τις ημερομηνίες που θέλεις και πλήρωσε ηλεκτρονικά ώστε να απολαύσεις όλα τα προνόμια του Keeppet. Μπορείς πριν προχωρήσεις να συναντήσεις τον keeper, ζητώντας meet ’n’ greet μαζί του. </p>
-                                                            <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-                                                        </div>
-                                                        <!-- /.col-lg-4 -->
-                                                        <div class="col-lg-4">
-
-                                                            <h2>Το ζωάκι σου απολαμβάνει τη φιλοξενία</h2>
-                                                            <p>Ο keeper θα φροντίσει ώστε να μην του λείψει η φροντίδα, η αγάπη και τα χάδια που έχει συνηθίσει. Είναι καθημερινά σε επικοινωνία μαζί σου και σου στέλνει φωτογραφίες. </p>
-                                                            <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-                                                        </div>
-                                                        <!-- /.col-lg-4 -->
-                                                    </div>
-                                                    <!-- /.row -->
-                                                </div>
-
-                                            </div>
-                                            <!-- /.container -->
-
-                                            <div class="text-center  text-light card-bg " id="card">
-                                                <p class="mb-0">Περισσότεροι από <strong>1500 keepers</strong> ανυπομονούν να φιλοξενήσουν το ζωάκι σας!<br>
-                                                    Μέχρι σήμερα έχουν ήδη προσφέρει <strong>33850 νύχτες φιλοξενίας</strong> σε σκυλάκια, γατούλες, παπαγάλους, κουνελάκια... και ινδικά χοιρίδια!</p>
-                                            </div>
-
-                                            <!-- Footer -->
-
-                                            <jsp:include page="footer.jsp"></jsp:include>
-
-                                            </main>
-
-                                            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-                                            <script>
-                                                window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>');
-                                            </script>
-                                            <script src="../assets/dist/js/bootstrap.bundle.js"></script>
-
-                                            </body>
+                    <br>
+                    <h2 class="d-flex justify-content-center text-muted">Πώς Δουλεύει</h2>
+                    <br>
+                    <!-- Three columns of text below the carousel -->
+                    <div class="row d-flex align align-self-center">
+                        <img src="/img/howworks.jpg" class="mx-auto d-block" alt="how it works">
 
 
-                                            </html>
+                        <div class="col-lg-4">
+
+                            <h2>Bρες τον keeper σου</h2>
+                            <p></p>
+                            <p>Βρες τον ιδιώτη φιλόζωο που θα φιλοξενήσει το ζωάκι σου όπως εσύ επιθυμείς.
+                                Δες ποιος είναι κοντά σου, τι εμπειρία έχει, τι υπηρεσίες προσφέρει και επίλεξε τον καλύτερο. </p>
+                            <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+                        </div>
+                        <!-- /.col-lg-4 -->
+                        <div class="col-lg-4">
+                            <h2>Κάνε κράτηση & πληρωμή online</h2>
+                            <p>Απλά και εύκολα κάνε κράτηση για τις ημερομηνίες που θέλεις και πλήρωσε ηλεκτρονικά ώστε να απολαύσεις όλα τα προνόμια του Keeppet.
+                                Μπορείς πριν προχωρήσεις να συναντήσεις τον keeper, ζητώντας meet ’n’ greet μαζί του. </p>
+                            <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+                        </div>
+                        <!-- /.col-lg-4 -->
+                        <div class="col-lg-4">
+
+                            <h2>Το ζωάκι σου απολαμβάνει τη φιλοξενία</h2>
+                            <p>Ο keeper θα φροντίσει ώστε να μην του λείψει η φροντίδα, η αγάπη και τα χάδια που έχει συνηθίσει.
+                                Είναι καθημερινά σε επικοινωνία μαζί σου και σου στέλνει φωτογραφίες. </p>
+                            <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+                        </div>
+                        <!-- /.col-lg-4 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+            </div>
+            <!-- /.container -->
+
+            <div class="text-center  text-light card-bg " id="card">
+                <p class="mb-0">Περισσότεροι από <strong>1500 keepers</strong> ανυπομονούν να φιλοξενήσουν το ζωάκι σας!<br>
+                    Μέχρι σήμερα έχουν ήδη προσφέρει <strong>33850 νύχτες φιλοξενίας</strong> σε σκυλάκια, γατούλες, παπαγάλους, κουνελάκια... και ινδικά χοιρίδια!</p>
+            </div>
+
+            <!-- Footer -->
+
+            <jsp:include page="footer.jsp"></jsp:include>
+
+        </main>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script>
+            window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>');
+        </script>
+        <script src="../assets/dist/js/bootstrap.bundle.js"></script>
+
+    </body>
+</html>
 
 
 

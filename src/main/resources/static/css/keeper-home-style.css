@@ -130,7 +130,7 @@ a:hover {
     width: 250px;
     position: fixed;
     /* Relative to Viewport */
-    right: 20px;
+    right: -400px;
     bottom: 20px;
     padding: 20px;
     border-radius: 48px;

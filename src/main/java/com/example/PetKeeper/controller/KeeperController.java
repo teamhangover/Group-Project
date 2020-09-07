@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.PetKeeper.service.KeepersAvailabilityService;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -74,4 +76,22 @@ public class KeeperController {
         keeperAvailabilityService.saveOrDeleteUnavailableDate(keepersAvailability);
         return "Ela bro";
     }
+
+    @ResponseBody
+    @PostMapping("/getUnavailableDates")
+    public List<KeepersAvailability> getAllUnavailableDates(Principal principal) {
+
+        MyUser loggedInMyUser = myUserService
+                .getMyUserByUsername(principal.getName());
+
+        List<KeepersAvailability> dates = new ArrayList<>();
+
+        dates = keeperAvailabilityService.getAllUnavailableDatesByMyUser(loggedInMyUser);
+
+        for (KeepersAvailability date : dates) {
+            date.setKeeperId(null);
+        }
+        return dates;
+    }
+
 }
