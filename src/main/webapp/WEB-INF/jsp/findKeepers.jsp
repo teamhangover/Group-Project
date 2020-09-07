@@ -76,9 +76,9 @@
             </div>
 
             <div class="d-md-flex p-2 bd-highlight justify-content-center price bg-dark card-1">
-                <input type="range" min="0" max="100" class="mr-2 bg-dark " id="fromPrice" value="50"
-                       oninput="document.getElementById('fPrice').innerHTML = this.value"> <i class="fa fa-eur text-light mt-4"
-                       aria-hidden="true"> <label id="fPrice"></label> <label for="fromPrice" class="mt-4 pr-3  text-light "> /ημέρα
+                <input type="range" min="0" max="100" class="mr-2 bg-dark " id="fromPrice" value="90"> 
+                <i class="fa fa-eur text-light mt-4"
+                   aria-hidden="true"> <label id="fPrice"></label> <label for="fromPrice" class="mt-4 pr-3  text-light "> /ημέρα
                     </label></i>
             </div>
             <hr class="style-five">
@@ -101,57 +101,8 @@
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tableBody">
 
-                                <tr>
-                                    <th scope="row"><img alt="Keeper-profpic"></th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td><button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalScrollable" >Hire!</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><img alt="Keeper-profpic"></th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td><button class="btn btn-outline-info">Hire!</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><img alt="Keeper-profpic"></th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td><button class="btn btn-outline-info">Hire!</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><img alt="Keeper-profpic"></th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td><button class="btn btn-outline-info">Hire!</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><img alt="Keeper-profpic"></th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td><button class="btn btn-outline-info">Hire!</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><img alt="Keeper-profpic"></th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td><button class="btn btn-outline-info">Hire!</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><img alt="Keeper-profpic"></th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td><button class="btn btn-outline-info">Hire!</button></td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -163,80 +114,79 @@
                         <div class="modal-content">
                             <div class="modal-body">
                             <jsp:include page="reservation.jsp"></jsp:include> 
-                        </div>
-                        <div class="modal-footer bg-light">
-                            <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <hr class="style-five">
-
-            <br>
-            <br>
-            <div>
-            </div>
-            <div id="infowindow-content">
-                <img src="#" width="16" height="16" id="place-icon" />
-                <span id="place-name" class="title"></span><br />
-                <span id="place-address"></span>
-                <span id="keeper-Fname">keeper-Fname</span>
-                <span id="keeper-Lname">keeper-Lname</span>
-                <span id="keeper-Age">keeper-Age</span>
-            </div>
-
-            <!-- dog -->
-            <div class="d-flex flex-row  text-light ">
-                <div class="thought ml-auto">Καλώς ήρθες στην έξυπνη αναζήτηση! Συμπλήρωσε τις ημερομηνίες που θες να φιλοξενηθεί το
-                    κατοικιδιό σου καθώς και την
-                    περιοχή που μένεις για να δεις όλους τους διαθέσιμους Keepers κοντά στο σπίτι σου για εκείνη την περίοδο!</div>
-                <div class="thought ">Μη ξεχάσεις να αυξομειώσεις τον δείκτη κόστους ανα ημέρα ανάλογα με τις ανάγκες σου για να
-                    βρεις ακριβώς τον Keeper που ταιριάζει σε σένα αλλα και στο ζωάκι σου. Η μέγιστη επιτρεπόμενη χρέωση ανα ημέρα
-                    ανέρχεται συμφωνα μα τους Όρους Χρήσης μας στα 100 &#8364; </div>
-                <div class="thought  mr-auto">Αριστερά στον χάρτη θα βρείς ολους του κοντινούς σε σενα Keepers, αλλα αν η τοποθεσία
-                    φιλοξενίας δεν ειναι πρόβλημα για σενα, χρησιμοποίησε το +/- στο χαρτη αναλόγως! Δεξιά θα βρείς όλες τις σχετικές
-                    καταχωρήσεις Keepers, μαζί με το κουμπί Μίσθωσης για τον καθένα! </div>
-            </div>
-
-            <div class="box-canvas mt-0 mb-0">
-                <div class="body"></div>
-                <div class="fence">
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
-                    <div class="panel"></div>
+                <hr class="style-five">
+                <br>
+                <br>
+                <div>
+                </div>
+                <div id="infowindow-content">
+                    <img src="#" width="16" height="16" id="place-icon" />
+                    <span id="place-name" class="title"></span><br />
+                    <span id="place-address"></span>
+                    <span id="keeper-Fname">keeper-Fname</span>
+                    <span id="keeper-Lname">keeper-Lname</span>
+                    <span id="keeper-Age">keeper-Age</span>
                 </div>
 
-                <div class="paw left"></div>
-                <div class="paw right"></div>
-                <div class="head">
-                    <div class="eye left"></div>
-                    <div class="eye right"></div>
-                    <div class="tongue"></div>
-                    <div class="snoot"></div>
+                <!-- dog -->
+                <div class="d-flex flex-row  text-light ">
+                    <div class="thought ml-auto">Καλώς ήρθες στην έξυπνη αναζήτηση! Συμπλήρωσε τις ημερομηνίες που θες να φιλοξενηθεί το
+                        κατοικιδιό σου καθώς και την
+                        περιοχή που μένεις για να δεις όλους τους διαθέσιμους Keepers κοντά στο σπίτι σου για εκείνη την περίοδο!</div>
+                    <div class="thought ">Μη ξεχάσεις να αυξομειώσεις τον δείκτη κόστους ανα ημέρα ανάλογα με τις ανάγκες σου για να
+                        βρεις ακριβώς τον Keeper που ταιριάζει σε σένα αλλα και στο ζωάκι σου. Η μέγιστη επιτρεπόμενη χρέωση ανα ημέρα
+                        ανέρχεται συμφωνα μα τους Όρους Χρήσης μας στα 100 &#8364; </div>
+                    <div class="thought  mr-auto">Αριστερά στον χάρτη θα βρείς ολους του κοντινούς σε σενα Keepers, αλλα αν η τοποθεσία
+                        φιλοξενίας δεν ειναι πρόβλημα για σενα, χρησιμοποίησε το +/- στο χαρτη αναλόγως! Δεξιά θα βρείς όλες τις σχετικές
+                        καταχωρήσεις Keepers, μαζί με το κουμπί Μίσθωσης για τον καθένα! </div>
                 </div>
-                <div class="ear left"></div>
-                <div class="ear right"></div>
-            </div>
 
-            <!-- datepicker func -->
-            <script>
+                <div class="box-canvas mt-0 mb-0">
+                    <div class="body"></div>
+                    <div class="fence">
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                        <div class="panel"></div>
+                    </div>
+
+                    <div class="paw left"></div>
+                    <div class="paw right"></div>
+                    <div class="head">
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                        <div class="tongue"></div>
+                        <div class="snoot"></div>
+                    </div>
+                    <div class="ear left"></div>
+                    <div class="ear right"></div>
+                </div>
+
+                <!-- datepicker func -->
+                <script>
                     $(document).ready(function () {
 
                         $('.input-daterange').datepicker({
@@ -247,17 +197,143 @@
                             disableTouchKeyboard: true
                         });
                     });
-            </script>
+                </script>
 
-            <script src="/js/findKeepersMap.js"></script>
-            <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-            <script
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5mZvsDf2yxpRbN_AdULITrSGI_o3Oow&callback=initMap&libraries=places"
-            defer></script>
-            <br>
-            <br>
-            <br>
-            <br>
-        </div>
+                <script>
+                    $(document).ready(function () {
+                        let startDate = $("#start");
+                        currentDate = new Date();
+                        currentDateFormattedString = currentDate.getDate() + "-" + currentDate.getMonth() + "-" + currentDate.getFullYear();
+                        startDate.val(currentDateFormattedString);
+
+                        let endDate = $("#end");
+                        let tomorrow = new Date(currentDate)
+                        tomorrow.setDate(tomorrow.getDate() + 1);
+                        tomorrowFormattedString = tomorrow.getDate() + "-" + tomorrow.getMonth() + "-" + tomorrow.getFullYear();
+                        endDate.val(tomorrowFormattedString);
+
+                        let priceInput = $("#fromPrice");
+                        priceInput.val(priceInput.attr("max"));
+
+                        $("#fPrice").text(priceInput.val());
+                        priceInput.change(function () {
+                            $("#fPrice").text(priceInput.val());
+                        });
+                        // !!!!!!!!!!!!!!!!
+                        functionToBeChanged();
+                    });
+
+                    function initMap() {
+                        const defaultMapOptions = {
+                            center: new google.maps.LatLng(37.983748, 23.727658),
+                            zoom: 13
+                        };
+                        const map = new google.maps.Map(document.getElementById("map"), defaultMapOptions);
+
+                        const input = document.getElementById("pac-input");
+                        const autocomplete = new google.maps.places.Autocomplete(input);
+
+                        //not sure if this is needed
+                        autocomplete.bindTo("bounds", map);
+                        autocomplete.setFields(["address_components", "geometry", "icon", "name"]);
+
+                        //info window
+                        const infowindow = new google.maps.InfoWindow();
+                        const infowindowContent = document.getElementById("infowindow-content");
+                        infowindow.setContent(infowindowContent);
+
+                        //marker
+                        let marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(0, 0),
+                            map: map,
+                            title: "Title on hover"
+                        });
+
+                        //addListener to autocomplete
+                        autocomplete.addListener("place_changed", renewMap);
+
+                        function renewMap() {
+                            infowindow.close();
+                            marker.setVisible(false);
+                            const place = autocomplete.getPlace();
+
+                            if (!place.geometry) {
+                                // User entered the name of a Place that was not suggested and
+                                // pressed the Enter key, or the Place Details request failed.
+                                window.alert("No details available for input: '" + place.name + "'");
+                                return;
+                            } // If the place has a geometry, then present it on a map.
+
+                            if (place.geometry.viewport) {
+                                map.fitBounds(place.geometry.viewport);
+                            } else {
+                                map.setCenter(place.geometry.location);
+                                map.setZoom(17); // Why 17? Because it looks good.
+                            }
+
+                            marker.setPosition(place.geometry.location);
+                            marker.setVisible(true);
+                            let address = "";
+
+                            if (place.address_components) {
+                                address = [
+                                    (place.address_components[0] &&
+                                            place.address_components[0].short_name) ||
+                                            "",
+                                    (place.address_components[1] &&
+                                            place.address_components[1].short_name) ||
+                                            "",
+                                    (place.address_components[2] &&
+                                            place.address_components[2].short_name) ||
+                                            ""
+                                ].join(" ");
+                            }
+
+                            infowindowContent.children["place-icon"].src = place.icon;
+                            infowindowContent.children["place-name"].textContent = place.name;
+                            infowindowContent.children["place-address"].textContent = address;
+                            infowindow.open(map, marker);
+                        }
+
+                    }
+
+                    function functionToBeChanged() {
+                        let url = "/owner/findKeepers";
+                        let data = {
+                            latitude: 37.988860,
+                            longitude: 23.734173
+                        };
+                        $.get(
+                                url,
+                                data
+                                ).done(function (response) {
+                            console.log(response);
+                            fillTableBodyWithData(response);
+                        });
+                    }
+                    let tableBody = $("#tableBody");
+
+                    function fillTableBodyWithData(keepers) {
+                        $.each(keepers, (i, keeper) => {
+                            let result = `
+                                <tr>
+                                    <th scope="row"><img src="../images/` + keeper.uPhotoName + `" height="50px" width="50px" class="rounded" alt="Keeper-profpic"></th>
+                                    <td>` + keeper.firstName + `</td>
+                                    <td>` + keeper.lastName + `</td>
+                                    <td>` + keeper.age + `</td>
+                                    <td><button type="button" username="` + keeper.username + `" class="btn btn-outline-info operModalButtons" data-toggle="modal" data-target="#exampleModalScrollable" >Hire!</button></td>
+                                </tr>`;
+
+                            tableBody.append(result);
+                        });
+                    }
+                </script>
+                <!--<script src="/js/findKeepersMap.js"></script>-->
+                <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+                <script
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5mZvsDf2yxpRbN_AdULITrSGI_o3Oow&callback=initMap&libraries=places"
+                defer></script>
+            </div>
+        <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>

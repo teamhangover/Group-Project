@@ -5,13 +5,14 @@
  */
 package com.example.PetKeeper.controller;
 
+import com.example.PetKeeper.dto.AddressDto;
 import com.example.PetKeeper.model.Address;
 import com.example.PetKeeper.model.MyUser;
 import com.example.PetKeeper.service.AddressService;
 import com.example.PetKeeper.service.MyUserService;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -89,9 +90,20 @@ public class AddressController {
 
     }
 
-    @GetMapping("/findKeepers")
-    public List<Address> findKeepers() {
+    @GetMapping("/owner/findKeepers")
+    public List<AddressDto> findKeepers(@RequestParam("latitude") BigDecimal latitude,
+            @RequestParam("longitude") BigDecimal longitude) {
+        List<Address> addresses = new ArrayList<>();
 
-        return null;
+        addresses = addressService.getAllByLngLatWithinRadius(latitude, longitude);
+
+        List<AddressDto> result = new ArrayList<>();
+
+        for (Address address : addresses) {
+            AddressDto addressDto = new AddressDto();
+            addressDto.fillDtoFromAddress(address);
+            result.add(addressDto);
+        }
+        return result;
     }
 }

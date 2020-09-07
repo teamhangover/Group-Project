@@ -10,7 +10,9 @@ import com.example.PetKeeper.model.MyUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.PetKeeper.repository.KeepersAvailabilityRepository;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -36,7 +38,7 @@ public class KeepersAvailabilityServiceImpl implements KeepersAvailabilityServic
             keepersAvailabilityRepo.delete(dateToBeDeleted);
             return null;
         } else {
-            //if not, save it
+            //if not exists, save it
             return keepersAvailabilityRepo.save(keeperAvailability);
         }
     }
@@ -49,6 +51,17 @@ public class KeepersAvailabilityServiceImpl implements KeepersAvailabilityServic
         } else {
             return false;
         }
+    }
+
+    @Override
+    public List<KeepersAvailability> getAllUnavailableDatesByMyUser(MyUser myUser) {
+
+        List<KeepersAvailability> dates = new ArrayList<>();
+
+        dates = keepersAvailabilityRepo.findByKeeperId(myUser);
+        
+        System.out.println(dates);
+        return dates;
     }
 
 }

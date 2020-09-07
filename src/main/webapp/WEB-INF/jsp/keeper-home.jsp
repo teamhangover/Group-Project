@@ -122,7 +122,7 @@
                     <button >Ε-mail</button>
                 </div>
             </div>
-            <div id="opener" class="d-none">
+            <div id="opener" class="">
                 &#9754;
             </div>
 
@@ -210,10 +210,20 @@
                     d.className = "day";
                     d.innerHTML = tmp + " Διαθέσιμος";
                     d.dataset.day = tmp;
-                    //set full date here
+
+                    //set full date attribute
                     let fullDate = new Date(year, month, tmp);
                     d.dataset.fullDate = fullDate.getTime();
 
+                    //Check if date is already unavailable
+                    if (unavailableDates.includes(parseInt(d.dataset.fullDate))) {
+                        selectedDays.push(d.dataset.day);
+                        d.classList.add("selected");
+                        d.innerHTML = d.dataset.day + " Μη Διαθέσιμος";
+                    }
+
+                    //TODO get dates from reservastions and make them unavailable and disabled
+                    
                     d.addEventListener('click', function () {
                         this.classList.toggle('selected');
 
@@ -249,7 +259,7 @@
                         unavailableDateUrl,
                         {date: date}
                 ).done((data) => {
-                    console.log(data);
+                    console.log("Registered");
                 });
             }
             //send Ajax to delete unavailable date
@@ -259,19 +269,46 @@
                         deleteDateUrl,
                         {date: date}
                 ).done((data) => {
-                    console.log(data);
+                    console.log("Deleted");
                 });
             }
 
+            //send ajax and get all unavailable dates already registered in database
+            let unavailableDates = [];
+            let allUnvailableDatesURL = "/keeper/getUnavailableDates";
+            function getUnavailableDates() {
+                $.post(
+                        allUnvailableDatesURL
+                        ).done((data) => {
+
+                    $.each(data, (i, entry) => {
+                        let stringToDateMillis = Date.parse(entry.unavailableDate);
+                        let tmpDate = new Date(stringToDateMillis);
+                        tmpDate.setHours(0, 0, 0, 0);
+                        unavailableDates.push(tmpDate.getTime());
+                    });
+                    areUnavailableDatesFilled = true;
+                    loadCalendar();
+                });
+            }
+
+            function loadCalendar() {
+                if (areUnavailableDatesFilled) {
+
+                    var date = new Date();
+                    month = date.getMonth();
+                    year = date.getFullYear();
+                    document.getElementById("curMonth").innerHTML = months[month];
+                    document.getElementById("curYear").innerHTML = year;
+                    loadCalendarMonths();
+                    loadCalendarYears();
+                    loadCalendarDays();
+                }
+            }
+            let areUnavailableDatesFilled = false;
             $(document).ready(function () {
-                var date = new Date();
-                month = date.getMonth();
-                year = date.getFullYear();
-                document.getElementById("curMonth").innerHTML = months[month];
-                document.getElementById("curYear").innerHTML = year;
-                loadCalendarMonths();
-                loadCalendarYears();
-                loadCalendarDays();
+                getUnavailableDates();
+
             });
 
         </script>
