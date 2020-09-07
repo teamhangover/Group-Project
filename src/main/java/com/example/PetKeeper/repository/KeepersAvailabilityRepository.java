@@ -25,4 +25,7 @@ public interface KeepersAvailabilityRepository extends JpaRepository<KeepersAvai
     KeepersAvailability findByUnavailableDateAndKeeperId(@Param("unavailableDate") Date unavailableDate, @Param("keeperId") MyUser keeperId);
     
     List<KeepersAvailability> findByKeeperId(MyUser keeperId);
+    
+    @Query("SELECT k FROM KeepersAvailability k WHERE k.keeperId = :keeperId AND k.unavailableDate BETWEEN :fromDate AND :toDate")
+    List<KeepersAvailability> findByBetweenDates(@Param("fromDate") Date fromDate,@Param("toDate") Date toDate, @Param("keeperId") MyUser keeperId);
 }

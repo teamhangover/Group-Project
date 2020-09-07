@@ -72,9 +72,11 @@ public class MyUserDetailsController {
             String profilePicName = newMyUserDetails.getMyUserId().getUsername() + "-Photo";
             //save file to disk and get the filename.extension back
             newMyUserDetails.setUPhotoName(fileHandlingService.storeFileToDisk(profilePic, profilePicName));
-        } else {
+
+        } else if (null != loggedInMyUser.getMyUserDetails() && null != loggedInMyUser.getMyUserDetails().getUPhotoName()) {
 
             newMyUserDetails.setUPhotoName(loggedInMyUser.getMyUserDetails().getUPhotoName());
+
         }
 
         //save details 
@@ -88,7 +90,7 @@ public class MyUserDetailsController {
     public String getProfilePhotoName(@PathVariable("username") String username) {
 
         MyUser myUser = myUserService.getMyUserByUsername(username);
-        if (myUser.getMyUserDetails().getUPhotoName() != null) {
+        if (null != myUser.getMyUserDetails() && !myUser.getMyUserDetails().getUPhotoName().isEmpty()) {
             return myUser.getMyUserDetails().getUPhotoName();
         } else {
             return null;

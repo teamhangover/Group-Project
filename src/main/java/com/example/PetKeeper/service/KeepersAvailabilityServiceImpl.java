@@ -5,6 +5,7 @@
  */
 package com.example.PetKeeper.service;
 
+import com.example.PetKeeper.model.Address;
 import com.example.PetKeeper.model.KeepersAvailability;
 import com.example.PetKeeper.model.MyUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,9 +60,23 @@ public class KeepersAvailabilityServiceImpl implements KeepersAvailabilityServic
         List<KeepersAvailability> dates = new ArrayList<>();
 
         dates = keepersAvailabilityRepo.findByKeeperId(myUser);
-        
+
         System.out.println(dates);
         return dates;
+    }
+
+    @Override
+    public List<Address> filterAddressListBasedOnAvailability(List<Address> addresses, Date fromDate, Date toDate) {
+
+        List<Address> result = new ArrayList<>();
+
+        for (Address address : addresses) {
+            List<KeepersAvailability> unavailableDates = keepersAvailabilityRepo.findByBetweenDates(fromDate, toDate, address.getMyUserId());
+            if (unavailableDates.isEmpty()) {
+                result.add(address);
+            }
+        }
+        return result;
     }
 
 }

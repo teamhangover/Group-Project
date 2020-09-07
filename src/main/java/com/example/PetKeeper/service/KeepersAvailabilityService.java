@@ -5,8 +5,10 @@
  */
 package com.example.PetKeeper.service;
 
+import com.example.PetKeeper.model.Address;
 import com.example.PetKeeper.model.KeepersAvailability;
 import com.example.PetKeeper.model.MyUser;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,4 +20,6 @@ public interface KeepersAvailabilityService {
     public KeepersAvailability saveOrDeleteUnavailableDate(KeepersAvailability keeperAvailability);
     
     public List<KeepersAvailability> getAllUnavailableDatesByMyUser(MyUser myUser);
+    
+    public List<Address> filterAddressListBasedOnAvailability(List<Address> addresses, Date fromDate, Date toDate);
 }

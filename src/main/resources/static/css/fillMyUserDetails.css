@@ -10,9 +10,6 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-*{
-    border: solid 1px black;
-}
 .ddd{
     display: flex;
     justify-content: center;
