@@ -9,11 +9,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Profile</title>
         <link rel="icon" href="/img/paw.png" sizes="32x32">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
         <!--bootstrap-->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <!--        font awesome-->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
         <script
             src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -44,174 +49,265 @@
             <br>
             <br>
             <hr>
+
         <springform:form id="detailsForm" action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data" >
 
             <springform:input path="detailsId" hidden="true" />
-            First Name: <springform:input type="text" path="firstName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true" placeholder="Όνομα"/>
-            <br>
-            Last Name: <springform:input type="text" path="lastName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true"  placeholder="Επίθετο"/>
-            <br>
-            Age: <springform:input type="number" path="age" min="18" max="99" required="true" placeholder="Ηλικία"/>
-            <br>
-            Phone Number: <springform:input type="tel" path="tel" pattern="69+[0-9]{8}" title="must start with 69 and have 10 numbers" required="true" placeholder="Τηλέφωνο"/>
-            <br>
-            Description: <springform:input cssClass="form__input form-control" type="textarea" path="uDescription"  placeholder="Περιγραφή"/>       
-            <br>
-            Upload Profile Photo: <input type="file" name="photo" accept="image/*" class="form__input  form-control " />
-            <br>
-            <div class="d-flex   ">
-                <button type="submit" id="submitButton" class="btn btn-outline-dark m-5" >Submit</button>
-                <button type="reset" class="btn btn-lg btn-outline-dark m-5">Clear</button>
+            <div class="col-xl-8 order-xl-1">
+                <div class="card bg-info shadow">
+                    <div class="card-header bg-info border-0">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="mb-0 text-center m-2"><i class="fas fa-paw fa-2x"></i> My PetKeeper profile!</h3>
+                            </div>
+                            <div class="col-4 text-right">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group focused">
+                                        <label class="form-control-label" for="input-first-name"><i class="fas fa-user"></i> First name</label>
+                                        <springform:input id="input-first-name" cssClass="form-control form-control-alternative" type="text" path="firstName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true" placeholder="Όνομα"/>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-last-name"><i class="fas fa-user"></i> Last name</label>
+                                        <springform:input id="input-last-name" cssClass="form-control form-control-alternative" type="text" path="lastName" pattern="[A-Za-z]{3,50}" title="must be between 3 and 50 characters" required="true"  placeholder="Επίθετο"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group focused">
+                                        <label class="form-control-label" for="input-age"><i class="far fa-calendar-alt"></i> Age</label>
+                                        <springform:input id="input-age" cssClass="form-control form-control-alternative" type="number" path="age" min="18" max="99" required="true" placeholder="Ηλικία"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group focused">
+                                        <label class="form-control-label" for="input-age"> <i class="fas fa-mobile-alt"></i> Phone number</label>
+                                        <springform:input id="input-phone" cssClass="form-control form-control-alternative" type="tel" path="tel" pattern="69+[0-9]{8}" title="must start with 69 and have 10 numbers" required="true" placeholder="Τηλέφωνο"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr class="my-4">
+
+                    <div class="pl-lg-4">
+                        <div class="form-group focused">
+                            <label><i class="fas fa-pencil-alt"></i> About Me</label>
+                            <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">Tell us more about you! </textarea>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="Upload photo"><i class="fas fa-camera-retro"></i> Upload photo</label>
+
+                                <input type="file" name="photo" accept="image/*" class="form__input  form-control " />
+                            </div>
+                            <div class="col-lg-8 container-fluid text-center well">
+
+                                <button type="submit" id="submitButton" class="btn btn-success btn-lg mr-4 " ><i class="far fa-thumbs-up"></i>Submit</button>
+                                <button type="button"  class="btn btn-primary btn-lg mr-4" ><i class="far fa-edit"></i>Edit</button>
+                                <button type="reset" class="btn btn-warning btn-lg mr-4 "><i class="fas fa-ban"></i> Clear</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <br>
+
+
+
+
         </springform:form>
         <c:if test="${pageContext['request'].userPrincipal != null}">
             <!--and is Keeper-->
             <security:authorize access="hasRole('ROLE_KEEPER') and isAuthenticated()">
-                <!--TODO Address form-->           
-                <div id="addressForm">
-                    <hr>
-                    Price/day: <input id="price" placeholder="Price/day" type="number" />&euro;
-                    <br>
-                    Address:
-                    <input id="autocomplete" placeholder="Enter your address" type="text" />
-                    <div id="AddressDiv" hidden="true">
-                        <br>
-                        Διεύθυνση <input class="field" id="street_number" disabled="true" placeholder="Διεύθυνση" />
-                        <br>
-                        Πόλη  <input class="field" id="locality" disabled="true" placeholder="Πόλη" />
-                        <br>
-                        Πολιτεια <input class="field" id="administrative_area_level_1" disabled="true" placeholder="Πολιτεια" />
-                        <br>
-                        Τ.Κ. <input class="field" id="postal_code" disabled="true" placeholder="Τ.Κ." />
-                        <br>
-                        Χώρα <input class="field" id="country" disabled="true" placeholder="Χώρα" />
-                        <br>
-                        <hr>
+                <!--TODO Address form-->        
+                <div class="col-xl-4 order-xl-1 float-right">
+                    <div class="card bg-info shadow">
+                        <div class="card-header bg-info border-0">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+
+                                </div>
+                                <div class="col-4 text-right">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" for="input-price"><i class="fas fa-euro-sign"></i> Price/day</label>
+                                            <input id="price" class="form-control form-control-alternative" placeholder="Price/day" type="number" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-email"><i class="fas fa-map-marker-alt"></i> Address</label>
+                                            <input id="autocomplete" class="form-control form-control-alternative" placeholder="Enter your address" type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id ="addressDiv">
+                                    <br>
+                                    Διεύθυνση <input class="field" id="street_number" disabled="true" placeholder="Διεύθυνση" />
+                                    <br>
+                                    Πόλη  <input class="field" id="locality" disabled="true" placeholder="Πόλη" />
+                                    <br>
+                                    Πολιτεια <input class="field" id="administrative_area_level_1" disabled="true" placeholder="Πολιτεια" />
+                                    <br>
+                                    Τ.Κ. <input class="field" id="postal_code" disabled="true" placeholder="Τ.Κ." />
+                                    <br>
+                                    Χώρα <input class="field" id="country" disabled="true" placeholder="Χώρα" />
+                                    <br>
+                                    <hr>
+                                </div>  
+                            </div>
+                        </div>
                     </div>
-                    <div id="map-canvas"></div>
                 </div>
+
+
+                <div id="map-canvas"></div>
                 <script
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5mZvsDf2yxpRbN_AdULITrSGI_o3Oow&libraries=places&v=weekly"
-                defer></script>
+                    defer>
+
+                </script>
 
                 <script>
-// This example displays an address form, using the autocomplete feature
-// of the Google Places API to help users fill in the information.
-                $(document).ready(function () {
+                    // This example displays an address form, using the autocomplete feature
+                    // of the Google Places API to help users fill in the information.
+                    $(document).ready(function () {
 
-                    var autocomplete;
-                    var componentForm = {
-                        street_number: 'short_name',
-                        locality: 'long_name',
-                        administrative_area_level_1: 'short_name',
-                        country: 'long_name',
-                        postal_code: 'short_name'
-                    };
-//input fields
-                    let streetNumber = $("#street_number");
-                    let locality = $("#locality");
-                    let administrativeAreaLevel = $("#administrative_area_level_1");
-                    let postalCode = $("#postal_code");
-                    let country = $("#country");
-//other properties of entity Address
-                    let longitude;
-                    let latidute;
-                    let price = $("#price");
-//Get current Address of Keeper
-//                    let getAddressUrl = "/keeper/myAddress";
-//                    $.ajax({
-//                        url: getAddressUrl
-//                    }).then(function (data) {
-//                        if (data !== null) {
-//                            //TODO Fill in input fields with data
-//                        }
-//                    });
-//                    
-//Register Address
-//                    let ajaxSentFlag = false;
-//                    let registerAddressUrl = "/keeper/registerMyAddress";
-//                    $("#detailsForm").submit((e) => {
-//
-//                        let address = {
-//                            latidute: place.geometry.location.lat(),
-//                            longitude: place.geometry.location.lng(),
-//                            price: price.val(),
-//                            country: country.val()
-//                        }
-//                        console.log(address);
-//                        if (!ajaxSentFlag) {
-//                            // Prevent from submission
-//                            e.preventDefault();
-//
-//                            // Initiate request and stop function execution at this point
-//                            // by return-ing
-//                            return $.post(
-//                                    registerAddressUrl,
-//                                    address
-//                                    ).done(function (data) {
-//                                //Request was successfull  
-//                                $(document.body).css({'height': '100vh'});
-//                                $(document.body).css({'cursor': 'wait'});
-//                                // 
-//                                $('#detailsForm').fadeOut(600);
-//                                $('#addressForm').fadeOut(600);
-//                                // Switching the variable to true
-//                                ajaxSentFlag = true;
-//                                // Submitting the form
-//                                $("form").submit();
-//                            });
-//                        }
-//                    });
-
-//
-                    $("#autocomplete").focus(function () {
-                        //Geolocation? getCurrentLocation?
-
-                        //initializing Map
-                        initialize();
-                        //Revealing hidden input fields
-                        $("#AddressDiv").removeAttr("hidden");
-                    });
-                    function initialize() {
-                        var mapOptions = {
-                            center: new google.maps.LatLng(37.983748, 23.727658),
-                            zoom: 13
+                        var autocomplete;
+                        var componentForm = {
+                            street_number: 'short_name',
+                            locality: 'long_name',
+                            administrative_area_level_1: 'short_name',
+                            country: 'long_name',
+                            postal_code: 'short_name'
                         };
-                        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-                        autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')), {types: ['geocode']});
-                        google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                            // Get the place details from the autocomplete object.
-                            var place = autocomplete.getPlace();
-                            for (var component in componentForm) {
-                                document.getElementById(component).value = "";
-                                document.getElementById(component).disabled = false;
-                            }
-                            var newPos = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
-                            map.setOptions({
-                                center: newPos,
-                                zoom: 15
-                            });
-                            //add a marker
-                            var marker = new google.maps.Marker({
-                                position: newPos,
-                                map: map,
-                                title: "New marker"
-                            });
+                        //input fields
+                        let streetNumber = $("#street_number");
+                        let locality = $("#locality");
+                        let administrativeAreaLevel = $("#administrative_area_level_1");
+                        let postalCode = $("#postal_code");
+                        let country = $("#country");
+                        //other properties of entity Address
+                        let longitude;
+                        let latidute;
+                        let price = $("#price");
+                        initialize();
+                        //Get current Address of Keeper
+                        //                    let getAddressUrl = "/keeper/myAddress";
+                        //                    $.ajax({
+                        //                        url: getAddressUrl
+                        //                    }).then(function (data) {
+                        //                        if (data !== null) {
+                        //                            //TODO Fill in input fields with data
+                        //                        }
+                        //                    });
+                        //                    
+                        //Register Address
+                        //                    let ajaxSentFlag = false;
+                        //                    let registerAddressUrl = "/keeper/registerMyAddress";
+                        //                    $("#detailsForm").submit((e) => {
+                        //
+                        //                        let address = {
+                        //                            latidute: place.geometry.location.lat(),
+                        //                            longitude: place.geometry.location.lng(),
+                        //                            price: price.val(),
+                        //                            country: country.val()
+                        //                        }
+                        //                        console.log(address);
+                        //                        if (!ajaxSentFlag) {
+                        //                            // Prevent from submission
+                        //                            e.preventDefault();
+                        //
+                        //                            // Initiate request and stop function execution at this point
+                        //                            // by return-ing
+                        //                            return $.post(
+                        //                                    registerAddressUrl,
+                        //                                    address
+                        //                                    ).done(function (data) {
+                        //                                //Request was successfull  
+                        //                                $(document.body).css({'height': '100vh'});
+                        //                                $(document.body).css({'cursor': 'wait'});
+                        //                                // 
+                        //                                $('#detailsForm').fadeOut(600);
+                        //                                $('#addressForm').fadeOut(600);
+                        //                                // Switching the variable to true
+                        //                                ajaxSentFlag = true;
+                        //                                // Submitting the form
+                        //                                $("form").submit();
+                        //                            });
+                        //                        }
+                        //                    });
+                        //initialize();
+                        //
+                        $("#autocomplete").focus(function () {
+                            //Geolocation? getCurrentLocation?
+
+                            //initializing Map
+                            //                        initialize();
+                            //Revealing hidden input fields
+                            //                        $("#AddressDiv").removeAttr("hidden");
+                        });
+                        function initialize() {
+                            var mapOptions = {
+                                center: new google.maps.LatLng(37.983748, 23.727658),
+                                zoom: 13
+                            };
+                            var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                            autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')), {types: ['geocode']});
+                            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                                // Get the place details from the autocomplete object.
+                                var place = autocomplete.getPlace();
+                                for (var component in componentForm) {
+                                    document.getElementById(component).value = "";
+                                    document.getElementById(component).disabled = false;
+                                }
+                                var newPos = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
+                                map.setOptions({
+                                    center: newPos,
+                                    zoom: 15
+                                });
+                                //add a marker
+                                var marker = new google.maps.Marker({
+                                    position: newPos,
+                                    map: map,
+                                    title: "New marker"
+                                });
                                 // Get each component of the address from the place details
                                 // and fill the corresponding field on the form.
-                            for (var i = 0; i < place.address_components.length; i++) {
-                                var addressType = place.address_components[i].types[0];
-                                if (componentForm[addressType]) {
-                                    var val = place.address_components[i][componentForm[addressType]];
-                                    document.getElementById(addressType).value = val;
+                                for (var i = 0; i < place.address_components.length; i++) {
+                                    var addressType = place.address_components[i].types[0];
+                                    if (componentForm[addressType]) {
+                                        var val = place.address_components[i][componentForm[addressType]];
+                                        document.getElementById(addressType).value = val;
+                                    }
                                 }
-                            }
-                        });
-                    }
+                            });
+                        }
 
 
-                });
+                    });
                 </script>
             </security:authorize>
 
@@ -284,6 +380,6 @@
                 </script>
             </security:authorize>
         </c:if>
-
+        <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>
