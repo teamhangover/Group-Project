@@ -1,49 +1,157 @@
 /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
+/*input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+    -webkit-appearance: none;
+    margin: 0;
+}*/
 
 /* Firefox */
-input[type=number] {
+/*input[type=number] {
   -moz-appearance: textfield;
-}
+}*/
 
 *{
-    border: solid 1px black;
+    margin: 0;
 }
-.ddd{
+/*.ddd{
+    background-color: blueviolet;
     display: flex;
     justify-content: center;
     background-color: cadetblue;
     align-items: center;
     flex-direction: column;
-  margin-top: 5px;
+    margin-top: 5px;
+}*/
+
+/*.form__input {
+    background-color: white !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    color: #ff7779 !important;
+    width: 250px; 
+    padding: 10px;
+    outline-width: 0;
+    position: relative;
+}*/
+
+/*.form__input:placeholder-shown + .form__label {
+    background-color: white !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    color: #ff7779 !important;
+    width: 250px; 
+    padding: 10px;
+    outline-width: 0;
+    position: relative;
+}*/
+
+body{
+    background-color: #FAF3DD;
+    font-family: Open Sans, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    color: #fbeec1;    
+    /*    padding: 30px;*/
 }
 
-.form__input {
-  font-family: 'Roboto', sans-serif;
-  color: #333;
-  font-size: 1.2rem;
-	margin: 0 auto;
-  padding: 1.2rem 2rem;
-  border-radius: 0.2rem;
-  background-color: red;
-  border: none;
-  width: 30%;
-  display: block;
-  border-bottom: 0.3rem solid transparent;
-  transition: all 0.3s;
+
+
+
+/*input[type=number]{
+    background-color: white !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    color: #ff7779 !important;
+    width: 250px; 
+    padding: 10px;
+    outline-width: 0;
+    position: relative;
+    border-color: #ff7779;
+}*/
+/*input[type=tel]{
+    background-color: white !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    color: #ff7779 !important;
+    width: 250px; 
+    padding: 10px;
+    outline-width: 0;
+    position: relative;
+    border-color: #ff7779;
+}*/
+
+/*.input__info{
+    background-color: #ff7779;
+    color: white;
+    padding-top: 25vh;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 40px;
+    width: 300px;
+    border-color: #ff7779;
+}*/
+/*.btn-success {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(103, 192, 103, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(103, 192, 103, 0.75);
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+}*/
+
+/*.btn-primary {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(58, 133, 191, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(58, 133, 191, 0.75);
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+}*/
+/*.btn-warning {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(240, 173, 78, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(240, 173, 78, 0.75);
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+}*/
+
+
+
+/*textarea{
+    min-height:200px;
+    line-height: 1.5em;
+    background-color: white !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    color: #ff7779 !important;
+    width: 250px; 
+    padding: 10px;
+    outline-width: 0;
+    position: right;
+    border-color: #ff7779;
+}*/
+
+/*.centered-form{
+        margin-top: 60px;
 }
 
-.form__input:placeholder-shown + .form__label {
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transform: translateY(-4rem);
-  transform: translateY(-4rem);
+.centered-form .panel{
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}*/
+.container-fluid{
+    padding: 3% 15%;
 }
-
-
-
-
