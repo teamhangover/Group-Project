@@ -182,7 +182,7 @@
                             document.getElementById("curYear").innerHTML = year;
                             loadCalendarDays();
                             return year;
-                        }
+                        };
                     })();
 
                     document.getElementById("years").appendChild(doc);
