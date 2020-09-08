@@ -53,7 +53,7 @@
         style: {
           size: 'responsive',
           color: 'gold',
-          shape: 'pill',
+          shape: 'pill'
         },
     
         // Enable Pay Now checkout flow (optional)

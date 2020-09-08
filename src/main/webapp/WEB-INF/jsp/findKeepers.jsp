@@ -32,7 +32,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <!-- datepicker resources -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        <link rel="application/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
@@ -202,14 +202,14 @@
                 <script>
                     $(document).ready(function () {
                         let startDate = $("#start");
-                        currentDate = new Date();
-                        currentDateFormattedString = currentDate.getDate() + "-" + currentDate.getMonth() + "-" + currentDate.getFullYear();
+                        let currentDate = new Date();
+                        let currentDateFormattedString = currentDate.getDate() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getFullYear();
                         startDate.val(currentDateFormattedString);
 
                         let endDate = $("#end");
-                        let tomorrow = new Date(currentDate)
+                        let tomorrow = new Date(currentDate);
                         tomorrow.setDate(tomorrow.getDate() + 1);
-                        tomorrowFormattedString = tomorrow.getDate() + "-" + tomorrow.getMonth() + "-" + tomorrow.getFullYear();
+                        tomorrowFormattedString = tomorrow.getDate() + "-" + (tomorrow.getMonth() + 1) + "-" + tomorrow.getFullYear();
                         endDate.val(tomorrowFormattedString);
 
                         let priceInput = $("#fromPrice");
@@ -298,23 +298,36 @@
                     }
 
                     function functionToBeChanged() {
+                        let fromDate = new Date();
+                        let toDate = new Date(fromDate);
+                        toDate.setDate(toDate.getDate() + 1);
+
                         let url = "/owner/findKeepers";
-                        let data = {
+                        let defaultData = {
                             latitude: 37.988860,
-                            longitude: 23.734173
+                            longitude: 23.734173,
+                            fromDate: fromDate,
+                            toDate: toDate
                         };
                         $.get(
                                 url,
-                                data
+                                defaultData
                                 ).done(function (response) {
                             console.log(response);
                             fillTableBodyWithData(response);
                         });
                     }
-                    let tableBody = $("#tableBody");
 
+                    let tableBody = $("#tableBody");
                     function fillTableBodyWithData(keepers) {
+
                         $.each(keepers, (i, keeper) => {
+
+                            //this if might need to be changed to === null
+                            if (keeper.uPhotoName === "") {
+                                //TODO set default img for keepers w/o profile pic
+                                keeper.uPhotoName = "";
+                            }
                             let result = `
                                 <tr>
                                     <td scope="row"><img src="../images/` + keeper.uPhotoName + `" height="50px" width="50px" class="rounded" alt="Keeper-profpic"></td>
@@ -323,7 +336,6 @@
                                     <td>` + keeper.age + `</td>
                                     <td><button type="button" username="` + keeper.username + `" class="btn btn-outline-info operModalButtons" data-toggle="modal" data-target="#exampleModalScrollable" >Hire!</button></td>
                                 </tr>`;
-
                             tableBody.append(result);
                         });
                     }
