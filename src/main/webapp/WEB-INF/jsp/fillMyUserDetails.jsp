@@ -50,6 +50,7 @@
             <br>
             <hr>
 
+<img id="profilePicImg" height="250px" class="rounded-circle" alt="profile photo"/> 
         <springform:form id="detailsForm" action="/doInsertMyUserDetails" method="post" modelAttribute="myUserDetails" enctype="multipart/form-data" >
 
             <springform:input path="detailsId" hidden="true" />
@@ -126,11 +127,23 @@
                 </div>
             </div>
 
-
-
-
         </springform:form>
         <c:if test="${pageContext['request'].userPrincipal != null}">
+            <script>
+                //get username of loggedInUser
+                let username = "${pageContext['request'].userPrincipal.name}";
+                //get ProfilePicName of loggedInUser
+                let getUserPhotoUrl = "/getProfilePhoto/" + username;
+                $.ajax({
+                    url: getUserPhotoUrl
+                }).then(function (data) {
+                    if (data !== null) {
+                        //set src to show the profile pic
+                        let src = "../images/" + data;
+                        $("#profilePicImg").attr("src", src);
+                    }
+                });
+            </script>
             <!--and is Keeper-->
             <security:authorize access="hasRole('ROLE_KEEPER') and isAuthenticated()">
                 <!--TODO Address form-->        
@@ -179,6 +192,7 @@
                                 </div>  
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -190,125 +204,8 @@
 
                 </script>
 
-                <script>
-                    // This example displays an address form, using the autocomplete feature
-                    // of the Google Places API to help users fill in the information.
-                    $(document).ready(function () {
+                <script src="/js/fillMyuserDetails-Keeper.js"></script>
 
-                        var autocomplete;
-                        var componentForm = {
-                            street_number: 'short_name',
-                            locality: 'long_name',
-                            administrative_area_level_1: 'short_name',
-                            country: 'long_name',
-                            postal_code: 'short_name'
-                        };
-                        //input fields
-                        let streetNumber = $("#street_number");
-                        let locality = $("#locality");
-                        let administrativeAreaLevel = $("#administrative_area_level_1");
-                        let postalCode = $("#postal_code");
-                        let country = $("#country");
-                        //other properties of entity Address
-                        let longitude;
-                        let latidute;
-                        let price = $("#price");
-                        initialize();
-                        //Get current Address of Keeper
-                        //                    let getAddressUrl = "/keeper/myAddress";
-                        //                    $.ajax({
-                        //                        url: getAddressUrl
-                        //                    }).then(function (data) {
-                        //                        if (data !== null) {
-                        //                            //TODO Fill in input fields with data
-                        //                        }
-                        //                    });
-                        //                    
-                        //Register Address
-                        //                    let ajaxSentFlag = false;
-                        //                    let registerAddressUrl = "/keeper/registerMyAddress";
-                        //                    $("#detailsForm").submit((e) => {
-                        //
-                        //                        let address = {
-                        //                            latidute: place.geometry.location.lat(),
-                        //                            longitude: place.geometry.location.lng(),
-                        //                            price: price.val(),
-                        //                            country: country.val()
-                        //                        }
-                        //                        console.log(address);
-                        //                        if (!ajaxSentFlag) {
-                        //                            // Prevent from submission
-                        //                            e.preventDefault();
-                        //
-                        //                            // Initiate request and stop function execution at this point
-                        //                            // by return-ing
-                        //                            return $.post(
-                        //                                    registerAddressUrl,
-                        //                                    address
-                        //                                    ).done(function (data) {
-                        //                                //Request was successfull  
-                        //                                $(document.body).css({'height': '100vh'});
-                        //                                $(document.body).css({'cursor': 'wait'});
-                        //                                // 
-                        //                                $('#detailsForm').fadeOut(600);
-                        //                                $('#addressForm').fadeOut(600);
-                        //                                // Switching the variable to true
-                        //                                ajaxSentFlag = true;
-                        //                                // Submitting the form
-                        //                                $("form").submit();
-                        //                            });
-                        //                        }
-                        //                    });
-                        //initialize();
-                        //
-                        $("#autocomplete").focus(function () {
-                            //Geolocation? getCurrentLocation?
-
-                            //initializing Map
-                            //                        initialize();
-                            //Revealing hidden input fields
-                            //                        $("#AddressDiv").removeAttr("hidden");
-                        });
-                        function initialize() {
-                            var mapOptions = {
-                                center: new google.maps.LatLng(37.983748, 23.727658),
-                                zoom: 13
-                            };
-                            var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-                            autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')), {types: ['geocode']});
-                            google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                                // Get the place details from the autocomplete object.
-                                var place = autocomplete.getPlace();
-                                for (var component in componentForm) {
-                                    document.getElementById(component).value = "";
-                                    document.getElementById(component).disabled = false;
-                                }
-                                var newPos = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
-                                map.setOptions({
-                                    center: newPos,
-                                    zoom: 15
-                                });
-                                //add a marker
-                                var marker = new google.maps.Marker({
-                                    position: newPos,
-                                    map: map,
-                                    title: "New marker"
-                                });
-                                // Get each component of the address from the place details
-                                // and fill the corresponding field on the form.
-                                for (var i = 0; i < place.address_components.length; i++) {
-                                    var addressType = place.address_components[i].types[0];
-                                    if (componentForm[addressType]) {
-                                        var val = place.address_components[i][componentForm[addressType]];
-                                        document.getElementById(addressType).value = val;
-                                    }
-                                }
-                            });
-                        }
-
-
-                    });
-                </script>
             </security:authorize>
 
             <!--and is owner-->
@@ -324,61 +221,9 @@
                     Description  <input type="text" id="petDescription" placeholder="Λίγα λόγια για το ζωάκι σου!"/>
                 </div>
 
-                <script>
-                    $(document).ready(function () {
+                <script src="/js/fillMyuserDetails-Owner.js"></script>
 
-                        let petName = $("#petName");
-                        let petType = $("#petType");
-                        let petDescription = $("#petDescription");
-                        //Send request to get the Pet of the owner (if any)
-                        let getPetUrl = "/owner/myPet";
-                        $.ajax({
-                            url: getPetUrl
-                        }).then(function (data) {
-
-                            if (data !== null) {
-                                importPetData(data);
-                            }
-                        });
-                        //Fill Pet input fields with data from ajax request
-                        function importPetData(data) {
-
-                            petName.val(data.petName);
-                            petType.val(data.petType);
-                            petDescription.val(data.petDescription);
-                        }
-
-
-                        // Send request to register the changes on the owner's Pet or create a new on if doesn't have one. Then submit form
-                        let registerPetUrl = "/owner/registerPet";
-                        let hasAjaxRequestSucceeded = false;
-                        $("#detailsForm").submit((e) => {
-
-                            if (!hasAjaxRequestSucceeded) {
-                                // Prevent from submission
-                                e.preventDefault();
-                                // Initiate request and stop function execution at this point
-                                // by return-ing
-                                return $.post(
-                                        registerPetUrl,
-                                        {petName: petName.val(), petType: petType.val(), petDescription: petDescription.val()}
-                                ).done(function (data) {
-                                    //Request was successfull  
-                                    $(document.body).css({'height': '100vh'});
-                                    $(document.body).css({'cursor': 'wait'});
-                                    // 
-                                    $('#detailsForm').fadeOut(600);
-                                    $('#petForm').fadeOut(600);
-                                    // Switching the variableto true
-                                    hasAjaxRequestSucceeded = true;
-                                    // Submitting the form
-                                    $("form").submit();
-                                });
-                            }
-                        });
-                    });
-                </script>
-            </security:authorize>
+           </security:authorize>
         </c:if>
         <jsp:include page="footer.jsp"></jsp:include>
     </body>

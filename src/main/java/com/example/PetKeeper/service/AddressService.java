@@ -6,15 +6,16 @@
 package com.example.PetKeeper.service;
 
 import com.example.PetKeeper.model.Address;
-import com.example.PetKeeper.model.MyUser;
+import java.math.BigDecimal;
+import java.util.List;
 
 /**
  *
  * @author ths13
  */
 public interface AddressService {
-    
+
     public Address saveAddress(Address address);
     
-    public Address getAddressByMyUserId(MyUser myUser);
+    public List<Address> getAllByLngLatWithinRadius(BigDecimal latitude, BigDecimal longitude);
 }

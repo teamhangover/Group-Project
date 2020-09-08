@@ -6,11 +6,11 @@
 package com.example.PetKeeper.model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.math.BigDecimal;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,12 +18,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -37,39 +35,72 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Address.findByAddressId", query = "SELECT a FROM Address a WHERE a.addressId = :addressId"),
     @NamedQuery(name = "Address.findByLongitude", query = "SELECT a FROM Address a WHERE a.longitude = :longitude"),
     @NamedQuery(name = "Address.findByLatitude", query = "SELECT a FROM Address a WHERE a.latitude = :latitude"),
-    @NamedQuery(name = "Address.findByAddressType", query = "SELECT a FROM Address a WHERE a.addressType = :addressType"),
-    @NamedQuery(name = "Address.findByAddressDescription", query = "SELECT a FROM Address a WHERE a.addressDescription = :addressDescription")})
+    @NamedQuery(name = "Address.findByCountry", query = "SELECT a FROM Address a WHERE a.country = :country"),
+    @NamedQuery(name = "Address.findByCity", query = "SELECT a FROM Address a WHERE a.city = :city"),
+    @NamedQuery(name = "Address.findByStreetName", query = "SELECT a FROM Address a WHERE a.streetName = :streetName"),
+    @NamedQuery(name = "Address.findByStreetNumber", query = "SELECT a FROM Address a WHERE a.streetNumber = :streetNumber"),
+    @NamedQuery(name = "Address.findByPostalCode", query = "SELECT a FROM Address a WHERE a.postalCode = :postalCode"),
+    @NamedQuery(name = "Address.findByPrice", query = "SELECT a FROM Address a WHERE a.price = :price")})
 public class Address implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "address_id")
     private Integer addressId;
+
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Column(name = "longitude")
-    private int longitude;
+    private BigDecimal longitude;
+
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Column(name = "latitude")
-    private int latitude;
+    private BigDecimal latitude;
+
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "address_type")
-    private String addressType;
+    @Column(name = "country")
+    private String country;
+
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 300)
-    @Column(name = "address_description")
-    private String addressDescription;
+    @Size(min = 1, max = 45)
+    @Column(name = "city")
+    private String city;
+
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "street_name")
+    private String streetName;
+
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "street_number")
+    private String streetNumber;
+
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "postal_code")
+    private String postalCode;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "price")
+    private BigDecimal price;
+
     @JoinColumn(name = "my_user_id", referencedColumnName = "my_user_id")
     @ManyToOne(optional = false)
     private MyUser myUserId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
-    private Collection<AddressPhoto> addressPhotosCollection;
 
     public Address() {
     }
@@ -78,12 +109,16 @@ public class Address implements Serializable {
         this.addressId = addressId;
     }
 
-    public Address(Integer addressId, int longitude, int latitude, String addressType, String addressDescription) {
+    public Address(Integer addressId, BigDecimal longitude, BigDecimal latitude, String country, String city, String streetName, String streetNumber, String postalCode, BigDecimal price) {
         this.addressId = addressId;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.addressType = addressType;
-        this.addressDescription = addressDescription;
+        this.country = country;
+        this.city = city;
+        this.streetName = streetName;
+        this.streetNumber = streetNumber;
+        this.postalCode = postalCode;
+        this.price = price;
     }
 
     public Integer getAddressId() {
@@ -94,36 +129,60 @@ public class Address implements Serializable {
         this.addressId = addressId;
     }
 
-    public int getLongitude() {
+    public BigDecimal getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(int longitude) {
+    public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
     }
 
-    public int getLatitude() {
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(int latitude) {
+    public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
     }
 
-    public String getAddressType() {
-        return addressType;
+    public String getCountry() {
+        return country;
     }
 
-    public void setAddressType(String addressType) {
-        this.addressType = addressType;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    public String getAddressDescription() {
-        return addressDescription;
+    public String getCity() {
+        return city;
     }
 
-    public void setAddressDescription(String addressDescription) {
-        this.addressDescription = addressDescription;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public MyUser getMyUserId() {
@@ -134,13 +193,12 @@ public class Address implements Serializable {
         this.myUserId = myUserId;
     }
 
-    @XmlTransient
-    public Collection<AddressPhoto> getAddressPhotosCollection() {
-        return addressPhotosCollection;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setAddressPhotosCollection(Collection<AddressPhoto> addressPhotosCollection) {
-        this.addressPhotosCollection = addressPhotosCollection;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     @Override
@@ -165,7 +223,6 @@ public class Address implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.PetKeeper.model.Addresses[ addressId=" + addressId + " ]";
+        return "com.example.PetKeeper.model.Address[ addressId=" + addressId + " ]";
     }
-    
 }
