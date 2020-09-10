@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title> Dashboard</title>
-        <link rel="icon" href="/img/paw.png" sizes="32x32">
+  <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- CSS only -->
@@ -13,6 +13,8 @@
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/calendarStyle.css">
         <link rel="stylesheet" href="/css/keeper-home-style.css">
+
+     
     </head>
 
     <body>
@@ -22,25 +24,9 @@
 
             <div class="firstflex mt-3">
 
-                <article><a href=""> <svg width="1em" height="1em"   class="bi bi-person-circle"
-                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
-                        <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                        <path fill-rule="evenodd"
-                              d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
-                        </svg></a></article>
-                <article> <a href=""><svg width="1em" height="1em"  class="bi bi-bell" fill="currentColor"
-                                          xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z" />
-                        <path fill-rule="evenodd"
-                              d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                        </svg></a></article>
-                <article><a href=""><svg width="1em" height="1em"   class="bi bi-envelope-fill"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                              d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
-                        </svg></a></article>
+                <article></article>
+                <article> </article>
+                <article></article>
             </div>
 
             <!-- FLEXBOX -->
@@ -86,11 +72,14 @@
                         <div>κρατηση 1</div>
                         <div>κρατηση 2</div>
                         <div>κρατηση 3</div>  
-                        <h5 id="kratiseis">Οι τρεις τελευταίες σου κρατήσεις!</h5> 
+                        <div>κρατηση 3</div>  
+                        <div>κρατηση 3</div>  
+                        <div>κρατηση 3</div>  
+                        <h5 id="kratiseis">Οι τελευταίες σου κρατήσεις!</h5> 
                     </div>
 
                 </article>
-                <article id="three"></article>
+                <!--                <article id="three"></article>-->
 
             </div>
 
@@ -98,7 +87,7 @@
                 <!-- Position absolute -->
                 <div class="abs" >
                     <h6> Πως λειτουργεί το ημερολόγιο;</h6>
-                    <span> Για αλλάξεις την διαθεσιμότητά σου, κάνε clik στην ημέρα που θέλεις να αλλάξεις. Η ένδειξη
+                    <span> Για αλλάξεις την διαθεσιμότητά σου, κάνε click στην ημέρα που θέλεις να αλλάξεις. Η ένδειξη
                         εναλλάσεται ανάμεσα σε Διαθέσιμος και Μη διαθέσιμος κάθε φορά που κάνεις click (Δεν μπορείς να
                         αλλάξεις όπου υπάρχει κράτηση).
 
@@ -107,7 +96,7 @@
                 </div>
                 <div class="abs" >
                     <h6> Πως αλλάζω μήνα/χρόνο; </h6>
-                    <span>Μπορείς να πατήσεις είτε πάνω στον μήνα είστε στο έτος για να εμφανιστεί η αντίστοιχη λίστα και
+                    <span>Μπορείς να πατήσεις είτε πάνω στον μήνα είτε στο έτος για να εμφανιστεί η αντίστοιχη λίστα και
                         να μετακινηθείς στην επιθυμητή ημερομηνία.Το ημερολόγιό σου εμφανίζεται στο προφίλ σου ώστε οι
                         ιδιοκτήτες κατοικιδίων να μπορούν να ελέγχουν την διαθεσιμότητά σου πριν κάνουν κράτηση.</span>
                 </div>
@@ -200,6 +189,7 @@
                     var d = document.createElement("div");
                     d.classList.add("day");
                     d.classList.add("blank");
+                    d.classList.add("dayHeight");
                     document.getElementById("calendarDays").appendChild(d);
                 }
 
@@ -208,7 +198,8 @@
                     var d = document.createElement("div");
                     d.id = "calendarday_" + tmp;
                     d.className = "day";
-                    d.innerHTML = tmp + " Διαθέσιμος";
+                    d.classList.add("dayHeight");
+                    d.innerHTML = `<span class="clnd-day-number"><strong>` + tmp + `</strong></span><span class="avail">Διαθέσιμος</span>`;
                     d.dataset.day = tmp;
 
                     //set full date attribute
@@ -219,22 +210,22 @@
                     if (unavailableDates.includes(parseInt(d.dataset.fullDate))) {
                         selectedDays.push(d.dataset.day);
                         d.classList.add("selected");
-                        d.innerHTML = d.dataset.day + " Μη Διαθέσιμος";
+                        d.innerHTML = `<span class="clnd-day-number">` + d.dataset.day + `</span><span class="avail">Μη Διαθέσιμος</span>`;
                     }
 
                     //TODO get dates from reservastions and make them unavailable and disabled
-                    
+
                     d.addEventListener('click', function () {
                         this.classList.toggle('selected');
 
                         let tmpDay = this.dataset.day;
                         if (!selectedDays.includes(this.dataset.day)) {
                             selectedDays.push(this.dataset.day);
-                            this.innerHTML = tmpDay + " Μη Διαθέσιμος";
+                            this.innerHTML =`<span class="clnd-day-number"><strong>` + tmpDay + `</strong></span><span class="avail">Μη Διαθέσιμος</span>`;
                             setUnavailableDate(this.dataset.fullDate);
                         } else {
                             selectedDays.splice(selectedDays.indexOf(this.dataset.day), 1);
-                            this.innerHTML = tmpDay + " Διαθέσιμος";
+                            this.innerHTML =`<span class="clnd-day-number"> <strong>` + tmpDay + `</strong></span><span class="avail">Διαθέσιμος</span>`;
                             deleteDate(this.dataset.fullDate);
                         }
                     });

@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="/css/403.css">
         <link rel="stylesheet" href="/css/navbar.css">
         <title>Access Denied</title>
+         <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
         <!-- BS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     </head>

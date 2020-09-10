@@ -34,8 +34,6 @@ button, #logout {
 	outline: inherit;
 }
 
-
-
 .nav-bk8{
 background: #5f2c82;  
 background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
@@ -45,15 +43,4 @@ background: linear-gradient(to right, #49a09d, #5f2c82);
 
 #card{
     background-color: #21b4e7
-}
-
-a,  #whatIs {
-    
-    text-decoration: none;
-    color:white;
-}
-
-#whatIs:hover{
-    text-decoration: none;
-    
 }
