@@ -11,6 +11,7 @@
         <!-- CSS only -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
               integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
     </head>
 
     <body>
@@ -89,13 +90,13 @@
         <script>
             let reservationData = {
                 keeperPhoto: "keeper-Photo",
-                keeperFname: "Kostas",
+                keeperFname: "Makis",
                 keeperLname: "Marinopoulos",
                 age: "33",
                 totalPrice: "30",
                 fromDate: "25-9-2020",
                 toDate: "28-9-2020",
-                keeperDescription: "Αγαπαω πολυ τα ζωα και προσφερω ενα ανετο και καθαρο περιβαλλον η οτι  θελεις να γραφει εδω",
+                keeperDescription: "ÎÎ³Î±ÏÎ±Ï ÏÎ¿Î»Ï ÏÎ± Î¶ÏÎ± ÎºÎ±Î¹ ÏÏÎ¿ÏÏÎµÏÏ ÎµÎ½Î± Î±Î½ÎµÏÎ¿ ÎºÎ±Î¹ ÎºÎ±Î¸Î±ÏÎ¿ ÏÎµÏÎ¹Î²Î±Î»Î»Î¿Î½ Î· Î¿ÏÎ¹  Î¸ÎµÎ»ÎµÎ¹Ï Î½Î± Î³ÏÎ±ÏÎµÎ¹ ÎµÎ´Ï",
                 keeperAddress: "Tositsa 18, Athens, Greece"
             };
 
@@ -126,9 +127,7 @@
             
             displayReservationData(reservationData);
 
-            let usernames = $("[username]");
-            console.log(usernames);
-
+            
         </script>
 
 

@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Το προφίλ μου</title>
-       <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
+        <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
         <!--bootstrap-->
@@ -57,8 +57,6 @@
                             <label class="custom-file-upload offset-4" for="Uploadphoto"><i class="fas fa-camera-retro"></i> Ανέβασε Φωτό</label>
                             <input id="Uploadphoto" type="file" name="photo"  accept="image/*"  />
                         </div>
-
-
                     </div>
 
                     <div class="card-body">
@@ -74,7 +72,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-last-name"><i class="fas fa-user"></i> Επίθετο</label>
-                                        <springform:input id="input-last-name" cssClass="form-control form-control-alternative" type="text" path="lastName" pattern="[A-Za-z]{3,50}" title=" Πρέπει να είναι μεταξύ 3 με 50 χαρακτήρες" required="true"  placeholder="Επίθετο"/>
+                                        <springform:input id="input-last-name" cssClass="form-control form-control-alternative" type="text" path="lastName" pattern="[A-Za-z,Α-Ωα-ω]{3,50}" title=" Πρέπει να είναι μεταξύ 3 με 50 χαρακτήρες" required="true"  placeholder="Επίθετο"/>
                                     </div>
                                 </div>
                             </div>
@@ -103,14 +101,9 @@
                         <div class="form-group focused">
                             <div class="row">                              
                                 <label><i class="fas fa-pencil-alt"></i> Περιγραφή </label>
-                                <springform:textarea rows="4" path="uDescription" cols="40" class="form-control form-control-alternative" /> 
+                                <springform:textarea id="input-user-description" rows="4" path="uDescription" cols="40" class="form-control form-control-alternative" /> 
                             </div>
-                            <!--                            <div class="row my-3 offset-5">   
-                                                            <div class="form-group">
-                                                                <label class="custom-file-upload" for="Uploadphoto"><i class="fas fa-camera-retro"></i> Ανέβασε Φωτό</label>
-                                                                <input id="Uploadphoto" type="file" name="photo" accept="image/*" class=" form-control " />
-                                                            </div>
-                                                        </div>-->
+
                             <br>
                             <hr class="my-4">
 
@@ -181,6 +174,7 @@
                                     </div>
 
 
+
                                     <div id="map-canvas" class="col-lg-6"></div>
                                     <script
                                         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5mZvsDf2yxpRbN_AdULITrSGI_o3Oow&libraries=places&v=weekly"
@@ -213,13 +207,9 @@
 
                                             <div class="col-lg-6"> 
                                                 <h5 class="text-center mt-0">Οι κρατησεις μου</h5>
-
                                                 <div class="bg-light text-dark item">1</div>
                                                 <div class="bg-light text-dark item">1</div>
                                                 <div class="bg-light text-dark item">1</div>
-
-
-
                                             </div>
                                         </div>
                                     </div>
@@ -234,19 +224,17 @@
                 <div class="row">  
                     <div class="col-lg-8 container-fluid text-center well">
 
-                        <button type="submit" id="submitButton" class="btn btn-success btn-lg mr-4 " ><i class="far fa-thumbs-up"></i>Καταχώρηση</button>
-                        <button type="button"  class="btn btn-primary btn-lg mr-4" ><i class="far fa-edit"></i>Επεξεργασία</button>
-                        <button id="resetbtn" class="btn btn-warning btn-lg mr-4 "><i class="fas fa-ban"></i> Αναίρεση</button>
+                        <button id="submitButton" type="submit" class="btn btn-success btn-lg mr-4 " ><i class="far fa-thumbs-up"></i>Καταχώρηση</button>
+                        <button id="editBtn" type="button"  class="btn btn-primary btn-lg mr-4" ><i class="far fa-edit"></i>Επεξεργασία</button>
+                        <button id="cancelBtn" type="button" class="btn btn-warning btn-lg mr-4 "><i class="fas fa-ban"></i> Αναίρεση</button>
                         <br>
                         <br>    
-                        <script>
-                //                           TODO fix reset btn                                    
-                        </script>
+                        <script src="/js/fillMyuserDetails-FormControls.js"></script>
                     </div>
                 </div>
             </div>  
         </div>
-   
-    <jsp:include page="footer.jsp"></jsp:include>
-</body>
+
+        <jsp:include page="footer.jsp"></jsp:include>
+    </body>
 </html>

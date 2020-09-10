@@ -77,6 +77,8 @@ public class MyUserDetailsController {
 
             newMyUserDetails.setUPhotoName(loggedInMyUser.getMyUserDetails().getUPhotoName());
 
+        } else {
+            newMyUserDetails.setUPhotoName("");
         }
 
         //save details 
