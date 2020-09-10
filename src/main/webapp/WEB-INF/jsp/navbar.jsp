@@ -54,11 +54,9 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <img src="/img/transParentLogo.png" class="rounded" alt="">
-
-
             <a class="nav-link  btn btn-outline-warning ml-3 " href="${pageContext.request.contextPath}/"> <i class="fa fa-fw fa-home"> </i> Κεντρική </a>
-            <a id="whatIs">Τι είναι το petKeeper</a>
         </div>
     </nav>
-</header>  
-
+</header> 
+            
+    

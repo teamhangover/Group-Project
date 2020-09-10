@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title> Dashboard</title>
-        <link rel="icon" href="/img/paw.png" sizes="32x32">
+  <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- CSS only -->

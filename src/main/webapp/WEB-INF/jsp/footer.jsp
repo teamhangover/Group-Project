@@ -7,7 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- Load an icon library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 <link href="/css/footer.css" rel="stylesheet"> 
 
 
@@ -15,10 +16,10 @@
 <footer class="page-footer font-small stylish-color-dark pt-4">
 
     <!-- Footer Links -->
-    <div class="container text-center text-md-left">
+    <div class="container text-center text-md-left noBg">
 
         <!-- Grid row -->
-        <div class="row">
+        <div class="row ">
 
             <!-- Grid column -->
             <div class="col-md-4 mx-auto">
@@ -118,11 +119,11 @@
     <!-- Social buttons -->
     <div class=" icon-bar text-center margin-bottom ">
 
-        <a href="#" class="facebook p-3 m-3 btn btn-outline-info"><i class="fa fa-facebook"></i></a>
-        <a href="#" class="twitter p-3 m-3 btn btn-outline-info"><i class="fa fa-twitter"></i></a>
-        <a href="#" class="google p-3 m-3 btn btn-outline-info"><i class="fa fa-google"></i></a>
-        <a href="#" class="linkedin p-3 m-3 btn btn-outline-info"><i class="fa fa-linkedin"></i></a>
-        <a href="#" class="youtube p-3 btn m-3 btn-outline-info"><i class="fa fa-youtube"></i></a>
+        <a href="#" class="facebook p-3 m-3 btn btn-outline-info"><i class="fab fa-facebook-f"></i></a> 
+        <a href="#" class="twitter p-3 m-3 btn btn-outline-info"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="google p-3 m-3 btn btn-outline-info"><i class="fab fa-google"></i></a>
+        <a href="#" class="linkedin p-3 m-3 btn btn-outline-info"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="youtube p-3 btn m-3 btn-outline-info"><i class="fab fa-youtube"></i></a>
 
     </div>
     <!-- Social buttons -->

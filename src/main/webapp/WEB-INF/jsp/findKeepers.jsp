@@ -8,7 +8,9 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Find Keepers</title>
+         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Βρες Keepers</title>
+         <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
 
         <!--bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -29,7 +31,7 @@
         <link rel="stylesheet" type="text/css" href="/css/findKeepersMap.css" />
 
         <!-- glyphicon -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
         <!-- datepicker resources -->
         <link rel="application/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
@@ -77,9 +79,10 @@
 
             <div class="d-md-flex p-2 bd-highlight justify-content-center price bg-dark card-1">
                 <input type="range" min="0" max="100" class="mr-2 bg-dark " id="fromPrice" value="90"> 
-                <i class="fa fa-eur text-light mt-4"
-                   aria-hidden="true"> <label id="fPrice"></label> <label for="fromPrice" class="mt-4 pr-3  text-light "> /ημέρα
-                    </label></i>
+               
+                    <label id="fPrice" class="text-light my-2 ml-1 "></label> 
+                    <label for="fromPrice" class="mr-1  text-light mt-2"> /ημέρα </label>
+                     <i class="fas fa-euro-sign text-light mt-3" aria-hidden="true"> </i>
             </div>
             <hr class="style-five">
 
@@ -102,7 +105,6 @@
                                 </tr>
                             </thead>
                             <tbody id="tableBody" >
-
                             </tbody>
                         </table>
                     </div>
@@ -121,7 +123,7 @@
                         </div>
                     </div>
                 </div>
-
+                <br>              <br>
                 <hr class="style-five">
                 <br>
                 <br>
@@ -346,6 +348,9 @@
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5mZvsDf2yxpRbN_AdULITrSGI_o3Oow&callback=initMap&libraries=places"
                 defer></script>
             </div>
+                
+                       
+                            
         <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>
