@@ -93,14 +93,14 @@
                         <div id="map"></div>
                     </div>
 
-                    <div class="col-md d-flex-inline scroll">
-                        <table class="table text-center text-light">
-                            <thead >
-                                <tr >
-                                    <th scope="col"><strong>#</strong></th>
-                                    <th scope="col"><strong>Όνομα</strong></th>
-                                    <th scope="col"><strong>Επίθετο</strong></th>
-                                    <th scope="col"><strong>Ηλικία</strong></th>
+                    <div class="col-md">
+                        <table class="text-center text-light" id="keepers-table">
+                            <thead id="table-thead">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Όνομα</th>
+                                    <th scope="col">Επίθετο</th>
+                                    <th scope="col">Ηλικία</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
@@ -129,14 +129,7 @@
                 <br>
                 <div>
                 </div>
-                <div id="infowindow-content">
-                    <img src="#" width="16" height="16" id="place-icon" />
-                    <span id="place-name" class="title"></span><br />
-                    <span id="place-address"></span>
-                    <span id="keeper-Fname">keeper-Fname</span>
-                    <span id="keeper-Lname">keeper-Lname</span>
-                    <span id="keeper-Age">keeper-Age</span>
-                </div>
+
 
                 <!-- dog -->
                 <div class="d-flex flex-row  text-light ">
@@ -187,10 +180,9 @@
                     <div class="ear right"></div>
                 </div>
 
-                <!-- datepicker func -->
                 <script>
                     $(document).ready(function () {
-
+                        //datepicker 
                         $('.input-daterange').datepicker({
                             format: 'dd-mm-yyyy',
                             autoclose: true,
@@ -198,11 +190,10 @@
                             clearBtn: true,
                             disableTouchKeyboard: true
                         });
-                    });
-                </script>
+                        //------------
 
-                <script>
-                    $(document).ready(function () {
+                        //output
+                        const tableBody = $("#tableBody");
 
                         //set current dates
                         const startDate = $("#start");
@@ -210,18 +201,33 @@
                         setDefaultDates();
                         startDate.change(renewMap);
                         endDate.change(renewMap);
+                        //--------------
 
                         //set default LatLng
                         let userLatitude = 37.988860;
                         let userLongitude = 23.734173;
                         //initialize map with default location
                         let map;
+                        let markers = [];
                         const input = $("#pac-input");
                         let autocomplete;
-                        initMap(map);
+//                        initMap(map);
+                        let mapOptions = {
+                            center: new google.maps.LatLng(userLatitude, userLongitude),
+                            zoom: 13
+                        };
 
-                        //define google.Geocoder
-                        let gGeocoder = google.maps.Geocoder;
+                        map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                        autocomplete = new google.maps.places.Autocomplete(input);
+                        //not sure if this is needed
+                        autocomplete.bindTo("bounds", map);
+                        autocomplete.setFields(["address_components", "geometry", "icon", "name"]);
+
+                        //addListener to autocomplete
+                        autocomplete.addListener("place_changed", renewMap);
+//                        autocomplete.addListener("dragend", renewMap);
+                        //-----------------------------
+
                         //get current location (if possible)
                         //geolocationApi();
 
@@ -236,7 +242,14 @@
                             //TODO function filter results by price
                         });
 
-                        getResultsFromServer();
+                        let defaultData = {
+                            latitude: userLatitude,
+                            longitude: userLongitude,
+                            fromDate: new Date(),
+                            toDate: new Date()
+                        };
+
+                        getResultsFromServer(defaultData);
 
                         //---------------------
                         //set default Dates on inpu fields
@@ -255,32 +268,75 @@
 
                         // initialize map
                         function initMap(map) {
-                            let mapOptions = {
-                                center: new google.maps.LatLng(userLatitude, userLongitude),
-                                zoom: 13
-                            };
 
-                            map = new google.maps.Map(document.getElementById("map"), mapOptions);
-                            autocomplete = new google.maps.places.Autocomplete(input);
-                            //not sure if this is needed
-                            autocomplete.bindTo("bounds", map);
-                            autocomplete.setFields(["address_components", "geometry", "icon", "name"]);
 
                             //------------
                             //info window
-                            const infowindow = new google.maps.InfoWindow();
-                            const infowindowContent = document.getElementById("infowindow-content");
-                            infowindow.setContent(infowindowContent);
-                            //marker
-                            let marker = new google.maps.Marker({
-                                position: new google.maps.LatLng(0, 0),
-                                map: map,
-                                title: "Title on hover"
-                            });
+//                            const infowindow = new google.maps.InfoWindow();
+//                            const infowindowContent = document.getElementById("infowindow-content");
+//                            infowindow.setContent(infowindowContent);
+//                            //marker
+//                            let marker = new google.maps.Marker({
+//                                position: new google.maps.LatLng(0, 0),
+//                                map: map,
+//                                title: "Title on hover"
+//                            });
 //                            -------
 //                            
-                            //addListener to autocomplete
-                            autocomplete.addListener("place_changed", renewMap);
+                        }
+
+                        function createMarkers(keepers) {
+                            //delete current markers
+                            deleteMarkers();
+                            //create new markers
+                            $.each(keepers, (i, keeper) => {
+                                let marker = new google.maps.Marker({
+                                    position: new google.maps.LatLng(keeper.latitude, keeper.longitude),
+                                    map: map,
+                                    title: keeper.firstName
+                                });
+                                markers.push(marker);
+                                createInfoWindow(marker, keeper);
+                            });
+                        }
+
+                        // Sets the map on all markers in the array.
+                        function setMapOnAll(map) {
+                            for (let i = 0; i < markers.length; i++) {
+                                markers[i].setMap(map);
+                            }
+                        }
+                        // Removes the markers from the map, but keeps them in the array.
+                        function clearMarkers() {
+                            setMapOnAll(null);
+                        }
+                        // Deletes all markers in the array by removing references to them.
+                        function deleteMarkers() {
+                            clearMarkers();
+                            markers = [];
+                        }
+
+
+                        function createInfoWindow(marker, keeper) {
+                            let contentString = `
+                                    <div id="infowindow-content">
+                                         <img src="../images/` + keeper.uPhotoName + `" width="50" height="50" id="place-icon" />
+                                        <div>
+                                            <span id="place-name" class="title"></span><br />
+                                            <p id="place-address">` + keeper.streetName + ` ` + keeper.streetNumber + `, ` + keeper.city + `</p>
+                                            <p id="keeper-name">` + keeper.firstName + ` ` + keeper.lastName + `</p>
+                                            <p id="keeper-price">` + keeper.price + ` &euro;/ημέρα</p>
+                                        </div>
+                                    </div>`;
+
+                            let infowindow = new google.maps.InfoWindow({
+                                content: contentString
+                            });
+
+                            marker.addListener('click', function () {
+                                infowindow.open(map, marker);
+                            });
+
                         }
 
                         function renewMap() {
@@ -324,11 +380,12 @@
                             infowindow.open(map, marker);
                         }
 
+                        // ----------------- Geolocation -------------
+
                         //Geolocation success
                         function success(position) {
                             userLatitude = position.coords.latitude;
                             userLongitude = position.coords.longitude;
-                            doReverseGeocode({lat: userLatitude, lng: userLongitude});
                         }
 
                         //Geolocation error
@@ -344,57 +401,30 @@
                                 return navigator.geolocation.getCurrentPosition(success, error);
                             }
                         }
+                        
+                        // ----------------- Ajax -------------
+                        function getResultsFromServer(requestData) {
 
-                        //geocode()
-                        function doReverseGeocode(LatLng) {
-                            gGeocoder.geocode({'location': LatLng}, function (results, status) {
-                                if (status === 'OK') {
-                                    if (results[0]) {
-//                                    map.setZoom(11);
-//                                    var marker = new google.maps.Marker({
-//                                        position: latlng,
-//                                        map: map
-//                                    });
-                                        console.log(results);
-                                    } else {
-                                        window.alert('No results found');
-                                    }
-                                } else {
-                                    window.alert('Geocoder failed due to: ' + status);
-                                }
-                            });
-                        }
-
-                        function getResultsFromServer() {
-
-                            let data = {
-                                latitude: userLatitude,
-                                longitude: userLongitude,
-                                fromDate: new Date(),
-                                toDate: new Date()
-                            };
                             $.get(
                                     "/owner/findKeepers",
-                                    data
+                                    requestData
                                     ).done(function (response) {
                                 console.log(response);
                                 fillTableBodyWithData(response);
+                                createMarkers(response);
+                                map.setZoom(16);
                             });
                         }
 
-                        let tableBody = $("#tableBody");
+                        // ----------------- Dom -------------
+
                         function fillTableBodyWithData(keepers) {
 
                             $.each(keepers, (i, keeper) => {
 
-                                //this if might need to be changed to === null
-                                if (keeper.uPhotoName === "") {
-                                    //TODO set default img for keepers w/o profile pic
-                                    keeper.uPhotoName = "";
-                                }
                                 let result = `
                                 <tr>
-                                    <td scope="row"><img src="../images/` + keeper.uPhotoName + `" height="50px" width="50px" class="rounded" alt="Keeper-profpic"></td>
+                                    <td><img src="../images/` + keeper.uPhotoName + `" height="50px" width="50px" class="rounded" alt="Keeper-profpic"></td>
                                     <td>` + keeper.firstName + `</td>
                                     <td>` + keeper.lastName + `</td>
                                     <td>` + keeper.age + `</td>
@@ -405,11 +435,13 @@
                                 $("#" + keeper.username).click(getReservationDetails);
                             });
                         }
-
+                        // ----------------- Reservation modal -------------
                         function getReservationDetails(event) {
                             let username = event.target.id;
                             //get keeper by username (ajax).done(the rest .... 
-
+//                            $.get("getKeeperUrl/"+username).done((data)=>{
+//                                //TODO handle data
+//                            });
 
 
                             let fromDate = convertToDate(startDate.val());
@@ -419,7 +451,7 @@
 
 
                             let reservationData = {
-                                keeperPhoto: "keeper-Photo",
+                                keeperPhoto: "keeper-Photo.jpg",
                                 keeperFname: "Kostas",
                                 keeperLname: "Marinopoulos",
                                 age: "33",

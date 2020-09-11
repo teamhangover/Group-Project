@@ -54,8 +54,8 @@
                         <div class="col">   
                             <img id="profilePicImg" height="230px" class="rounded-circle " src="/img/no-profile-pic-icon-12.png" alt="profile photo"/> 
                             <h3 class=" text-center  "><i class="fas fa-paw fa-2x"></i> To προφίλ μου</h3>
-                            <label class="custom-file-upload offset-4" for="Uploadphoto"><i class="fas fa-camera-retro"></i> Ανέβασε Φωτό</label>
-                            <input id="Uploadphoto" type="file" name="photo"  accept="image/*"  />
+                            <i id="upload-profile-btn"><label class="custom-file-upload offset-4" for="Uploadphoto"><i class="fas fa-camera-retro"></i> Ανέβασε Φωτό</label>
+                                <input id="Uploadphoto" type="file" name="photo"  accept="image/*"  /></i>
                         </div>
                     </div>
 
