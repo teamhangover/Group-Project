@@ -16,7 +16,10 @@ $(document).ready(function () {
         $("#route"),
         $("#street_number"),
         $("#postal_code"),
-        $("#country")
+        $("#country"),
+        $("#petName"),
+        $("#petType"),
+        $("#petDescription")
     ];
     $.each(allInputs, (i, input) => {
         input.attr("disabled", true);
