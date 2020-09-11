@@ -54,11 +54,9 @@
                         <div class="col">   
                             <img id="profilePicImg" height="230px" class="rounded-circle" src="/img/no-profile-pic-icon-12.png" alt="profile photo"/> 
                             <h3 class=" text-center  "><i class="fas fa-paw fa-2x"></i> To προφίλ μου</h3>
-                            <label class="custom-file-upload offset-4" for="Uploadphoto"><i class="fas fa-camera-retro"></i> Ανέβασε Φωτό</label>
-                            <input id="Uploadphoto" type="file" name="photo"  accept="image/*"  />
+                            <i id="upload-profile-btn"><label class="custom-file-upload offset-4" for="Uploadphoto"><i class="fas fa-camera-retro"></i> Ανέβασε Φωτό</label>
+                            <input id="Uploadphoto" type="file" name="photo"  accept="image/*" /></i>
                         </div>
-
-
                     </div>
 
                     <div class="card-body">
@@ -112,24 +110,24 @@
                         <div class="row">
                             <c:if test="${pageContext['request'].userPrincipal != null}">
                                 <script>
-                //get username of loggedInUser
-                let username = "${pageContext['request'].userPrincipal.name}";
-                //get ProfilePicName of loggedInUser
-                let getUserPhotoUrl = "/getProfilePhoto/" + username;
-                $.ajax({
-                    url: getUserPhotoUrl
-                }).then(function (data) {
-                    if (data !== null) {
-                        //set src to show the profile pic
-                        let src = "../images/" + data;
-                        $("#profilePicImg").attr("src", src);
-                    }
-                });
+                                    //get username of loggedInUser
+                                    let username = "${pageContext['request'].userPrincipal.name}";
+                                    //get ProfilePicName of loggedInUser
+                                    let getUserPhotoUrl = "/getProfilePhoto/" + username;
+                                    $.ajax({
+                                        url: getUserPhotoUrl
+                                    }).then(function (data) {
+                                        if (data !== null) {
+                                            //set src to show the profile pic
+                                            let src = "../images/" + data;
+                                            $("#profilePicImg").attr("src", src);
+                                        }
+                                    });
                                 </script>
                                 <hr class="my-4">
                                 <!--and is Keeper-->
                                 <security:authorize access="hasRole('ROLE_KEEPER') and isAuthenticated()">
-                                    <!--TODO Address form-->        
+                                    <!-- Address form-->        
 
                                     <div class="col-xl-6 order-xl-1 float-right">
                                         <div class="card bg-info shadow">                                            
@@ -151,7 +149,6 @@
                                                     </div>
                                                     <div id ="addressDiv">
                                                         <br>
-
                                                         <br>
                                                         Πόλη  <input class="field" id="locality" disabled="true" placeholder="Πόλη" />
                                                         <br>
@@ -165,15 +162,11 @@
                                                         <br>
                                                         <br>
                                                         <hr>
-
-
                                                     </div>  
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
-
 
                                     <div id="map-canvas" class="col-lg-6"></div>
                                     <script
@@ -207,13 +200,9 @@
 
                                             <div class="col-lg-6"> 
                                                 <h5 class="text-center">Οι κρατησεις μου</h5>
-
                                                 <div class="bg-light text-dark item">1</div>
                                                 <div class="bg-light text-dark item">1</div>
                                                 <div class="bg-light text-dark item">1</div>
-
-
-
                                             </div>
                                         </div>
                                     </div>
@@ -233,9 +222,7 @@
                         <button id="resetbtn" class="btn btn-warning btn-lg mr-4 "><i class="fas fa-ban"></i> Αναίρεση</button>
                         <br>
                         <br>    
-                        <script>
-                //                           TODO fix reset btn                                    
-                        </script>
+                       <script src="/js/fillMyuserDetails-FormControls.js"></script>
                     </div>
                 </div>
             </div>  

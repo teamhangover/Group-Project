@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.PetKeeper.service.MyUserService;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -37,13 +38,15 @@ public class MyUserController {
 
     @PostMapping("/doInsertMyUser")
     public String insertUser(@ModelAttribute("newMyUser") MyUser myUser,
-            @RequestParam(value = "keeper", defaultValue = "false") String keeper) {
+            @RequestParam(value = "keeper", defaultValue = "false") String keeper,
+            HttpServletRequest request) {
 
         boolean isKeeper = Boolean.parseBoolean(keeper);
         String hashedCode = encoder.encode(myUser.getMyPassword());
         myUser.setMyPassword(hashedCode);
-        myUserServiceInterface.saveNewMyUser(myUser, isKeeper);
+        MyUser savedUser = myUserServiceInterface.saveNewMyUser(myUser, isKeeper);
 
+        
         return "index";
 
     }

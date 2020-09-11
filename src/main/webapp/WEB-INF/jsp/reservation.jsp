@@ -11,16 +11,15 @@
         <!-- CSS only -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
               integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
     </head>
 
     <body>
 
         <div class="container1 ">
-
-            <img id="keeperPhoto" src="/img/no-profile-pic-icon-12.png" alt="Profile Pic" height="180" class="rounded-circle ">
-
+            <img id="keeperPhoto" src="/img/no-profile-pic-icon-12.png" alt="Profile Pic" height="180" class="rounded-circle">
         </div>
-
+        
         <div class="container2">
             <div class="item text-center"><p id="fname">onoma</p></div>
             <div class="item"><p id="lname">epitheto</p></div>
@@ -32,12 +31,7 @@
             <div class="item"><p id="address"> dieuthinsi</p></div>
         </div>
 
-
         <div class="pt-4" id="paypal-button"></div>
-
-
-
-
 
         <!--PAY PAL  -->
 
@@ -88,8 +82,8 @@
         <!--reserve Keepers-->
         <script>
             let reservationData = {
-                keeperPhoto: "keeper-Photo.jpg",
-                keeperFname: "Kostas",
+                keeperPhoto: "keeper-Photo",
+                keeperFname: "Makis",
                 keeperLname: "Marinopoulos",
                 age: "33",
                 totalPrice: "30",
@@ -98,7 +92,6 @@
                 keeperDescription: "Αγαπαω πολυ τα ζωα και προσφερω ενα ανετο και καθαρο περιβαλλον η οτι  θελεις να γραφει εδω",
                 keeperAddress: "Tositsa 18, Athens, Greece"
             };
-
 
             let kPhoto = $("#keeperPhoto");
             let fname = $("#fname");
@@ -109,7 +102,6 @@
             let until = $("#until");
             let descri = $("#descri");
             let address = $("#address");
-
 
             function displayReservationData(rsvData) {
                 let srcString = "../images/" + rsvData.keeperPhoto;
@@ -125,13 +117,7 @@
             }
             
             displayReservationData(reservationData);
-
-            let usernames = $("[username]");
-            console.log(usernames);
-
         </script>
 
-
-    </body>
-
+  </body>
 </html>

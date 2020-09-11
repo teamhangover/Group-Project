@@ -77,19 +77,15 @@ $(document).ready(function () {
                     addressData
                     ).done(function (data) {
                 //Request was successfull  
-                $(document.body).css({'height': '100vh'});
                 $(document.body).css({'cursor': 'wait'});
-                // 
-                $('#detailsForm').fadeOut(600);
-                $('#addressForm').fadeOut(600);
                 // Switching the variable to true
                 ajaxSentFlag = true;
                 // Submitting the form
-                $("form").submit();
+                $("#detailsForm").submit();
             });
         }
     });
-   
+
     //Initializing map
     function initialize(data) {
 

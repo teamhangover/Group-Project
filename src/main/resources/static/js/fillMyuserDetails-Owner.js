@@ -37,15 +37,11 @@ $(document).ready(function () {
                     {petName: petName.val(), petType: petType.val(), petDescription: petDescription.val()}
             ).done(function (data) {
                 //Request was successfull  
-                $(document.body).css({'height': '100vh'});
                 $(document.body).css({'cursor': 'wait'});
-                // 
-                $('#detailsForm').fadeOut(600);
-                $('#petForm').fadeOut(600);
                 // Switching the variable to true
                 hasAjaxRequestSucceeded = true;
                 // Submitting the form
-                $("form").submit();
+                $("#detailsForm").submit();
             });
         }
     });

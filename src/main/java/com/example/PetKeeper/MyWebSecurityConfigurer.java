@@ -70,4 +70,14 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
         return encoder;
     }
+
+//    @Bean
+//    public void authWithAuthManager(HttpServletRequest request, String username, String password) {
+//        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
+//        authToken.setDetails(new WebAuthenticationDetails(request));
+//
+//        Authentication authentication = authenticationManager.authenticate(authToken);
+//
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
+//    }
 }
