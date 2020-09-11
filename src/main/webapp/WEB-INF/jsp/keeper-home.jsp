@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title> Dashboard</title>
-  <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
+        <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- CSS only -->
@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="/css/calendarStyle.css">
         <link rel="stylesheet" href="/css/keeper-home-style.css">
 
-     
+
     </head>
 
     <body>
@@ -67,15 +67,9 @@
                         </div>
                     </div>
 
-                    <div class="flex-container">
-
-                        <div>κρατηση 1</div>
-                        <div>κρατηση 2</div>
-                        <div>κρατηση 3</div>  
-                        <div>κρατηση 3</div>  
-                        <div>κρατηση 3</div>  
-                        <div>κρατηση 3</div>  
+                    <div class="flex-container" id="reservations">
                         <h5 id="kratiseis">Οι τελευταίες σου κρατήσεις!</h5> 
+
                     </div>
 
                 </article>
@@ -221,11 +215,11 @@
                         let tmpDay = this.dataset.day;
                         if (!selectedDays.includes(this.dataset.day)) {
                             selectedDays.push(this.dataset.day);
-                            this.innerHTML =`<span class="clnd-day-number"><strong>` + tmpDay + `</strong></span><span class="avail">Μη Διαθέσιμος</span>`;
+                            this.innerHTML = `<span class="clnd-day-number"><strong>` + tmpDay + `</strong></span><span class="avail">Μη Διαθέσιμος</span>`;
                             setUnavailableDate(this.dataset.fullDate);
                         } else {
                             selectedDays.splice(selectedDays.indexOf(this.dataset.day), 1);
-                            this.innerHTML =`<span class="clnd-day-number"> <strong>` + tmpDay + `</strong></span><span class="avail">Διαθέσιμος</span>`;
+                            this.innerHTML = `<span class="clnd-day-number"> <strong>` + tmpDay + `</strong></span><span class="avail">Διαθέσιμος</span>`;
                             deleteDate(this.dataset.fullDate);
                         }
                     });
@@ -324,6 +318,110 @@
                     );
                 });
             });
+        </script>
+
+
+        <!--show latest reservations-->
+        <script>
+
+            let reservationData = [{
+                    ownerPhoto: "owner-Photo.jpg",
+                    ownerFname: "Thanos",
+                    ownerLname: "Sam",
+                    pet: "Dog",
+                    petName: "Takis",
+                    totalPrice: "30",
+                    fromDate: "25-9-2020",
+                    toDate: "28-9-2020"
+                },
+                {
+                    ownerPhoto: "owner-Photo.jpg",
+                    ownerFname: "Thanos",
+                    ownerLname: "Sam",
+                    pet: "Dog",
+                    petName: "Takis",
+                    totalPrice: "30",
+                    fromDate: "25-9-2020",
+                    toDate: "28-9-2020"
+
+                },
+                {
+                    ownerPhoto: "owner-Photo.jpg",
+                    ownerFname: "Thanos",
+                    ownerLname: "Sam",
+                    pet: "Dog",
+                    petName: "Takis",
+                    totalPrice: "30",
+                    fromDate: "25-9-2020",
+                    toDate: "28-9-2020"
+
+                },
+                {
+                    ownerPhoto: "owner-Photo.jpg",
+                    ownerFname: "Thanos",
+                    ownerLname: "Sam",
+                    pet: "Dog",
+                    petName: "Takis",
+                    totalPrice: "30",
+                    fromDate: "25-9-2020",
+                    toDate: "28-9-2020"
+
+                },
+                {
+                    ownerPhoto: "owner-Photo.jpg",
+                    ownerFname: "Thanos",
+                    ownerLname: "Sam",
+                    pet: "Dog",
+                    petName: "Takis",
+                    totalPrice: "30",
+                    fromDate: "25-9-2020",
+                    toDate: "28-9-2020"
+
+                },
+                {
+                    ownerPhoto: "owner-Photo.jpg",
+                    ownerFname: "Thanos",
+                    ownerLname: "Sam",
+                    pet: "Dog",
+                    petName: "Takis",
+                    totalPrice: "30",
+                    fromDate: "25-9-2020",
+                    toDate: "28-9-2020"
+
+                },
+                {
+                    ownerPhoto: "owner-Photo.jpg",
+                    ownerFname: "Thanos",
+                    ownerLname: "Sam",
+                    pet: "Dog",
+                    petName: "Takis",
+                    totalPrice: "30",
+                    fromDate: "25-9-2020",
+                    toDate: "28-9-2020"
+                }
+            ];
+
+            function showAllReservations(reservs) {
+                $.each(reservs, (i, reservation) => {
+                    displayReservations(reservation);
+                });
+            }
+
+            let reservationDiv = $("#reservations");
+            function displayReservations(rsvData) {
+
+
+                let reservation = `
+                          <div>
+                            <img  src="../images/` + rsvData.ownerPhoto + `" alt="Profile Pic" height="30px" width="30px" class="rounded-circle ownerPhoto " >
+                        <span> ` + rsvData.ownerFname + ` </span> ` + rsvData.ownerLname + ` ` + rsvData.pet + ` ` + rsvData.petName + `  ` + rsvData.totalPrice + ` ` + rsvData.fromDate + ` ` + rsvData.toDate + ` </div>`;
+                reservationDiv.append(reservation);
+            }
+
+            showAllReservations(reservationData);
+
+
+
         </script>
     </body>
 </html>

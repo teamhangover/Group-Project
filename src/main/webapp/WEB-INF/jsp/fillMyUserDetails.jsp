@@ -52,7 +52,7 @@
                 <div class="card bg-info shadow">
                     <div class="card-header bg-info border-0 d-flex align-self-center">
                         <div class="col">   
-                            <img id="profilePicImg" height="230px" class="rounded-circle " src="/img/no-profile-pic-icon-12.png" alt="profile photo"/> 
+                            <img id="profilePicImg" height="230px" class="rounded-circle" src="/img/no-profile-pic-icon-12.png" alt="profile photo"/> 
                             <h3 class=" text-center  "><i class="fas fa-paw fa-2x"></i> To προφίλ μου</h3>
                             <label class="custom-file-upload offset-4" for="Uploadphoto"><i class="fas fa-camera-retro"></i> Ανέβασε Φωτό</label>
                             <input id="Uploadphoto" type="file" name="photo"  accept="image/*"  />
@@ -74,7 +74,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-last-name"><i class="fas fa-user"></i> Επίθετο</label>
-                                        <springform:input id="input-last-name" cssClass="form-control form-control-alternative" type="text" path="lastName" pattern="[A-Za-z]{3,50}" title=" Πρέπει να είναι μεταξύ 3 με 50 χαρακτήρες" required="true"  placeholder="Επίθετο"/>
+                                        <springform:input id="input-last-name" cssClass="form-control form-control-alternative" type="text" path="lastName" pattern="[A-Za-z,Α-Ωα-ω]{3,50}" title=" Πρέπει να είναι μεταξύ 3 με 50 χαρακτήρες" required="true"  placeholder="Επίθετο"/>
                                     </div>
                                 </div>
                             </div>
@@ -103,14 +103,8 @@
                         <div class="form-group focused">
                             <div class="row">                              
                                 <label><i class="fas fa-pencil-alt"></i> Περιγραφή </label>
-                                <springform:textarea rows="4" path="uDescription" cols="40" class="form-control form-control-alternative" /> 
+                                <springform:textarea rows="4" path="uDescription" pattern="[A-Za-z,Α-Ωα-ω]" cols="40" class="form-control form-control-alternative" /> 
                             </div>
-                            <!--                            <div class="row my-3 offset-5">   
-                                                            <div class="form-group">
-                                                                <label class="custom-file-upload" for="Uploadphoto"><i class="fas fa-camera-retro"></i> Ανέβασε Φωτό</label>
-                                                                <input id="Uploadphoto" type="file" name="photo" accept="image/*" class=" form-control " />
-                                                            </div>
-                                                        </div>-->
                             <br>
                             <hr class="my-4">
 
@@ -197,9 +191,9 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <br>
+                                                
                                                 <div id="petForm" class="form-group focused">
-                                                    <i class="fas fa-paw"></i>  Όνομα ζώου <input type="text" id="petName" class="form-control form-control-alternative" placeholder="Όνομα κατοικιδίου" />
+                                                    <i class="fas fa-paw"></i>  Όνομα ζώου <input type="text" id="petName" pattern="[A-Za-z,Α-Ωα-ω]{3,50}" class="form-control form-control-alternative" placeholder="Όνομα κατοικιδίου" />
                                                     <i class="fas fa-paw"></i>  Eίδος ζώου <select name="type" id="petType" class="form-control form-control-alternative">
                                                         <option value="dog">Σκύλος</option>
                                                         <option value="cat">Γάτα</option>
@@ -207,12 +201,12 @@
                                                         <option value="bird">Πτηνό</option>
                                                         <option value="other">Άλλο</option>
                                                     </select>
-                                                    <i class="fas fa-pencil-alt"></i> Περιγραφή <input type="textarea" id="petDescription" class="form-control form-control-alternative" placeholder="Λίγα λόγια για το ζωάκι σου!"/>
+                                                    <i class="fas fa-pencil-alt"></i> Περιγραφή <textarea type="textarea" id="petDescription" pattern="[A-Za-z,Α-Ωα-ω]+\s*" rows="1" cols="1" class="form-control form-control-alternative" placeholder="Λίγα λόγια για το ζωάκι σου!"></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6"> 
-                                                <h5 class="text-center mt-0">Οι κρατησεις μου</h5>
+                                                <h5 class="text-center">Οι κρατησεις μου</h5>
 
                                                 <div class="bg-light text-dark item">1</div>
                                                 <div class="bg-light text-dark item">1</div>
