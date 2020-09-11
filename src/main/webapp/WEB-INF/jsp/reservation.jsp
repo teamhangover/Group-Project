@@ -17,12 +17,10 @@
     <body>
 
         <div class="container1 ">
-
-            <img id="keeperPhoto" src="/img/no-profile-pic-icon-12.png" alt="Profile Pic" class="img-circle ">
-
+            <img id="keeperPhoto" src="/img/no-profile-pic-icon-12.png" alt="Profile Pic" height="180" class="rounded-circle">
         </div>
-
-        <div class="container ">
+        
+        <div class="container2">
             <div class="item text-center"><p id="fname">onoma</p></div>
             <div class="item"><p id="lname">epitheto</p></div>
             <div class="item"><p id="age">ilikia</p></div>
@@ -33,12 +31,7 @@
             <div class="item"><p id="address"> dieuthinsi</p></div>
         </div>
 
-
         <div class="pt-4" id="paypal-button"></div>
-
-
-
-
 
         <!--PAY PAL  -->
 
@@ -96,10 +89,9 @@
                 totalPrice: "30",
                 fromDate: "25-9-2020",
                 toDate: "28-9-2020",
-                keeperDescription: "ÎÎ³Î±ÏÎ±Ï ÏÎ¿Î»Ï ÏÎ± Î¶ÏÎ± ÎºÎ±Î¹ ÏÏÎ¿ÏÏÎµÏÏ ÎµÎ½Î± Î±Î½ÎµÏÎ¿ ÎºÎ±Î¹ ÎºÎ±Î¸Î±ÏÎ¿ ÏÎµÏÎ¹Î²Î±Î»Î»Î¿Î½ Î· Î¿ÏÎ¹  Î¸ÎµÎ»ÎµÎ¹Ï Î½Î± Î³ÏÎ±ÏÎµÎ¹ ÎµÎ´Ï",
+                keeperDescription: "Αγαπαω πολυ τα ζωα και προσφερω ενα ανετο και καθαρο περιβαλλον η οτι  θελεις να γραφει εδω",
                 keeperAddress: "Tositsa 18, Athens, Greece"
             };
-
 
             let kPhoto = $("#keeperPhoto");
             let fname = $("#fname");
@@ -110,7 +102,6 @@
             let until = $("#until");
             let descri = $("#descri");
             let address = $("#address");
-
 
             function displayReservationData(rsvData) {
                 let srcString = "../images/" + rsvData.keeperPhoto;
@@ -126,11 +117,7 @@
             }
             
             displayReservationData(reservationData);
-
-            
         </script>
 
-
-    </body>
-
+  </body>
 </html>

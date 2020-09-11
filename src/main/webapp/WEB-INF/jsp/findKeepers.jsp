@@ -88,23 +88,24 @@
 
             <!-- main row -->
             <div class="container-fluid">
-                <div class="row height">
+                <div class="row ">
                     <div class="col-md">
                         <div id="map"></div>
                     </div>
 
-                    <div class="col-md">
-                        <table class="text-center text-light" id="keepers-table">
-                            <thead id="table-thead">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Όνομα</th>
-                                    <th scope="col">Επίθετο</th>
-                                    <th scope="col">Ηλικία</th>
-                                    <th scope="col"></th>
+                    <div class="col-md" id="noresults-div">
+                        <table class="table table-container text-center text-light  ">
+                            <thead >
+                                <tr >
+                                    <th scope="col" >#</th>
+                                    <th scope="col" >Όνομα</th>
+                                    <th scope="col" >Επίθετο</th>
+                                    <th scope="col" >Ηλικία</th>
+                                    <th scope="col" ></th>
                                 </tr>
                             </thead>
-                            <tbody id="tableBody" >
+                            <tbody id="tableBody">
+
                             </tbody>
                         </table>
                     </div>
@@ -123,13 +124,9 @@
                         </div>
                     </div>
                 </div>
-                <br>              <br>
-                <hr class="style-five">
-                <br>
-                <br>
-                <div>
-                </div>
 
+
+                <hr class="style-five">
 
                 <!-- dog -->
                 <div class="d-flex flex-row  text-light ">
@@ -409,10 +406,16 @@
                                     "/owner/findKeepers",
                                     requestData
                                     ).done(function (response) {
-                                console.log(response);
-                                fillTableBodyWithData(response);
-                                createMarkers(response);
-                                map.setZoom(16);
+                                        console.log(response);
+                                      if (response.length === 0) {
+                                            $("#noresults-div").addClass("no-results");
+                                      } else {
+                                          fillTableBodyWithData(response);
+                                          $("#noresults-div").removeClass("no-results");
+                                          fillTableBodyWithData(response);
+                                          createMarkers(response);
+                                          map.setZoom(16);
+                                     }
                             });
                         }
 
@@ -428,7 +431,7 @@
                                     <td>` + keeper.firstName + `</td>
                                     <td>` + keeper.lastName + `</td>
                                     <td>` + keeper.age + `</td>
-                                    <td><button type="button" id="` + keeper.username + `" class="btn btn-outline-info operModalButtons" data-toggle="modal" data-target="#exampleModalScrollable" >Hire!</button></td>
+                                    <td><button type="button" id="` + keeper.username + `" class="btn btn-outline-info operModalButtons" data-toggle="modal" data-target="#exampleModalScrollable" >Κάνε Κράτηση!</button></td>
                                 </tr>`;
                                 tableBody.append(result);
 

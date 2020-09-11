@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Το προφίλ μου</title>
-        <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
+       <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
         <!--bootstrap-->
@@ -52,10 +52,10 @@
                 <div class="card bg-info shadow">
                     <div class="card-header bg-info border-0 d-flex align-self-center">
                         <div class="col">   
-                            <img id="profilePicImg" height="230px" class="rounded-circle " src="/img/no-profile-pic-icon-12.png" alt="profile photo"/> 
+                            <img id="profilePicImg" height="230px" class="rounded-circle" src="/img/no-profile-pic-icon-12.png" alt="profile photo"/> 
                             <h3 class=" text-center  "><i class="fas fa-paw fa-2x"></i> To προφίλ μου</h3>
                             <i id="upload-profile-btn"><label class="custom-file-upload offset-4" for="Uploadphoto"><i class="fas fa-camera-retro"></i> Ανέβασε Φωτό</label>
-                                <input id="Uploadphoto" type="file" name="photo"  accept="image/*"  /></i>
+                            <input id="Uploadphoto" type="file" name="photo"  accept="image/*" /></i>
                         </div>
                     </div>
 
@@ -101,9 +101,8 @@
                         <div class="form-group focused">
                             <div class="row">                              
                                 <label><i class="fas fa-pencil-alt"></i> Περιγραφή </label>
-                                <springform:textarea id="input-user-description" rows="4" path="uDescription" cols="40" class="form-control form-control-alternative" /> 
+                                <springform:textarea rows="4" path="uDescription" pattern="[A-Za-z,Α-Ωα-ω]" cols="40" class="form-control form-control-alternative" /> 
                             </div>
-
                             <br>
                             <hr class="my-4">
 
@@ -111,24 +110,24 @@
                         <div class="row">
                             <c:if test="${pageContext['request'].userPrincipal != null}">
                                 <script>
-                //get username of loggedInUser
-                let username = "${pageContext['request'].userPrincipal.name}";
-                //get ProfilePicName of loggedInUser
-                let getUserPhotoUrl = "/getProfilePhoto/" + username;
-                $.ajax({
-                    url: getUserPhotoUrl
-                }).then(function (data) {
-                    if (data !== null) {
-                        //set src to show the profile pic
-                        let src = "../images/" + data;
-                        $("#profilePicImg").attr("src", src);
-                    }
-                });
+                                    //get username of loggedInUser
+                                    let username = "${pageContext['request'].userPrincipal.name}";
+                                    //get ProfilePicName of loggedInUser
+                                    let getUserPhotoUrl = "/getProfilePhoto/" + username;
+                                    $.ajax({
+                                        url: getUserPhotoUrl
+                                    }).then(function (data) {
+                                        if (data !== null) {
+                                            //set src to show the profile pic
+                                            let src = "../images/" + data;
+                                            $("#profilePicImg").attr("src", src);
+                                        }
+                                    });
                                 </script>
                                 <hr class="my-4">
                                 <!--and is Keeper-->
                                 <security:authorize access="hasRole('ROLE_KEEPER') and isAuthenticated()">
-                                    <!--TODO Address form-->        
+                                    <!-- Address form-->        
 
                                     <div class="col-xl-6 order-xl-1 float-right">
                                         <div class="card bg-info shadow">                                            
@@ -150,7 +149,6 @@
                                                     </div>
                                                     <div id ="addressDiv">
                                                         <br>
-
                                                         <br>
                                                         Πόλη  <input class="field" id="locality" disabled="true" placeholder="Πόλη" />
                                                         <br>
@@ -164,16 +162,11 @@
                                                         <br>
                                                         <br>
                                                         <hr>
-
-
                                                     </div>  
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
-
-
 
                                     <div id="map-canvas" class="col-lg-6"></div>
                                     <script
@@ -191,9 +184,9 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <br>
+                                                
                                                 <div id="petForm" class="form-group focused">
-                                                    <i class="fas fa-paw"></i>  Όνομα ζώου <input type="text" id="petName" class="form-control form-control-alternative" placeholder="Όνομα κατοικιδίου" />
+                                                    <i class="fas fa-paw"></i>  Όνομα ζώου <input type="text" id="petName" pattern="[A-Za-z,Α-Ωα-ω]{3,50}" class="form-control form-control-alternative" placeholder="Όνομα κατοικιδίου" />
                                                     <i class="fas fa-paw"></i>  Eίδος ζώου <select name="type" id="petType" class="form-control form-control-alternative">
                                                         <option value="dog">Σκύλος</option>
                                                         <option value="cat">Γάτα</option>
@@ -201,12 +194,12 @@
                                                         <option value="bird">Πτηνό</option>
                                                         <option value="other">Άλλο</option>
                                                     </select>
-                                                    <i class="fas fa-pencil-alt"></i> Περιγραφή <input type="textarea" id="petDescription" class="form-control form-control-alternative" placeholder="Λίγα λόγια για το ζωάκι σου!"/>
+                                                    <i class="fas fa-pencil-alt"></i> Περιγραφή <textarea type="textarea" id="petDescription" pattern="[A-Za-z,Α-Ωα-ω]+\s*" rows="1" cols="1" class="form-control form-control-alternative" placeholder="Λίγα λόγια για το ζωάκι σου!"></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6"> 
-                                                <h5 class="text-center mt-0">Οι κρατησεις μου</h5>
+                                                <h5 class="text-center">Οι κρατησεις μου</h5>
                                                 <div class="bg-light text-dark item">1</div>
                                                 <div class="bg-light text-dark item">1</div>
                                                 <div class="bg-light text-dark item">1</div>
@@ -224,17 +217,17 @@
                 <div class="row">  
                     <div class="col-lg-8 container-fluid text-center well">
 
-                        <button id="submitButton" type="submit" class="btn btn-success btn-lg mr-4 " ><i class="far fa-thumbs-up"></i>Καταχώρηση</button>
-                        <button id="editBtn" type="button"  class="btn btn-primary btn-lg mr-4" ><i class="far fa-edit"></i>Επεξεργασία</button>
-                        <button id="cancelBtn" type="button" class="btn btn-warning btn-lg mr-4 "><i class="fas fa-ban"></i> Αναίρεση</button>
+                        <button type="submit" id="submitButton" class="btn btn-success btn-lg mr-4 " ><i class="far fa-thumbs-up"></i>Καταχώρηση</button>
+                        <button type="button"  class="btn btn-primary btn-lg mr-4" ><i class="far fa-edit"></i>Επεξεργασία</button>
+                        <button id="resetbtn" class="btn btn-warning btn-lg mr-4 "><i class="fas fa-ban"></i> Αναίρεση</button>
                         <br>
                         <br>    
-                        <script src="/js/fillMyuserDetails-FormControls.js"></script>
+                       <script src="/js/fillMyuserDetails-FormControls.js"></script>
                     </div>
                 </div>
             </div>  
         </div>
-
-        <jsp:include page="footer.jsp"></jsp:include>
-    </body>
+   
+    <jsp:include page="footer.jsp"></jsp:include>
+</body>
 </html>

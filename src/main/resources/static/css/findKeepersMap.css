@@ -1,6 +1,7 @@
 #map {
     height: 100%;
     width: 100%;
+    min-height:70vh;
 }
 
 /* *{border:solid 1px grey;
@@ -15,14 +16,30 @@ body {
 
 }
 
-.scroll{
+
+
+/* keeper table */
+.table-container{
+/*    width:100%;*/
+/*    height: 100% ;*/
+    background: #5f2c82;  
+    background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+    background: linear-gradient(to right, #49a09d, #5f2c82); 
+    opacity: 0.5;
+    display: block;
+    max-height: 700px;
     overflow:auto;
+    border: solid 2px black
+   
 }
 
-.height{
-    height: 70vh;
+tbody td, thead th { 
+                width : 200px; 
 }
 
+.no-results{
+    background-image: url('/img/no-result.jpg')
+}
 
 
 .dates{
@@ -282,17 +299,6 @@ body {
     border-left: 13px solid transparent;
     border-right: 13px solid transparent;
     border-bottom: 24px solid rgb(71, 53, 53);
-}
-
-/* keeper table */
-.table{
-
-    height: 100% ;
-    background: #5f2c82;  
-    background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
-    background: linear-gradient(to right, #49a09d, #5f2c82); 
-    opacity: 0.5;
-
 }
 
 /* Hr Cloud */

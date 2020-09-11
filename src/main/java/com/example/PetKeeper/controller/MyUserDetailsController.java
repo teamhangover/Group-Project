@@ -76,9 +76,7 @@ public class MyUserDetailsController {
         } else if (null != loggedInMyUser.getMyUserDetails() && null != loggedInMyUser.getMyUserDetails().getUPhotoName()) {
             //set previous photo profile if none given this time
             newMyUserDetails.setUPhotoName(loggedInMyUser.getMyUserDetails().getUPhotoName());
-
         } else {
-            //default profile pic if none given (ever)
             newMyUserDetails.setUPhotoName("no-profile-pic-icon-12.png");
         }
 
