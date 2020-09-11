@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 1000px;
+    background-color: black;
 }
 
 /* * {
@@ -87,7 +88,7 @@ html, body {
   }
    */
 
-.container {
+.container2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

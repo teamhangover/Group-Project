@@ -58,6 +58,7 @@ a:hover {
     width: 70%;
     overflow: auto;
    
+   
 }
 
 .flex-container div:hover{
@@ -65,13 +66,15 @@ a:hover {
 }
 
 .flex-container>div {
+ 
     background-color: #b8bdca;
-    width: 100;
-    margin: 10px;
+    width: 100%;
+    margin: 2px;
     text-align: center;
     line-height: 75px;
-    font-size: 30px;
+    font-size: 20px;
      opacity: 0.5;
+     
 }
 
 #three {
@@ -184,9 +187,12 @@ header h1 {
 }
 
 #kratiseis {
+    position:fixed;
+    top:67px;
     display: flex;
     justify-content: center;
     margin-top: 20px;
     width: 45%;
+    color: white;
 }
 

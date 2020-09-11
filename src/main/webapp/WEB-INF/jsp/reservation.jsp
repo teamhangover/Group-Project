@@ -17,11 +17,11 @@
 
         <div class="container1 ">
 
-            <img id="keeperPhoto" src="/img/no-profile-pic-icon-12.png" alt="Profile Pic" class="img-circle ">
+            <img id="keeperPhoto" src="/img/no-profile-pic-icon-12.png" alt="Profile Pic" height="180" class="rounded-circle ">
 
         </div>
 
-        <div class="container ">
+        <div class="container2">
             <div class="item text-center"><p id="fname">onoma</p></div>
             <div class="item"><p id="lname">epitheto</p></div>
             <div class="item"><p id="age">ilikia</p></div>
@@ -88,7 +88,7 @@
         <!--reserve Keepers-->
         <script>
             let reservationData = {
-                keeperPhoto: "keeper-Photo",
+                keeperPhoto: "keeper-Photo.jpg",
                 keeperFname: "Kostas",
                 keeperLname: "Marinopoulos",
                 age: "33",

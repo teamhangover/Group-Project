@@ -8,9 +8,9 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <title>Βρες Keepers</title>
-         <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
+        <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
 
         <!--bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -31,7 +31,7 @@
         <link rel="stylesheet" type="text/css" href="/css/findKeepersMap.css" />
 
         <!-- glyphicon -->
-<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
         <!-- datepicker resources -->
         <link rel="application/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
@@ -79,32 +79,33 @@
 
             <div class="d-md-flex p-2 bd-highlight justify-content-center price bg-dark card-1">
                 <input type="range" min="0" max="100" class="mr-2 bg-dark " id="fromPrice" value="90"> 
-               
-                    <label id="fPrice" class="text-light my-2 ml-1 "></label> 
-                    <label for="fromPrice" class="mr-1  text-light mt-2"> /ημέρα </label>
-                     <i class="fas fa-euro-sign text-light mt-3" aria-hidden="true"> </i>
+
+                <label id="fPrice" class="text-light my-2 ml-1 "></label> 
+                <label for="fromPrice" class="mr-1  text-light mt-2"> /ημέρα </label>
+                <i class="fas fa-euro-sign text-light mt-3" aria-hidden="true"> </i>
             </div>
             <hr class="style-five">
 
             <!-- main row -->
             <div class="container-fluid">
-                <div class="row height">
+                <div class="row ">
                     <div class="col-md">
                         <div id="map"></div>
                     </div>
 
-                    <div class="col-md d-flex-inline scroll">
-                        <table class="table text-center text-light">
+                    <div class="col-md" id="noresults-div">
+                        <table class="table table-container text-center text-light  ">
                             <thead >
                                 <tr >
-                                    <th scope="col"><strong>#</strong></th>
-                                    <th scope="col"><strong>Όνομα</strong></th>
-                                    <th scope="col"><strong>Επίθετο</strong></th>
-                                    <th scope="col"><strong>Ηλικία</strong></th>
-                                    <th scope="col"></th>
+                                    <th scope="col" >#</th>
+                                    <th scope="col" >Όνομα</th>
+                                    <th scope="col" >Επίθετο</th>
+                                    <th scope="col" >Ηλικία</th>
+                                    <th scope="col" ></th>
                                 </tr>
                             </thead>
-                            <tbody id="tableBody" >
+                            <tbody id="tableBody">
+
                             </tbody>
                         </table>
                     </div>
@@ -123,12 +124,10 @@
                         </div>
                     </div>
                 </div>
-                <br>              <br>
+
+
                 <hr class="style-five">
-                <br>
-                <br>
-                <div>
-                </div>
+
                 <div id="infowindow-content">
                     <img src="#" width="16" height="16" id="place-icon" />
                     <span id="place-name" class="title"></span><br />
@@ -307,7 +306,9 @@
                         let url = "/owner/findKeepers";
                         let defaultData = {
                             latitude: 37.988860,
+//                            988860
                             longitude: 23.734173,
+//                            734173
                             fromDate: fromDate,
                             toDate: toDate
                         };
@@ -316,7 +317,12 @@
                                 defaultData
                                 ).done(function (response) {
                             console.log(response);
-                            fillTableBodyWithData(response);
+                            if (response.length === 0) {
+                                $("#noresults-div").addClass("no-results");
+                            } else {
+                                fillTableBodyWithData(response);
+                                $("#noresults-div").removeClass("no-results");
+                            }
                         });
                     }
 
@@ -327,16 +333,18 @@
 
                             //this if might need to be changed to === null
                             if (keeper.uPhotoName === "") {
-                                //TODO set default img for keepers w/o profile pic
-                                keeper.uPhotoName = "";
+                                
+                                keeper.uPhotoName = "/img/no-profile-pic-icon-12.png";
+                            }else {
+                                keeper.uPhotoName = "../images/"  + keeper.uPhotoName;
                             }
                             let result = `
                                 <tr>
-                                    <td scope="row"><img src="../images/` + keeper.uPhotoName + `" height="50px" width="50px" class="rounded" alt="Keeper-profpic"></td>
-                                    <td>` + keeper.firstName + `</td>
-                                    <td>` + keeper.lastName + `</td>
-                                    <td>` + keeper.age + `</td>
-                                    <td><button type="button" username="` + keeper.username + `" class="btn btn-outline-info operModalButtons" data-toggle="modal" data-target="#exampleModalScrollable" >Hire!</button></td>
+                                    <td><img src="` + keeper.uPhotoName + `" height="50px" width="50px" class="rounded" alt="Keeper-profpic"></td>
+                                    <td >` + keeper.firstName + `</td>
+                                    <td >` + keeper.lastName + `</td>
+                                    <td >` + keeper.age + `</td>
+                                    <td ><button type="button" username="` + keeper.username + `" class="btn btn-outline-info operModalButtons" data-toggle="modal" data-target="#exampleModalScrollable" >Κάνε Κράτηση!</button></td>
                                 </tr>`;
                             tableBody.append(result);
                         });
@@ -348,9 +356,9 @@
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5mZvsDf2yxpRbN_AdULITrSGI_o3Oow&callback=initMap&libraries=places"
                 defer></script>
             </div>
-                
-                       
-                            
+
+
+
         <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>
