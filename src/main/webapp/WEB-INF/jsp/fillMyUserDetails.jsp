@@ -101,7 +101,7 @@
                         <div class="form-group focused">
                             <div class="row">                              
                                 <label><i class="fas fa-pencil-alt"></i> Περιγραφή </label>
-                                <springform:textarea rows="4" path="uDescription" pattern="[A-Za-z,Α-Ωα-ω]" cols="40" class="form-control form-control-alternative" /> 
+                                <springform:textarea rows="4" id="input-user-description" path="uDescription" pattern="[A-Za-z,Α-Ωα-ω]" cols="40" class="form-control form-control-alternative" /> 
                             </div>
                             <br>
                             <hr class="my-4">
@@ -218,8 +218,8 @@
                     <div class="col-lg-8 container-fluid text-center well">
 
                         <button type="submit" id="submitButton" class="btn btn-success btn-lg mr-4 " ><i class="far fa-thumbs-up"></i>Καταχώρηση</button>
-                        <button type="button"  class="btn btn-primary btn-lg mr-4" ><i class="far fa-edit"></i>Επεξεργασία</button>
-                        <button id="resetbtn" class="btn btn-warning btn-lg mr-4 "><i class="fas fa-ban"></i> Αναίρεση</button>
+                        <button id="editBtn" type="button"  class="btn btn-primary btn-lg mr-4" ><i class="far fa-edit"></i>Επεξεργασία</button>
+                        <button id="cancelBtn" type="button" class="btn btn-warning btn-lg mr-4 "><i class="fas fa-ban"></i> Αναίρεση</button>
                         <br>
                         <br>    
                        <script src="/js/fillMyuserDetails-FormControls.js"></script>
