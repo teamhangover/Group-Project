@@ -1,7 +1,6 @@
 html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 1000px;
 }
 
@@ -87,7 +86,7 @@ html, body {
   }
    */
 
-.container2 {
+.container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -95,6 +94,8 @@ html, body {
     width: 100px;
     background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);
     background: linear-gradient(to right, #49a09d, #5f2c82);
+    border-radius: 1em;
+    font-family: sans-serif;
 }
 
 .container1 {
@@ -114,18 +115,20 @@ html, body {
     flex: 0 32%;
     height: 100px;
     margin-bottom: 2%;
-    background: rgb(233, 226, 226);
+/*    background: rgb(233, 226, 226);*/
     border-radius: 5px;
+    
 }
 
 .item1 {
     display: flex;
-    justify-content: center;
+   justify-content: center;
     align-items: center;    
     margin-top: 2%;
     flex: 0 66%;
     height: 100px;
     margin-bottom: 2%;
-    background: rgb(233, 226, 226);
     border-radius: 5px;
+    
 }
+

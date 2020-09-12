@@ -80,8 +80,8 @@
             <div class="d-md-flex p-2 bd-highlight justify-content-center price bg-dark card-1">
                 <input type="range" min="0" max="100" class="mr-2 bg-dark " id="fromPrice" value="90"> 
 
-                <label id="fPrice" class="text-light my-2 ml-1 "></label> 
-                <label for="fromPrice" class="mr-1  text-light mt-2"> /ημέρα </label>
+                <label id="fPrice" class="text-light my-2 ml-2 "></label> 
+                <label for="fromPrice" class="mr-1  text-light my-2"> /ημέρα </label>
                 <i class="fas fa-euro-sign text-light mt-3" aria-hidden="true"> </i>
             </div>
             <hr class="style-five">
@@ -115,11 +115,11 @@
                 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
                         <div class="modal-content">
-                            <div class="modal-body">
+                            <div class="modal-body bg-dark">
                             <jsp:include page="reservation.jsp"></jsp:include> 
-                            </div>
-                            <div class="modal-footer bg-light">
-                                <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+                            </div> 
+                            <div class="modal-footer bg-dark">
+                                <button type="button" class="btn btn-light text-dark " data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
