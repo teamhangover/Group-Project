@@ -19,16 +19,16 @@
         <div class="container1 ">
             <img id="keeperPhoto" src="/img/no-profile-pic-icon-12.png" alt="Profile Pic" height="180" class="rounded-circle">
         </div>
-        
-        <div class="container2">
-            <div class="item text-center"><p id="fname">onoma</p></div>
-            <div class="item"><p id="lname">epitheto</p></div>
-            <div class="item"><p id="age">ilikia</p></div>
-            <div class="item"><p id="price">timi</p></div>
-            <div class="item"><p id="from">apo</p></div>
-            <div class="item"><p id="until">mexri</p></div>
-            <div class="item1"><p id="descri">perigrafi</p></div>
-            <div class="item"><p id="address"> dieuthinsi</p></div>
+
+        <div class="container ">
+            <div class="item text-center bg-dark text-light"><label for="fname"><u>Όνομα</u><p id="fname" class="pt-2"></p> </label></div>
+            <div class="item text-center bg-dark text-light"><label for="lname"><u>Επίθετο</u><p id="lname" class="pt-2"></p> </label></div>
+            <div class="item text-center bg-dark text-light"><label for="age"><u>Ηλικία</u><p id="age" class="pt-2"></p> </label></div>
+            <div class="item text-center bg-dark text-light"><label for="price"><u>Συνολική τιμή (&euro;)</u><p id="price" class="pt-2"> </p> </label></div>
+            <div class="item text-center bg-dark text-light"><label for="from"><u>Από</u><p id="from" class="pt-2"></p> </label></div>
+            <div class="item text-center bg-dark text-light"><label for="until"><u>Μέχρι</u><p id="until" class="pt-2"></p> </label></div>
+            <div class="item1 text-center bg-dark text-light "><label for="descri"><u>Περιγραφη Keeper</u><p id="descri" class="pt-2" ></p> </label></div>
+            <div class="item text-center bg-dark text-light"><label for="address"><u>Διεύθυνση</u><p id="address" class="pt-2"> </p> </label></div>
         </div>
 
         <div class="pt-4" id="paypal-button"></div>
@@ -115,9 +115,9 @@
                 descri.text(rsvData.keeperDescription);
                 address.text(rsvData.keeperAddress);
             }
-            
+
             displayReservationData(reservationData);
         </script>
 
-  </body>
+    </body>
 </html>

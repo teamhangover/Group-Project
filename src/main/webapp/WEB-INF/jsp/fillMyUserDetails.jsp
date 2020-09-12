@@ -185,7 +185,7 @@
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 
-                                                <div id="petForm" class="form-group focused">
+                                                <div id="petForm" class="form-group focused selectdiv">
                                                     <i class="fas fa-paw"></i>  Όνομα ζώου <input type="text" id="petName" pattern="[A-Za-z,Α-Ωα-ω]{3,50}" class="form-control form-control-alternative" placeholder="Όνομα κατοικιδίου" />
                                                     <i class="fas fa-paw"></i>  Eίδος ζώου <select name="type" id="petType" class="form-control form-control-alternative">
                                                         <option value="dog">Σκύλος</option>
@@ -202,7 +202,7 @@
                                                 <h5 class="text-center">Οι κρατησεις μου</h5>
                                                 <div class="bg-light text-dark item">1</div>
                                                 <div class="bg-light text-dark item">1</div>
-                                                <div class="bg-light text-dark item">1</div>
+                                                <div class="bg-light text-dark item">1</div>                                           
                                             </div>
                                         </div>
                                     </div>

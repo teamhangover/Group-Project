@@ -69,12 +69,12 @@
 
                     <div class="flex-container" id="reservations">
                         <h5 id="kratiseis">Οι τελευταίες σου κρατήσεις!</h5> 
-
+                        <div class="d-flex justify-content-around">
+                            <label>#</label><label>Όνομα</label><label>Επίθετο</label><label>pet</label><label>Όνομα</label> <label> Τιμή</label><label> Από</label><label> Μέχρι</label>
+                        </div>
                     </div>
 
                 </article>
-                <!--                <article id="three"></article>-->
-
             </div>
 
             <div id="centered">    
@@ -412,9 +412,11 @@
 
 
                 let reservation = `
-                          <div>
-                            <img  src="../images/` + rsvData.ownerPhoto + `" alt="Profile Pic" height="30px" width="30px" class="rounded-circle ownerPhoto " >
-                        <span> ` + rsvData.ownerFname + ` </span> ` + rsvData.ownerLname + ` ` + rsvData.pet + ` ` + rsvData.petName + `  ` + rsvData.totalPrice + ` ` + rsvData.fromDate + ` ` + rsvData.toDate + ` </div>`;
+                
+                <div class="d-flex justify-content-around">
+                          <span>  <img  src="../images/` + rsvData.ownerPhoto + `" alt="Profile Pic" height="30px" width="30px" class="rounded-circle ownerPhoto " ></span>
+                          <span> ` + rsvData.ownerFname + ` </span> <span>` + rsvData.ownerLname + `</span> <span>` + rsvData.pet + `</span> <span>` + rsvData.petName + `</span>  <span>` + rsvData.totalPrice + `</span> <span>` + rsvData.fromDate + ` </span> <span>` + rsvData.toDate + `</span> 
+                </div>`;
                 reservationDiv.append(reservation);
             }
 

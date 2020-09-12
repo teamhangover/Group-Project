@@ -1,16 +1,40 @@
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-   -webkit-appearance: none;
-   margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 input[type="number"] {
-   -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 *{
     margin: 0;
-   
+    
 }
+
+.selectdiv select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.selectdiv:after {
+    content: '<>';
+    font: 17px "Consolas", monospace;
+    color: #333;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 15px;
+    top: 94px;
+    padding: 0 0 2px;
+    border-bottom: 1px solid #999;
+    position: absolute;
+    pointer-events: none;
+}
+
+
 
 .item {
     display: flex;
@@ -21,41 +45,9 @@ input[type="number"] {
     height: 50px;
     margin-bottom: 2%;
     background: rgb(233, 226, 226);
-    border-radius: 5px;
+    border-radius: 5px; 
 }
 
-
-/*.ddd{
-    background-color: blueviolet;
-    display: flex;
-    justify-content: center;
-    background-color: cadetblue;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 5px;
-}*/
-
-/*.form__input {
-    background-color: white !important;
-    font-weight: 900 !important;
-    text-transform: inherit !important;
-    color: #ff7779 !important;
-    width: 250px; 
-    padding: 10px;
-    outline-width: 0;
-    position: relative;
-}*/
-
-/*.form__input:placeholder-shown + .form__label {
-    background-color: white !important;
-    font-weight: 900 !important;
-    text-transform: inherit !important;
-    color: #ff7779 !important;
-    width: 250px; 
-    padding: 10px;
-    outline-width: 0;
-    position: relative;
-}*/
 
 body{
     background-color: #FAF3DD;
@@ -65,17 +57,27 @@ body{
     line-height: 1.5;
     margin: 0;
     text-align: left;
-    color: #fbeec1;    
-    /*    padding: 30px;*/
+    color: #fbeec1; 
+     height:100%;
 }
 
 input[type="file"] {
     display: none;
 }
 .custom-file-upload {
-    
+
     border: 1px solid #ccc;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+}
+
+.reservations{
+  overflow-y: auto;
+   height:400px;
+  
+}
+
+.height{
+    height:100%;
 }
