@@ -5,56 +5,31 @@
  */
 package com.example.PetKeeper.controller;
 
-import com.example.PetKeeper.model.MyUser;
-import com.example.PetKeeper.model.Reservation;
-import java.util.ArrayList;
-import java.util.List;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import com.example.PetKeeper.dto.AddressDto;
+import com.example.PetKeeper.model.Address;
+import com.example.PetKeeper.service.AddressService;
+import com.example.PetKeeper.service.MyUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author glamb
  */
-@RequestMapping("/reservation")
-@Controller
+@RestController
 public class ReservationController {
-
-    @RequestMapping
-    public String showSearchForKeepers(ModelMap mm) {
-        //TODO get the logged in user
-        //TODO check if owner (if keeper - deny - add this to MyWebSecurityConfigurer)
-        return "searchForKeepersForm";
-    }
-
-    @GetMapping("search")
-    @ResponseBody
-    public List<MyUser> searchResults(/*@ModelAttribute("") DaoSearchCriteria daoSearchCriteria*/) {
-        List<MyUser> keepers = new ArrayList<>();
-        //TODO get date_from and date_to
-        //TODO get address and calculate radius
-        //TODO select all available keepers that match the criteria from db and add them to the list (make sure to get only the necessary info (not pass etc.))
-        return keepers;
-    }
-
-    @GetMapping("preReservation")
-    public String showReservationForm(ModelMap mm) {
-        Reservation newReservation = new Reservation();
-        mm.addAttribute("newReservation", newReservation);
-        return "reservationForm";
+    
+    @Autowired
+    MyUserService myUserService;
+    
+    @GetMapping("/owner/getReservationDetails/{username}")
+    public AddressDto preReservation(@PathVariable("username") String username) {
+        AddressDto addressDto = new AddressDto();
+        Address myAddress = myUserService.getMyUserByUsername(username).getAddress();
+        addressDto.fillDtoFromAddress(myAddress);
+        return addressDto;
     }
     
-    @PostMapping("reserved")
-    public String showReservationComplete(@ModelAttribute("newReservation") Reservation newReservation) {
-        //TODO Check if paid ? do we have prices somewhere? lol 
-        //TODO add the reservation to db
-        //TODO add to keepers_availability the reserved dates
-        //TODO send message to keeper? who knows? 
-        return "ReservationComplete";
-    }
 }

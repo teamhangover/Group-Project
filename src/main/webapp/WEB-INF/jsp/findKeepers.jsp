@@ -61,17 +61,17 @@
 
             <div class="d-md-flex  bd-highlight justify-content-center p-3 bg-dark card-1"
                  style="filter: drop-shadow(30px 10px 4px #313136); ">
-                <input id="pac-input" class="form-control text-center  " type="text" placeholder="Επιλέξτε την περιοχή σας" />
-                <i class="fa fa-map-marker mt-3 ml-2 " aria-hidden="true" style="color:cadetblue"></i>
+                <input id="pac-input" class="form-control text-center" type="text" placeholder="Επιλέξτε την περιοχή σας" />
+                <i id="autocomplete-btn" class="fa fa-map-marker mt-3 ml-2 " aria-hidden="true" style="color:cadetblue"></i>
             </div>
 
             <div class="d-md-flex p-2 bd-highlight justify-content-center p-5 dates card-1  "
                  style="background-color: cadetblue;">
                 <div class="col-lg-6 col-11 px-1">
                     <div class="input-group input-daterange">
-                        <input type="text" id="start" class=" form-control text-left mr-2" placeholder="Από.."> <span
+                        <input type="text" id="start" class="form-control text-left mr-2" placeholder="Από.."> <span
                             class="fa fa-calendar" id="fa-1" style="color:cadetblue"></span>
-                        <input type="text" id="end" class="   form-control text-left ml-2 " placeholder="Μέχρι.."> <span
+                        <input type="text" id="end" class="form-control text-left ml-2 " placeholder="Μέχρι.."> <span
                             class="fa fa-calendar" id="fa-2" style="color:cadetblue"></span>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                                     <th scope="col" >#</th>
                                     <th scope="col" >Όνομα</th>
                                     <th scope="col" >Επίθετο</th>
-                                    <th scope="col" >Ηλικία</th>
+                                    <th scope="col" >&euro;/ημέρα</th>
                                     <th scope="col" ></th>
                                 </tr>
                             </thead>
@@ -191,13 +191,21 @@
 
                         //output
                         const tableBody = $("#tableBody");
-
-                        //set current dates
+                        // keepers list
+                        let keepersList;
+                        //date inputs
                         const startDate = $("#start");
                         const endDate = $("#end");
+                        //set current dates (today,tomorrow)
                         setDefaultDates();
-                        startDate.change(renewMap);
-                        endDate.change(renewMap);
+
+                        startDate.change(() => {
+                            autocompleteBtn.trigger("click");
+                        });
+                        endDate.change(() => {
+                            autocompleteBtn.trigger("click");
+                        });
+
                         //--------------
 
                         //set default LatLng
@@ -207,6 +215,15 @@
                         let map;
                         let markers = [];
                         const input = $("#pac-input");
+
+                        //setting a "button" 
+                        let autocompleteBtn = $("#autocomplete-btn");
+                        autocompleteBtn.click(renewMap);
+                        autocompleteBtn.hover(() => {
+                            $(document.body).css({'cursor': 'pointer'});
+                        }, () => {
+                            $(document.body).css({'cursor': 'default'});
+                        });
                         let autocomplete;
 //                        initMap(map);
                         let mapOptions = {
@@ -215,14 +232,13 @@
                         };
 
                         map = new google.maps.Map(document.getElementById("map"), mapOptions);
-                        autocomplete = new google.maps.places.Autocomplete(input);
-                        //not sure if this is needed
-                        autocomplete.bindTo("bounds", map);
-                        autocomplete.setFields(["address_components", "geometry", "icon", "name"]);
+                        autocomplete = new google.maps.places.Autocomplete((document.getElementById('pac-input')), {types: ['geocode']});
 
                         //addListener to autocomplete
                         autocomplete.addListener("place_changed", renewMap);
-//                        autocomplete.addListener("dragend", renewMap);
+
+                        //addListener to map TODO change function
+//                        map.addListener("dragend", handleDragend);
                         //-----------------------------
 
                         //get current location (if possible)
@@ -234,10 +250,7 @@
                         priceInput.val(priceInput.attr("max"));
                         priceText.text(priceInput.val());
                         //set event listener to price change
-                        priceInput.change(function () {
-                            priceText.text(priceInput.val());
-                            //TODO function filter results by price
-                        });
+                        priceInput.change(priceChangeHandler);
 
                         let defaultData = {
                             latitude: userLatitude,
@@ -249,39 +262,15 @@
                         getResultsFromServer(defaultData);
 
                         //---------------------
-                        //set default Dates on inpu fields
-                        function setDefaultDates() {
-
-                            let currentDate = new Date();
-                            let currentDateFormattedString = currentDate.getDate() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getFullYear();
-                            startDate.val(currentDateFormattedString);
-
-                            let tomorrow = new Date(currentDate);
-                            tomorrow.setDate(tomorrow.getDate() + 1);
-                            tomorrowFormattedString = tomorrow.getDate() + "-" + (tomorrow.getMonth() + 1) + "-" + tomorrow.getFullYear();
-                            endDate.val(tomorrowFormattedString);
-                        }
-                        //-----------------
-
-                        // initialize map
-                        function initMap(map) {
-
-
-                            //------------
-                            //info window
-//                            const infowindow = new google.maps.InfoWindow();
-//                            const infowindowContent = document.getElementById("infowindow-content");
-//                            infowindow.setContent(infowindowContent);
-//                            //marker
-//                            let marker = new google.maps.Marker({
-//                                position: new google.maps.LatLng(0, 0),
-//                                map: map,
-//                                title: "Title on hover"
-//                            });
-//                            -------
-//                            
+                        function priceChangeHandler() {
+                            maxPrice = priceInput.val();
+                            priceText.text(maxPrice);
+                            let result = keepersList.filter(keeper => keeper.price <= maxPrice);
+                            tableBody.empty();
+                            handleResponse(result);
                         }
 
+                        // -------------------Marker functions ------------
                         function createMarkers(keepers) {
                             //delete current markers
                             deleteMarkers();
@@ -313,11 +302,11 @@
                             markers = [];
                         }
 
-
+                        // -------------------InfoWindow ------------
                         function createInfoWindow(marker, keeper) {
                             let contentString = `
                                     <div id="infowindow-content">
-                                         <img src="../images/` + keeper.uPhotoName + `" width="50" height="50" id="place-icon" />
+                                         <img src="../images/` + keeper.uPhotoName + `" width="50px" height="50px" id="place-icon" />
                                         <div>
                                             <span id="place-name" class="title"></span><br />
                                             <p id="place-address">` + keeper.streetName + ` ` + keeper.streetNumber + `, ` + keeper.city + `</p>
@@ -336,48 +325,51 @@
 
                         }
 
+                        // -------------------Renewing Map ------------
                         function renewMap() {
-                            infowindow.close();
-                            marker.setVisible(false);
-                            const place = autocomplete.getPlace();
-                            if (!place.geometry) {
-                                // User entered the name of a Place that was not suggested and
-                                // pressed the Enter key, or the Place Details request failed.
-                                window.alert("No details available for input: '" + place.name + "'");
-                                return;
-                            } // If the place has a geometry, then present it on a map.
+                            deleteMarkers();
+                            let place = autocomplete.getPlace();
+                            if (place) {
+                                if (!place.geometry) {
+                                    // User entered the name of a Place that was not suggested and
+                                    // pressed the Enter key, or the Place Details request failed.
+                                    window.alert("No details available for input: '" + place.name + "'");
+                                    return;
+                                } // If the place has a geometry, then present it on a map.
+                                if (validateDates(startDate.datepicker('getDate'), endDate.datepicker('getDate'))) {
 
-                            if (place.geometry.viewport) {
-                                map.fitBounds(place.geometry.viewport);
-                            } else {
-                                map.setCenter(place.geometry.location);
-                                map.setZoom(17); // Why 17? Because it looks good.
+                                    let formData = {
+                                        latitude: "",
+                                        longitude: "",
+                                        fromDate: startDate.datepicker('getDate'),
+                                        toDate: endDate.datepicker('getDate')
+                                    };
+                                    if (place.geometry.viewport) {
+                                        map.fitBounds(place.geometry.viewport);
+
+                                        formData.latitude = place.geometry.location.lat();
+                                        formData.longitude = place.geometry.location.lng();
+
+                                        tableBody.empty();
+                                        $(document.body).css({'cursor': 'progress'});
+                                        getResultsFromServer(formData);
+
+                                    } else {
+                                        map.setCenter(place.geometry.location);
+                                        map.setZoom(17); // Why 17? Because it looks good.
+
+                                        formData.latitude = place.geometry.location.lat();
+                                        formData.longitude = place.geometry.location.lng();
+                                        tableBody.empty();
+                                        $(document.body).css({'cursor': 'progress'});
+                                        getResultsFromServer(formData);
+                                    }
+
+                                }
                             }
-
-                            marker.setPosition(place.geometry.location);
-                            marker.setVisible(true);
-                            let address = "";
-                            if (place.address_components) {
-                                address = [
-                                    (place.address_components[0] &&
-                                            place.address_components[0].short_name) ||
-                                            "",
-                                    (place.address_components[1] &&
-                                            place.address_components[1].short_name) ||
-                                            "",
-                                    (place.address_components[2] &&
-                                            place.address_components[2].short_name) ||
-                                            ""
-                                ].join(" ");
-                            }
-
-                            infowindowContent.children["place-icon"].src = place.icon;
-                            infowindowContent.children["place-name"].textContent = place.name;
-                            infowindowContent.children["place-address"].textContent = address;
-                            infowindow.open(map, marker);
                         }
 
-                        // ----------------- Geolocation -------------
+                        // ----------------- Geolocation not currently in use-------------
 
                         //Geolocation success
                         function success(position) {
@@ -398,7 +390,7 @@
                                 return navigator.geolocation.getCurrentPosition(success, error);
                             }
                         }
-                        
+
                         // ----------------- Ajax -------------
                         function getResultsFromServer(requestData) {
 
@@ -406,17 +398,23 @@
                                     "/owner/findKeepers",
                                     requestData
                                     ).done(function (response) {
-                                        console.log(response);
-                                      if (response.length === 0) {
-                                            $("#noresults-div").addClass("no-results");
-                                      } else {
-                                          fillTableBodyWithData(response);
-                                          $("#noresults-div").removeClass("no-results");
-                                          fillTableBodyWithData(response);
-                                          createMarkers(response);
-                                          map.setZoom(16);
-                                     }
+
+                                if (response.length === 0) {
+                                    $("#noresults-div").addClass("no-results");
+                                } else {
+                                    keepersList = response;
+                                    findAndSetMaxPrice(response);
+                                    handleResponse(response);
+                                }
                             });
+                        }
+                        //handle response
+                        function handleResponse(response) {
+                            $("#noresults-div").removeClass("no-results");
+                            fillTableBodyWithData(response);
+                            createMarkers(response);
+                            $(document.body).css({'cursor': 'default'});
+                            map.setZoom(16);
                         }
 
                         // ----------------- Dom -------------
@@ -430,7 +428,7 @@
                                     <td><img src="../images/` + keeper.uPhotoName + `" height="50px" width="50px" class="rounded" alt="Keeper-profpic"></td>
                                     <td>` + keeper.firstName + `</td>
                                     <td>` + keeper.lastName + `</td>
-                                    <td>` + keeper.age + `</td>
+                                    <td>` + keeper.price + ` &euro;</td>
                                     <td><button type="button" id="` + keeper.username + `" class="btn btn-outline-info operModalButtons" data-toggle="modal" data-target="#exampleModalScrollable" >Κάνε Κράτηση!</button></td>
                                 </tr>`;
                                 tableBody.append(result);
@@ -442,36 +440,82 @@
                         function getReservationDetails(event) {
                             let username = event.target.id;
                             //get keeper by username (ajax).done(the rest .... 
-//                            $.get("getKeeperUrl/"+username).done((data)=>{
-//                                //TODO handle data
-//                            });
+                            $.get("/owner/getReservationDetails/" + username).done((data) => {
+                                //TODO handle data
+                                console.log(data);
+                                handleRsrvSuccess(data);
+                            });
+                        }
 
+                        function handleRsrvSuccess(data) {
+                            let fromDate = startDate.datepicker('getDate');
+                            let fromDateFormattedString = fromDate.getDate() + "-" + (fromDate.getMonth() + 1) + "-" + fromDate.getFullYear();
 
-                            let fromDate = convertToDate(startDate.val());
-                            let toDate = convertToDate(endDate.val());
+                            let toDate = endDate.datepicker('getDate');
+                            let toDateFormattedString = toDate.getDate() + "-" + (toDate.getMonth() + 1) + "-" + toDate.getFullYear();
+
                             let numOfDays = (toDate.getTime() - fromDate.getTime()) / (1000 * 3600 * 24);
-//                            let totalPirce = numOfDays*price;
+                            let totalPirce = numOfDays * data.price;
 
+                            let addressString = data.streetName + " " + data.streetNumber + ", " + data.city + ", " + data.country;
 
                             let reservationData = {
-                                keeperPhoto: "keeper-Photo.jpg",
-                                keeperFname: "Kostas",
-                                keeperLname: "Marinopoulos",
-                                age: "33",
-                                totalPrice: "30",
-                                fromDate: fromDate,
-                                toDate: toDate,
-                                keeperDescription: "Blabla",
-                                keeperAddress: "Tositsa 18, Athens, Greece"
+                                keeperPhoto: data.uPhotoName,
+                                keeperFname: data.firstName,
+                                keeperLname: data.lastName,
+                                age: data.age,
+                                totalPrice: totalPirce,
+                                fromDate: fromDateFormattedString,
+                                toDate: toDateFormattedString,
+                                keeperDescription: data.uDescription,
+                                keeperAddress: addressString
                             };
-
                             displayReservationData(reservationData);
                         }
-                        //convert stringDate dd-mm-yyyy to Date
-                        function convertToDate(dateStr) {
-                            let parts = dateStr.split("-");
-                            return new Date(parts[2], parts[1] - 1, parts[0]);
+
+
+
+                        // ----------------- Helper functions -------------
+
+                        //set default Dates(today, tomorrow) on inpuτ fields
+                        function setDefaultDates() {
+                            let currentDate = new Date();
+                            startDate.datepicker('setDate', new Date());
+
+                            let tomorrow = new Date(currentDate);
+                            tomorrow.setDate(tomorrow.getDate() + 1);
+                            endDate.datepicker('setDate', tomorrow);
                         }
+
+                        // Check Dates 
+                        function validateDates(fromDate, toDate) {
+                            let today = new Date();
+                            today.setHours(0, 0, 0, 0);
+                            if (toDate > fromDate && toDate > today && fromDate >= today) {
+                                return true;
+                            } else {
+                                alert("Please select valid dates");
+                                setDefaultDates();
+                                return false;
+                            }
+                        }
+
+                        // Find the most expensive keeper and set the input-Price at max+5
+                        function findAndSetMaxPrice(keepers) {
+
+                            let highestPrice = Number.NEGATIVE_INFINITY;
+                            let tmp;
+                            for (var i = keepers.length - 1; i >= 0; i--) {
+                                tmp = keepers[i].price;
+                                if (tmp > highestPrice)
+                                    highestPrice = tmp;
+                            }
+                            //set the maximum Price on range input
+                            priceInput.attr("max", highestPrice + 5);
+                            priceInput.attr("value", highestPrice + 5);
+                            priceText.text(highestPrice + 5);
+                        }
+
                     });
                 </script>
                 <!--<script src="/js/findKeepersMap.js"></script>-->
