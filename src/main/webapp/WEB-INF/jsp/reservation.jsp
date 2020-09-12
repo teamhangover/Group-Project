@@ -82,7 +82,7 @@
         <!--reserve Keepers-->
         <script>
             let reservationData = {
-                keeperPhoto: "keeper-Photo",
+                keeperPhoto: "keeper-Photo.jpg",
                 keeperFname: "Makis",
                 keeperLname: "Marinopoulos",
                 age: "33",

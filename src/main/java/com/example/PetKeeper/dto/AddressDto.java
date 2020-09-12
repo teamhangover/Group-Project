@@ -30,11 +30,12 @@ public class AddressDto {
     private int age;
     private String tel;
     private String uPhotoName;
+    private String uDescription;
 
     public AddressDto() {
     }
 
-    public AddressDto(BigDecimal longitude, BigDecimal latitude, String country, String city, String streetName, String streetNumber, String postalCode, BigDecimal price, String username, String firstName, String lastName, int age, String tel, String uPhotoName) {
+    public AddressDto(BigDecimal longitude, BigDecimal latitude, String country, String city, String streetName, String streetNumber, String postalCode, BigDecimal price, String username, String firstName, String lastName, int age, String tel, String uPhotoName, String uDescription) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.country = country;
@@ -49,6 +50,7 @@ public class AddressDto {
         this.age = age;
         this.tel = tel;
         this.uPhotoName = uPhotoName;
+        this.uDescription = uDescription;
     }
 
     public void fillDtoFromAddress(Address address) {
@@ -67,7 +69,7 @@ public class AddressDto {
         this.age = address.getMyUserId().getMyUserDetails().getAge();
         this.tel = address.getMyUserId().getMyUserDetails().getTel();
         this.uPhotoName = address.getMyUserId().getMyUserDetails().getUPhotoName();
-
+        this.uDescription = address.getMyUserId().getMyUserDetails().getUDescription();
     }
 
     public BigDecimal getLongitude() {
@@ -180,6 +182,14 @@ public class AddressDto {
 
     public void setuPhotoName(String uPhotoName) {
         this.uPhotoName = uPhotoName;
+    }
+
+    public String getuDescription() {
+        return uDescription;
+    }
+
+    public void setuDescription(String uDescription) {
+        this.uDescription = uDescription;
     }
 
 }

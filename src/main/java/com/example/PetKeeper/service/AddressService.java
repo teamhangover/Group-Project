@@ -16,6 +16,6 @@ import java.util.List;
 public interface AddressService {
 
     public Address saveAddress(Address address);
-    
+
     public List<Address> getAllByLngLatWithinRadius(BigDecimal latitude, BigDecimal longitude);
 }
