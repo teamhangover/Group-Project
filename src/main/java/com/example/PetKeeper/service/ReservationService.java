@@ -5,7 +5,9 @@
  */
 package com.example.PetKeeper.service;
 
+import com.example.PetKeeper.model.MyUser;
 import com.example.PetKeeper.model.Reservation;
+import java.util.List;
 
 /**
  *
@@ -14,4 +16,6 @@ import com.example.PetKeeper.model.Reservation;
 public interface ReservationService {
     
     public Reservation saveReservation(Reservation reservation);
+    
+    public List<Reservation> getReservationsByOwnerId(MyUser myUser);
 }

@@ -452,11 +452,10 @@
 
 
                             let toDate = endDate.datepicker('getDate');
-                            fromDate.setHours(0, 0, 0, 0);
+                            toDate.setHours(0, 0, 0, 0);
 
                             let numOfDays = (toDate.getTime() - fromDate.getTime()) / (1000 * 3600 * 24);
                             let totalPrice = numOfDays * data.price;
-                            console.log("days: ", numOfDays, " total: ", totalPrice);
                             let addressString = data.streetName + " " + data.streetNumber + ", " + data.city + ", " + data.country;
 
                             let reservationData = {

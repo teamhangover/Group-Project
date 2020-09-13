@@ -104,6 +104,7 @@
                                 reservationData
                                 ).done((data) => {
                             console.log(data);
+                            //TODO redirect to profile#reservations
                             // Show a confirmation message to the buyer
                             window.alert('Thank you for your purchase!');
                         });

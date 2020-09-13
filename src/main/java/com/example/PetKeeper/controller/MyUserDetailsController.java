@@ -94,7 +94,7 @@ public class MyUserDetailsController {
         if (null != myUser.getMyUserDetails() && !myUser.getMyUserDetails().getUPhotoName().isEmpty()) {
             return myUser.getMyUserDetails().getUPhotoName();
         } else {
-            return null;
+            return "";
         }
     }
 }

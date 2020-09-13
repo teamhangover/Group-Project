@@ -268,8 +268,6 @@
                         tmpDate.setHours(0, 0, 0, 0);
                         unavailableDates.push(tmpDate.getTime());
                     });
-                    console.log("unavailableDates", unavailableDates);
-                    console.log("reservastionDates", reservastionDates);
                     areUnavailableDatesFilled = true;
                     loadCalendar();
                 });
@@ -277,7 +275,6 @@
 
             function getMyReservations() {
                 $.get("/myReservations").done((myReservations) => {
-                    console.log(myReservations);
                     showAllReservations(myReservations);
                     $.each(myReservations, (i, reservastion) => {
                         let from = new Date(reservastion.dateFrom);
