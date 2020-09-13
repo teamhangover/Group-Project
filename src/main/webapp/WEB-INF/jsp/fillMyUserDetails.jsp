@@ -197,17 +197,11 @@
                                                     <i class="fas fa-pencil-alt"></i> Περιγραφή <textarea type="textarea" id="petDescription" pattern="[A-Za-z,α-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΌΆΈΎΫΉΏ]+\s*" rows="1" cols="1" class="form-control form-control-alternative" placeholder="Λίγα λόγια για το ζωάκι σου!"></textarea>
                                                 </div>
                                             </div>
-                                       
-                                           
+
+
                                             <div class="col-lg-6 "> 
-                                                 <h5 class="text-center">Οι κρατήσεις μου<a id="reservations" ></a></h5>
+                                                <h5 class="text-center">Οι κρατήσεις μου<a id="reservations" ></a></h5>
                                                 <div class="myreservation" id="myReservationDiv">                                                    
-<!--                                                <div class="bg-light text-dark item">1</div>
-                                                <div class="bg-light text-dark item">1</div>
-                                                <div class="bg-light text-dark item">1</div>                                           
-                                                <div class="bg-light text-dark item">1</div>                                           
-                                                <div class="bg-light text-dark item">1</div>                                           
-                                                <div class="bg-light text-dark item">1</div>                                           -->
                                                 </div>
                                             </div>
                                         </div>

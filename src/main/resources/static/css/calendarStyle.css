@@ -140,7 +140,7 @@ body, *{
 
 .clnd-day-number{
     align-self: flex-start; 
-     color: black;
+    color: black;
 }
 
 .avail{
@@ -148,6 +148,11 @@ body, *{
     color: black;
 }
 
+.todayDate{
+    border: 2px solid #ff794d !important;
+}
 
-
+.reservedDay{
+    background-color: #33ff33 !important;
+}
 

@@ -44,7 +44,7 @@ public class MyUserController {
         myUser.setMyPassword(hashedCode);
         MyUser savedUser = myUserServiceInterface.saveNewMyUser(myUser, isKeeper);
 
-        return "index";
+        return "login";
 
     }
 
