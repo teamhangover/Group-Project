@@ -21,6 +21,22 @@ $(document).ready(function () {
         petDescription.val(data.petDescription);
     }
 
+    //------ get My reservations ---------
+    getMyReservations();
+
+    function getMyReservations() {
+        $.get("/myReservations").done((myReservations) => {
+            console.log(myReservations);
+            if (myReservations.length > 0) {
+                displayMyReservations(myReservations);
+            }
+        });
+    }
+
+    function displayMyReservations(reservations) {
+
+    }
+    // ---------------------------
 
     // Send request to register the changes on the owner's Pet or create a new on if doesn't have one. Then submit form
     let registerPetUrl = "/owner/registerPet";

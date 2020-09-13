@@ -5,7 +5,9 @@
  */
 package com.example.PetKeeper.repository;
 
+import com.example.PetKeeper.model.MyUser;
 import com.example.PetKeeper.model.Reservation;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Repository;
  * @author RG
  */
 @Repository
-public interface ReservationRepository extends JpaRepository<Reservation, Integer>{
-    
+public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
+
+    List<Reservation> findByOwnerId(MyUser myUser);
 }

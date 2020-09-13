@@ -117,7 +117,7 @@
                 $.ajax({
                     url: getUserPhotoUrl
                 }).then(function (data) {
-                    if (data !== null) {
+                    if (data !== "") {
                         //set src to show the profile pic
                         let src = "../images/" + data;
                         $("#profilePicImg").attr("src", src);

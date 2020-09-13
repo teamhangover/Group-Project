@@ -2,7 +2,7 @@ $(document).ready(function () {
     const editBtn = $("#editBtn");
     const submitBtn = $("#submitButton");
     const cancelBtn = $("#cancelBtn");
-    const uploadBtn= $("#upload-profile-btn");
+    const uploadBtn = $("#upload-profile-btn");
     const allInputs = [
         $("#Uploadphoto"),
         $("#input-first-name"),
@@ -24,7 +24,6 @@ $(document).ready(function () {
     $.each(allInputs, (i, input) => {
         input.attr("disabled", true);
     });
-    console.log(allInputs);
     submitBtn.hide(0);
     cancelBtn.hide(0);
     uploadBtn.hide(0);

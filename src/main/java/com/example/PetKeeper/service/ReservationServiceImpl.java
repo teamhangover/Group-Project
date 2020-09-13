@@ -6,12 +6,14 @@
 package com.example.PetKeeper.service;
 
 import com.example.PetKeeper.model.KeepersAvailability;
+import com.example.PetKeeper.model.MyUser;
 import com.example.PetKeeper.model.Reservation;
 import com.example.PetKeeper.repository.KeepersAvailabilityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.PetKeeper.repository.ReservationRepository;
 import java.util.Date;
+import java.util.List;
 import org.apache.commons.lang3.time.DateUtils;
 
 /**
@@ -35,10 +37,6 @@ public class ReservationServiceImpl implements ReservationService {
         Date end = rsvn.getDateTo();
 
         for (Date start = from; !start.equals(end); start = DateUtils.addDays(start, 1)) {
-            System.out.println("start: " + start);
-            System.out.println("end: " + end);
-            System.out.println("from: " + from);
-
             KeepersAvailability kprAvl = new KeepersAvailability();
             kprAvl.setKeeperId(rsvn.getKeeperId());
             kprAvl.setUnavailableDate(start);
@@ -46,5 +44,10 @@ public class ReservationServiceImpl implements ReservationService {
         }
 
         return rsvn;
+    }
+
+    @Override
+    public List<Reservation> getReservationsByOwnerId(MyUser myUser) {
+        return reservationRepo.findByOwnerId(myUser);
     }
 }

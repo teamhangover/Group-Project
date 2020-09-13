@@ -73,7 +73,13 @@ public class ReservationController {
     public List<ReservastionDto> getMyReservations(Principal principal, HttpServletRequest request) {
 
         MyUser loggedUser = myUserService.getMyUserByUsername(principal.getName());
-        List<Reservation> myReservations = (List<Reservation>) loggedUser.getReservationsCollection();
+        List<Reservation> myReservations;
+        if (request.isUserInRole("ROLE_KEEPER")) {
+            myReservations = (List<Reservation>) loggedUser.getReservationsCollection();
+        } else { //else owner
+            myReservations = reservationService.getReservationsByOwnerId(loggedUser);
+        }
+
         List<ReservastionDto> myReservastionDto = new ArrayList<>();
 
         for (Reservation rsrvtn : myReservations) {
