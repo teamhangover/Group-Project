@@ -96,11 +96,23 @@ html, body {
     background: linear-gradient(to right, #49a09d, #5f2c82);
     border-radius: 1em;
     font-family: sans-serif;
+    
+}
+#keeperPhoto{
+    filter: drop-shadow(0 0 1rem #49a09d);
 }
 
+#paypal-button{
+    filter: drop-shadow(0 0 1rem #49a09d);
+}
+#paypal-button:hover{
+    box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+
 .container1 {
-    display: flex;
-    /* flex-wrap: wrap; */
+    display: flex;  
     justify-content: center;
     width: 60%;
     margin-left: 20%;
@@ -117,6 +129,7 @@ html, body {
     margin-bottom: 2%;
 /*    background: rgb(233, 226, 226);*/
     border-radius: 5px;
+     filter: drop-shadow(15px 5px 2px #313136);
     
 }
 
@@ -129,6 +142,7 @@ html, body {
     height: 100px;
     margin-bottom: 2%;
     border-radius: 5px;
+     filter: drop-shadow(30px 10px 4px #313136);
     
 }
 

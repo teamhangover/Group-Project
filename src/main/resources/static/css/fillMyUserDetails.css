@@ -72,12 +72,9 @@ input[type="file"] {
     cursor: pointer;
 }
 
-.reservations{
-  overflow-y: auto;
-   height:400px;
+.myreservation{
+  overflow-y: scroll;
+   max-height: 200px;
   
 }
 
-.height{
-    height:100%;
-}

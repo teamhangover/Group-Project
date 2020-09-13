@@ -183,7 +183,7 @@
                                 <security:authorize access="hasRole('ROLE_OWNER') and isAuthenticated()">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-6 mt-3">
 
                                                 <div id="petForm" class="form-group focused selectdiv">
                                                     <i class="fas fa-paw"></i>  Όνομα ζώου <input type="text" id="petName" pattern="[A-Za-z,Α-Ωα-ω]{3,50}" class="form-control form-control-alternative" placeholder="Όνομα κατοικιδίου" />
@@ -197,12 +197,18 @@
                                                     <i class="fas fa-pencil-alt"></i> Περιγραφή <textarea type="textarea" id="petDescription" pattern="[A-Za-z,Α-Ωα-ω]+\s*" rows="1" cols="1" class="form-control form-control-alternative" placeholder="Λίγα λόγια για το ζωάκι σου!"></textarea>
                                                 </div>
                                             </div>
-
-                                            <div class="col-lg-6"> 
-                                                <h5 class="text-center">Οι κρατήσεις μου</h5>
-                                                <div class="bg-light text-dark item">1</div>
+                                       
+                                           
+                                            <div class="col-lg-6 "> 
+                                                 <h5 class="text-center">Οι κρατήσεις μου<a id="reservations" ></a></h5>
+                                                <div class="myreservation" id="myReservationDiv">                                                    
+<!--                                                <div class="bg-light text-dark item">1</div>
                                                 <div class="bg-light text-dark item">1</div>
                                                 <div class="bg-light text-dark item">1</div>                                           
+                                                <div class="bg-light text-dark item">1</div>                                           
+                                                <div class="bg-light text-dark item">1</div>                                           
+                                                <div class="bg-light text-dark item">1</div>                                           -->
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
