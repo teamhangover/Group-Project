@@ -26,16 +26,30 @@ $(document).ready(function () {
 
     function getMyReservations() {
         $.get("/myReservations").done((myReservations) => {
-            console.log(myReservations);
+//            console.log(myReservations);
             if (myReservations.length > 0) {
                 displayMyReservations(myReservations);
             }
         });
     }
+    const reservationDiv = $("#myReservationDiv");
+   function displayMyReservations(reservs) {
+                $.each(reservs, (i, reservation) => {
+                    displayOneReservation(reservation);
+                });
+            }
 
-    function displayMyReservations(reservations) {
+    function displayOneReservation(rsvData) {
 
+        let reservation = `
+                
+                <div class="bg-light text-dark item">
+                          <span><img  src="../images/` + rsvData.profPhoto + `" alt="Profile Pic" height="30px" width="30px" class="rounded-circle ownerPhoto"></span>
+                          <span> `+ rsvData.firstName + ` </span> <span> ` + rsvData.lastName + ` </span> <span> ` + rsvData.addressStr + ` </span> <span> ` + rsvData.totalPrice + ` &euro; </span> <span> ` + rsvData.dateFrom + ` </span> <span> ` + rsvData.dateTo + `</span> 
+                </div>`;
+        reservationDiv.append(reservation);
     }
+
     // ---------------------------
 
     // Send request to register the changes on the owner's Pet or create a new on if doesn't have one. Then submit form
