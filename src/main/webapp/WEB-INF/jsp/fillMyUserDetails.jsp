@@ -65,14 +65,14 @@
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
                                         <label class="form-control-label" for="input-first-name"><i class="fas fa-user"></i> Όνομα</label>
-                                        <springform:input id="input-first-name" cssClass="form-control form-control-alternative" type="text" path="firstName" pattern="[A-Za-z,Α-Ωα-ω]{3,50}" title="Πρέπει να είναι μεταξύ 3 με 50 χαρακτήρες" required="true" placeholder="Όνομα"/>
+                                        <springform:input id="input-first-name" cssClass="form-control form-control-alternative" type="text" path="firstName" pattern="[A-Za-z,α-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΌΆΈΎΫΉΏ]{3,50}" title="Πρέπει να είναι μεταξύ 3 με 50 χαρακτήρες" required="true" placeholder="Όνομα"/>
 
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-last-name"><i class="fas fa-user"></i> Επίθετο</label>
-                                        <springform:input id="input-last-name" cssClass="form-control form-control-alternative" type="text" path="lastName" pattern="[A-Za-z,Α-Ωα-ω]{3,50}" title=" Πρέπει να είναι μεταξύ 3 με 50 χαρακτήρες" required="true"  placeholder="Επίθετο"/>
+                                        <springform:input id="input-last-name" cssClass="form-control form-control-alternative" type="text" path="lastName" pattern="[A-Za-z,α-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΌΆΈΎΫΉΏ]{3,50}" title=" Πρέπει να είναι μεταξύ 3 με 50 χαρακτήρες" required="true"  placeholder="Επίθετο"/>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                         <div class="form-group focused">
                             <div class="row">                              
                                 <label><i class="fas fa-pencil-alt"></i> Περιγραφή </label>
-                                <springform:textarea rows="4" id="input-user-description" path="uDescription" pattern="[A-Za-z,Α-Ωα-ω]" cols="40" class="form-control form-control-alternative" /> 
+                                <springform:textarea rows="4" id="input-user-description" path="uDescription" pattern="[A-Za-z,α-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΌΆΈΎΫΉΏ\s]{3,50}" cols="40" class="form-control form-control-alternative" /> 
                             </div>
                             <br>
                             <hr class="my-4">
@@ -186,7 +186,7 @@
                                             <div class="col-lg-6 mt-3">
 
                                                 <div id="petForm" class="form-group focused selectdiv">
-                                                    <i class="fas fa-paw"></i>  Όνομα ζώου <input type="text" id="petName" pattern="[A-Za-z,Α-Ωα-ω]{3,50}" class="form-control form-control-alternative" placeholder="Όνομα κατοικιδίου" />
+                                                    <i class="fas fa-paw"></i>  Όνομα ζώου <input type="text" id="petName" pattern="[A-Za-z,α-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΌΆΈΎΫΉΏ]{3,50}" class="form-control form-control-alternative" placeholder="Όνομα κατοικιδίου" />
                                                     <i class="fas fa-paw"></i>  Eίδος ζώου <select name="type" id="petType" class="form-control form-control-alternative">
                                                         <option value="Σκύλος">Σκύλος</option>
                                                         <option value="Γάτα">Γάτα</option>
@@ -194,7 +194,7 @@
                                                         <option value="Πτηνό">Πτηνό</option>
                                                         <option value="Άλλο">Άλλο</option>
                                                     </select>
-                                                    <i class="fas fa-pencil-alt"></i> Περιγραφή <textarea type="textarea" id="petDescription" pattern="[A-Za-z,Α-Ωα-ω]+\s*" rows="1" cols="1" class="form-control form-control-alternative" placeholder="Λίγα λόγια για το ζωάκι σου!"></textarea>
+                                                    <i class="fas fa-pencil-alt"></i> Περιγραφή <textarea type="textarea" id="petDescription" pattern="[A-Za-z,α-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΌΆΈΎΫΉΏ]+\s*" rows="1" cols="1" class="form-control form-control-alternative" placeholder="Λίγα λόγια για το ζωάκι σου!"></textarea>
                                                 </div>
                                             </div>
                                        
