@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Το προφίλ μου</title>
-       <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
+        <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
         <!--bootstrap-->
@@ -55,7 +55,7 @@
                             <img id="profilePicImg" height="230px" class="rounded-circle" src="/img/no-profile-pic-icon-12.png" alt="profile photo"/> 
                             <h3 class=" text-center  "><i class="fas fa-paw fa-2x"></i> To προφίλ μου</h3>
                             <i id="upload-profile-btn"><label class="custom-file-upload offset-4" for="Uploadphoto"><i class="fas fa-camera-retro"></i> Ανέβασε Φωτό</label>
-                            <input id="Uploadphoto" type="file" name="photo"  accept="image/*" /></i>
+                                <input id="Uploadphoto" type="file" name="photo"  accept="image/*" /></i>
                         </div>
                     </div>
 
@@ -110,19 +110,19 @@
                         <div class="row">
                             <c:if test="${pageContext['request'].userPrincipal != null}">
                                 <script>
-                                    //get username of loggedInUser
-                                    let username = "${pageContext['request'].userPrincipal.name}";
-                                    //get ProfilePicName of loggedInUser
-                                    let getUserPhotoUrl = "/getProfilePhoto/" + username;
-                                    $.ajax({
-                                        url: getUserPhotoUrl
-                                    }).then(function (data) {
-                                        if (data !== null) {
-                                            //set src to show the profile pic
-                                            let src = "../images/" + data;
-                                            $("#profilePicImg").attr("src", src);
-                                        }
-                                    });
+                //get username of loggedInUser
+                let username = "${pageContext['request'].userPrincipal.name}";
+                //get ProfilePicName of loggedInUser
+                let getUserPhotoUrl = "/getProfilePhoto/" + username;
+                $.ajax({
+                    url: getUserPhotoUrl
+                }).then(function (data) {
+                    if (data !== null) {
+                        //set src to show the profile pic
+                        let src = "../images/" + data;
+                        $("#profilePicImg").attr("src", src);
+                    }
+                });
                                 </script>
                                 <hr class="my-4">
                                 <!--and is Keeper-->
@@ -184,22 +184,22 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                
+
                                                 <div id="petForm" class="form-group focused selectdiv">
                                                     <i class="fas fa-paw"></i>  Όνομα ζώου <input type="text" id="petName" pattern="[A-Za-z,Α-Ωα-ω]{3,50}" class="form-control form-control-alternative" placeholder="Όνομα κατοικιδίου" />
                                                     <i class="fas fa-paw"></i>  Eίδος ζώου <select name="type" id="petType" class="form-control form-control-alternative">
-                                                        <option value="dog">Σκύλος</option>
-                                                        <option value="cat">Γάτα</option>
-                                                        <option value="rabbit">Κουνέλι</option>
-                                                        <option value="bird">Πτηνό</option>
-                                                        <option value="other">Άλλο</option>
+                                                        <option value="Σκύλος">Σκύλος</option>
+                                                        <option value="Γάτα">Γάτα</option>
+                                                        <option value="Κουνέλι">Κουνέλι</option>
+                                                        <option value="Πτηνό">Πτηνό</option>
+                                                        <option value="Άλλο">Άλλο</option>
                                                     </select>
                                                     <i class="fas fa-pencil-alt"></i> Περιγραφή <textarea type="textarea" id="petDescription" pattern="[A-Za-z,Α-Ωα-ω]+\s*" rows="1" cols="1" class="form-control form-control-alternative" placeholder="Λίγα λόγια για το ζωάκι σου!"></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6"> 
-                                                <h5 class="text-center">Οι κρατησεις μου</h5>
+                                                <h5 class="text-center">Οι κρατήσεις μου</h5>
                                                 <div class="bg-light text-dark item">1</div>
                                                 <div class="bg-light text-dark item">1</div>
                                                 <div class="bg-light text-dark item">1</div>                                           
@@ -222,12 +222,12 @@
                         <button id="cancelBtn" type="button" class="btn btn-warning btn-lg mr-4 "><i class="fas fa-ban"></i> Αναίρεση</button>
                         <br>
                         <br>    
-                       <script src="/js/fillMyuserDetails-FormControls.js"></script>
+                        <script src="/js/fillMyuserDetails-FormControls.js"></script>
                     </div>
                 </div>
             </div>  
         </div>
-   
-    <jsp:include page="footer.jsp"></jsp:include>
-</body>
+
+        <jsp:include page="footer.jsp"></jsp:include>
+    </body>
 </html>

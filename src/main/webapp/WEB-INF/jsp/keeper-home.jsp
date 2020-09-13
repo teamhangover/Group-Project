@@ -70,7 +70,7 @@
                     <div class="flex-container" id="reservations">
                         <h5 id="kratiseis">Οι τελευταίες σου κρατήσεις!</h5> 
                         <div class="d-flex justify-content-around">
-                            <label>#</label><label>Όνομα</label><label>Επίθετο</label><label>pet</label><label>Όνομα</label> <label> Τιμή</label><label> Από</label><label> Μέχρι</label>
+                            <label>#</label><label>Όνομα</label><label>Επίθετο</label><label>Κατοικίδιο</label><label> Τιμή(&euro;)</label><label> Από</label><label> Μέχρι</label>
                         </div>
                     </div>
 
@@ -129,13 +129,11 @@
             var selectedDays = new Array();
             var mousedown = false;
             var mousemove = false;
-
             function loadCalendarMonths() {
                 for (var i = 0; i < months.length; i++) {
                     var doc = document.createElement("div");
                     doc.innerHTML = months[i];
                     doc.classList.add("dropdown-item");
-
                     doc.onclick = (function () {
                         var selectedMonth = i;
                         return function () {
@@ -145,19 +143,16 @@
                             return month;
                         };
                     })();
-
                     document.getElementById("months").appendChild(doc);
                 }
             }
 
             function loadCalendarYears() {
                 document.getElementById("years").innerHTML = "";
-
                 for (var i = startYear; i <= endYear; i++) {
                     var doc = document.createElement("div");
                     doc.innerHTML = i;
                     doc.classList.add("dropdown-item");
-
                     doc.onclick = (function () {
                         var selectedYear = i;
                         return function () {
@@ -167,17 +162,15 @@
                             return year;
                         };
                     })();
-
                     document.getElementById("years").appendChild(doc);
                 }
             }
 
             function loadCalendarDays() {
                 document.getElementById("calendarDays").innerHTML = "";
-
                 var tmpDate = new Date(year, month, 0);
                 var num = daysInMonth(month, year);
-                var dayofweek = tmpDate.getDay();       // find where to start calendar day of week
+                var dayofweek = tmpDate.getDay(); // find where to start calendar day of week
 
                 for (var i = 0; i < dayofweek; i++) {
                     var d = document.createElement("div");
@@ -195,35 +188,37 @@
                     d.classList.add("dayHeight");
                     d.innerHTML = `<span class="clnd-day-number"><strong>` + tmp + `</strong></span><span class="avail">Διαθέσιμος</span>`;
                     d.dataset.day = tmp;
-
                     //set full date attribute
                     let fullDate = new Date(year, month, tmp);
                     d.dataset.fullDate = fullDate.getTime();
-
                     //Check if date is already unavailable
                     if (unavailableDates.includes(parseInt(d.dataset.fullDate))) {
                         selectedDays.push(d.dataset.day);
                         d.classList.add("selected");
-                        d.innerHTML = `<span class="clnd-day-number">` + d.dataset.day + `</span><span class="avail">Μη Διαθέσιμος</span>`;
+                        let text
+                        if (reservastionDates.includes(parseInt(d.dataset.fullDate))) {
+                            text = "Κράτηση";
+                        } else {
+                            text = "Μη Διαθέσιμος";
+                        }
+                        d.innerHTML = `<span class="clnd-day-number">` + d.dataset.day + `</span><span class="avail">` + text + `</span>`;
                     }
 
-                    //TODO get dates from reservastions and make them unavailable and disabled
-
-                    d.addEventListener('click', function () {
-                        this.classList.toggle('selected');
-
-                        let tmpDay = this.dataset.day;
-                        if (!selectedDays.includes(this.dataset.day)) {
-                            selectedDays.push(this.dataset.day);
-                            this.innerHTML = `<span class="clnd-day-number"><strong>` + tmpDay + `</strong></span><span class="avail">Μη Διαθέσιμος</span>`;
-                            setUnavailableDate(this.dataset.fullDate);
-                        } else {
-                            selectedDays.splice(selectedDays.indexOf(this.dataset.day), 1);
-                            this.innerHTML = `<span class="clnd-day-number"> <strong>` + tmpDay + `</strong></span><span class="avail">Διαθέσιμος</span>`;
-                            deleteDate(this.dataset.fullDate);
-                        }
-                    });
-
+                    if (!reservastionDates.includes(parseInt(d.dataset.fullDate))) {
+                        d.addEventListener('click', function () {
+                            this.classList.toggle('selected');
+                            let tmpDay = this.dataset.day;
+                            if (!selectedDays.includes(this.dataset.day)) {
+                                selectedDays.push(this.dataset.day);
+                                this.innerHTML = `<span class="clnd-day-number"><strong>` + tmpDay + `</strong></span><span class="avail">Μη Διαθέσιμος</span>`;
+                                setUnavailableDate(this.dataset.fullDate);
+                            } else {
+                                selectedDays.splice(selectedDays.indexOf(this.dataset.day), 1);
+                                this.innerHTML = `<span class="clnd-day-number"> <strong>` + tmpDay + `</strong></span><span class="avail">Διαθέσιμος</span>`;
+                                deleteDate(this.dataset.fullDate);
+                            }
+                        });
+                    }
                     document.getElementById("calendarDays").appendChild(d);
                 }
 
@@ -260,6 +255,7 @@
 
             //send ajax and get all unavailable dates already registered in database
             let unavailableDates = [];
+            let reservastionDates = [];
             let allUnvailableDatesURL = "/keeper/getUnavailableDates";
             function getUnavailableDates() {
                 $.post(
@@ -272,8 +268,27 @@
                         tmpDate.setHours(0, 0, 0, 0);
                         unavailableDates.push(tmpDate.getTime());
                     });
+                    console.log("unavailableDates", unavailableDates);
+                    console.log("reservastionDates", reservastionDates);
                     areUnavailableDatesFilled = true;
                     loadCalendar();
+                });
+            }
+
+            function getMyReservations() {
+                $.get("/myReservations").done((myReservations) => {
+                    console.log(myReservations);
+                    showAllReservations(myReservations);
+                    $.each(myReservations, (i, reservastion) => {
+                        let from = new Date(reservastion.dateFrom);
+                        let to = new Date(reservastion.dateTo);
+                        from.setHours(0, 0, 0, 0);
+                        to.setHours(0, 0, 0, 0);
+                        for (let dt = from; dt < to; dt.setDate(dt.getDate() + 1)) {
+                            reservastionDates.push(dt.getTime());
+                        }
+                    });
+                    getUnavailableDates();
                 });
             }
 
@@ -292,10 +307,9 @@
             }
             let areUnavailableDatesFilled = false;
             $(document).ready(function () {
-                getUnavailableDates();
 
+                getMyReservations();
             });
-
         </script>
         <!-- popup -->
         <script>
@@ -324,83 +338,6 @@
         <!--show latest reservations-->
         <script>
 
-            let reservationData = [{
-                    ownerPhoto: "owner-Photo.jpg",
-                    ownerFname: "Thanos",
-                    ownerLname: "Sam",
-                    pet: "Dog",
-                    petName: "Takis",
-                    totalPrice: "30",
-                    fromDate: "25-9-2020",
-                    toDate: "28-9-2020"
-                },
-                {
-                    ownerPhoto: "owner-Photo.jpg",
-                    ownerFname: "Thanos",
-                    ownerLname: "Sam",
-                    pet: "Dog",
-                    petName: "Takis",
-                    totalPrice: "30",
-                    fromDate: "25-9-2020",
-                    toDate: "28-9-2020"
-
-                },
-                {
-                    ownerPhoto: "owner-Photo.jpg",
-                    ownerFname: "Thanos",
-                    ownerLname: "Sam",
-                    pet: "Dog",
-                    petName: "Takis",
-                    totalPrice: "30",
-                    fromDate: "25-9-2020",
-                    toDate: "28-9-2020"
-
-                },
-                {
-                    ownerPhoto: "owner-Photo.jpg",
-                    ownerFname: "Thanos",
-                    ownerLname: "Sam",
-                    pet: "Dog",
-                    petName: "Takis",
-                    totalPrice: "30",
-                    fromDate: "25-9-2020",
-                    toDate: "28-9-2020"
-
-                },
-                {
-                    ownerPhoto: "owner-Photo.jpg",
-                    ownerFname: "Thanos",
-                    ownerLname: "Sam",
-                    pet: "Dog",
-                    petName: "Takis",
-                    totalPrice: "30",
-                    fromDate: "25-9-2020",
-                    toDate: "28-9-2020"
-
-                },
-                {
-                    ownerPhoto: "owner-Photo.jpg",
-                    ownerFname: "Thanos",
-                    ownerLname: "Sam",
-                    pet: "Dog",
-                    petName: "Takis",
-                    totalPrice: "30",
-                    fromDate: "25-9-2020",
-                    toDate: "28-9-2020"
-
-                },
-                {
-                    ownerPhoto: "owner-Photo.jpg",
-                    ownerFname: "Thanos",
-                    ownerLname: "Sam",
-                    pet: "Dog",
-                    petName: "Takis",
-                    totalPrice: "30",
-                    fromDate: "25-9-2020",
-                    toDate: "28-9-2020"
-                }
-            ];
-
             function showAllReservations(reservs) {
                 $.each(reservs, (i, reservation) => {
                     displayReservations(reservation);
@@ -414,13 +351,13 @@
                 let reservation = `
                 
                 <div class="d-flex justify-content-around">
-                          <span>  <img  src="../images/` + rsvData.ownerPhoto + `" alt="Profile Pic" height="30px" width="30px" class="rounded-circle ownerPhoto " ></span>
-                          <span> ` + rsvData.ownerFname + ` </span> <span>` + rsvData.ownerLname + `</span> <span>` + rsvData.pet + `</span> <span>` + rsvData.petName + `</span>  <span>` + rsvData.totalPrice + `</span> <span>` + rsvData.fromDate + ` </span> <span>` + rsvData.toDate + `</span> 
+                          <span>  <img  src="../images/` + rsvData.profPhoto + `" alt="Profile Pic" height="30px" width="30px" class="rounded-circle ownerPhoto " ></span>
+                          <span> ` + rsvData.firstName + ` </span> <span>` + rsvData.lastName + `</span> <span>` + rsvData.ownerPetType + `</span> <span>` + rsvData.totalPrice + `</span> <span>` + rsvData.dateFrom + ` </span> <span>` + rsvData.dateTo + `</span> 
                 </div>`;
                 reservationDiv.append(reservation);
             }
 
-            showAllReservations(reservationData);
+
 
 
 

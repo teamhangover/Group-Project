@@ -251,6 +251,7 @@
                         priceText.text(priceInput.val());
                         //set event listener to price change
                         priceInput.change(priceChangeHandler);
+                        priceInput.on('input', priceChangeHandler);
 
                         let defaultData = {
                             latitude: userLatitude,
@@ -441,32 +442,32 @@
                             let username = event.target.id;
                             //get keeper by username (ajax).done(the rest .... 
                             $.get("/owner/getReservationDetails/" + username).done((data) => {
-                                //TODO handle data
-                                console.log(data);
-                                handleRsrvSuccess(data);
+                                handleRsrvSuccess(data, username);
                             });
                         }
 
-                        function handleRsrvSuccess(data) {
+                        function handleRsrvSuccess(data, username) {
                             let fromDate = startDate.datepicker('getDate');
-                            let fromDateFormattedString = fromDate.getDate() + "-" + (fromDate.getMonth() + 1) + "-" + fromDate.getFullYear();
+                            fromDate.setHours(0, 0, 0, 0);
+
 
                             let toDate = endDate.datepicker('getDate');
-                            let toDateFormattedString = toDate.getDate() + "-" + (toDate.getMonth() + 1) + "-" + toDate.getFullYear();
+                            fromDate.setHours(0, 0, 0, 0);
 
                             let numOfDays = (toDate.getTime() - fromDate.getTime()) / (1000 * 3600 * 24);
-                            let totalPirce = numOfDays * data.price;
-
+                            let totalPrice = numOfDays * data.price;
+                            console.log("days: ", numOfDays, " total: ", totalPrice);
                             let addressString = data.streetName + " " + data.streetNumber + ", " + data.city + ", " + data.country;
 
                             let reservationData = {
+                                keeperUsername: username,
                                 keeperPhoto: data.uPhotoName,
                                 keeperFname: data.firstName,
                                 keeperLname: data.lastName,
                                 age: data.age,
-                                totalPrice: totalPirce,
-                                fromDate: fromDateFormattedString,
-                                toDate: toDateFormattedString,
+                                totalPrice: totalPrice,
+                                fromDate: fromDate,
+                                toDate: toDate,
                                 keeperDescription: data.uDescription,
                                 keeperAddress: addressString
                             };
@@ -512,7 +513,7 @@
                             }
                             //set the maximum Price on range input
                             priceInput.attr("max", highestPrice + 5);
-                            priceInput.attr("value", highestPrice + 5);
+                            priceInput.val(highestPrice + 5);
                             priceText.text(highestPrice + 5);
                         }
 

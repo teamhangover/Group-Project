@@ -223,6 +223,6 @@ public class Address implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.PetKeeper.model.Address[ addressId=" + addressId + " ]";
+        return streetName + " " + streetNumber + ", " + city + ", " + country;
     }
 }
