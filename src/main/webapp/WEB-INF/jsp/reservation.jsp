@@ -33,10 +33,39 @@
 
         <div class="pt-4" id="paypal-button"></div>
 
-        <!--PAY PAL  -->
-
+        <!--PayPal  -->
         <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
         <script>
+            //---------reservation ----------------
+            let kPhoto = $("#keeperPhoto");
+            let fname = $("#fname");
+            let lname = $("#lname");
+            let age = $("#age");
+            let price = $("#price");
+            let from = $("#from");
+            let until = $("#until");
+            let descri = $("#descri");
+            let address = $("#address");
+
+            let reservationData;
+
+            function displayReservationData(rsvData) {
+                reservationData = rsvData;
+                let srcString = "../images/" + rsvData.keeperPhoto;
+                let fromDateFormattedString = rsvData.fromDate.getDate() + "-" + (rsvData.fromDate.getMonth() + 1) + "-" + rsvData.fromDate.getFullYear();
+                let toDateFormattedString = rsvData.toDate.getDate() + "-" + (rsvData.toDate.getMonth() + 1) + "-" + rsvData.toDate.getFullYear();
+                kPhoto.attr("src", srcString);
+                fname.text(rsvData.keeperFname);
+                lname.text(rsvData.keeperLname);
+                age.text(rsvData.age);
+                price.text(rsvData.totalPrice);
+                from.text(fromDateFormattedString);
+                until.text(toDateFormattedString);
+                descri.text(rsvData.keeperDescription);
+                address.text(rsvData.keeperAddress);
+            }
+            //---------PayPal ----------------
             paypal.Button.render({
                 // Configure environment
                 env: 'sandbox',
@@ -60,7 +89,7 @@
                     return actions.payment.create({
                         transactions: [{
                                 amount: {
-                                    total: '30.00',
+                                    total: reservationData.totalPrice,
                                     currency: 'EUR'
                                 }
                             }]
@@ -69,54 +98,20 @@
                 // Execute the payment
                 onAuthorize: function (data, actions) {
                     return actions.payment.execute().then(function () {
-                        // Show a confirmation message to the buyer
-                        window.alert('Thank you for your purchase!');
+                        //TODO send request
+                        $.post(
+                                "/owner/makeReservation",
+                                reservationData
+                                ).done((data) => {
+                            console.log(data);
+                            // Show a confirmation message to the buyer
+                            window.alert('Thank you for your purchase!');
+                        });
+
                     });
                 }
             }, '#paypal-button');
 
-        </script>
-        <!--PAY PAL  -->
-
-
-        <!--reserve Keepers-->
-        <script>
-            let reservationData = {
-                keeperPhoto: "keeper-Photo.jpg",
-                keeperFname: "Makis",
-                keeperLname: "Marinopoulos",
-                age: "33",
-                totalPrice: "30",
-                fromDate: "25-9-2020",
-                toDate: "28-9-2020",
-                keeperDescription: "Αγαπαω πολυ τα ζωα και προσφερω ενα ανετο και καθαρο περιβαλλον η οτι  θελεις να γραφει εδω",
-                keeperAddress: "Tositsa 18, Athens, Greece"
-            };
-
-            let kPhoto = $("#keeperPhoto");
-            let fname = $("#fname");
-            let lname = $("#lname");
-            let age = $("#age");
-            let price = $("#price");
-            let from = $("#from");
-            let until = $("#until");
-            let descri = $("#descri");
-            let address = $("#address");
-
-            function displayReservationData(rsvData) {
-                let srcString = "../images/" + rsvData.keeperPhoto;
-                kPhoto.attr("src", srcString);
-                fname.text(rsvData.keeperFname);
-                lname.text(rsvData.keeperLname);
-                age.text(rsvData.age);
-                price.text(rsvData.totalPrice);
-                from.text(rsvData.fromDate);
-                until.text(rsvData.toDate);
-                descri.text(rsvData.keeperDescription);
-                address.text(rsvData.keeperAddress);
-            }
-
-            displayReservationData(reservationData);
         </script>
 
     </body>

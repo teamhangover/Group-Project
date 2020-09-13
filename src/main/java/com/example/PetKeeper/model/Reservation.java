@@ -6,6 +6,7 @@
 package com.example.PetKeeper.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -35,7 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Reservation.findByRsvId", query = "SELECT r FROM Reservation r WHERE r.rsvId = :rsvId"),
     @NamedQuery(name = "Reservation.findByDateFrom", query = "SELECT r FROM Reservation r WHERE r.dateFrom = :dateFrom"),
     @NamedQuery(name = "Reservation.findByDateTo", query = "SELECT r FROM Reservation r WHERE r.dateTo = :dateTo"),
-    @NamedQuery(name = "Reservation.findByPaid", query = "SELECT r FROM Reservation r WHERE r.paid = :paid")})
+    @NamedQuery(name = "Reservation.findByTotalPrice", query = "SELECT r FROM Reservation r WHERE r.totalPrice = :totalPrice")})
 public class Reservation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,6 +45,14 @@ public class Reservation implements Serializable {
     @Basic(optional = false)
     @Column(name = "RSV_ID")
     private Integer rsvId;
+
+    @JoinColumn(name = "KEEPER_ID", referencedColumnName = "my_user_id")
+    @ManyToOne(optional = false)
+    private MyUser keeperId;
+    @JoinColumn(name = "OWNER_ID", referencedColumnName = "my_user_id")
+    @ManyToOne(optional = false)
+    private MyUser ownerId;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATE_FROM")
@@ -54,16 +63,11 @@ public class Reservation implements Serializable {
     @Column(name = "DATE_TO")
     @Temporal(TemporalType.DATE)
     private Date dateTo;
+
     @Basic(optional = false)
     @NotNull
-    @Column(name = "PAID")
-    private boolean paid;
-    @JoinColumn(name = "KEEPER_ID", referencedColumnName = "my_user_id")
-    @ManyToOne(optional = false)
-    private MyUser keeperId;
-    @JoinColumn(name = "OWNER_ID", referencedColumnName = "my_user_id")
-    @ManyToOne(optional = false)
-    private MyUser ownerId;
+    @Column(name = "TOTAL_PRICE")
+    private BigDecimal totalPrice;
 
     public Reservation() {
     }
@@ -72,11 +76,11 @@ public class Reservation implements Serializable {
         this.rsvId = rsvId;
     }
 
-    public Reservation(Integer rsvId, Date dateFrom, Date dateTo, boolean paid) {
+    public Reservation(Integer rsvId, Date dateFrom, Date dateTo, BigDecimal totalPrice) {
         this.rsvId = rsvId;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
-        this.paid = paid;
+        this.totalPrice = totalPrice;
     }
 
     public Integer getRsvId() {
@@ -103,12 +107,12 @@ public class Reservation implements Serializable {
         this.dateTo = dateTo;
     }
 
-    public boolean getPaid() {
-        return paid;
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setPaid(boolean paid) {
-        this.paid = paid;
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public MyUser getKeeperId() {
@@ -151,5 +155,5 @@ public class Reservation implements Serializable {
     public String toString() {
         return "com.example.PetKeeper.model.Reservation[ rsvId=" + rsvId + " ]";
     }
-    
+
 }

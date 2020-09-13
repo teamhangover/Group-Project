@@ -71,6 +71,12 @@ public class KeepersAvailabilityServiceImpl implements KeepersAvailabilityServic
         List<Address> result = new ArrayList<>();
 
         for (Address address : addresses) {
+            // --- Alternative way --- does not work correctly. Takes the same time to execute so it's pointless to change it
+//            List<KeepersAvailability> unavailableDates = address.getMyUserId().getKeepersAvailabilityCollection()
+//                    .stream()
+//                    .filter(kprsAvlb -> (kprsAvlb.getUnavailableDate().compareTo(fromDate) >= 0 && kprsAvlb.getUnavailableDate().compareTo(toDate) < 0))
+//                    .collect(Collectors.toList());
+
             List<KeepersAvailability> unavailableDates = keepersAvailabilityRepo.findByBetweenDates(fromDate, toDate, address.getMyUserId());
             if (unavailableDates.isEmpty()) {
                 result.add(address);
