@@ -133,6 +133,7 @@ $(document).ready(function () {
                                             <p id="place-address">` + keeper.streetName + ` ` + keeper.streetNumber + `, ` + keeper.city + `</p>
                                             <p id="keeper-name">` + keeper.firstName + ` ` + keeper.lastName + `</p>
                                             <p id="keeper-price">` + keeper.price + ` &euro;/ημέρα</p>
+        <button type="button" id="` + keeper.username + `-infoWindow" class="btn btn-outline-info operModalButtons" data-toggle="modal" data-target="#exampleModalScrollable" >Κάνε Κράτηση!</button>
                                         </div>
                                     </div>`;
 
@@ -144,6 +145,7 @@ $(document).ready(function () {
             infowindow.open(map, marker);
         });
 
+        $(document).on("click", "#" + keeper.username + "-infoWindow", getReservationDetails);
     }
 
     // -------------------Renewing Map ------------
@@ -260,6 +262,11 @@ $(document).ready(function () {
     // ----------------- Reservation modal -------------
     function getReservationDetails(event) {
         let username = event.target.id;
+
+        if (username.endsWith("-infoWindow")) {
+            username = username.slice(0, -11);
+        }
+
         //get keeper by username (ajax).done(the rest .... 
         $.get("/owner/getReservationDetails/" + username).done((data) => {
             handleRsrvSuccess(data, username);
