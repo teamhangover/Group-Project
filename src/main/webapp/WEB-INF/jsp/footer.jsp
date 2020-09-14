@@ -3,7 +3,8 @@
     Created on : 11 Αυγ 2020, 9:22:40 μμ
     Author     : ths13
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- Load an icon library -->
@@ -48,7 +49,7 @@
 
 
             <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
+            <div class="col-md-1 mx-auto">
 
                 <!-- Links -->
                 <!-- <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5> -->
@@ -64,18 +65,40 @@
 
 
             <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
+            <div class="col-md-3 mx-auto">
 
-                
+
 
                 <ul class="d-flex list-unstyled list-inline-item justify-content-center">
-                    <li class="list-inline-item">
-                        <h5 class="mb-1 ">Εγγράψου δωρεάν!</h5>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="${pageContext.request.contextPath}/preInsertMyUser" class="btn btn-lg btn-success btn-rounded">Εγγραφή</a>
-                    </li>
+                    <c:choose>
+                        <c:when test="${pageContext['request'].userPrincipal != null}">
+                            <security:authorize access="hasRole('ROLE_KEEPER') and isAuthenticated()">
+                                <li class="list-inline-item">
+                                    <h5 class="mb-1 ">Δές τις κρατήσεις σου!</h5>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="${pageContext.request.contextPath}/keeper/dashboard" class="btn btn-lg btn-outline-success btn-rounded">Πίνακας Ελέγχου</a>
+                                </li>                           
+                            </security:authorize> 
+                            <security:authorize access="hasRole('ROLE_OWNER') and isAuthenticated()">
+                                <li class="list-inline-item">
+                                    <h5 class="mb-1 ">Βρες keepers τώρα!</h5>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="${pageContext.request.contextPath}/owner/search" class="btn btn-lg btn-outline-success btn-rounded">Βρές Keepers</a>
+                                </li>
+                            </security:authorize>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="list-inline-item">
+                                <h5 class="mb-1 ">Εγγράψου δωρεάν!</h5>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="${pageContext.request.contextPath}/preInsertMyUser" class="btn btn-lg btn-success btn-rounded">Εγγραφή</a>
+                            </li>
 
+                        </c:otherwise>
+                    </c:choose>
                 </ul>
 
             </div>
