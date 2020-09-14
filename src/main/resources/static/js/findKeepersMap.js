@@ -126,14 +126,16 @@ $(document).ready(function () {
     // -------------------InfoWindow ------------
     function createInfoWindow(marker, keeper) {
         let contentString = `
-                                    <div id="infowindow-content">
-                                         <img src="../images/` + keeper.uPhotoName + `" width="50px" height="50px" id="place-icon" />
-                                        <div>
+                                    <div id="infowindow-content" class=" p-3 m-2 rounded">
+                                        <div class="">
+                                         <img src="../images/` + keeper.uPhotoName + `" width="50px" height="50px" id="place-icon" class="d-block ml-auto mr-auto pt-1 rounded-circle"/>
+                                        </div>
+                                        <div class=" text-center text-light h6">
                                             <span id="place-name" class="title"></span><br />
                                             <p id="place-address">` + keeper.streetName + ` ` + keeper.streetNumber + `, ` + keeper.city + `</p>
                                             <p id="keeper-name">` + keeper.firstName + ` ` + keeper.lastName + `</p>
                                             <p id="keeper-price">` + keeper.price + ` &euro;/ημέρα</p>
-        <button type="button" id="` + keeper.username + `-infoWindow" class="btn btn-outline-info operModalButtons" data-toggle="modal" data-target="#exampleModalScrollable" >Κάνε Κράτηση!</button>
+        <button type="button" id="` + keeper.username + `-infoWindow" class="btn btn-sm btn-outline-light operModalButtons mb-1" data-toggle="modal" data-target="#exampleModalScrollable" >Κάνε Κράτηση!</button>
                                         </div>
                                     </div>`;
 

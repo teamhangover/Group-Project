@@ -13,7 +13,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+  background-image:url('/img/paw-bg.jpg');
+   background-position: center;
 }
 
 
@@ -24,8 +25,7 @@ body {
 /*    height: 100% ;*/
     background: #5f2c82;  
     background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
-    background: linear-gradient(to right, #49a09d, #5f2c82); 
-    opacity: 0.5;
+    background: linear-gradient(to right, #49a09d, #5f2c82);    
     display: block;
     max-height: 700px;
     overflow:auto;
@@ -61,18 +61,17 @@ tbody td, thead th {
     font-weight: 300;
 }
 
-#infowindow-content .title {
-    font-weight: bold;
+/*infowindow transparent border*/
+.gm-style .gm-style-iw-c{
+  transform: translate(-50%,-100%);
+    background-color: #fff0;  
 }
 
-#infowindow-content {
-    display: none;
+#infowindow-content{
+   background: #5f2c82 !important;  
+    background: -webkit-linear-gradient(to right, #49a09d, #5f2c82) !important;  
+    background: linear-gradient(to right, #49a09d, #5f2c82) !important;    
 }
-
-#map #infowindow-content {
-    display: inline;
-}
-
 
 #pac-input {
 
@@ -107,7 +106,6 @@ tbody td, thead th {
 .box-canvas{
     position: relative;
     margin: auto;
-
     display: block;
     margin-top: 8%;
     margin-bottom: 8%;

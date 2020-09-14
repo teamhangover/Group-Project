@@ -50,7 +50,8 @@ input[type="number"] {
 
 
 body{
-    background-color: #FAF3DD;
+   background-image:url('/img/paw-bg.jpg');
+   background-position: center;
     font-family: Open Sans, sans-serif;
     font-size: 1rem;
     font-weight: 400;

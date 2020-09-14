@@ -183,7 +183,7 @@
                                 <security:authorize access="hasRole('ROLE_OWNER') and isAuthenticated()">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-lg-6 mt-3">
+                                            <div class="col-lg-4 mt-3">
 
                                                 <div id="petForm" class="form-group focused selectdiv">
                                                     <i class="fas fa-paw"></i>  Όνομα ζώου <input type="text" id="petName" pattern="[A-Za-z,α-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΌΆΈΎΫΉΏ]{3,50}" class="form-control form-control-alternative" placeholder="Όνομα κατοικιδίου" />
@@ -199,7 +199,7 @@
                                             </div>
 
 
-                                            <div class="col-lg-6 "> 
+                                            <div class="col-lg-8 "> 
                                                 <h5 class="text-center">Οι κρατήσεις μου<a id="reservations" ></a></h5>
                                                 <div class="myreservation" id="myReservationDiv">                                                    
                                                 </div>
