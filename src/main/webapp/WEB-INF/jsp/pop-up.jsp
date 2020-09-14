@@ -33,33 +33,34 @@
                         <h5>Πες μας πως μπορούμε να βοηθήσουμε</h5>
                     </div>
                     <div class="row input-container">
-
-                        <div class="col-xs-12">
-                            <div class="styled-input wide">
-                                <input type="text" required />
-                                <label>Θέμα</label> 
+                        <form id="contact-form">
+                            <div class="col-xs-12">
+                                <div class="styled-input wide">
+                                    <input id="subject" name="subject" type="text" required />
+                                    <label>Θέμα</label> 
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-xs-12">
-                            <div class="styled-input wide">
-                                <input type="text" required />
-                                <label>Email</label> 
+                            <div class="col-xs-12">
+                                <div class="styled-input wide">
+                                    <input id="email" name="email" type="email" required />
+                                    <label>Email</label> 
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-xs-12">
-                            <div class="styled-input wide">
-                                <textarea required></textarea>
-                                <label>Μήνυμα</label>
+                            <div class="col-xs-12">
+                                <div class="styled-input wide">
+                                    <textarea id="email-text" name="text" required></textarea>
+                                    <label>Μήνυμα</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <button type="button" class="btn-lrg submit-btn">Αποστολή</button>
-                        </div>
-                        <div class="col-xs-6">
-                            <button type="button" class="btn-lrg close-btn " data-dismiss="modal">Κλείσιμο</button>
-                        </div>
+                            <div class="col-xs-6">
+                                <button id="send-email-btn" type="submit" class="btn-lrg submit-btn">Αποστολή</button>
+                            </div>
+                            <div class="col-xs-6">
+                                <button id="modal-close-btn" type="button" class="btn-lrg close-btn " data-dismiss="modal">Κλείσιμο</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
