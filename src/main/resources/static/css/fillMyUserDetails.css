@@ -9,7 +9,7 @@ input[type="number"] {
 
 *{
     margin: 0;
-    
+
 }
 
 .selectdiv select {
@@ -50,8 +50,8 @@ input[type="number"] {
 
 
 body{
-   background-image:url('/img/paw-bg.jpg');
-   background-position: center;
+    background-image:url('/img/paw-bg.jpg');
+    background-position: center;
     font-family: Open Sans, sans-serif;
     font-size: 1rem;
     font-weight: 400;
@@ -59,7 +59,7 @@ body{
     margin: 0;
     text-align: left;
     color: #fbeec1; 
-     height:100%;
+    height:100%;
 }
 
 input[type="file"] {
@@ -74,8 +74,8 @@ input[type="file"] {
 }
 
 .myreservation{
-  overflow-y: scroll;
-   max-height: 200px;
-  
+    overflow-y: scroll;
+    max-height: 200px;
+
 }
 
