@@ -45,7 +45,6 @@ $(document).ready(function () {
         $(document.body).css({'cursor': 'default'});
     });
     let autocomplete;
-//                        initMap(map);
     let mapOptions = {
         center: new google.maps.LatLng(userLatitude, userLongitude),
         zoom: 13
@@ -57,12 +56,20 @@ $(document).ready(function () {
     //addListener to autocomplete
     autocomplete.addListener("place_changed", renewMap);
 
-    //addListener to map TODO change function
-//                        map.addListener("dragend", handleDragend);
+    //addListener to map's dragend 
+    map.addListener('dragend', function () {
+        let newLocation = {
+            latitude: map.getCenter().lat(),
+            longitude: map.getCenter().lng(),
+            fromDate: startDate.datepicker('getDate'),
+            toDate: endDate.datepicker('getDate')
+        };
+        getResultsFromServer(newLocation);
+    });
     //-----------------------------
 
     //get current location (if possible)
-    //geolocationApi();
+    geolocationApi();
 
     //set price
     const priceInput = $("#fromPrice");
@@ -80,14 +87,12 @@ $(document).ready(function () {
         toDate: new Date()
     };
 
-    getResultsFromServer(defaultData);
 
     //---------------------
     function priceChangeHandler() {
         maxPrice = priceInput.val();
         priceText.text(maxPrice);
         let result = keepersList.filter(keeper => keeper.price <= maxPrice);
-        tableBody.empty();
         handleResponse(result);
     }
 
@@ -152,7 +157,6 @@ $(document).ready(function () {
 
     // -------------------Renewing Map ------------
     function renewMap() {
-        deleteMarkers();
         let place = autocomplete.getPlace();
         if (place) {
             if (!place.geometry) {
@@ -175,17 +179,15 @@ $(document).ready(function () {
                     formData.latitude = place.geometry.location.lat();
                     formData.longitude = place.geometry.location.lng();
 
-                    tableBody.empty();
                     $(document.body).css({'cursor': 'progress'});
                     getResultsFromServer(formData);
 
                 } else {
                     map.setCenter(place.geometry.location);
-                    map.setZoom(17); // Why 17? Because it looks good.
+                    map.setZoom(15);
 
                     formData.latitude = place.geometry.location.lat();
                     formData.longitude = place.geometry.location.lng();
-                    tableBody.empty();
                     $(document.body).css({'cursor': 'progress'});
                     getResultsFromServer(formData);
                 }
@@ -198,34 +200,47 @@ $(document).ready(function () {
 
     //Geolocation success
     function success(position) {
-        userLatitude = position.coords.latitude;
-        userLongitude = position.coords.longitude;
+
+        $(document.body).css({'cursor': 'progress'});
+        let data = {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            fromDate: startDate.datepicker('getDate'),
+            toDate: endDate.datepicker('getDate')
+        };
+        getResultsFromServer(data);
     }
 
     //Geolocation error
     function error() {
         alert('Unable to retrieve your location');
+        getResultsFromServer(defaultData);
     }
 
     //Geolocation API
     function geolocationApi() {
         if (!navigator.geolocation) {
             alert("Your browser does not support geolocation!");
+            getResultsFromServer(defaultData);
         } else {
-            return navigator.geolocation.getCurrentPosition(success, error);
+            navigator.geolocation.getCurrentPosition(success, error);
         }
     }
 
     // ----------------- Ajax -------------
     function getResultsFromServer(requestData) {
 
+        map.setCenter({lat: requestData.latitude, lng: requestData.longitude});
         $.get(
                 "/owner/findKeepers",
                 requestData
                 ).done(function (response) {
 
             if (response.length === 0) {
+                tableBody.empty();
+                deleteMarkers();
                 $("#noresults-div").addClass("no-results");
+                $(document.body).css({'cursor': 'default'});
             } else {
                 keepersList = response;
                 findAndSetMaxPrice(response);
@@ -235,11 +250,13 @@ $(document).ready(function () {
     }
     //handle response
     function handleResponse(response) {
+        tableBody.empty();
+        deleteMarkers();
         $("#noresults-div").removeClass("no-results");
         fillTableBodyWithData(response);
         createMarkers(response);
         $(document.body).css({'cursor': 'default'});
-        map.setZoom(16);
+        map.setZoom(15);
     }
 
     // ----------------- Dom -------------
@@ -269,7 +286,7 @@ $(document).ready(function () {
             username = username.slice(0, -11);
         }
 
-        //get keeper by username (ajax).done(the rest .... 
+        //get keeper by username ajax
         $.get("/owner/getReservationDetails/" + username).done((data) => {
             handleRsrvSuccess(data, username);
         });
@@ -301,7 +318,6 @@ $(document).ready(function () {
         };
         displayReservationData(reservationData);
     }
-
 
 
     // ----------------- Helper functions -------------
