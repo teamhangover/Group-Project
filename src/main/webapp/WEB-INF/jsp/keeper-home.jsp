@@ -13,7 +13,8 @@
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/calendarStyle.css">
         <link rel="stylesheet" href="/css/keeper-home-style.css">
-
+        <!--font awesome-->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
     </head>
 
@@ -68,10 +69,10 @@
                     </div>
 
                     <div class="flex-container" id="reservations">
-                        <h5 id="kratiseis">Οι τελευταίες σου κρατήσεις!</h5> 
-                        <div class="d-flex justify-content-around">
-                            <label>#</label><label>Όνομα</label><label>Επίθετο</label><label>Κατοικίδιο</label><label> Τιμή(&euro;)</label><label> Από</label><label> Μέχρι</label>
-                        </div>
+                        <h5 id="kratiseis">Οι Kρατήσεις σου!</h5> 
+                        <!--                        <div class="d-flex justify-content-around">
+                                                    <label>#</label><label>Όνομα</label><label>Επίθετο</label><label>Κατοικίδιο</label><label> Τιμή(&euro;)</label><label> Από</label><label> Μέχρι</label>
+                                                </div>-->
                     </div>
 
                 </article>
@@ -96,51 +97,14 @@
                 </div>
             </div>
 
-            <!-- popup -->
-            <div id="popup">
-                <h2>Θες βοήθεια;</h2>
-                <p>Στείλε μας email. Ένα μέλος της ομάδας μας θα σου απαντήσει άμεσα!</p>
-                <div>
-                    <button>Κλείσιμο</button>
-                    <button >Ε-mail</button>
-                </div>
-            </div>
-            <div id="opener" class="">
-                &#9754;
-            </div>
+            <script
+                src="https://code.jquery.com/jquery-3.4.1.js"
+                integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+                crossorigin="anonymous">
+            </script>
 
-        <jsp:include page="footer.jsp"></jsp:include>
-
-        <script
-            src="https://code.jquery.com/jquery-3.4.1.js"
-            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-            crossorigin="anonymous">
-        </script>
-
-        <script src="/js/calendarJs.js" async defer></script>
-
-        <!-- popup -->
-        <script>
-                            $(function ($) {
-                                $("#opener").click(function () {
-                                    $(this).addClass("d-none");
-                                    $("#popup").animate({
-                                        right: "20px"
-                                    }, 1200);
-                                });
-                                $("button:first-child").click(function () {
-                                    $("#popup").animate(
-                                            {
-                                                "right": "-400px"
-                                            },
-                                            1200, /* Animation in ms */
-                                            function () {
-                                                $("#opener").removeClass("d-none");
-                                            }
-                                    );
-                                });
-                            });
-        </script>
-
+            <script src="/js/calendarJs.js" async defer></script>
+        <jsp:include page="pop-up.jsp"></jsp:include>
+        <jsp:include page="footer.jsp"></jsp:include> 
     </body>
 </html>

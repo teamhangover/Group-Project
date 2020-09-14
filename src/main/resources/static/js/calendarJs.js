@@ -203,12 +203,12 @@ function showAllReservations(reservs) {
 let reservationDiv = $("#reservations");
 function displayReservations(rsvData) {
 
-
+  
     let reservation = `
                 
                 <div class="d-flex justify-content-around">
                           <span>  <img  src="../images/` + rsvData.profPhoto + `" alt="Profile Pic" height="30px" width="30px" class="rounded-circle ownerPhoto " ></span>
-                          <span> ` + rsvData.firstName + ` </span> <span>` + rsvData.lastName + `</span> <span>` + rsvData.ownerPetType + `</span> <span>` + rsvData.totalPrice + `</span> <span>` + rsvData.dateFrom + ` </span> <span>` + rsvData.dateTo + `</span> 
+                          <span><i class="fas fa-user"></i> ` + rsvData.firstName + `</span> <span>` + rsvData.lastName + `</span> <span> <i class="fas fa-paw"></i> ` + rsvData.ownerPetType + `</span> <span><i class="fas fa-euro-sign"></i>` + rsvData.totalPrice + `</span> <span><i class="far fa-calendar-alt"></i>` + rsvData.dateFrom + ` </span> <span><i class="far fa-calendar-alt"></i>` + rsvData.dateTo + `</span> 
                 </div>`;
     reservationDiv.append(reservation);
 }
