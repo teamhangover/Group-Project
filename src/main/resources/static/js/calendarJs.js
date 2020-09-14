@@ -77,7 +77,7 @@ function loadCalendarDays() {
         if (unavailableDates.includes(parseInt(d.dataset.fullDate))) {
             selectedDays.push(d.dataset.day);
             d.classList.add("selected");
-            let text
+            let text;
             if (reservastionDates.includes(parseInt(d.dataset.fullDate))) {
                 text = "Κράτηση";
                 d.classList.add("reservedDay");
@@ -90,8 +90,7 @@ function loadCalendarDays() {
         today.setHours(0, 0, 0, 0);
         let todayTimeString = today.getTime() + "";
 
-        if (d.dataset.fullDate === todayTimeString) {
-            console.log("today")
+        if (d.dataset.fullDate === todayTimeString) {        
             d.classList.add("todayDate");
         }
         if (!reservastionDates.includes(parseInt(d.dataset.fullDate))

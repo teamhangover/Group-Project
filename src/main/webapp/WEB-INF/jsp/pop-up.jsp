@@ -1,22 +1,71 @@
-<%-- 
-    Document   : pop-up
-    Created on : 14 Σεπ 2020, 2:05:31 μμ
-    Author     : ths13
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <link rel="stylesheet" href="/css/pop-up.css">
- <script src="/js/pop-up.js"></script> 
-     <!-- popup -->
-            <div id="popup">
-                <h2>Θες βοήθεια;</h2>
-                <p>Στείλε μας email. Ένα μέλος της ομάδας μας θα σου απαντήσει άμεσα!</p>
-                <div>
-                    <button>Κλείσιμο</button>
-                    <button >Ε-mail</button>
+<script src="/js/pop-up.js"></script> 
+<!-- popup -->
+<div id="popup">
+    <h2>Θες βοήθεια;</h2>
+    <p>Στείλε μας email. Ένα μέλος της ομάδας μας θα σου απαντήσει άμεσα!</p>
+    <div>
+        <button id="popup-close-btn">Κλείσιμο</button>
+        <button id="popup-email-btn" type="button" data-toggle="modal" data-target="#popupmodal">Ε-mail</button>
+    </div>
+</div>
+<div id="opener" class="">
+    🐾
+</div>
+
+
+<div id="popupmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+
+
+            <div class="modal-body">
+
+                <div class="container">
+                    <div class="row d-block mx-auto ">
+                        <h4>Επικοινώνησε μαζί μας</h4>
+                    </div>
+                    <div class="row d-block mx-auto">
+                        <h5>Πες μας πως μπορούμε να βοηθήσουμε</h5>
+                    </div>
+                    <div class="row input-container">
+
+                        <div class="col-xs-12">
+                            <div class="styled-input wide">
+                                <input type="text" required />
+                                <label>Θέμα</label> 
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="styled-input wide">
+                                <input type="text" required />
+                                <label>Email</label> 
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="styled-input wide">
+                                <textarea required></textarea>
+                                <label>Μήνυμα</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="button" class="btn-lrg submit-btn">Αποστολή</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="button" class="btn-lrg close-btn " data-dismiss="modal">Κλείσιμο</button>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-            <div id="opener" class="">
-<!--                &#9754;-->
-            </div>
+
+
+        </div>
+    </div>
+</div>
