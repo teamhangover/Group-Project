@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmailServiceImpl implements EmailService {
 
-//    private static final String NOREPLY_ADDRESS = "noreply@petkeeper.com";
+    private static final String NOREPLY_ADDRESS = "noreply@petkeeper.com";
     private static final String PETKEEPER_ADDRESS = "pet.keeper.gr@gmail.com";
 
     @Autowired
