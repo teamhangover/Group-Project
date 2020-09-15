@@ -46,7 +46,7 @@ $(document).ready(function () {
             type: "POST",
             data: form_data
         }).done(function (response) { //
-            $("#modal-close-btn").trigger('click');
+            $("#popup-close-btn").trigger('click');
             $(document.body).css({'cursor': 'default'});
             alert("Το μήνυμα σας εστάλη!");
         });
