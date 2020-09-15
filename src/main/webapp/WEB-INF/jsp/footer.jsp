@@ -155,7 +155,7 @@
 
     <div class="footer-copyright text-center py-3 ml-5" style="color: aliceblue;">© 2020 Copyright:
         <a href="${pageContext.request.contextPath}"> PetKeeper.com</a>
-        <p class="float-right"><a class="mt-4 btn btn-outline-info" href="#">Back to top</a></p>
+        <p class="float-left"><a class="mt-4 btn btn-outline-info" href="#">Back to top</a></p>
 
         <p> <a href="#" class="float-middle">Privacy</a> &middot; <a href="#">Terms</a></p>
 
