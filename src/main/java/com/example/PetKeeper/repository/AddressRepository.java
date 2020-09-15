@@ -23,8 +23,8 @@ public interface AddressRepository extends JpaRepository<Address, Integer> {
 
     public Address findByMyUserId(MyUser myUser);
 
-    //this native query finds addresses within 5km from the given lat/lng (center)
-  @Query(value="SELECT * FROM addresses a HAVING ( 6371 * acos( cos( radians( ?1 ) ) * cos( radians( a.latitude ) ) * cos( radians( a.longitude ) - radians( ?2 ) ) + sin( radians( ?1 ) ) * sin( radians( a.latitude ) ) ) ) < 5;"
+    //this native query finds addresses within 3km from the given lat/lng (center)
+  @Query(value="SELECT * FROM addresses a HAVING ( 6371 * acos( cos( radians( ?1 ) ) * cos( radians( a.latitude ) ) * cos( radians( a.longitude ) - radians( ?2 ) ) + sin( radians( ?1 ) ) * sin( radians( a.latitude ) ) ) ) < 3;"
             , nativeQuery = true)
     List<Address> findAllByLngLatWithinRadius(@Param("lat") BigDecimal lat, @Param("lng") BigDecimal lng);
 }
