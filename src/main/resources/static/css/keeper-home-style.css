@@ -140,12 +140,12 @@ header h1 {
 }
 
 #kratiseis {
-    position:fixed;
+    position: absolute;
     top:67px;
     display: flex;
     justify-content: center;
     margin-top: 22px;
-    width: 45%;
+    width: 29%;
     color: white;
     font-family: "Lucida Console", Courier, monospace;
 }

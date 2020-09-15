@@ -227,7 +227,7 @@
                 </div>
             </div>  
         </div>
-
+        <jsp:include page="pop-up.jsp"></jsp:include>
         <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>

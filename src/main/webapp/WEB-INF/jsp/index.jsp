@@ -10,7 +10,7 @@
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Jekyll v4.0.1">
         <title> PetKeeper</title>
- <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
+        <link rel="icon" href="/img/pawwhite.png" sizes="32x32">
 
         <!--    carousel-->
         <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
@@ -231,13 +231,16 @@
                     Μέχρι σήμερα έχουν ήδη προσφέρει <strong>33850 νύχτες φιλοξενίας</strong> σε σκυλάκια, γατούλες, παπαγάλους, κουνελάκια... και ινδικά χοιρίδια!</p>
             </div>
 
-            <!-- Footer -->
+            <jsp:include page="pop-up.jsp"></jsp:include>
+                <!-- Footer -->
 
             <jsp:include page="footer.jsp"></jsp:include>
 
         </main>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+                crossorigin="anonymous">
+        </script>
         <script>
             window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>');
         </script>
