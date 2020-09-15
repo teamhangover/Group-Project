@@ -183,7 +183,7 @@
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5mZvsDf2yxpRbN_AdULITrSGI_o3Oow&libraries=places"
                 defer></script>
             </div>
-
+        <jsp:include page="pop-up.jsp"></jsp:include>
         <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>

@@ -1,4 +1,4 @@
-$(document).ready(function ($) {
+$(document).ready(function () {
     //pop up
     $("#opener").click(function () {
         $("#opener").addClass("d-none");
@@ -35,8 +35,8 @@ $(document).ready(function ($) {
         e.preventDefault();
         $(document.body).css({'cursor': 'wait'});
         let form_data = {
-            subject: $("#subject").val() + " - " + $("#email").val(), // we need to change the email service
-            email: $("#email").val(),
+            subject: $("#subject").val() + " - " + $("#email-contact").val(), // we need to change the email service
+            email: $("#email-contact").val(),
             text: $("#email-text").val()
         };
 
