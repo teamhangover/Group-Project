@@ -1,0 +1,152 @@
+/* * { border: 1px solid gray; } */
+
+article {
+    border-color: red;
+}
+
+body {
+    margin: 0
+}
+
+a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.flexbox {  
+    display: flex;
+    border-width: 5px;
+    height: 550px;
+    justify-content: flex-end;
+    justify-content: center;
+}
+
+#one {
+    padding: 20px;
+    background-color: rgb(100, 98, 98);
+}
+
+.firstflex {
+    background-color: rgb(100, 98, 98);
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+    justify-content: space-evenly;
+}
+
+#two {
+    flex-grow: 4;
+    display: flex;
+    align-items: flex-start;
+    align-items: flex-end;
+    align-items: center;
+    align-items: stretch;
+    min-height: 250px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    background-image: url('/img/front-view-dogs-costumes.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 70%;
+    overflow: auto;
+   
+   
+}
+
+.flex-container div:hover{
+    opacity:1;
+}
+
+.flex-container>div {
+ 
+    background-color: #b8bdca;
+    width: 100%;
+    margin: 2px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 20px;
+     opacity: 0.5;
+     
+}
+
+#three {
+    flex-grow: 1;
+    background: #94bbb6;
+}
+
+.bg-acc {
+    background: #94bbb6;
+}
+
+.bg-acc-title {
+    background: rgb(117, 148, 240);
+}
+
+#centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    background: rgb(117, 148, 240);
+}
+
+.abs {
+    background: lavender;
+    position: relative;
+    height: 230px;
+    width: 400px;
+    left: 40px;
+    top: 40;
+    padding: 10px;
+    margin: 10px;
+    font-family: Times New Roman, Helvetica, sans-serif;
+    border-radius: 5px;
+}
+
+.abs span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.abs h6 {
+    display: flex;
+    justify-content: center;
+    font: 20px Helvetica, Sans-Serif;
+    color: black;
+}
+
+
+
+
+
+
+
+header {
+    background-color: #94bbb6;
+}
+
+header h1 {
+    margin-bottom: 0rem;
+}
+
+#kratiseis {
+    position: absolute;
+    top:67px;
+    display: flex;
+    justify-content: center;
+    margin-top: 22px;
+    width: 29%;
+    color: white;
+    font-family: "Lucida Console", Courier, monospace;
+}
+

@@ -1,0 +1,33 @@
+.noBg{
+    background: none !important;
+}
+footer {
+    background-image: url('/img/footer-bg.jpg');
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    padding: 0px;
+    margin:0px;
+} 
+
+footer a {
+    text-decoration: none;
+    color: lightyellow;
+}
+
+footer h5 {
+    color: powderblue;
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: lightyellow;
+    border: rosybrown;
+    background-color: rosybrown;
+    /* border-radius: 10rem; */
+}
+
+ul li{
+    padding-top:50px;
+    font-size: larger;
+}
+
